@@ -1,0 +1,1041 @@
+/* ==========================================================================
+   HGC MAG — Premium Visual Identity v2.0
+   "Cameleonic Minimalist" — Conversion-Focused
+   ========================================================================== */
+
+/* === GOOGLE FONTS IMPORT === */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap');
+
+/* === BRAND TOKENS === */
+:root {
+  --hgc-gold: #D4AF37;
+  --hgc-gold-hover: #B8960C;
+  --hgc-gold-light: rgba(212, 175, 55, 0.10);
+  --hgc-gold-glow: 0 4px 24px rgba(212, 175, 55, 0.40);
+  --hgc-charcoal: #222222;
+  --hgc-jet: #000000;
+  --hgc-off-white: #F7F7F7;
+  --hgc-faint-grey: #EEEEEE;
+  --hgc-white: #FFFFFF;
+  --hgc-text-muted: rgba(34,34,34,0.55);
+
+  --hgc-font-title: 'Montserrat', sans-serif;
+  --hgc-font-body: 'Lato', sans-serif;
+  --hgc-font-accent: 'Playfair Display', Georgia, serif;
+
+  --hgc-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hgc-transition: 0.35s var(--hgc-ease);
+}
+
+/* ===================================================================
+   GLOBAL RESET & BASE
+   =================================================================== */
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: var(--hgc-font-body) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--hgc-off-white);
+}
+
+/* Force Montserrat on ALL headings */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5, .h6, .hxl, .hxxl,
+.section-header__title,
+.card__heading,
+.banner__heading,
+.image-with-text__heading {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  line-height: 1.1 !important;
+}
+
+/* Italic serif accent */
+.accent-serif,
+em.serif {
+  font-family: var(--hgc-font-accent) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* ===================================================================
+   ANNOUNCEMENT BAR — Gold & Dark Premium
+   =================================================================== */
+
+.utility-bar.color-scheme-3,
+.announcement-bar-section .utility-bar {
+  background-color: var(--hgc-charcoal) !important;
+  padding: 0.9rem 0 !important;
+  border-bottom: 1px solid rgba(212,175,55,0.3) !important;
+}
+
+.announcement-bar__message {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-off-white) !important;
+}
+
+/* Gold star highlights in announcement */
+.announcement-bar__message strong,
+.announcement-bar__message em {
+  color: var(--hgc-gold) !important;
+  font-style: normal !important;
+}
+
+/* ===================================================================
+   HEADER — Premium Centered Layout
+   =================================================================== */
+
+.section-header {
+  position: relative;
+  z-index: 100;
+}
+
+.header-wrapper {
+  background-color: var(--hgc-off-white) !important;
+  border-bottom: 1px solid rgba(34,34,34,0.08) !important;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease !important;
+}
+
+/* Sticky header gets subtle shadow */
+.shopify-section-header-sticky .header-wrapper,
+.header-wrapper.header-wrapper--border-bottom {
+  box-shadow: 0 2px 20px rgba(0,0,0,0.07) !important;
+}
+
+/* Header inner padding */
+.header.page-width {
+  padding-top: 1.8rem !important;
+  padding-bottom: 1.8rem !important;
+}
+
+/* Logo styling */
+.header__heading-logo {
+  max-width: 140px;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.header__heading-link:hover .header__heading-logo {
+  opacity: 0.75;
+  transform: scale(0.97);
+}
+
+/* Fallback text logo when no image */
+.header__heading-link:not(:has(img)) {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 900 !important;
+  font-size: 2.2rem !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-charcoal) !important;
+  text-decoration: none !important;
+}
+
+/* NAV LINKS */
+.header__menu-item,
+.list-menu__item > a {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-charcoal) !important;
+  text-decoration: none !important;
+  padding: 0.5rem 0 !important;
+  position: relative !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Hover — gold underline slide in */
+.header__menu-item::after,
+.list-menu__item > a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--hgc-gold);
+  transition: width var(--hgc-transition) !important;
+}
+
+.header__menu-item:hover::after,
+.list-menu__item > a:hover::after {
+  width: 100%;
+}
+
+.header__menu-item:hover {
+  color: var(--hgc-charcoal) !important;
+}
+
+/* Header icons */
+.header__icon svg {
+  color: var(--hgc-charcoal);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.header__icon:hover svg {
+  color: var(--hgc-gold);
+  transform: translateY(-1px);
+}
+
+/* Cart counter badge — GOLD */
+.cart-count-bubble {
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+}
+
+/* ===================================================================
+   HERO BANNER — Dramatic & Conversion-Ready
+   =================================================================== */
+
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay quand pas d'image */
+.banner__media.placeholder {
+  background: linear-gradient(135deg, var(--hgc-charcoal) 0%, #1a1a1a 50%, #0d0d0d 100%) !important;
+}
+
+/* Dark cinematic overlay */
+.banner__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.20) 0%,
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.70) 100%
+  );
+  z-index: 1;
+}
+
+.banner__content {
+  position: relative;
+  z-index: 2;
+}
+
+/* Hero heading — BIG & BOLD */
+.banner__heading {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 900 !important;
+  font-size: clamp(3.2rem, 7vw, 7rem) !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-white) !important;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.4) !important;
+  line-height: 1.05 !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Gold accent line under hero heading */
+.banner__box .banner__heading::after,
+.banner__content-container .banner__heading::after {
+  content: '';
+  display: block;
+  width: 6rem;
+  height: 2px;
+  background: var(--hgc-gold);
+  margin: 1.5rem auto 0;
+}
+
+.banner__text {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.8rem !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.06em !important;
+  color: rgba(255,255,255,0.85) !important;
+  margin-bottom: 3.5rem !important;
+}
+
+/* ===================================================================
+   CTA BUTTONS — Gold Premium
+   =================================================================== */
+
+.button,
+.button--primary,
+[type='submit'].button,
+.shopify-payment-button__button--unbranded {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 1.6rem 4rem !important;
+  cursor: pointer !important;
+  position: relative !important;
+  overflow: hidden !important;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease !important;
+}
+
+/* Shimmer effect on CTA hover */
+.button::before,
+.button--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.button:hover::before,
+.button--primary:hover::before {
+  left: 100%;
+}
+
+.button:hover,
+.button--primary:hover {
+  background-color: var(--hgc-gold-hover) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--hgc-gold-glow) !important;
+  color: var(--hgc-white) !important;
+}
+
+.button:active,
+.button--primary:active {
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 12px rgba(212,175,55,0.25) !important;
+}
+
+/* Secondary button — outline charcoal */
+.button--secondary {
+  background-color: transparent !important;
+  color: var(--hgc-white) !important;
+  border: 1.5px solid rgba(255,255,255,0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  transition: all 0.25s ease !important;
+}
+
+.button--secondary:hover {
+  background-color: rgba(255,255,255,0.1) !important;
+  border-color: var(--hgc-white) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===================================================================
+   SECTION TITLES — Gold Accent Underline
+   =================================================================== */
+
+.section-header__title,
+.multicolumn .title,
+.featured-collection .title,
+.collection-list .title,
+.image-with-text__heading,
+.rich-text__heading,
+.newsletter .section-header__title {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  position: relative !important;
+  display: inline-block !important;
+  padding-bottom: 1.6rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+/* Gold line under section titles */
+.section-header__title::after,
+.multicolumn .title::after,
+.featured-collection .title::after,
+.collection-list .title::after,
+.image-with-text__heading::after,
+.rich-text__heading::after {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 2px;
+  background: var(--hgc-gold);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+/* ===================================================================
+   PRODUCT CARDS — Premium E-commerce Feel
+   =================================================================== */
+
+.card-wrapper {
+  background: var(--hgc-white);
+  transition:
+    transform 0.4s var(--hgc-ease),
+    box-shadow 0.4s var(--hgc-ease) !important;
+}
+
+.card-wrapper:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12) !important;
+}
+
+/* Image zoom */
+.card__media {
+  overflow: hidden;
+}
+
+.card__media img {
+  transition: transform 0.7s var(--hgc-ease) !important;
+}
+
+.card-wrapper:hover .card__media img {
+  transform: scale(1.07) !important;
+}
+
+/* Card content area */
+.card__content {
+  padding: 1.6rem 1.4rem !important;
+}
+
+/* Product title */
+.card__heading {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-charcoal) !important;
+  margin-bottom: 0.8rem !important;
+  line-height: 1.3 !important;
+}
+
+.card__heading a {
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: color 0.2s ease !important;
+}
+
+.card__heading a:hover {
+  color: var(--hgc-gold) !important;
+}
+
+/* Prices */
+.price {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+}
+
+.price__regular .price-item--regular {
+  font-size: 1.6rem !important;
+  color: var(--hgc-charcoal) !important;
+}
+
+.price--sale .price-item--sale {
+  color: var(--hgc-gold) !important;
+  font-size: 1.7rem !important;
+  font-weight: 800 !important;
+}
+
+.price--sale .price-item--regular {
+  color: var(--hgc-text-muted) !important;
+  text-decoration: line-through !important;
+  font-size: 1.3rem !important;
+  font-weight: 400 !important;
+}
+
+/* SALE BADGE */
+.badge--sale,
+.badge--on-sale {
+  font-family: var(--hgc-font-title) !important;
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 0 !important;
+  padding: 0.4rem 1rem !important;
+}
+
+/* SOLD OUT BADGE */
+.badge--sold-out {
+  font-family: var(--hgc-font-title) !important;
+  background-color: var(--hgc-charcoal) !important;
+  color: var(--hgc-white) !important;
+  border-radius: 0 !important;
+}
+
+/* Quick add button */
+.quick-add__submit,
+.product-form__submit {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  background-color: var(--hgc-charcoal) !important;
+  color: var(--hgc-white) !important;
+  border-radius: 0 !important;
+  transition: background-color 0.25s ease !important;
+}
+
+.quick-add__submit:hover,
+.product-form__submit:hover {
+  background-color: var(--hgc-gold) !important;
+}
+
+/* ===================================================================
+   SLIDERS & CAROUSELE — Săgeți Gold
+   =================================================================== */
+
+.slider-button {
+  width: 4.4rem !important;
+  height: 4.4rem !important;
+  border: 1.5px solid var(--hgc-gold) !important;
+  color: var(--hgc-gold) !important;
+  background: var(--hgc-white) !important;
+  border-radius: 0 !important;
+  transition: all 0.25s ease !important;
+}
+
+.slider-button:hover {
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  transform: scale(1.05) !important;
+}
+
+.slider-button svg {
+  width: 1.8rem !important;
+  height: 1.8rem !important;
+}
+
+/* ===================================================================
+   IMAGE WITH TEXT — Premium Layout
+   =================================================================== */
+
+.image-with-text__content {
+  padding: 5rem 4rem !important;
+}
+
+.image-with-text__text--caption {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-gold) !important;
+  margin-bottom: 1.5rem !important;
+  display: block !important;
+}
+
+.image-with-text__text.rte {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.65rem !important;
+  line-height: 1.8 !important;
+  color: var(--hgc-text-muted) !important;
+  font-weight: 300 !important;
+  margin-bottom: 3rem !important;
+}
+
+/* ===================================================================
+   MULTICOLUMN — Trust Pillars
+   =================================================================== */
+
+.multicolumn-card {
+  text-align: center !important;
+  padding: 4rem 3rem !important;
+  border-top: 2px solid transparent !important;
+  transition: border-color 0.3s ease, transform 0.3s ease !important;
+}
+
+.multicolumn-card:hover {
+  border-top-color: var(--hgc-gold) !important;
+  transform: translateY(-4px) !important;
+}
+
+.multicolumn-card__title {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-charcoal) !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.multicolumn-card .rte {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.5rem !important;
+  line-height: 1.7 !important;
+  color: var(--hgc-text-muted) !important;
+  font-weight: 300 !important;
+}
+
+/* Gold icon above each pillar */
+.multicolumn-card__image-wrapper {
+  margin-bottom: 2rem !important;
+}
+
+/* ===================================================================
+   NEWSLETTER SECTION — Dark Conversion Banner
+   =================================================================== */
+
+.newsletter.color-scheme-3,
+.newsletter.color-scheme-4 {
+  padding: 8rem 4rem !important;
+  text-align: center !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Gold decorative line above newsletter */
+.newsletter.color-scheme-3::before {
+  content: '';
+  display: block;
+  width: 5rem;
+  height: 2px;
+  background: var(--hgc-gold);
+  margin: 0 auto 4rem;
+}
+
+.newsletter__heading {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.4rem, 4vw, 4.5rem) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.12em !important;
+  color: var(--hgc-white) !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.newsletter__subheading {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.7rem !important;
+  font-weight: 300 !important;
+  color: rgba(255,255,255,0.7) !important;
+  margin-bottom: 4rem !important;
+}
+
+/* Newsletter form input */
+.newsletter-form .field__input {
+  border-radius: 0 !important;
+  border: 1.5px solid rgba(255,255,255,0.2) !important;
+  background: rgba(255,255,255,0.07) !important;
+  color: var(--hgc-white) !important;
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.5rem !important;
+  letter-spacing: 0.04em !important;
+  padding: 1.6rem 2rem !important;
+  transition: border-color 0.25s ease !important;
+}
+
+.newsletter-form .field__input::placeholder {
+  color: rgba(255,255,255,0.4) !important;
+}
+
+.newsletter-form .field__input:focus {
+  border-color: var(--hgc-gold) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Newsletter submit button */
+.newsletter-form__button {
+  color: var(--hgc-gold) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.newsletter-form__button:hover {
+  transform: translateX(5px) scaleX(1.1) !important;
+}
+
+/* ===================================================================
+   FOOTER — Dark Premium
+   =================================================================== */
+
+.footer {
+  border-top: 1px solid rgba(212,175,55,0.20) !important;
+}
+
+.footer-block__heading {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,0.9) !important;
+  margin-bottom: 2rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid rgba(212,175,55,0.2) !important;
+}
+
+.footer .link--text,
+.footer .list-social__link {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.4rem !important;
+  transition: color 0.2s ease, transform 0.2s ease !important;
+  display: inline-block !important;
+}
+
+.footer .link--text:hover {
+  color: var(--hgc-gold) !important;
+  transform: translateX(4px) !important;
+}
+
+.footer-block.shopify-email-marketing-block .field__label,
+.footer__copyright {
+  font-family: var(--hgc-font-body) !important;
+  font-size: 1.3rem !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Social icons gold */
+.list-social .icon svg {
+  transition: color 0.2s ease, transform 0.2s ease !important;
+}
+
+.list-social .icon:hover svg {
+  color: var(--hgc-gold) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ===================================================================
+   CART DRAWER — Premium
+   =================================================================== */
+
+.cart-drawer__header {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid rgba(34,34,34,0.08) !important;
+  padding-bottom: 1.5rem !important;
+}
+
+.cart-drawer__footer {
+  border-top: 2px solid var(--hgc-gold) !important;
+  padding-top: 2rem !important;
+}
+
+#cart-checkout-button,
+.cart__checkout-button {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  border-radius: 0 !important;
+  padding: 1.8rem 2rem !important;
+  font-size: 1.4rem !important;
+  transition: background-color 0.25s ease, transform 0.25s ease !important;
+}
+
+#cart-checkout-button:hover,
+.cart__checkout-button:hover {
+  background-color: var(--hgc-gold-hover) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ===================================================================
+   COLLECTION PAGES
+   =================================================================== */
+
+.collection-hero__title {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+/* Filter pills */
+.facets__summary {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* Active filter — gold */
+.active-facets__button {
+  border-color: var(--hgc-gold) !important;
+  color: var(--hgc-gold) !important;
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 600 !important;
+}
+
+/* ===================================================================
+   PRODUCT PAGE — High-Converting Layout
+   =================================================================== */
+
+.product__title {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.10em !important;
+  line-height: 1.15 !important;
+}
+
+.product__vendor {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--hgc-gold) !important;
+}
+
+.price .price-item--regular {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+  font-size: 2.8rem !important;
+}
+
+/* Variant selector */
+.variant-pills__button {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.variant-pills__input:checked + .variant-pills__button {
+  background-color: var(--hgc-charcoal) !important;
+  border-color: var(--hgc-charcoal) !important;
+  color: var(--hgc-white) !important;
+}
+
+/* Product form submit */
+.product-form__submit {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  background-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  border-radius: 0 !important;
+  padding: 2rem 3rem !important;
+  width: 100% !important;
+}
+
+.product-form__submit:hover {
+  background-color: var(--hgc-gold-hover) !important;
+}
+
+/* ===================================================================
+   SECTION SPACING — Aerat & Premium
+   =================================================================== */
+
+.shopify-section:not(.shopify-section-header) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Background textures for alternating sections */
+.color-scheme-1 { background-color: var(--hgc-off-white) !important; }
+.color-scheme-2 { background-color: var(--hgc-faint-grey) !important; }
+.color-scheme-3 { background-color: var(--hgc-charcoal) !important; }
+.color-scheme-4 { background-color: var(--hgc-jet) !important; }
+.color-scheme-5 { background-color: var(--hgc-gold) !important; }
+
+/* Paper texture overlay for light sections */
+.color-scheme-1::before,
+.color-scheme-2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===================================================================
+   DIVIDERS — Gold Gradient
+   =================================================================== */
+
+.section-full-width > hr,
+.shopify-section > hr,
+hr {
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(to right,
+    transparent 0%,
+    rgba(212,175,55,0.35) 25%,
+    rgba(212,175,55,0.35) 75%,
+    transparent 100%
+  ) !important;
+  margin: 0 !important;
+}
+
+/* ===================================================================
+   BREADCRUMBS
+   =================================================================== */
+
+.breadcrumbs__link {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  transition: color 0.2s ease !important;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--hgc-gold) !important;
+}
+
+/* ===================================================================
+   PAGINATION
+   =================================================================== */
+
+.pagination__item--current {
+  background-color: var(--hgc-gold) !important;
+  border-color: var(--hgc-gold) !important;
+  color: var(--hgc-white) !important;
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+}
+
+/* ===================================================================
+   SCROLL ANIMATIONS
+   =================================================================== */
+
+.scroll-trigger {
+  transition-duration: 0.7s !important;
+  transition-timing-function: var(--hgc-ease) !important;
+}
+
+/* ===================================================================
+   FOCUS STATES — Accessibility + Brand
+   =================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--hgc-gold) !important;
+  outline-offset: 3px !important;
+  box-shadow: none !important;
+}
+
+/* ===================================================================
+   INPUTS & FORMS
+   =================================================================== */
+
+.field__input,
+.select__select,
+textarea {
+  font-family: var(--hgc-font-body) !important;
+  border-radius: 0 !important;
+  border-color: rgba(34,34,34,0.2) !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.field__input:focus,
+.select__select:focus,
+textarea:focus {
+  border-color: var(--hgc-gold) !important;
+  box-shadow: 0 0 0 1px var(--hgc-gold) !important;
+  outline: none !important;
+}
+
+.field__label {
+  font-family: var(--hgc-font-title) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* ===================================================================
+   LOADING SPINNER — Gold
+   =================================================================== */
+
+.loading__spinner {
+  border-top-color: var(--hgc-gold) !important;
+}
+
+/* ===================================================================
+   MOBILE REFINEMENTS
+   =================================================================== */
+
+@media screen and (max-width: 749px) {
+  .banner__heading {
+    font-size: clamp(2.8rem, 10vw, 4.5rem) !important;
+    letter-spacing: 0.07em !important;
+  }
+
+  .section-header__title {
+    font-size: 2rem !important;
+    letter-spacing: 0.08em !important;
+  }
+
+  .button,
+  .button--primary {
+    padding: 1.6rem 2.4rem !important;
+    font-size: 1.3rem !important;
+    width: 100% !important;
+  }
+
+  .image-with-text__content {
+    padding: 3rem 2rem !important;
+  }
+
+  .multicolumn-card {
+    padding: 3rem 2rem !important;
+  }
+}
+
+/* ===================================================================
+   COLLECTION LIST CARDS
+   =================================================================== */
+
+.collection-card__image-with-placeholder {
+  overflow: hidden;
+}
+
+.collection-card__image-with-placeholder img {
+  transition: transform 0.7s var(--hgc-ease) !important;
+}
+
+.card-wrapper:hover .collection-card__image-with-placeholder img {
+  transform: scale(1.05) !important;
+}
+
+.collection-card .card__heading {
+  font-size: 1.5rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* ===================================================================
+   PREDICTIVE SEARCH
+   =================================================================== */
+
+.predictive-search {
+  border-radius: 0 !important;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
+}
+
+.predictive-search__item-heading {
+  font-family: var(--hgc-font-title) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+}
+
+.predictive-search__item--link:hover {
+  background-color: var(--hgc-gold-light) !important;
+}
