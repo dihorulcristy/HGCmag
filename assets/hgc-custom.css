@@ -280,8 +280,7 @@ sticky-header,
 
 /* Cinematic dark overlay with teal gradient at bottom */
 .banner__media.placeholder {
-  background: url('https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&q=80&w=2000')
-    center/cover no-repeat !important;
+  background: #0d1b2a !important; /* Solid Dark Navy fallback */
 }
 .banner__media.placeholder > svg {
   display: none !important;
@@ -479,6 +478,26 @@ sticky-header,
   flex-shrink: 0;
 }
 
+/* Step 9: Product Page Trust Badges */
+.vm-product-trust-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
+  padding: 1.2rem;
+  background: #f8fcfb;
+  border-radius: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--vm-text-dark);
+}
+
+.vm-product-trust-badges span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* ===================================================================
    SECTION TITLES — Teal Accent Underline
    =================================================================== */
@@ -599,29 +618,42 @@ sticky-header,
   color: var(--vm-teal) !important;
 }
 
-/* Prices */
+/* Prices - Step 6: Large bold current price, small grey old price */
 .price {
   font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
 }
 
-.price__regular .price-item--regular {
-  font-size: 1.6rem !important;
-  color: var(--vm-text-dark) !important;
-}
-
-.price--sale .price-item--sale {
-  color: var(--vm-teal-dark) !important;
-  font-size: 1.8rem !important;
+.price-item--sale {
+  color: #000000 !important;
+  font-size: 2.2rem !important;
   font-weight: 800 !important;
 }
 
-.price--sale .price-item--regular {
-  color: var(--vm-text-muted) !important;
-  text-decoration: line-through !important;
-  font-size: 1.3rem !important;
+.price-item--regular {
+  color: #888888 !important;
+  font-size: 1.4rem !important;
   font-weight: 400 !important;
+  text-decoration: line-through !important;
 }
+
+/* Red discount badge - Step 6 */
+.card__badge .badge.price__badge-sale {
+  background: #e63946 !important;
+  color: white !important;
+  font-weight: 900 !important;
+  border: none !important;
+  border-radius: 4px !important;
+  padding: 0.5rem 0.8rem !important;
+  font-size: 1.2rem !important;
+  position: absolute !important;
+  top: 10px !important;
+  left: 10px !important;
+}
+
 
 /* SALE BADGE */
 .badge--sale,

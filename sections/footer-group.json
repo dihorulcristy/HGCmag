@@ -22,8 +22,8 @@
         "footer-2": {
           "type": "text",
           "settings": {
-            "heading": "Our mission",
-            "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
+            "heading": "Informații Legale",
+            "subtext": "<p><b>VIBEMAG BRAND S.R.L.</b><br>CUI: RO12345678 | Nr. Reg. Com: J40/1234/2024<br>Sediu: Str. Inovației Nr. 10, București<br>Telefon: 0721 000 000 | Email: contact@vibemag.ro<br><br><a href=\"https://anpc.ro\" target=\"_blank\">LINK ANPC</a> | <a href=\"/pages/politica-de-retur\">Retur 14 zile (UE 2011/83)</a></p>"
           }
         }
       },

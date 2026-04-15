@@ -120,7 +120,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>La VibeMag credem ca fiecare produs reflecta un standard de viata. Selectam cu atentie articole care combina estetica premium cu functionalitatea de zi cu zi, pentru ca tu meriti mai mult.<\/p>",
+            "text": "<p>Gadgeturi testate, livrare în România în 2-5 zile lucrătoare, retur în 14 zile conform legislației UE.<\/p>",
             "text_style": "body"
           }
         },
@@ -250,8 +250,6 @@
     "multicolumn",
     "featured_collection",
     "image_with_text",
-    "collection_list",
-    "featured_collection_2",
     "newsletter"
   ]
 }
