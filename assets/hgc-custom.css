@@ -406,17 +406,36 @@ sticky-header,
 /* Secondary button — outline teal */
 .button--secondary {
   background: transparent !important;
-  color: var(--vm-white) !important;
-  border: 2px solid rgba(0, 197, 179, 0.5) !important;
+  color: var(--vm-teal) !important;
+  border: 2px solid var(--vm-teal) !important;
   backdrop-filter: blur(4px) !important;
   transition: all var(--vm-transition) !important;
 }
 
 .button--secondary:hover {
-  background: rgba(0, 197, 179, 0.1) !important;
+  background: var(--vm-teal) !important;
+  color: var(--vm-white) !important;
   border-color: var(--vm-teal) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 20px rgba(0, 197, 179, 0.2) !important;
+}
+
+/* ===================================================================
+   PLACEHOLDER IMAGES FOR DEMO
+   =================================================================== */
+
+.image-with-text__media.placeholder {
+  background: url('https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat !important;
+}
+.image-with-text__media.placeholder > svg {
+  display: none !important;
+}
+
+.multicolumn-card__image-wrapper.placeholder {
+  background: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&q=80&w=800') center/cover no-repeat !important;
+}
+.multicolumn-card__image-wrapper.placeholder > svg {
+  display: none !important;
 }
 
 /* ===================================================================
