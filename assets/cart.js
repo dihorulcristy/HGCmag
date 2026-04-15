@@ -78,7 +78,7 @@ class CartItems extends HTMLElement {
         inputValue,
         event,
         document.activeElement.getAttribute('name'),
-        event.target.dataset.quantityVariantId
+        event.target.dataset.quantityVariantId,
       );
     }
   }
@@ -188,7 +188,7 @@ class CartItems extends HTMLElement {
               document.getElementById(section.id);
             elementToReplace.innerHTML = this.getSectionInnerHTML(
               parsedState.sections[section.section],
-              section.selector
+              section.selector,
             );
           });
           const updatedValue = parsedState.items[line - 1] ? parsedState.items[line - 1].quantity : undefined;
@@ -287,11 +287,11 @@ if (!customElements.get('cart-note')) {
           debounce((event) => {
             const body = JSON.stringify({ note: event.target.value });
             fetch(`${routes.cart_update_url}`, { ...fetchConfig(), ...{ body } }).then(() =>
-              CartPerformance.measureFromEvent('note-update:user-action', event)
+              CartPerformance.measureFromEvent('note-update:user-action', event),
             );
-          }, ON_CHANGE_DEBOUNCE_TIMER)
+          }, ON_CHANGE_DEBOUNCE_TIMER),
         );
       }
-    }
+    },
   );
 }

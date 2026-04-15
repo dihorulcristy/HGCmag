@@ -9,33 +9,33 @@
 /* === VIBEMAG BRAND TOKENS === */
 :root {
   /* Core Brand Palette */
-  --vm-teal:          #00C5B3;
-  --vm-teal-dark:     #009E90;
-  --vm-teal-deeper:   #007A6E;
-  --vm-teal-light:    rgba(0, 197, 179, 0.12);
-  --vm-teal-glow:     0 6px 30px rgba(0, 197, 179, 0.38);
-  --vm-teal-gradient: linear-gradient(135deg, #00E5CC 0%, #00C5B3 50%, #009E90 100%);
+  --vm-teal: #00c5b3;
+  --vm-teal-dark: #009e90;
+  --vm-teal-deeper: #007a6e;
+  --vm-teal-light: rgba(0, 197, 179, 0.12);
+  --vm-teal-glow: 0 6px 30px rgba(0, 197, 179, 0.38);
+  --vm-teal-gradient: linear-gradient(135deg, #00e5cc 0%, #00c5b3 50%, #009e90 100%);
 
   /* Neutrals */
-  --vm-navy:          #0D1B2A;
-  --vm-navy-mid:      #162236;
-  --vm-navy-soft:     #1E2F42;
-  --vm-white:         #FFFFFF;
-  --vm-off-white:     #FAFFFE;
-  --vm-grey-light:    #F0FFFE;
-  --vm-grey-mid:      #E8F6F5;
-  --vm-text-dark:     #0D1B2A;
-  --vm-text-muted:    rgba(13, 27, 42, 0.55);
-  --vm-text-light:    rgba(255, 255, 255, 0.85);
+  --vm-navy: #0d1b2a;
+  --vm-navy-mid: #162236;
+  --vm-navy-soft: #1e2f42;
+  --vm-white: #ffffff;
+  --vm-off-white: #fafffe;
+  --vm-grey-light: #f0fffe;
+  --vm-grey-mid: #e8f6f5;
+  --vm-text-dark: #0d1b2a;
+  --vm-text-muted: rgba(13, 27, 42, 0.55);
+  --vm-text-light: rgba(255, 255, 255, 0.85);
 
   /* Typography */
-  --vm-font-heading:  'Inter', -apple-system, sans-serif;
-  --vm-font-body:     'DM Sans', -apple-system, sans-serif;
+  --vm-font-heading: 'Inter', -apple-system, sans-serif;
+  --vm-font-body: 'DM Sans', -apple-system, sans-serif;
 
   /* Animation */
-  --vm-ease:          cubic-bezier(0.22, 1, 0.36, 1);
-  --vm-ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
-  --vm-transition:    0.32s var(--vm-ease);
+  --vm-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --vm-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --vm-transition: 0.32s var(--vm-ease);
   --vm-transition-fast: 0.18s ease;
 }
 
@@ -43,7 +43,9 @@
    GLOBAL RESET & BASE
    =================================================================== */
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   font-family: var(--vm-font-body) !important;
@@ -54,8 +56,21 @@ body {
 }
 
 /* Force Inter on ALL headings */
-h1, h2, h3, h4, h5, h6,
-.h0, .h1, .h2, .h3, .h4, .h5, .h6, .hxl, .hxxl,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+.hxl,
+.hxxl,
 .section-header__title,
 .card__heading,
 .banner__heading,
@@ -84,16 +99,21 @@ h1, h2, h3, h4, h5, h6,
 .announcement-bar-section .utility-bar::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
+  top: 0;
+  left: -100%;
   width: 60%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0,197,179,0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(0, 197, 179, 0.08), transparent);
   animation: vm-bar-shimmer 4s ease-in-out infinite;
 }
 
 @keyframes vm-bar-shimmer {
-  0%   { left: -60%; }
-  100% { left: 160%; }
+  0% {
+    left: -60%;
+  }
+  100% {
+    left: 160%;
+  }
 }
 
 .announcement-bar__message {
@@ -124,7 +144,9 @@ h1, h2, h3, h4, h5, h6,
 .header-wrapper {
   background-color: var(--vm-navy) !important;
   border-bottom: 1px solid rgba(0, 197, 179, 0.15) !important;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease !important;
+  transition:
+    box-shadow 0.3s ease,
+    background-color 0.3s ease !important;
 }
 
 /* Sticky header — glass effect */
@@ -145,7 +167,9 @@ h1, h2, h3, h4, h5, h6,
 /* Logo */
 .header__heading-logo {
   max-width: 150px;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .header__heading-link:hover .header__heading-logo {
@@ -214,7 +238,9 @@ h1, h2, h3, h4, h5, h6,
 /* Header icons — white */
 .header__icon svg {
   color: rgba(255, 255, 255, 0.88);
-  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast);
+  transition:
+    color var(--vm-transition-fast),
+    transform var(--vm-transition-fast);
 }
 
 .header__icon:hover svg {
@@ -250,7 +276,8 @@ h1, h2, h3, h4, h5, h6,
 
 /* Cinematic dark overlay with teal gradient at bottom */
 .banner__media.placeholder {
-  background: url('https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat !important;
+  background: url('https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&q=80&w=2000')
+    center/cover no-repeat !important;
 }
 .banner__media.placeholder > svg {
   display: none !important;
@@ -264,7 +291,7 @@ h1, h2, h3, h4, h5, h6,
   background: linear-gradient(
     to bottom,
     rgba(13, 27, 42, 0.15) 0%,
-    rgba(13, 27, 42, 0.50) 55%,
+    rgba(13, 27, 42, 0.5) 55%,
     rgba(13, 27, 42, 0.78) 100%
   );
   z-index: 1;
@@ -495,7 +522,9 @@ h1, h2, h3, h4, h5, h6,
 .card-wrapper::before {
   content: '';
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 3px;
   background: var(--vm-teal-gradient);
   border-radius: 3px 0 0 3px;
@@ -602,7 +631,9 @@ h1, h2, h3, h4, h5, h6,
   background: var(--vm-teal-gradient) !important;
   color: var(--vm-white) !important;
   border-radius: 6px !important;
-  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
+  transition:
+    transform var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
 .quick-add__submit:hover,
@@ -729,7 +760,7 @@ h1, h2, h3, h4, h5, h6,
   position: absolute;
   width: 40rem;
   height: 40rem;
-  background: radial-gradient(circle, rgba(0,197,179,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 197, 179, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   top: -10rem;
   right: -10rem;
@@ -742,7 +773,7 @@ h1, h2, h3, h4, h5, h6,
   position: absolute;
   width: 30rem;
   height: 30rem;
-  background: radial-gradient(circle, rgba(0,197,179,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 197, 179, 0.08) 0%, transparent 70%);
   border-radius: 50%;
   bottom: -8rem;
   left: -8rem;
@@ -829,7 +860,9 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--vm-font-body) !important;
   font-size: 1.4rem !important;
   color: rgba(255, 255, 255, 0.6) !important;
-  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast) !important;
+  transition:
+    color var(--vm-transition-fast),
+    transform var(--vm-transition-fast) !important;
   display: inline-block !important;
 }
 
@@ -846,7 +879,9 @@ h1, h2, h3, h4, h5, h6,
 
 /* Social icons teal on hover */
 .list-social .icon svg {
-  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast) !important;
+  transition:
+    color var(--vm-transition-fast),
+    transform var(--vm-transition-fast) !important;
 }
 
 .list-social .icon:hover svg {
@@ -906,7 +941,9 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 8px !important;
   padding: 1.8rem 2rem !important;
   font-size: 1.4rem !important;
-  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
+  transition:
+    transform var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
 #cart-checkout-button:hover,
@@ -968,7 +1005,9 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 8px !important;
   padding: 2rem 3rem !important;
   width: 100% !important;
-  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
+  transition:
+    transform var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
 .product-form__submit:hover {
@@ -1005,8 +1044,13 @@ h1, h2, h3, h4, h5, h6,
 }
 
 @keyframes vm-stock-pulse {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.75; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
+  }
 }
 
 /* Viewer count badge */
@@ -1071,11 +1115,24 @@ h1, h2, h3, h4, h5, h6,
    COLOR SCHEMES — VibeMag Brand
    =================================================================== */
 
-.color-scheme-1 { background-color: var(--vm-off-white) !important; }
-.color-scheme-2 { background-color: var(--vm-grey-light) !important; }
-.color-scheme-3 { background-color: var(--vm-navy) !important; color: var(--vm-white) !important; }
-.color-scheme-4 { background-color: #060D14 !important; color: var(--vm-white) !important; }
-.color-scheme-5 { background: var(--vm-teal-gradient) !important; color: var(--vm-white) !important; }
+.color-scheme-1 {
+  background-color: var(--vm-off-white) !important;
+}
+.color-scheme-2 {
+  background-color: var(--vm-grey-light) !important;
+}
+.color-scheme-3 {
+  background-color: var(--vm-navy) !important;
+  color: var(--vm-white) !important;
+}
+.color-scheme-4 {
+  background-color: #060d14 !important;
+  color: var(--vm-white) !important;
+}
+.color-scheme-5 {
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
+}
 
 /* ===================================================================
    DIVIDERS — Teal Gradient
@@ -1086,7 +1143,8 @@ h1, h2, h3, h4, h5, h6,
 hr {
   border: none !important;
   height: 1px !important;
-  background: linear-gradient(to right,
+  background: linear-gradient(
+    to right,
     transparent 0%,
     rgba(0, 197, 179, 0.28) 25%,
     rgba(0, 197, 179, 0.28) 75%,
@@ -1105,7 +1163,9 @@ textarea {
   font-family: var(--vm-font-body) !important;
   border-radius: 6px !important;
   border-color: rgba(13, 27, 42, 0.18) !important;
-  transition: border-color var(--vm-transition), box-shadow var(--vm-transition) !important;
+  transition:
+    border-color var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
 .field__input:focus,
@@ -1291,8 +1351,12 @@ textarea:focus {
 }
 
 @keyframes vm-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes vm-scale-in {

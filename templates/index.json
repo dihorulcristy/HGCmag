@@ -86,11 +86,7 @@
           }
         }
       },
-      "block_order": [
-        "collection-beauty",
-        "collection-home",
-        "collection-tech"
-      ],
+      "block_order": ["collection-beauty", "collection-home", "collection-tech"],
       "settings": {
         "title": "Exploreaza Categoriile",
         "heading_size": "h2",
