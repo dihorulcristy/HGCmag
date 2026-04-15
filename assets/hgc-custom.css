@@ -250,7 +250,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Cinematic dark overlay with teal gradient at bottom */
 .banner__media.placeholder {
-  background: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat !important;
+  background: url('https://images.unsplash.com/photo-1491933382434-500287f9b54b?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat !important;
 }
 .banner__media.placeholder > svg {
   display: none !important;
@@ -273,6 +273,13 @@ h1, h2, h3, h4, h5, h6,
 .banner__content {
   position: relative;
   z-index: 2;
+}
+
+.banner__box.color-scheme-4,
+.banner__box {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 /* Hero heading */
