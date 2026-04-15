@@ -136,8 +136,12 @@ h6,
    HEADER — Dark Navy Premium, Sticky Glassmorphism
    =================================================================== */
 
-.section-header {
-  position: relative;
+.section-header,
+sticky-header,
+#shopify-section-header,
+.shopify-section-group-header-group.shopify-section-group-header-group.shopify-section-group-header-group {
+  position: relative !important;
+  top: auto !important;
   z-index: 100;
 }
 
