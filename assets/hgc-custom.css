@@ -138,8 +138,8 @@ h1, h2, h3, h4, h5, h6,
 
 /* Header inner padding */
 .header.page-width {
-  padding-top: 1.6rem !important;
-  padding-bottom: 1.6rem !important;
+  padding-top: 0.8rem !important;
+  padding-bottom: 0.8rem !important;
 }
 
 /* Logo */
@@ -164,16 +164,26 @@ h1, h2, h3, h4, h5, h6,
 }
 
 /* NAV LINKS — white on dark header */
+.list-menu {
+  display: flex !important;
+  gap: 2rem !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 .header__menu-item,
 .list-menu__item > a {
   font-family: var(--vm-font-heading) !important;
-  font-size: 1.1rem !important;
+  font-size: 1.15rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
   color: rgba(255, 255, 255, 0.88) !important;
   text-decoration: none !important;
-  padding: 0.5rem 0 !important;
+  padding: 1rem 1.2rem !important;
   position: relative !important;
   transition: color var(--vm-transition-fast) !important;
 }
@@ -238,9 +248,12 @@ h1, h2, h3, h4, h5, h6,
   overflow: hidden;
 }
 
-/* Dark placeholder gradient */
+/* Cinematic dark overlay with teal gradient at bottom */
 .banner__media.placeholder {
-  background: linear-gradient(135deg, var(--vm-navy) 0%, var(--vm-navy-mid) 60%, #0a2233 100%) !important;
+  background: url('https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat !important;
+}
+.banner__media.placeholder > svg {
+  display: none !important;
 }
 
 /* Cinematic dark overlay with teal gradient at bottom */
