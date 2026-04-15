@@ -160,8 +160,8 @@ h6,
 
 /* Header inner padding */
 .header.page-width {
-  padding-top: 0.8rem !important;
-  padding-bottom: 0.8rem !important;
+  padding-top: 0.2rem !important;
+  padding-bottom: 0.2rem !important;
 }
 
 /* Logo */
@@ -207,7 +207,7 @@ h6,
   text-transform: uppercase !important;
   color: rgba(255, 255, 255, 0.88) !important;
   text-decoration: none !important;
-  padding: 1rem 1.2rem !important;
+  padding: 0.5rem 1.2rem !important;
   position: relative !important;
   transition: color var(--vm-transition-fast) !important;
 }
