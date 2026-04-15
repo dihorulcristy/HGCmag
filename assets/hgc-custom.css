@@ -1,30 +1,42 @@
 /* ==========================================================================
-   HGC MAG — Premium Visual Identity v2.0
-   "Cameleonic Minimalist" — Conversion-Focused
+   VIBEMAG — High-Converting Shopify Theme v3.0
+   Brand Identity: Teal/Navy | Clean Modern | Conversion-Focused
    ========================================================================== */
 
 /* === GOOGLE FONTS IMPORT === */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* === BRAND TOKENS === */
+/* === VIBEMAG BRAND TOKENS === */
 :root {
-  --hgc-gold: #D4AF37;
-  --hgc-gold-hover: #B8960C;
-  --hgc-gold-light: rgba(212, 175, 55, 0.10);
-  --hgc-gold-glow: 0 4px 24px rgba(212, 175, 55, 0.40);
-  --hgc-charcoal: #222222;
-  --hgc-jet: #000000;
-  --hgc-off-white: #F7F7F7;
-  --hgc-faint-grey: #EEEEEE;
-  --hgc-white: #FFFFFF;
-  --hgc-text-muted: rgba(34,34,34,0.55);
+  /* Core Brand Palette */
+  --vm-teal:          #00C5B3;
+  --vm-teal-dark:     #009E90;
+  --vm-teal-deeper:   #007A6E;
+  --vm-teal-light:    rgba(0, 197, 179, 0.12);
+  --vm-teal-glow:     0 6px 30px rgba(0, 197, 179, 0.38);
+  --vm-teal-gradient: linear-gradient(135deg, #00E5CC 0%, #00C5B3 50%, #009E90 100%);
 
-  --hgc-font-title: 'Montserrat', sans-serif;
-  --hgc-font-body: 'Lato', sans-serif;
-  --hgc-font-accent: 'Playfair Display', Georgia, serif;
+  /* Neutrals */
+  --vm-navy:          #0D1B2A;
+  --vm-navy-mid:      #162236;
+  --vm-navy-soft:     #1E2F42;
+  --vm-white:         #FFFFFF;
+  --vm-off-white:     #FAFFFE;
+  --vm-grey-light:    #F0FFFE;
+  --vm-grey-mid:      #E8F6F5;
+  --vm-text-dark:     #0D1B2A;
+  --vm-text-muted:    rgba(13, 27, 42, 0.55);
+  --vm-text-light:    rgba(255, 255, 255, 0.85);
 
-  --hgc-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --hgc-transition: 0.35s var(--hgc-ease);
+  /* Typography */
+  --vm-font-heading:  'Inter', -apple-system, sans-serif;
+  --vm-font-body:     'DM Sans', -apple-system, sans-serif;
+
+  /* Animation */
+  --vm-ease:          cubic-bezier(0.22, 1, 0.36, 1);
+  --vm-ease-bounce:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --vm-transition:    0.32s var(--vm-ease);
+  --vm-transition-fast: 0.18s ease;
 }
 
 /* ===================================================================
@@ -34,65 +46,74 @@
 * { box-sizing: border-box; }
 
 body {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--hgc-off-white);
+  background-color: var(--vm-off-white);
+  color: var(--vm-text-dark);
 }
 
-/* Force Montserrat on ALL headings */
+/* Force Inter on ALL headings */
 h1, h2, h3, h4, h5, h6,
 .h0, .h1, .h2, .h3, .h4, .h5, .h6, .hxl, .hxxl,
 .section-header__title,
 .card__heading,
 .banner__heading,
 .image-with-text__heading {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.10em !important;
+  letter-spacing: -0.02em !important;
   line-height: 1.1 !important;
 }
 
-/* Italic serif accent */
-.accent-serif,
-em.serif {
-  font-family: var(--hgc-font-accent) !important;
-  font-style: italic !important;
-  font-weight: 400 !important;
-  text-transform: none !important;
-  letter-spacing: 0.02em !important;
-}
-
 /* ===================================================================
-   ANNOUNCEMENT BAR — Gold & Dark Premium
+   ANNOUNCEMENT BAR — Teal Gradient, Urgency Pulse
    =================================================================== */
 
 .utility-bar.color-scheme-3,
 .announcement-bar-section .utility-bar {
-  background-color: var(--hgc-charcoal) !important;
-  padding: 0.9rem 0 !important;
-  border-bottom: 1px solid rgba(212,175,55,0.3) !important;
+  background: linear-gradient(90deg, var(--vm-navy) 0%, var(--vm-navy-mid) 50%, var(--vm-navy) 100%) !important;
+  padding: 0.85rem 0 !important;
+  border-bottom: 1px solid rgba(0, 197, 179, 0.25) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated teal shimmer on announcement bar */
+.utility-bar.color-scheme-3::before,
+.announcement-bar-section .utility-bar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,197,179,0.08), transparent);
+  animation: vm-bar-shimmer 4s ease-in-out infinite;
+}
+
+@keyframes vm-bar-shimmer {
+  0%   { left: -60%; }
+  100% { left: 160%; }
 }
 
 .announcement-bar__message {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
-  color: var(--hgc-off-white) !important;
+  color: var(--vm-white) !important;
 }
 
-/* Gold star highlights in announcement */
 .announcement-bar__message strong,
 .announcement-bar__message em {
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
   font-style: normal !important;
+  font-weight: 700 !important;
 }
 
 /* ===================================================================
-   HEADER — Premium Centered Layout
+   HEADER — Dark Navy Premium, Sticky Glassmorphism
    =================================================================== */
 
 .section-header {
@@ -101,61 +122,63 @@ em.serif {
 }
 
 .header-wrapper {
-  background-color: var(--hgc-off-white) !important;
-  border-bottom: 1px solid rgba(34,34,34,0.08) !important;
+  background-color: var(--vm-navy) !important;
+  border-bottom: 1px solid rgba(0, 197, 179, 0.15) !important;
   transition: box-shadow 0.3s ease, background-color 0.3s ease !important;
 }
 
-/* Sticky header gets subtle shadow */
+/* Sticky header — glass effect */
 .shopify-section-header-sticky .header-wrapper,
 .header-wrapper.header-wrapper--border-bottom {
-  box-shadow: 0 2px 20px rgba(0,0,0,0.07) !important;
+  background-color: rgba(13, 27, 42, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
 /* Header inner padding */
 .header.page-width {
-  padding-top: 1.8rem !important;
-  padding-bottom: 1.8rem !important;
+  padding-top: 1.6rem !important;
+  padding-bottom: 1.6rem !important;
 }
 
-/* Logo styling */
+/* Logo */
 .header__heading-logo {
-  max-width: 140px;
+  max-width: 150px;
   transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .header__heading-link:hover .header__heading-logo {
-  opacity: 0.75;
+  opacity: 0.82;
   transform: scale(0.97);
 }
 
-/* Fallback text logo when no image */
+/* Text fallback logo */
 .header__heading-link:not(:has(img)) {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 900 !important;
   font-size: 2.2rem !important;
-  letter-spacing: 0.22em !important;
-  text-transform: uppercase !important;
-  color: var(--hgc-charcoal) !important;
+  letter-spacing: -0.02em !important;
+  color: var(--vm-teal) !important;
   text-decoration: none !important;
 }
 
-/* NAV LINKS */
+/* NAV LINKS — white on dark header */
 .header__menu-item,
 .list-menu__item > a {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.15rem !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.1rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
-  color: var(--hgc-charcoal) !important;
+  color: rgba(255, 255, 255, 0.88) !important;
   text-decoration: none !important;
   padding: 0.5rem 0 !important;
   position: relative !important;
-  transition: color 0.2s ease !important;
+  transition: color var(--vm-transition-fast) !important;
 }
 
-/* Hover — gold underline slide in */
+/* Teal underline slide in on hover */
 .header__menu-item::after,
 .list-menu__item > a::after {
   content: '';
@@ -163,9 +186,10 @@ em.serif {
   bottom: -2px;
   left: 0;
   width: 0;
-  height: 1.5px;
-  background: var(--hgc-gold);
-  transition: width var(--hgc-transition) !important;
+  height: 2px;
+  background: var(--vm-teal-gradient);
+  border-radius: 2px;
+  transition: width var(--vm-transition) !important;
 }
 
 .header__menu-item:hover::after,
@@ -174,30 +198,39 @@ em.serif {
 }
 
 .header__menu-item:hover {
-  color: var(--hgc-charcoal) !important;
+  color: var(--vm-teal) !important;
 }
 
-/* Header icons */
+/* Header icons — white */
 .header__icon svg {
-  color: var(--hgc-charcoal);
-  transition: color 0.2s ease, transform 0.2s ease;
+  color: rgba(255, 255, 255, 0.88);
+  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast);
 }
 
 .header__icon:hover svg {
-  color: var(--hgc-gold);
+  color: var(--vm-teal);
   transform: translateY(-1px);
 }
 
-/* Cart counter badge — GOLD */
+/* Cart counter badge — Teal */
 .cart-count-bubble {
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
 }
 
+/* Mobile menu drawer — dark navy */
+.menu-drawer {
+  background-color: var(--vm-navy) !important;
+}
+
+.menu-drawer .list-menu__item > a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
 /* ===================================================================
-   HERO BANNER — Dramatic & Conversion-Ready
+   HERO BANNER — Cinematic, High Impact
    =================================================================== */
 
 .banner {
@@ -205,21 +238,21 @@ em.serif {
   overflow: hidden;
 }
 
-/* Gradient overlay quand pas d'image */
+/* Dark placeholder gradient */
 .banner__media.placeholder {
-  background: linear-gradient(135deg, var(--hgc-charcoal) 0%, #1a1a1a 50%, #0d0d0d 100%) !important;
+  background: linear-gradient(135deg, var(--vm-navy) 0%, var(--vm-navy-mid) 60%, #0a2233 100%) !important;
 }
 
-/* Dark cinematic overlay */
+/* Cinematic dark overlay with teal gradient at bottom */
 .banner__media::after {
   content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.20) 0%,
-    rgba(0,0,0,0.55) 60%,
-    rgba(0,0,0,0.70) 100%
+    rgba(13, 27, 42, 0.15) 0%,
+    rgba(13, 27, 42, 0.50) 55%,
+    rgba(13, 27, 42, 0.78) 100%
   );
   z-index: 1;
 }
@@ -229,67 +262,67 @@ em.serif {
   z-index: 2;
 }
 
-/* Hero heading — BIG & BOLD */
+/* Hero heading */
 .banner__heading {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 900 !important;
-  font-size: clamp(3.2rem, 7vw, 7rem) !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  color: var(--hgc-white) !important;
-  text-shadow: 0 4px 30px rgba(0,0,0,0.4) !important;
+  font-size: clamp(3rem, 6.5vw, 7rem) !important;
+  letter-spacing: -0.03em !important;
+  color: var(--vm-white) !important;
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.35) !important;
   line-height: 1.05 !important;
   margin-bottom: 2rem !important;
 }
 
-/* Gold accent line under hero heading */
+/* Teal gradient accent line under hero heading */
 .banner__box .banner__heading::after,
 .banner__content-container .banner__heading::after {
   content: '';
   display: block;
-  width: 6rem;
-  height: 2px;
-  background: var(--hgc-gold);
-  margin: 1.5rem auto 0;
+  width: 7rem;
+  height: 3px;
+  background: var(--vm-teal-gradient);
+  border-radius: 3px;
+  margin: 1.8rem auto 0;
 }
 
 .banner__text {
-  font-family: var(--hgc-font-body) !important;
-  font-size: 1.8rem !important;
-  font-weight: 300 !important;
-  letter-spacing: 0.06em !important;
-  color: rgba(255,255,255,0.85) !important;
+  font-family: var(--vm-font-body) !important;
+  font-size: 1.9rem !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.01em !important;
+  color: rgba(255, 255, 255, 0.82) !important;
   margin-bottom: 3.5rem !important;
+  line-height: 1.6 !important;
 }
 
 /* ===================================================================
-   CTA BUTTONS — Gold Premium
+   CTA BUTTONS — Teal Premium
    =================================================================== */
 
 .button,
 .button--primary,
 [type='submit'].button,
 .shopify-payment-button__button--unbranded {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.25rem !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.2rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
   border: none !important;
-  border-radius: 0 !important;
-  padding: 1.6rem 4rem !important;
+  border-radius: 6px !important;
+  padding: 1.6rem 3.6rem !important;
   cursor: pointer !important;
   position: relative !important;
   overflow: hidden !important;
   transition:
-    background-color 0.25s ease,
-    transform 0.25s ease,
-    box-shadow 0.25s ease !important;
+    transform var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
-/* Shimmer effect on CTA hover */
+/* Shimmer sweep on hover */
 .button::before,
 .button--primary::before {
   content: '';
@@ -298,46 +331,86 @@ em.serif {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-  transition: left 0.5s ease;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+  transition: left 0.55s ease;
 }
 
 .button:hover::before,
 .button--primary:hover::before {
-  left: 100%;
+  left: 110%;
 }
 
 .button:hover,
 .button--primary:hover {
-  background-color: var(--hgc-gold-hover) !important;
   transform: translateY(-3px) !important;
-  box-shadow: var(--hgc-gold-glow) !important;
-  color: var(--hgc-white) !important;
+  box-shadow: var(--vm-teal-glow) !important;
 }
 
 .button:active,
 .button--primary:active {
   transform: translateY(-1px) !important;
-  box-shadow: 0 2px 12px rgba(212,175,55,0.25) !important;
+  box-shadow: 0 3px 15px rgba(0, 197, 179, 0.25) !important;
 }
 
-/* Secondary button — outline charcoal */
+/* Secondary button — outline teal */
 .button--secondary {
-  background-color: transparent !important;
-  color: var(--hgc-white) !important;
-  border: 1.5px solid rgba(255,255,255,0.6) !important;
+  background: transparent !important;
+  color: var(--vm-white) !important;
+  border: 2px solid rgba(0, 197, 179, 0.5) !important;
   backdrop-filter: blur(4px) !important;
-  transition: all 0.25s ease !important;
+  transition: all var(--vm-transition) !important;
 }
 
 .button--secondary:hover {
-  background-color: rgba(255,255,255,0.1) !important;
-  border-color: var(--hgc-white) !important;
+  background: rgba(0, 197, 179, 0.1) !important;
+  border-color: var(--vm-teal) !important;
   transform: translateY(-2px) !important;
+  box-shadow: 0 4px 20px rgba(0, 197, 179, 0.2) !important;
 }
 
 /* ===================================================================
-   SECTION TITLES — Gold Accent Underline
+   VIBEMAG TRUST BAR
+   =================================================================== */
+
+.vm-trust-bar {
+  background: var(--vm-white);
+  border-top: 1px solid var(--vm-grey-mid);
+  border-bottom: 1px solid var(--vm-grey-mid);
+  padding: 1.6rem 0;
+}
+
+.vm-trust-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  max-width: var(--page-width, 140rem);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.vm-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--vm-font-heading);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--vm-text-dark);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.vm-trust-item__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--vm-teal);
+  flex-shrink: 0;
+}
+
+/* ===================================================================
+   SECTION TITLES — Teal Accent Underline
    =================================================================== */
 
 .section-header__title,
@@ -347,17 +420,16 @@ em.serif {
 .image-with-text__heading,
 .rich-text__heading,
 .newsletter .section-header__title {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: -0.02em !important;
   position: relative !important;
   display: inline-block !important;
-  padding-bottom: 1.6rem !important;
+  padding-bottom: 1.8rem !important;
   margin-bottom: 0.5rem !important;
 }
 
-/* Gold line under section titles */
+/* Teal gradient line under section titles */
 .section-header__title::after,
 .multicolumn .title::after,
 .featured-collection .title::after,
@@ -366,9 +438,10 @@ em.serif {
 .rich-text__heading::after {
   content: '';
   display: block;
-  width: 4rem;
-  height: 2px;
-  background: var(--hgc-gold);
+  width: 4.5rem;
+  height: 3px;
+  background: var(--vm-teal-gradient);
+  border-radius: 3px;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -381,19 +454,38 @@ em.serif {
 }
 
 /* ===================================================================
-   PRODUCT CARDS — Premium E-commerce Feel
+   PRODUCT CARDS — Clean, High-Converting
    =================================================================== */
 
 .card-wrapper {
-  background: var(--hgc-white);
+  background: var(--vm-white);
+  border-radius: 10px;
+  overflow: hidden;
   transition:
-    transform 0.4s var(--hgc-ease),
-    box-shadow 0.4s var(--hgc-ease) !important;
+    transform 0.38s var(--vm-ease),
+    box-shadow 0.38s var(--vm-ease) !important;
 }
 
 .card-wrapper:hover {
-  transform: translateY(-6px) !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.12) !important;
+  transform: translateY(-7px) !important;
+  box-shadow: 0 24px 60px rgba(13, 27, 42, 0.13) !important;
+}
+
+/* Teal left accent on card hover */
+.card-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--vm-teal-gradient);
+  border-radius: 3px 0 0 3px;
+  opacity: 0;
+  transition: opacity var(--vm-transition);
+  z-index: 2;
+}
+
+.card-wrapper:hover::before {
+  opacity: 1;
 }
 
 /* Image zoom */
@@ -402,59 +494,58 @@ em.serif {
 }
 
 .card__media img {
-  transition: transform 0.7s var(--hgc-ease) !important;
+  transition: transform 0.65s var(--vm-ease) !important;
 }
 
 .card-wrapper:hover .card__media img {
-  transform: scale(1.07) !important;
+  transform: scale(1.08) !important;
 }
 
-/* Card content area */
+/* Card content */
 .card__content {
-  padding: 1.6rem 1.4rem !important;
+  padding: 1.8rem 1.6rem !important;
 }
 
 /* Product title */
 .card__heading {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.25rem !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.3rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  color: var(--hgc-charcoal) !important;
+  letter-spacing: -0.01em !important;
+  color: var(--vm-text-dark) !important;
   margin-bottom: 0.8rem !important;
-  line-height: 1.3 !important;
+  line-height: 1.35 !important;
 }
 
 .card__heading a {
   text-decoration: none !important;
   color: inherit !important;
-  transition: color 0.2s ease !important;
+  transition: color var(--vm-transition-fast) !important;
 }
 
 .card__heading a:hover {
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
 }
 
 /* Prices */
 .price {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
 }
 
 .price__regular .price-item--regular {
   font-size: 1.6rem !important;
-  color: var(--hgc-charcoal) !important;
+  color: var(--vm-text-dark) !important;
 }
 
 .price--sale .price-item--sale {
-  color: var(--hgc-gold) !important;
-  font-size: 1.7rem !important;
+  color: var(--vm-teal-dark) !important;
+  font-size: 1.8rem !important;
   font-weight: 800 !important;
 }
 
 .price--sale .price-item--regular {
-  color: var(--hgc-text-muted) !important;
+  color: var(--vm-text-muted) !important;
   text-decoration: line-through !important;
   font-size: 1.3rem !important;
   font-weight: 400 !important;
@@ -463,320 +554,345 @@ em.serif {
 /* SALE BADGE */
 .badge--sale,
 .badge--on-sale {
-  font-family: var(--hgc-font-title) !important;
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
+  font-family: var(--vm-font-heading) !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
   font-weight: 700 !important;
   font-size: 1rem !important;
-  letter-spacing: 0.08em !important;
-  border-radius: 0 !important;
-  padding: 0.4rem 1rem !important;
+  letter-spacing: 0.05em !important;
+  border-radius: 4px !important;
+  padding: 0.35rem 0.9rem !important;
 }
 
 /* SOLD OUT BADGE */
 .badge--sold-out {
-  font-family: var(--hgc-font-title) !important;
-  background-color: var(--hgc-charcoal) !important;
-  color: var(--hgc-white) !important;
-  border-radius: 0 !important;
+  font-family: var(--vm-font-heading) !important;
+  background-color: var(--vm-navy) !important;
+  color: var(--vm-white) !important;
+  border-radius: 4px !important;
 }
 
 /* Quick add button */
 .quick-add__submit,
 .product-form__submit {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  background-color: var(--hgc-charcoal) !important;
-  color: var(--hgc-white) !important;
-  border-radius: 0 !important;
-  transition: background-color 0.25s ease !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
+  border-radius: 6px !important;
+  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
 }
 
 .quick-add__submit:hover,
 .product-form__submit:hover {
-  background-color: var(--hgc-gold) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--vm-teal-glow) !important;
 }
 
 /* ===================================================================
-   SLIDERS & CAROUSELE — Săgeți Gold
+   SLIDERS & CAROUSEL — Teal Arrows
    =================================================================== */
 
 .slider-button {
   width: 4.4rem !important;
   height: 4.4rem !important;
-  border: 1.5px solid var(--hgc-gold) !important;
-  color: var(--hgc-gold) !important;
-  background: var(--hgc-white) !important;
-  border-radius: 0 !important;
-  transition: all 0.25s ease !important;
+  border: 2px solid var(--vm-teal) !important;
+  color: var(--vm-teal) !important;
+  background: var(--vm-white) !important;
+  border-radius: 50% !important;
+  transition: all var(--vm-transition) !important;
 }
 
 .slider-button:hover {
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
-  transform: scale(1.05) !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
+  border-color: transparent !important;
+  transform: scale(1.08) !important;
+  box-shadow: var(--vm-teal-glow) !important;
 }
 
 .slider-button svg {
-  width: 1.8rem !important;
-  height: 1.8rem !important;
+  width: 1.6rem !important;
+  height: 1.6rem !important;
 }
 
 /* ===================================================================
-   IMAGE WITH TEXT — Premium Layout
+   IMAGE WITH TEXT — Brand Story Layout
    =================================================================== */
 
 .image-with-text__content {
-  padding: 5rem 4rem !important;
+  padding: 5rem 4.5rem !important;
 }
 
 .image-with-text__text--caption {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.18em !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.05rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
   text-transform: uppercase !important;
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
   margin-bottom: 1.5rem !important;
   display: block !important;
 }
 
 .image-with-text__text.rte {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.65rem !important;
-  line-height: 1.8 !important;
-  color: var(--hgc-text-muted) !important;
-  font-weight: 300 !important;
+  line-height: 1.75 !important;
+  color: var(--vm-text-muted) !important;
+  font-weight: 400 !important;
   margin-bottom: 3rem !important;
 }
 
 /* ===================================================================
-   MULTICOLUMN — Trust Pillars
+   MULTICOLUMN — Trust Pillars / Why VibeMag
    =================================================================== */
 
 .multicolumn-card {
   text-align: center !important;
   padding: 4rem 3rem !important;
-  border-top: 2px solid transparent !important;
-  transition: border-color 0.3s ease, transform 0.3s ease !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--vm-grey-mid) !important;
+  background: var(--vm-white) !important;
+  transition:
+    border-color var(--vm-transition),
+    transform var(--vm-transition),
+    box-shadow var(--vm-transition) !important;
 }
 
 .multicolumn-card:hover {
-  border-top-color: var(--hgc-gold) !important;
-  transform: translateY(-4px) !important;
+  border-color: var(--vm-teal) !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 40px rgba(0, 197, 179, 0.12) !important;
 }
 
 .multicolumn-card__title {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.3rem !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.4rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  color: var(--hgc-charcoal) !important;
+  letter-spacing: -0.01em !important;
+  color: var(--vm-text-dark) !important;
   margin-bottom: 1.2rem !important;
 }
 
 .multicolumn-card .rte {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.5rem !important;
   line-height: 1.7 !important;
-  color: var(--hgc-text-muted) !important;
-  font-weight: 300 !important;
+  color: var(--vm-text-muted) !important;
+  font-weight: 400 !important;
 }
 
-/* Gold icon above each pillar */
 .multicolumn-card__image-wrapper {
   margin-bottom: 2rem !important;
 }
 
 /* ===================================================================
-   NEWSLETTER SECTION — Dark Conversion Banner
+   NEWSLETTER SECTION — Dark Navy Conversion Banner
    =================================================================== */
 
 .newsletter.color-scheme-3,
 .newsletter.color-scheme-4 {
-  padding: 8rem 4rem !important;
+  padding: 9rem 4rem !important;
   text-align: center !important;
   position: relative !important;
   overflow: hidden !important;
+  background: var(--vm-navy) !important;
 }
 
-/* Gold decorative line above newsletter */
-.newsletter.color-scheme-3::before {
+/* Decorative teal orbs */
+.newsletter.color-scheme-3::before,
+.newsletter.color-scheme-4::before {
   content: '';
-  display: block;
-  width: 5rem;
-  height: 2px;
-  background: var(--hgc-gold);
-  margin: 0 auto 4rem;
+  position: absolute;
+  width: 40rem;
+  height: 40rem;
+  background: radial-gradient(circle, rgba(0,197,179,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -10rem;
+  right: -10rem;
+  pointer-events: none;
+}
+
+.newsletter.color-scheme-3::after,
+.newsletter.color-scheme-4::after {
+  content: '';
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgba(0,197,179,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -8rem;
+  left: -8rem;
+  pointer-events: none;
 }
 
 .newsletter__heading {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 900 !important;
-  font-size: clamp(2.4rem, 4vw, 4.5rem) !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.12em !important;
-  color: var(--hgc-white) !important;
+  font-size: clamp(2.6rem, 4.5vw, 5rem) !important;
+  letter-spacing: -0.03em !important;
+  color: var(--vm-white) !important;
   margin-bottom: 1.5rem !important;
+  position: relative;
+  z-index: 1;
 }
 
 .newsletter__subheading {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.7rem !important;
-  font-weight: 300 !important;
-  color: rgba(255,255,255,0.7) !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.68) !important;
   margin-bottom: 4rem !important;
+  position: relative;
+  z-index: 1;
 }
 
 /* Newsletter form input */
 .newsletter-form .field__input {
-  border-radius: 0 !important;
-  border: 1.5px solid rgba(255,255,255,0.2) !important;
-  background: rgba(255,255,255,0.07) !important;
-  color: var(--hgc-white) !important;
-  font-family: var(--hgc-font-body) !important;
+  border-radius: 6px !important;
+  border: 1.5px solid rgba(0, 197, 179, 0.25) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  color: var(--vm-white) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.5rem !important;
-  letter-spacing: 0.04em !important;
+  letter-spacing: 0.02em !important;
   padding: 1.6rem 2rem !important;
-  transition: border-color 0.25s ease !important;
+  transition: border-color var(--vm-transition) !important;
 }
 
 .newsletter-form .field__input::placeholder {
-  color: rgba(255,255,255,0.4) !important;
+  color: rgba(255, 255, 255, 0.38) !important;
 }
 
 .newsletter-form .field__input:focus {
-  border-color: var(--hgc-gold) !important;
+  border-color: var(--vm-teal) !important;
   outline: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 197, 179, 0.15) !important;
 }
 
-/* Newsletter submit button */
+/* Newsletter submit */
 .newsletter-form__button {
-  color: var(--hgc-gold) !important;
-  transition: transform 0.25s ease !important;
+  color: var(--vm-teal) !important;
+  transition: transform var(--vm-transition) !important;
 }
 
 .newsletter-form__button:hover {
-  transform: translateX(5px) scaleX(1.1) !important;
+  transform: translateX(6px) !important;
 }
 
 /* ===================================================================
-   FOOTER — Dark Premium
+   FOOTER — Dark Navy Premium
    =================================================================== */
 
 .footer {
-  border-top: 1px solid rgba(212,175,55,0.20) !important;
+  border-top: 1px solid rgba(0, 197, 179, 0.18) !important;
+  background-color: var(--vm-navy) !important;
 }
 
 .footer-block__heading {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-size: 1.1rem !important;
   font-weight: 700 !important;
-  letter-spacing: 0.16em !important;
+  letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
-  color: rgba(255,255,255,0.9) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
   margin-bottom: 2rem !important;
   padding-bottom: 1rem !important;
-  border-bottom: 1px solid rgba(212,175,55,0.2) !important;
+  border-bottom: 1px solid rgba(0, 197, 179, 0.18) !important;
 }
 
 .footer .link--text,
 .footer .list-social__link {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.4rem !important;
-  transition: color 0.2s ease, transform 0.2s ease !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast) !important;
   display: inline-block !important;
 }
 
 .footer .link--text:hover {
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
   transform: translateX(4px) !important;
 }
 
-.footer-block.shopify-email-marketing-block .field__label,
 .footer__copyright {
-  font-family: var(--hgc-font-body) !important;
+  font-family: var(--vm-font-body) !important;
   font-size: 1.3rem !important;
-  letter-spacing: 0.04em !important;
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Social icons gold */
+/* Social icons teal on hover */
 .list-social .icon svg {
-  transition: color 0.2s ease, transform 0.2s ease !important;
+  transition: color var(--vm-transition-fast), transform var(--vm-transition-fast) !important;
 }
 
 .list-social .icon:hover svg {
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
   transform: translateY(-3px) !important;
 }
 
 /* ===================================================================
-   CART DRAWER — Premium
+   CART DRAWER — Premium Teal Checkout
    =================================================================== */
 
 .cart-drawer__header {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
-  text-transform: uppercase !important;
-  border-bottom: 1px solid rgba(34,34,34,0.08) !important;
+  letter-spacing: -0.01em !important;
+  border-bottom: 1px solid rgba(13, 27, 42, 0.08) !important;
   padding-bottom: 1.5rem !important;
 }
 
 .cart-drawer__footer {
-  border-top: 2px solid var(--hgc-gold) !important;
+  border-top: 2px solid var(--vm-teal) !important;
   padding-top: 2rem !important;
 }
 
+/* Free shipping progress bar */
+.vm-shipping-bar {
+  margin-bottom: 1.6rem;
+  font-family: var(--vm-font-body);
+  font-size: 1.3rem;
+  color: var(--vm-text-dark);
+}
+
+.vm-shipping-bar__track {
+  height: 4px;
+  background: var(--vm-grey-mid);
+  border-radius: 4px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+
+.vm-shipping-bar__fill {
+  height: 100%;
+  background: var(--vm-teal-gradient);
+  border-radius: 4px;
+  transition: width 0.5s var(--vm-ease);
+}
+
+/* Checkout button */
 #cart-checkout-button,
 .cart__checkout-button {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
-  border-radius: 0 !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
+  border-radius: 8px !important;
   padding: 1.8rem 2rem !important;
   font-size: 1.4rem !important;
-  transition: background-color 0.25s ease, transform 0.25s ease !important;
+  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
 }
 
 #cart-checkout-button:hover,
 .cart__checkout-button:hover {
-  background-color: var(--hgc-gold-hover) !important;
   transform: translateY(-2px) !important;
-}
-
-/* ===================================================================
-   COLLECTION PAGES
-   =================================================================== */
-
-.collection-hero__title {
-  font-family: var(--hgc-font-title) !important;
-  font-weight: 900 !important;
-  letter-spacing: 0.14em !important;
-  text-transform: uppercase !important;
-}
-
-/* Filter pills */
-.facets__summary {
-  font-family: var(--hgc-font-title) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-}
-
-/* Active filter — gold */
-.active-facets__button {
-  border-color: var(--hgc-gold) !important;
-  color: var(--hgc-gold) !important;
-  font-family: var(--hgc-font-title) !important;
-  font-weight: 600 !important;
+  box-shadow: var(--vm-teal-glow) !important;
 }
 
 /* ===================================================================
@@ -784,90 +900,165 @@ em.serif {
    =================================================================== */
 
 .product__title {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 800 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.10em !important;
+  letter-spacing: -0.02em !important;
   line-height: 1.15 !important;
 }
 
 .product__vendor {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.16em !important;
+  letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
-  color: var(--hgc-gold) !important;
+  color: var(--vm-teal) !important;
 }
 
 .price .price-item--regular {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
   font-size: 2.8rem !important;
 }
 
 /* Variant selector */
 .variant-pills__button {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-weight: 600 !important;
-  letter-spacing: 0.08em !important;
-  border-radius: 0 !important;
-  transition: all 0.2s ease !important;
+  letter-spacing: 0.04em !important;
+  border-radius: 6px !important;
+  transition: all var(--vm-transition-fast) !important;
 }
 
 .variant-pills__input:checked + .variant-pills__button {
-  background-color: var(--hgc-charcoal) !important;
-  border-color: var(--hgc-charcoal) !important;
-  color: var(--hgc-white) !important;
+  background: var(--vm-teal-gradient) !important;
+  border-color: transparent !important;
+  color: var(--vm-white) !important;
 }
 
-/* Product form submit */
+/* Product form submit — big teal CTA */
 .product-form__submit {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.5rem !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.55rem !important;
   font-weight: 800 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
-  background-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
-  border-radius: 0 !important;
+  background: var(--vm-teal-gradient) !important;
+  color: var(--vm-white) !important;
+  border-radius: 8px !important;
   padding: 2rem 3rem !important;
   width: 100% !important;
+  transition: transform var(--vm-transition), box-shadow var(--vm-transition) !important;
 }
 
 .product-form__submit:hover {
-  background-color: var(--hgc-gold-hover) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: var(--vm-teal-glow) !important;
 }
 
 /* ===================================================================
-   SECTION SPACING — Aerat & Premium
+   URGENCY / SCARCITY BADGES (VibeMag Conversion Badges)
    =================================================================== */
 
-.shopify-section:not(.shopify-section-header) {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+.vm-urgency-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1.6rem 0;
 }
 
-/* Background textures for alternating sections */
-.color-scheme-1 { background-color: var(--hgc-off-white) !important; }
-.color-scheme-2 { background-color: var(--hgc-faint-grey) !important; }
-.color-scheme-3 { background-color: var(--hgc-charcoal) !important; }
-.color-scheme-4 { background-color: var(--hgc-jet) !important; }
-.color-scheme-5 { background-color: var(--hgc-gold) !important; }
+/* Low stock badge */
+.vm-badge-stock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(255, 80, 80, 0.08);
+  border: 1px solid rgba(255, 80, 80, 0.25);
+  color: #d43a3a;
+  font-family: var(--vm-font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+  animation: vm-stock-pulse 2.5s ease-in-out infinite;
+}
 
-/* Paper texture overlay for light sections */
-.color-scheme-1::before,
-.color-scheme-2::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 0;
+@keyframes vm-stock-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.75; }
+}
+
+/* Viewer count badge */
+.vm-badge-viewers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--vm-teal-light);
+  border: 1px solid rgba(0, 197, 179, 0.3);
+  color: var(--vm-teal-deeper);
+  font-family: var(--vm-font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
+/* Sale countdown badge */
+.vm-badge-sale-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--vm-navy);
+  color: var(--vm-teal);
+  font-family: var(--vm-font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
 }
 
 /* ===================================================================
-   DIVIDERS — Gold Gradient
+   COLLECTION PAGES
+   =================================================================== */
+
+.collection-hero__title {
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.03em !important;
+}
+
+/* Filter pills */
+.facets__summary {
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+/* Active filter — teal */
+.active-facets__button {
+  border-color: var(--vm-teal) !important;
+  color: var(--vm-teal-dark) !important;
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important;
+}
+
+/* ===================================================================
+   COLOR SCHEMES — VibeMag Brand
+   =================================================================== */
+
+.color-scheme-1 { background-color: var(--vm-off-white) !important; }
+.color-scheme-2 { background-color: var(--vm-grey-light) !important; }
+.color-scheme-3 { background-color: var(--vm-navy) !important; color: var(--vm-white) !important; }
+.color-scheme-4 { background-color: #060D14 !important; color: var(--vm-white) !important; }
+.color-scheme-5 { background: var(--vm-teal-gradient) !important; color: var(--vm-white) !important; }
+
+/* ===================================================================
+   DIVIDERS — Teal Gradient
    =================================================================== */
 
 .section-full-width > hr,
@@ -877,59 +1068,11 @@ hr {
   height: 1px !important;
   background: linear-gradient(to right,
     transparent 0%,
-    rgba(212,175,55,0.35) 25%,
-    rgba(212,175,55,0.35) 75%,
+    rgba(0, 197, 179, 0.28) 25%,
+    rgba(0, 197, 179, 0.28) 75%,
     transparent 100%
   ) !important;
   margin: 0 !important;
-}
-
-/* ===================================================================
-   BREADCRUMBS
-   =================================================================== */
-
-.breadcrumbs__link {
-  font-family: var(--hgc-font-title) !important;
-  font-size: 1.1rem !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  transition: color 0.2s ease !important;
-}
-
-.breadcrumbs__link:hover {
-  color: var(--hgc-gold) !important;
-}
-
-/* ===================================================================
-   PAGINATION
-   =================================================================== */
-
-.pagination__item--current {
-  background-color: var(--hgc-gold) !important;
-  border-color: var(--hgc-gold) !important;
-  color: var(--hgc-white) !important;
-  font-family: var(--hgc-font-title) !important;
-  font-weight: 700 !important;
-}
-
-/* ===================================================================
-   SCROLL ANIMATIONS
-   =================================================================== */
-
-.scroll-trigger {
-  transition-duration: 0.7s !important;
-  transition-timing-function: var(--hgc-ease) !important;
-}
-
-/* ===================================================================
-   FOCUS STATES — Accessibility + Brand
-   =================================================================== */
-
-:focus-visible {
-  outline: 2px solid var(--hgc-gold) !important;
-  outline-offset: 3px !important;
-  box-shadow: none !important;
 }
 
 /* ===================================================================
@@ -939,34 +1082,125 @@ hr {
 .field__input,
 .select__select,
 textarea {
-  font-family: var(--hgc-font-body) !important;
-  border-radius: 0 !important;
-  border-color: rgba(34,34,34,0.2) !important;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+  font-family: var(--vm-font-body) !important;
+  border-radius: 6px !important;
+  border-color: rgba(13, 27, 42, 0.18) !important;
+  transition: border-color var(--vm-transition), box-shadow var(--vm-transition) !important;
 }
 
 .field__input:focus,
 .select__select:focus,
 textarea:focus {
-  border-color: var(--hgc-gold) !important;
-  box-shadow: 0 0 0 1px var(--hgc-gold) !important;
+  border-color: var(--vm-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0, 197, 179, 0.15) !important;
   outline: none !important;
 }
 
 .field__label {
-  font-family: var(--hgc-font-title) !important;
+  font-family: var(--vm-font-heading) !important;
   font-size: 1.1rem !important;
   font-weight: 600 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
 }
 
 /* ===================================================================
-   LOADING SPINNER — Gold
+   PAGINATION
+   =================================================================== */
+
+.pagination__item--current {
+  background: var(--vm-teal-gradient) !important;
+  border-color: transparent !important;
+  color: var(--vm-white) !important;
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 700 !important;
+  border-radius: 6px !important;
+}
+
+/* ===================================================================
+   BREADCRUMBS
+   =================================================================== */
+
+.breadcrumbs__link {
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+  transition: color var(--vm-transition-fast) !important;
+}
+
+.breadcrumbs__link:hover {
+  color: var(--vm-teal) !important;
+}
+
+/* ===================================================================
+   FOCUS — Accessibility + Brand
+   =================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--vm-teal) !important;
+  outline-offset: 3px !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+/* ===================================================================
+   LOADING SPINNER
    =================================================================== */
 
 .loading__spinner {
-  border-top-color: var(--hgc-gold) !important;
+  border-top-color: var(--vm-teal) !important;
+}
+
+/* ===================================================================
+   PREDICTIVE SEARCH
+   =================================================================== */
+
+.predictive-search {
+  border-radius: 10px !important;
+  box-shadow: 0 10px 50px rgba(13, 27, 42, 0.14) !important;
+  border: 1px solid rgba(0, 197, 179, 0.15) !important;
+}
+
+.predictive-search__item-heading {
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 700 !important;
+}
+
+.predictive-search__item--link:hover {
+  background-color: var(--vm-teal-light) !important;
+}
+
+/* ===================================================================
+   COLLECTION LIST CARDS
+   =================================================================== */
+
+.collection-card__image-with-placeholder {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.collection-card__image-with-placeholder img {
+  transition: transform 0.65s var(--vm-ease) !important;
+}
+
+.card-wrapper:hover .collection-card__image-with-placeholder img {
+  transform: scale(1.06) !important;
+}
+
+.collection-card .card__heading {
+  font-size: 1.5rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ===================================================================
+   SCROLL ANIMATIONS
+   =================================================================== */
+
+.scroll-trigger {
+  transition-duration: 0.65s !important;
+  transition-timing-function: var(--vm-ease) !important;
 }
 
 /* ===================================================================
@@ -975,19 +1209,19 @@ textarea:focus {
 
 @media screen and (max-width: 749px) {
   .banner__heading {
-    font-size: clamp(2.8rem, 10vw, 4.5rem) !important;
-    letter-spacing: 0.07em !important;
+    font-size: clamp(2.6rem, 10vw, 4.5rem) !important;
+    letter-spacing: -0.02em !important;
   }
 
   .section-header__title {
-    font-size: 2rem !important;
-    letter-spacing: 0.08em !important;
+    font-size: 2.2rem !important;
+    letter-spacing: -0.01em !important;
   }
 
   .button,
   .button--primary {
     padding: 1.6rem 2.4rem !important;
-    font-size: 1.3rem !important;
+    font-size: 1.2rem !important;
     width: 100% !important;
   }
 
@@ -998,44 +1232,74 @@ textarea:focus {
   .multicolumn-card {
     padding: 3rem 2rem !important;
   }
+
+  .vm-trust-bar__inner {
+    gap: 2rem;
+    justify-content: flex-start;
+  }
+
+  /* Sticky mobile checkout bar on product pages */
+  .vm-sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: var(--vm-white);
+    border-top: 1px solid var(--vm-grey-mid);
+    padding: 1.2rem 1.6rem;
+    box-shadow: 0 -4px 20px rgba(13, 27, 42, 0.1);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
 }
 
 /* ===================================================================
-   COLLECTION LIST CARDS
+   ANIMATIONS — Keyframes
    =================================================================== */
 
-.collection-card__image-with-placeholder {
-  overflow: hidden;
+@keyframes vm-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.collection-card__image-with-placeholder img {
-  transition: transform 0.7s var(--hgc-ease) !important;
+@keyframes vm-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
-.card-wrapper:hover .collection-card__image-with-placeholder img {
-  transform: scale(1.05) !important;
+@keyframes vm-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.93);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.collection-card .card__heading {
-  font-size: 1.5rem !important;
-  letter-spacing: 0.1em !important;
+/* Apply to sections entering viewport */
+.vm-animate-fade-up {
+  animation: vm-fade-up 0.65s var(--vm-ease) both;
+}
+
+.vm-animate-fade-in {
+  animation: vm-fade-in 0.5s ease both;
 }
 
 /* ===================================================================
-   PREDICTIVE SEARCH
+   SECTION SPACING
    =================================================================== */
 
-.predictive-search {
-  border-radius: 0 !important;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.12) !important;
-}
-
-.predictive-search__item-heading {
-  font-family: var(--hgc-font-title) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
-}
-
-.predictive-search__item--link:hover {
-  background-color: var(--hgc-gold-light) !important;
+.shopify-section:not(.shopify-section-header) {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }

@@ -109,14 +109,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Calitate Fara Compromis",
+            "heading": "Calitate Premium. Vibe Modern.",
             "heading_size": "h2"
           }
         },
         "caption": {
           "type": "caption",
           "settings": {
-            "caption": "Selectie Curatoriata cu Grija",
+            "caption": "Selectie Exclusiva",
             "text_style": "caption-with-letter-spacing",
             "text_size": "medium"
           }
@@ -124,7 +124,7 @@
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>La HGC MAG credem ca fiecare produs reflecta un standard de viata. Selectam cu atentie articole care combina estetica premium cu functionalitatea de zi cu zi, pentru ca tu meriti mai mult.<\/p>",
+            "text": "<p>La VibeMag credem ca fiecare produs reflecta un standard de viata. Selectam cu atentie articole care combina estetica premium cu functionalitatea de zi cu zi, pentru ca tu meriti mai mult.<\/p>",
             "text_style": "body"
           }
         },
@@ -186,7 +186,7 @@
       },
       "block_order": ["column1", "column2", "column3"],
       "settings": {
-        "title": "De Ce HGC MAG",
+        "title": "De Ce VibeMag",
         "heading_size": "h2",
         "image_width": "third",
         "image_ratio": "adapt",
@@ -251,10 +251,10 @@
   },
   "order": [
     "image_banner",
-    "featured_collection",
-    "collection_list",
-    "image_with_text",
     "multicolumn",
+    "featured_collection",
+    "image_with_text",
+    "collection_list",
     "featured_collection_2",
     "newsletter"
   ]

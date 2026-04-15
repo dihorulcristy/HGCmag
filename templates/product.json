@@ -23,6 +23,12 @@
         "price": {
           "type": "price"
         },
+        "urgency": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'vibemag-urgency', product: product %}"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -90,6 +96,7 @@
         "title",
         "caption",
         "price",
+        "urgency",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
