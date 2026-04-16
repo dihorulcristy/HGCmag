@@ -1,6 +1,604 @@
+{% doc %}
+  @prompt
+    o sectiune unde clientii pot lasa review
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-review-form-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: 40px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    margin: 0 auto;
+  }
+
+  .ai-review-form__heading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 24px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-review-form__subheading-{{ ai_gen_id }} {
+    font-size: {{ block.settings.subheading_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 32px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-review-form__form-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ai-review-form__field-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .ai-review-form__label-{{ ai_gen_id }} {
+    font-size: 14px;
+    font-weight: 600;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-review-form__required-{{ ai_gen_id }} {
+    color: {{ block.settings.error_color }};
+  }
+
+  .ai-review-form__input-{{ ai_gen_id }},
+  .ai-review-form__textarea-{{ ai_gen_id }} {
+    padding: 12px 16px;
+    border: 1px solid {{ block.settings.input_border_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    font-size: 14px;
+    font-family: inherit;
+    background-color: {{ block.settings.input_background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-review-form__input-{{ ai_gen_id }}:focus,
+  .ai-review-form__textarea-{{ ai_gen_id }}:focus {
+    outline: 2px solid {{ block.settings.button_color }};
+    outline-offset: 2px;
+  }
+
+  .ai-review-form__textarea-{{ ai_gen_id }} {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .ai-review-form__rating-{{ ai_gen_id }} {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .ai-review-form__star-{{ ai_gen_id }} {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: {{ block.settings.star_size }}px;
+    color: {{ block.settings.star_empty_color }};
+    transition: color 0.2s ease;
+  }
+
+  .ai-review-form__star-{{ ai_gen_id }}.active {
+    color: {{ block.settings.star_filled_color }};
+  }
+
+  .ai-review-form__star-{{ ai_gen_id }}:hover {
+    color: {{ block.settings.star_filled_color }};
+  }
+
+  .ai-review-form__button-{{ ai_gen_id }} {
+    padding: 14px 28px;
+    background-color: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: {{ block.settings.button_alignment }};
+  }
+
+  .ai-review-form__button-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.button_hover_color }};
+  }
+
+  .ai-review-form__success-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: {{ block.settings.success_background }};
+    color: {{ block.settings.success_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    margin-top: 16px;
+  }
+
+  .ai-review-form__error-{{ ai_gen_id }} {
+    padding: 16px;
+    background-color: {{ block.settings.error_background }};
+    color: {{ block.settings.error_color }};
+    border-radius: {{ block.settings.input_border_radius }}px;
+    margin-top: 16px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-review-form-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+
+    .ai-review-form__heading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.heading_size }}px * 0.8);
+    }
+
+    .ai-review-form__subheading-{{ ai_gen_id }} {
+      font-size: calc({{ block.settings.subheading_size }}px * 0.9);
+    }
+  }
+{% endstyle %}
+
+<customer-review-form-{{ ai_gen_id }}
+  class="ai-review-form-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  {% if block.settings.heading != blank %}
+    <h2 class="ai-review-form__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+  {% endif %}
+
+  {% if block.settings.subheading != blank %}
+    <p class="ai-review-form__subheading-{{ ai_gen_id }}">{{ block.settings.subheading }}</p>
+  {% endif %}
+
+  {%- form 'contact' -%}
+    <input type="hidden" name="contact[review_product_id]" value="{{ product.id }}">
+    <input type="hidden" name="contact[review_product_title]" value="{{ product.title }}">
+    <input type="hidden" name="contact[form_type]" value="product_review">
+
+    <div class="ai-review-form__form-{{ ai_gen_id }}">
+      <div class="ai-review-form__field-{{ ai_gen_id }}">
+        <label for="ai-review-name-{{ ai_gen_id }}" class="ai-review-form__label-{{ ai_gen_id }}">
+          {{ block.settings.name_label }}
+          <span class="ai-review-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="text"
+          id="ai-review-name-{{ ai_gen_id }}"
+          name="contact[name]"
+          class="ai-review-form__input-{{ ai_gen_id }}"
+          required
+          aria-required="true"
+          {% if form.errors %}
+            aria-invalid="true"
+          {% endif %}
+        >
+      </div>
+
+      <div class="ai-review-form__field-{{ ai_gen_id }}">
+        <label for="ai-review-email-{{ ai_gen_id }}" class="ai-review-form__label-{{ ai_gen_id }}">
+          {{ block.settings.email_label }}
+          <span class="ai-review-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="email"
+          id="ai-review-email-{{ ai_gen_id }}"
+          name="contact[email]"
+          class="ai-review-form__input-{{ ai_gen_id }}"
+          required
+          aria-required="true"
+          autocomplete="email"
+          {% if form.errors %}
+            aria-invalid="true"
+          {% endif %}
+        >
+      </div>
+
+      <div class="ai-review-form__field-{{ ai_gen_id }}">
+        <label class="ai-review-form__label-{{ ai_gen_id }}">
+          {{ block.settings.rating_label }}
+          <span class="ai-review-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <div class="ai-review-form__rating-{{ ai_gen_id }}">
+          {% for i in (1..5) %}
+            <button
+              type="button"
+              class="ai-review-form__star-{{ ai_gen_id }}"
+              data-rating="{{ i }}"
+              aria-label="Evaluare {{ i }} din 5 stele"
+            >
+              ★
+            </button>
+          {% endfor %}
+        </div>
+        <input
+          type="hidden"
+          id="ai-review-rating-{{ ai_gen_id }}"
+          name="contact[rating]"
+          required
+        >
+      </div>
+
+      <div class="ai-review-form__field-{{ ai_gen_id }}">
+        <label for="ai-review-title-{{ ai_gen_id }}" class="ai-review-form__label-{{ ai_gen_id }}">
+          {{ block.settings.review_title_label }}
+          <span class="ai-review-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <input
+          type="text"
+          id="ai-review-title-{{ ai_gen_id }}"
+          name="contact[review_title]"
+          class="ai-review-form__input-{{ ai_gen_id }}"
+          required
+          aria-required="true"
+        >
+      </div>
+
+      <div class="ai-review-form__field-{{ ai_gen_id }}">
+        <label for="ai-review-body-{{ ai_gen_id }}" class="ai-review-form__label-{{ ai_gen_id }}">
+          {{ block.settings.review_body_label }}
+          <span class="ai-review-form__required-{{ ai_gen_id }}">*</span>
+        </label>
+        <textarea
+          id="ai-review-body-{{ ai_gen_id }}"
+          name="contact[body]"
+          class="ai-review-form__textarea-{{ ai_gen_id }}"
+          required
+          aria-required="true"
+        ></textarea>
+      </div>
+
+      <button type="submit" class="ai-review-form__button-{{ ai_gen_id }}">
+        {{ block.settings.submit_button_text }}
+      </button>
+
+      {%- if form.posted_successfully? -%}
+        <div class="ai-review-form__success-{{ ai_gen_id }}">
+          {{ block.settings.success_message }}
+        </div>
+      {%- endif -%}
+
+      {%- if form.errors -%}
+        <div class="ai-review-form__error-{{ ai_gen_id }}">
+          {{ block.settings.error_message }}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endform -%}
+</customer-review-form-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class CustomerReviewForm{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+        this.stars = this.querySelectorAll('.ai-review-form__star-{{ ai_gen_id }}');
+        this.ratingInput = this.querySelector('#ai-review-rating-{{ ai_gen_id }}');
+        this.currentRating = 0;
+
+        this.setupStarRating();
+      }
+
+      setupStarRating() {
+        this.stars.forEach((star, index) => {
+          star.addEventListener('click', () => {
+            this.currentRating = index + 1;
+            this.ratingInput.value = this.currentRating;
+            this.updateStars();
+          });
+
+          star.addEventListener('mouseenter', () => {
+            this.highlightStars(index + 1);
+          });
+        });
+
+        this.addEventListener('mouseleave', () => {
+          this.updateStars();
+        });
+      }
+
+      highlightStars(rating) {
+        this.stars.forEach((star, index) => {
+          if (index < rating) {
+            star.classList.add('active');
+          } else {
+            star.classList.remove('active');
+          }
+        });
+      }
+
+      updateStars() {
+        this.highlightStars(this.currentRating);
+      }
+    }
+
+    customElements.define('customer-review-form-{{ ai_gen_id }}', CustomerReviewForm{{ ai_gen_id }});
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Formular recenzii",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Conținut"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Titlu",
+      "default": "Lasă o recenzie"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "subheading",
+      "label": "Subtitlu",
+      "default": "Împărtășește-ne experiența ta cu acest produs"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "name_label",
+      "label": "Etichetă nume",
+      "default": "Numele tău"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "email_label",
+      "label": "Etichetă email",
+      "default": "Adresa de email"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "rating_label",
+      "label": "Etichetă evaluare",
+      "default": "Evaluarea ta"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_title_label",
+      "label": "Etichetă titlu recenzie",
+      "default": "Titlul recenziei"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "review_body_label",
+      "label": "Etichetă text recenzie",
+      "default": "Recenzia ta"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "submit_button_text",
+      "label": "Text buton trimitere",
+      "default": "Trimite recenzia"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "success_message",
+      "label": "Mesaj succes",
+      "default": "Mulțumim pentru recenzia ta! O vom publica în curând."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "error_message",
+      "label": "Mesaj eroare",
+      "default": "A apărut o eroare. Te rugăm să verifici câmpurile și să încerci din nou."
+    },
+    {
+      "type": "header",
+      "content": "Aspect"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Lățime desktop",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Aliniere text",
+      "options": [
+        {
+          "value": "left",
+          "label": "Stânga"
+        },
+        {
+          "value": "center",
+          "label": "Centru"
+        },
+        {
+          "value": "right",
+          "label": "Dreapta"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "button_alignment",
+      "label": "Aliniere buton",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Stânga"
+        },
+        {
+          "value": "center",
+          "label": "Centru"
+        },
+        {
+          "value": "flex-end",
+          "label": "Dreapta"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Dimensiune titlu",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "label": "Dimensiune subtitlu",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Dimensiune stele",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Culori"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fundal",
+      "default": "#F0FFFE"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#0D1B2A"
+    },
+    {
+      "type": "color",
+      "id": "input_background_color",
+      "label": "Fundal câmpuri",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_border_color",
+      "label": "Bordură câmpuri",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Buton",
+      "default": "#00C5B3"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text buton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Buton hover",
+      "default": "#00A89A"
+    },
+    {
+      "type": "color",
+      "id": "star_filled_color",
+      "label": "Stele completate",
+      "default": "#FFD700"
+    },
+    {
+      "type": "color",
+      "id": "star_empty_color",
+      "label": "Stele goale",
+      "default": "#CCCCCC"
+    },
+    {
+      "type": "color",
+      "id": "success_color",
+      "label": "Text succes",
+      "default": "#008060"
+    },
+    {
+      "type": "color",
+      "id": "success_background",
+      "label": "Fundal succes",
+      "default": "#E8F5E9"
+    },
+    {
+      "type": "color",
+      "id": "error_color",
+      "label": "Text eroare",
+      "default": "#D82C0D"
+    },
+    {
+      "type": "color",
+      "id": "error_background",
+      "label": "Fundal eroare",
+      "default": "#FFEBEE"
+    },
+    {
+      "type": "header",
+      "content": "Stilizare"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Rotunjire colțuri formular",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "input_border_radius",
+      "label": "Rotunjire colțuri câmpuri",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Rotunjire colțuri buton",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    }
+  ],
+  "presets": [
+    {
+      "name": "Formular recenzii"
+    }
+  ]
+}
 {% endschema %}
