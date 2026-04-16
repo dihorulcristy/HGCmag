@@ -1,26 +1,19 @@
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    },
-    "image_with_text": {
-      "type": "image-with-text",
+    "banner": {
+      "type": "image-banner",
       "blocks": {
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Povestea VibeMag",
-            "heading_size": "h1"
+            "heading": "VibeMag: Povestea Noastră",
+            "heading_size": "h0"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "<p>Suntem o echipă dedicată care crede în calitatea produselor și în satisfacția clienților noștri. Fiecare produs selectat de VibeMag reprezintă un pas către un stil de viață modern și eficient.<\/p>",
+            "text": "<p>Calitate Premium. Vibe Modern. O viziune despre stilul tău de viață.<\/p>",
             "text_style": "body"
           }
         }
@@ -30,7 +23,82 @@
         "text"
       ],
       "settings": {
-        "height": "large",
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "show_text_box": true,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "mission": {
+      "type": "rich-text",
+      "blocks": {
+        "caption": {
+          "type": "caption",
+          "settings": {
+            "caption": "Misiunea Noastră",
+            "text_style": "caption-with-letter-spacing",
+            "text_size": "medium"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Selecție Curată pentru Tine",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>La VibeMag credem că fiecare produs reflectă un standard de viață. Nu vindem doar accesorii; vindem instrumente care să te ajute să fii cea mai bună versiune a ta, în fiecare zi.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "caption",
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "story": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Cum am început",
+            "heading_size": "h2"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>VibeMag s-a născut din nevoia de claritate în piața de accesorii moderne. Într-o lume a produselor de masă, noi am ales calea calității curatoriate.<\/p><p>Fiecare produs de pe Vibemag este selectat manual, testat și verificat pentru a ne asigura că este demn de timpul și banii tăi.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "settings": {
+        "height": "medium",
         "desktop_image_width": "medium",
         "layout": "image_first",
         "image_behavior": "none",
@@ -39,13 +107,101 @@
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-1",
         "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "principles": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_1": {
+          "type": "column",
+          "settings": {
+            "title": "Calitate Premium",
+            "text": "<p>Spre deosebire de produsele de masă, colecția noastră este fabricată în Spania, oferindu-ți garanția durabilității.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_2": {
+          "type": "column",
+          "settings": {
+            "title": "Design Inteligent",
+            "text": "<p>Ne concentrăm pe fuziunea dintre estetică și utilitate. Tot ce alegem are un rost.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "col_3": {
+          "type": "column",
+          "settings": {
+            "title": "O Comunitate",
+            "text": "<p>VibeMag nu este doar despre vânzări; este despre a crește împreună o comunitate care pune preț pe excelență.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "col_1",
+        "col_2",
+        "col_3"
+      ],
+      "settings": {
+        "title": "Pilonii Noștri",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-3",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Fii la curent cu noutățile"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Vă rugăm să vă abonați pentru promoții și viziunea noastră.<\/p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
-    "main",
-    "image_with_text"
+    "banner",
+    "mission",
+    "story",
+    "principles",
+    "newsletter"
   ]
 }
