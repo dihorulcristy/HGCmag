@@ -67,26 +67,26 @@
     "collection_list": {
       "type": "collection-list",
       "blocks": {
-        "collection-beauty": {
+        "new1": {
           "type": "featured_collection",
           "settings": {
             "collection": "sanatate-si-ingrijire-personala-bunastare"
           }
         },
-        "collection-home": {
+        "new2": {
           "type": "featured_collection",
           "settings": {
             "collection": "sanatate-si-ingrijire-personala-sanatate"
           }
         },
-        "collection-tech": {
+        "new3": {
           "type": "featured_collection",
           "settings": {
             "collection": "acasa-si-bucatarie"
           }
         }
       },
-      "block_order": ["collection-beauty", "collection-home", "collection-tech"],
+      "block_order": ["new1", "new2", "new3"],
       "settings": {
         "title": "Exploreaza Categoriile",
         "heading_size": "h2",
