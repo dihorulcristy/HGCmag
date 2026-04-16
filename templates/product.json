@@ -90,6 +90,81 @@
         "padding_bottom": 12
       }
     },
+    "1776333747c032252f": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_0cc8eee_Xp3RWz": {
+          "type": "ai_gen_block_0cc8eee",
+          "settings": {
+            "heading": "Recenzii clienți",
+            "add_review_button_text": "Lasă o recenzie",
+            "show_summary": true,
+            "average_rating": 4.5,
+            "total_reviews": 25,
+            "show_sample_reviews": true,
+            "no_reviews_text": "Încă nu există recenzii pentru acest produs",
+            "be_first_button_text": "Fii primul care lasă o recenzie",
+            "verified_purchase_text": "Achiziție verificată",
+            "review_1_name": "",
+            "review_1_rating": 5,
+            "review_1_title": "",
+            "review_1_text": "",
+            "review_1_date": "",
+            "review_1_verified": false,
+            "review_2_name": "",
+            "review_2_rating": 4,
+            "review_2_title": "",
+            "review_2_text": "",
+            "review_2_date": "",
+            "review_2_verified": false,
+            "review_3_name": "",
+            "review_3_rating": 5,
+            "review_3_title": "",
+            "review_3_text": "",
+            "review_3_date": "",
+            "review_3_verified": false,
+            "form_title": "Lasă o recenzie",
+            "name_label": "Numele tău",
+            "email_label": "Adresa de email",
+            "rating_label": "Evaluarea ta",
+            "review_title_label": "Titlul recenziei",
+            "review_body_label": "Recenzia ta",
+            "submit_button_text": "Trimite recenzia",
+            "success_message": "Mulțumim pentru recenzia ta! O vom publica în curând.",
+            "error_message": "A apărut o eroare. Te rugăm să verifici câmpurile și să încerci din nou.",
+            "desktop_width_percent": 100,
+            "heading_size": 32,
+            "background_color": "#FAFFFE",
+            "text_color": "#0D1B2A",
+            "summary_background": "#F0FFFE",
+            "card_background": "#FFFFFF",
+            "card_border_color": "#E0E0E0",
+            "button_color": "#00C5B3",
+            "button_text_color": "#FFFFFF",
+            "button_hover_color": "#00A89A",
+            "star_color": "#FFD700",
+            "star_empty_color": "#CCCCCC",
+            "verified_color": "#00C5B3",
+            "modal_background": "#FFFFFF",
+            "input_background": "#FFFFFF",
+            "input_border_color": "#CCCCCC",
+            "success_color": "#008060",
+            "success_background": "#E8F5E9",
+            "error_color": "#D82C0D",
+            "error_background": "#FFEBEE",
+            "border_radius": 8,
+            "card_border_radius": 8,
+            "button_border_radius": 6,
+            "input_border_radius": 4
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0cc8eee_Xp3RWz"
+      ],
+      "settings": {}
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -111,6 +186,7 @@
   },
   "order": [
     "main",
+    "1776333747c032252f",
     "related-products"
   ]
 }
