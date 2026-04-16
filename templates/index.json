@@ -205,13 +205,13 @@
         "collection-home": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "bunastare-masaj-si-relaxare"
           }
         },
         "collection-tech": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "acasa-si-bucatarie"
           }
         }
       },
