@@ -14,7 +14,7 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement-bar-new": {
           "type": "announcement",
           "settings": {
             "text": "✦ Cele mai noi produse din Romania ✦",
@@ -22,7 +22,7 @@
           }
         }
       },
-      "block_order": ["announcement-bar-0"],
+      "block_order": ["announcement-bar-new"],
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
