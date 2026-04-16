@@ -63,7 +63,7 @@
           "type": "column",
           "settings": {
             "title": "Calitate Europeana",
-            "text": "<p>Spre deosebire de produsele de masă, produsele noastre sunt fabricate în Spania<br/></p>",
+            "text": "<p>Spre deosebire de produsele de masă, colecția noastră este fabricată în Spania<br/></p>",
             "link_label": "",
             "link": ""
           }
@@ -125,7 +125,7 @@
         "show_view_all": true,
         "view_all_style": "link",
         "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
+        "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
