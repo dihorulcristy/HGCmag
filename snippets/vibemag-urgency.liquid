@@ -14,40 +14,70 @@
 -%}
 
 <div class="vm-urgency-strip" aria-live="polite">
-
   {%- if show_low_stock -%}
     <div class="vm-badge-stock" role="status">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+      >
         <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
       </svg>
       <span>
         {%- if inventory_qty == 1 -%}
           {{ 'products.product.only_one_left' | t | default: 'Ultimul produs in stoc!' }}
         {%- else -%}
-          {{ 'products.product.only_x_left' | t: quantity: inventory_qty | default: 'Doar ' | append: inventory_qty | append: ' bucati in stoc!' }}
+          {{
+            'products.product.only_x_left'
+            | t: quantity: inventory_qty
+            | default: 'Doar '
+            | append: inventory_qty
+            | append: ' bucati in stoc!'
+          }}
         {%- endif -%}
       </span>
     </div>
   {%- endif -%}
 
   <div class="vm-badge-viewers" role="status" aria-label="Utilizatori activi">
-    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      aria-hidden="true"
+    >
       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
       <circle cx="12" cy="12" r="3"/>
     </svg>
     <span id="vm-viewer-count">
       {%- assign viewer_seed = product.id | modulo: 23 | plus: 8 -%}
-      {{ viewer_seed }} {{ 'products.product.people_viewing' | t | default: 'persoane vad acest produs acum' }}
+      {{ viewer_seed }}
+      {{ 'products.product.people_viewing' | t | default: 'persoane vad acest produs acum' }}
     </span>
   </div>
 
   {%- if product.compare_at_price_max > product.price -%}
     <div class="vm-badge-sale-end" role="status">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
       </svg>
       <span>{{ 'products.product.sale_ends_soon' | t | default: 'Oferta limitata — pret redus activ' }}</span>
     </div>
   {%- endif -%}
-
 </div>

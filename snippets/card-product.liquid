@@ -138,7 +138,15 @@
                 class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
                 style="font-weight: 800; font-size: 1.3rem; letter-spacing: 0.05rem;"
               >
-                -{{ card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round }}%
+                -
+                {{-
+                  card_product.compare_at_price
+                  | minus: card_product.price
+                  | times: 100.0
+                  | divided_by: card_product.compare_at_price
+                  | round
+                -}}
+                %
               </span>
             {%- endif -%}
           </div>
@@ -563,7 +571,15 @@
               class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
               style="font-weight: 800; font-size: 1.3rem; letter-spacing: 0.05rem;"
             >
-              -{{ card_product.compare_at_price | minus: card_product.price | times: 100.0 | divided_by: card_product.compare_at_price | round }}%
+              -
+              {{-
+                card_product.compare_at_price
+                | minus: card_product.price
+                | times: 100.0
+                | divided_by: card_product.compare_at_price
+                | round
+              -}}
+              %
             </span>
           {%- endif -%}
         </div>

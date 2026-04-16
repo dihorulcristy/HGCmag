@@ -66,8 +66,7 @@
       {{ label_unavailable }}
     {%- endcapture -%}
 
-    {%
-      render 'swatch-input',
+    {% render 'swatch-input',
       id: input_id,
       name: input_name,
       value: escaped_value,

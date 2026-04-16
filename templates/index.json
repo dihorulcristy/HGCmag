@@ -245,11 +245,5 @@
       }
     }
   },
-  "order": [
-    "image_banner",
-    "multicolumn",
-    "featured_collection",
-    "image_with_text",
-    "newsletter"
-  ]
+  "order": ["image_banner", "multicolumn", "featured_collection", "image_with_text", "newsletter"]
 }
