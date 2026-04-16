@@ -70,19 +70,19 @@
         "collection-beauty": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "sanatate-si-ingrijire-personala-bunastare"
           }
         },
         "collection-home": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "sanatate-si-ingrijire-personala-sanatate"
           }
         },
         "collection-tech": {
           "type": "featured_collection",
           "settings": {
-            "collection": ""
+            "collection": "acasa-si-bucatarie"
           }
         }
       },

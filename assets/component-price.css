@@ -74,20 +74,36 @@
 }
 
 .price--on-sale .price__sale {
-  display: initial;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .price--center {
-  display: initial;
+  display: flex;
   justify-content: center;
+}
+
+.price--on-sale .price-item--sale {
+  color: #db1922; /* High converting red color */
+  font-weight: 800;
+  font-size: 1.8rem;
+  margin: 0;
+}
+@media screen and (min-width: 750px) {
+  .price--on-sale .price-item--sale {
+    font-size: 2.2rem;
+  }
 }
 
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: rgba(var(--color-foreground), 0.75);
-  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.55); /* Lighter to reduce emphasis */
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
 }
 
 .unit-price {
