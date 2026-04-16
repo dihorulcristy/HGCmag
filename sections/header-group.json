@@ -14,15 +14,17 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-new": {
+        "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "✦ Cele mai noi produse din Romania ✦",
+            "text": "✦ Livrare GRATUITA peste 199 RON ✦ Cele mai noi produse din Romania ✦",
             "link": ""
           }
         }
       },
-      "block_order": ["announcement-bar-new"],
+      "block_order": [
+        "announcement-bar-0"
+      ],
       "settings": {
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -40,7 +42,7 @@
         "mobile_logo_position": "center",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
-        "sticky_header_type": "none",
+        "sticky_header_type": "reduce-logo-size",
         "show_line_separator": true,
         "color_scheme": "scheme-3",
         "menu_color_scheme": "scheme-1",
@@ -48,10 +50,13 @@
         "enable_language_selector": false,
         "enable_customer_avatar": true,
         "margin_bottom": 0,
-        "padding_top": 2,
-        "padding_bottom": 2
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
-  "order": ["announcement-bar", "header"]
+  "order": [
+    "announcement-bar",
+    "header"
+  ]
 }
