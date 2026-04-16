@@ -126,7 +126,7 @@
         "view_all_style": "link",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
-        "image_shape": "default",
+        "image_shape": "blob",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
@@ -178,6 +178,7 @@
         "button"
       ],
       "settings": {
+        "image": "shopify://shop_images/060a42f8-4599-49f6-81e8-fcf267039391.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
