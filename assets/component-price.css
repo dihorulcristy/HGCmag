@@ -75,10 +75,9 @@
 
 .price--on-sale .price__sale {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.6rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
 }
 
 .price--center {
@@ -87,23 +86,27 @@
 }
 
 .price--on-sale .price-item--sale {
-  color: #db1922; /* High converting red color */
-  font-weight: 800;
-  font-size: 1.8rem;
-  margin: 0;
+  color: #00C5B3 !important; /* VibeMag Teal */
+  font-weight: 800 !important;
+  font-size: 2.2rem !important;
+  margin: 0 !important;
+  line-height: 1.1;
+  letter-spacing: -0.02em !important;
 }
+
 @media screen and (min-width: 750px) {
   .price--on-sale .price-item--sale {
-    font-size: 2.2rem;
+    font-size: 2.6rem !important;
   }
 }
 
 .price--on-sale .price-item--regular {
   text-decoration: line-through;
-  color: rgba(var(--color-foreground), 0.55); /* Lighter to reduce emphasis */
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0;
+  color: #707070 !important; /* Muted grey for full price */
+  font-size: 1.5rem !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+  opacity: 0.7;
 }
 
 .unit-price {
