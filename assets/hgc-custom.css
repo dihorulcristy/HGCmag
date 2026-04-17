@@ -2436,6 +2436,8 @@ shopify-section[id="footer"] {
   justify-content: center !important;
   margin-top: 15px !important;
   margin-bottom: 12px !important;
+  width: 100% !important;
+  max-width: none !important;
 }
 
 .product-form__submit:hover {
@@ -2636,3 +2638,9 @@ shopify-section[id="footer"] {
   }
 }
 
+.product-form, .product-form__buttons {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
