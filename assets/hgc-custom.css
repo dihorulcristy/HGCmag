@@ -2304,11 +2304,18 @@ shopify-section[id="footer"] {
 }
 
 .vm-price-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 8px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  margin-bottom: 8px !important;
+}
+
+.price__sale {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
 }
 
 .vm-price-sale {
@@ -2356,6 +2363,10 @@ shopify-section[id="footer"] {
   }
   .vm-price-sale {
     font-size: 22px !important;
+  }
+  .product__info-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 }
 
