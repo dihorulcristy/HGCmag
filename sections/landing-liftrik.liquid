@@ -169,15 +169,41 @@
   .lt-testi-card { background: #fff; padding: 40px 32px; border-radius: 10px; border: 1px solid var(--lt-border); position: relative; }
   .lt-quote { position: absolute; top: 10px; left: 20px; font-size: 60px; color: var(--lt-rose); opacity: 0.2; font-family: serif; }
 
-  /* 8. Final CTA */
+  /* 8. Final CTA & Bundles */
   .lt-cta-section { background: var(--lt-rose); color: #fff; text-align: center; }
-  .lt-price-row { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 24px 0; }
-  .lt-price-main { font-size: 32px; font-weight: 800; }
-  .lt-price-old { text-decoration: line-through; opacity: 0.7; }
-  .lt-price-badge { background: var(--lt-navy); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
-  .lt-btn-dark { background: var(--lt-navy); color: #fff; width: 100%; max-width: 400px; margin-top: 20px; }
+  .lt-bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; text-align: left; }
+  .lt-bundle-card { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); border-radius: 10px; cursor: pointer; position: relative; transition: all 0.2s; display: flex; flex-direction: column; overflow: hidden; }
+  .lt-bundle-card.active { border-color: var(--lt-rose); border-width: 2px; background: var(--lt-bg); }
+  .lt-bundle-banner { background: var(--lt-navy); color: #fff; text-align: center; padding: 6px; font-size: 11px; font-weight: 700; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+  .lt-bundle-banner.rose { background: var(--lt-rose); }
+  .lt-bundle-content { padding: 20px; position: relative; }
+  .lt-radio-circle { position: absolute; top: 20px; right: 20px; width: 18px; height: 18px; border: 2px solid var(--lt-border); border-radius: 50%; }
+  .lt-bundle-card.active .lt-radio-circle { border-color: var(--lt-rose); background: radial-gradient(circle, var(--lt-rose) 40%, transparent 40%); }
+  
+  .lt-bundle-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .lt-bundle-sub { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 8px; color: var(--lt-rose); }
+  .lt-bundle-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--lt-text-muted); line-height: 1.4; margin-bottom: 15px; min-height: 36px; }
+  
+  .lt-bundle-price-row { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: auto; }
+  .lt-bundle-price { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 26px; }
+  .lt-bundle-price.small { font-size: 22px; }
+  .lt-bundle-old { font-size: 16px; text-decoration: line-through; opacity: 0.5; }
+  .lt-bundle-save { background: var(--lt-rose); color: #fff; padding: 2px 8px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-bottom: 8px; display: inline-block; }
+  .lt-bundle-shipping { display: block; font-size: 11px; color: #9aa5a8; margin-top: 4px; }
+  .lt-bundle-free { color: var(--lt-teal); font-weight: 700; font-size: 13px; margin-top: 8px; display: flex; align-items: center; gap: 4px; }
+
+  .lt-btn-dark { background: var(--lt-navy); color: #fff; width: 100%; max-width: 450px; margin-top: 24px; border: none; font-family: 'Inter', sans-serif; }
+  .lt-btn-dark:hover { background: #1e1214; transform: translateY(-2px); }
+
+  .lt-reassurance-row { display: flex; justify-content: center; gap: 15px; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.8); }
+  .lt-reassurance-item { display: flex; align-items: center; gap: 6px; }
+  .lt-reassurance-item svg { width: 14px; height: 14px; stroke: var(--lt-teal); stroke-width: 2; fill: none; }
 
   .lt-trust-inline { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 13px; }
+
+  @media (max-width: 768px) {
+    .lt-bundle-grid { grid-template-columns: 1fr; }
+  }
 
   /* 9. footer trust */
   .lt-footer-bar { background: var(--lt-navy); color: rgba(255,255,255,0.6); padding: 20px 0; text-align: center; font-size: 12px; }
@@ -459,22 +485,80 @@
     <h2 class="lt-serif-italic h1" style="color: #fff;">Încearcă Liftrik fără niciun risc</h2>
     <p class="lt-dm-sans" style="margin-bottom: 30px; opacity: 0.9;">Setul tău conține 40 de plasturi hipoalergenici și benzile elastice necesare pentru un lifting profesional acasă.</p>
     
-    <div class="lt-price-row">
-      <span class="lt-price-old">241,94 RON</span>
-      <span class="lt-price-main">160,63 RON</span>
-      <span class="lt-price-badge">-34% OFF</span>
+    <div class="lt-bundle-grid" id="ltBundleGrid">
+      <!-- Option 1 -->
+      <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON">
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Pachetul de Test</div>
+          <div class="lt-bundle-sub">1 Cutie · 40 Plasturi</div>
+          <p class="lt-bundle-desc">Ideal pentru a testa efectul de lifting invizibil.</p>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price small">110 RON</span>
+          </div>
+          <span class="lt-bundle-shipping">+ 19,90 RON livrare</span>
+        </div>
+      </div>
+
+      <!-- Option 2 (Best Seller) -->
+      <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON">
+        <div class="lt-bundle-banner">🔥 CEL MAI VÂNDUT</div>
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Tratamentul Complet</div>
+          <div class="lt-bundle-sub">3 Cutii · 120 Plasturi</div>
+          <p class="lt-bundle-desc">Rutina perfectă pentru un efect susținut în fiecare zi.</p>
+          <span class="lt-bundle-save">Economisești 181 RON</span>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price">149 RON</span>
+            <span class="lt-bundle-old">330 RON</span>
+          </div>
+          <div class="lt-bundle-free">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             TRANSPORT GRATUIT
+          </div>
+        </div>
+      </div>
+
+      <!-- Option 3 -->
+      <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON">
+        <div class="lt-bundle-banner rose">💎 CEA MAI BUNĂ VALOARE</div>
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Stocul de Beauty</div>
+          <div class="lt-bundle-sub">5 Cutii · 200 Plasturi</div>
+          <p class="lt-bundle-desc">Pentru clientele care folosesc plasturii zilnic. Cel mai mic preț per cutie!</p>
+          <span class="lt-bundle-save">Economisești 351 RON</span>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price">199 RON</span>
+            <span class="lt-bundle-old">550 RON</span>
+          </div>
+          <div class="lt-bundle-free">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             TRANSPORT GRATUIT
+          </div>
+        </div>
+      </div>
     </div>
 
     {%- form 'product', product -%}
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" class="lt-btn lt-btn-dark" style="width: 100%; border: none;">ADAUGĂ ÎN COȘ — 160,63 RON</button>
+      <input type="hidden" name="id" id="ltSelectedId" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" id="ltSubmitBtn" class="lt-btn lt-btn-dark">COMANDĂ TRATAMENTUL COMPLET — 149 RON</button>
     {%- endform -%}
 
-    <div class="lt-trust-inline lt-dm-sans">
-      <span>✓ Livrare 2-5 zile</span>
-      <span>✓ Retur 14 zile</span>
-      <span>✓ Plată securizată</span>
-      <span>✓ Fabricat în Spania</span>
+    <div class="lt-reassurance-row">
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Plată 100% securizată
+      </div>
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        Livrare 2-5 zile
+      </div>
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        Retur 14 zile
+      </div>
     </div>
   </div>
 </section>
@@ -494,3 +578,30 @@
   ]
 }
 {% endschema %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.lt-bundle-card');
+    const submitBtn = document.getElementById('ltSubmitBtn');
+    
+    cards.forEach(card => {
+      card.addEventListener('click', function() {
+        // Remove active class from all
+        cards.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked
+        this.classList.add('active');
+        
+        // Update button text
+        const title = this.getAttribute('data-title').toUpperCase();
+        const price = this.getAttribute('data-price');
+        submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
+        
+        // In a real implementation, you would update the variant ID here
+        // const variantId = this.getAttribute('data-variant-id');
+        // document.getElementById('ltSelectedId').value = variantId;
+      });
+    });
+  });
+</script>
+
