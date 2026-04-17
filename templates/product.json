@@ -40,6 +40,12 @@
           "type": "price",
           "settings": {}
         },
+        "rating_inline": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'vibemag-rating-inline' %}"
+          }
+        },
         "urgency": {
           "type": "custom_liquid",
           "settings": {
@@ -79,6 +85,7 @@
         "title",
         "caption",
         "price",
+        "rating_inline",
         "stock_bar",
         "urgency",
         "variant_picker",
