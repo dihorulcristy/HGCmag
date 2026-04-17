@@ -1426,7 +1426,7 @@ textarea:focus {
 }
 
 .footer-block__heading {
-  color: #bf913b !important; /* Brand Gold */
+  color: var(--vm-teal) !important; /* Brand Teal */
   font-family: var(--vm-font-heading) !important;
   font-weight: 700 !important;
   letter-spacing: 0.1em !important;
@@ -1434,13 +1434,17 @@ textarea:focus {
   margin-bottom: 2rem !important;
 }
 
-/* First heading "VibeMag" styling */
+/* First heading "VibeMag" override (now using logo image, but keeping fallback style) */
 .footer-block:first-child .footer-block__heading {
   color: var(--vm-white) !important;
   font-size: 2.4rem !important;
   text-transform: none !important;
   letter-spacing: -0.02em !important;
   margin-bottom: 1.2rem !important;
+}
+
+.footer-block__image-wrapper {
+  margin-bottom: 2rem !important;
 }
 
 .footer-block__details-content.rte p {
@@ -1497,7 +1501,7 @@ textarea:focus {
 }
 
 .multicolumn-card__heading {
-  color: #bf913b !important; /* Gold stars */
+  color: var(--vm-teal) !important; /* Brand Teal instead of Gold */
   font-size: 1.5rem !important;
   margin-bottom: 1rem !important;
   letter-spacing: 0.1em !important;
@@ -1518,7 +1522,7 @@ textarea:focus {
   font-family: var(--vm-font-heading);
   font-size: 1.1rem;
   font-weight: 700;
-  color: #bf913b;
+  color: var(--vm-teal);
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 1rem;

@@ -5,10 +5,18 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "brand_info": {
+        "footer_logo": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Design_fara_titlu_9.png",
+            "image_width": 150,
+            "alignment": ""
+          }
+        },
+        "brand_info_text": {
           "type": "text",
           "settings": {
-            "heading": "VibeMag",
+            "heading": "",
             "subtext": "<p>Soluții inteligente pentru stilul tău de viață. Produse premium europene, livrate rapid în România.</p>"
           }
         },
@@ -28,7 +36,8 @@
         }
       },
       "block_order": [
-        "brand_info",
+        "footer_logo",
+        "brand_info_text",
         "navigare",
         "informatii"
       ],
