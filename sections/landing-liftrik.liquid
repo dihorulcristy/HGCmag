@@ -418,8 +418,21 @@
   <div class="lt-container">
     <h2 class="lt-title-centered lt-serif-italic h1">De ce Liftrik? Față de alte soluții</h2>
     <div class="lt-table-wrap">
-      <table>
+      <table class="lt-comparison-table">
         <thead>
+          <style>
+            @media (max-width: 768px) {
+              .lt-comparison-table { table-layout: fixed !important; min-width: 450px !important; width: 100% !important; }
+              .lt-comparison-table th, .lt-comparison-table td { 
+                word-break: break-all !important; 
+                white-space: normal !important;
+                padding: 10px 2px !important; 
+                font-size: 10px !important;
+                text-align: center !important;
+                vertical-align: middle !important;
+              }
+            }
+          </style>
           <tr>
             <th>Criteriu</th>
             <th class="lt-table-highlight" style="color: var(--lt-rose)">LIFTRIK</th>
