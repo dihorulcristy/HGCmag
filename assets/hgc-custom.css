@@ -162,6 +162,13 @@ sticky-header,
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.25) !important;
 }
 
+/* Ensure visibility when sticky/dark */
+.shopify-section-header-sticky .header__menu-item,
+.shopify-section-header-sticky .list-menu__item > a,
+.shopify-section-header-sticky .header__icon svg {
+  color: var(--vm-white) !important;
+}
+
 /* Header inner padding */
 .header.page-width {
   padding-top: 0.2rem !important;
@@ -209,7 +216,7 @@ sticky-header,
   font-weight: 600 !important;
   letter-spacing: 0.04em !important;
   text-transform: uppercase !important;
-  color: rgba(255, 255, 255, 0.88) !important;
+  color: var(--vm-navy) !important;
   text-decoration: none !important;
   padding: 0.5rem 1.2rem !important;
   position: relative !important;
@@ -241,7 +248,7 @@ sticky-header,
 
 /* Header icons — white */
 .header__icon svg {
-  color: rgba(255, 255, 255, 0.88);
+  color: var(--vm-navy);
   transition:
     color var(--vm-transition-fast),
     transform var(--vm-transition-fast);
