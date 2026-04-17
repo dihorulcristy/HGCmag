@@ -1393,8 +1393,22 @@ textarea:focus {
 }
 
 /* ===================================================================
-   SECTION SPACING — Cleaned up
+   FOOTER REFINEMENTS — Contrast fixes
    =================================================================== */
+
+.footer__copyright,
+.copyright__content,
+.copyright__content a,
+.policies .copyright__content a {
+  color: var(--vm-navy) !important;
+  opacity: 1 !important;
+  text-decoration: none !important;
+}
+
+.copyright__content a:hover {
+  text-decoration: underline !important;
+  opacity: 0.8 !important;
+}
 
 /* ===================================================================
    HERO BANNER — Mobile minimum height
