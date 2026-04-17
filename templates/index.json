@@ -197,6 +197,12 @@
       "settings": {
         "custom_liquid": "<style>.vm-rev{background:#f4f9f9;padding:72px 0}.vm-rev-inner{max-width:1200px;margin:0 auto;padding:0 48px}.vm-rev h2{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:700;color:#1a2b32;margin-bottom:8px;text-align:center}.vm-rev-sub{text-align:center;font-size:1.4rem;color:#6b7b80;margin-bottom:48px}.vm-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.vm-rev-card{background:#fff;border:1px solid #e0eeec;border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;position:relative}.vm-rev-quote{font-family:'Georgia',serif;font-size:5rem;color:#2abfb0;line-height:1;position:absolute;top:12px;left:20px;opacity:0.25}.vm-rev-stars{color:#f5a623;font-size:1.6rem;letter-spacing:2px}.vm-rev-text{font-size:1.4rem;color:#6b7b80;line-height:1.75;font-style:italic;padding-top:12px}.vm-rev-author{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:700;color:#1a2b32;border-top:1px solid #f0f4f4;padding-top:16px;margin-top:auto}@media(max-width:749px){.vm-rev-inner{padding:0 20px}.vm-rev{padding:48px 0}.vm-rev-grid{grid-template-columns:1fr;gap:16px}}</style><div class='vm-rev'><div class='vm-rev-inner'><h2>Ce Spun Clienții Noștri</h2><p class='vm-rev-sub'>Peste 200 de recenzii verificate · Rating mediu 4.8/5</p><div class='vm-rev-grid'><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Produsul a ajuns în 3 zile, ambalaj impecabil. Calitatea e superioară față de ce găsești pe alte site-uri din România.</p><div class='vm-rev-author'>Maria D. — București</div></div><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Am comandat de 3 ori deja. De fiecare dată rapid și exact cum e descris. Recomand cu încredere!</p><div class='vm-rev-author'>Alexandru P. — Cluj-Napoca</div></div><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Suportul a fost excelent când am avut o întrebare. Au răspuns în mai puțin de o oră. Produs de calitate.</p><div class='vm-rev-author'>Ioana M. — Timișoara</div></div></div></div></div>"
       }
+    },
+    "promo_banner": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.vm-promo{background:#2abfb0;padding:36px 48px}.vm-promo-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.vm-promo-left{display:flex;align-items:center;gap:16px}.vm-promo-left svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.vm-promo-title{font-family:'Montserrat',sans-serif;font-size:1.8rem;font-weight:700;color:#fff;line-height:1.3}.vm-promo-sub{font-family:'Montserrat',sans-serif;font-size:1.3rem;color:rgba(255,255,255,0.8);line-height:1.5}.vm-promo-btn{background:#fff;color:#2abfb0;font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:0.5px;text-decoration:none;padding:13px 28px;border-radius:4px;white-space:nowrap;flex-shrink:0;transition:opacity 0.2s ease}.vm-promo-btn:hover{opacity:0.9}@media(max-width:749px){.vm-promo{padding:28px 20px}.vm-promo-inner{flex-direction:column;text-align:center}.vm-promo-left{flex-direction:column;gap:8px}.vm-promo-sub{display:none}}</style><div class='vm-promo'><div class='vm-promo-inner'><div class='vm-promo-left'><svg viewBox='0 0 24 24'><rect x='1' y='3' width='15' height='13' rx='1'/><path d='M16 8h4l3 4v4h-7V8z'/><circle cx='5.5' cy='18.5' r='2.5'/><circle cx='18.5' cy='18.5' r='2.5'/></svg><div><div class='vm-promo-title'>Transport GRATUIT la toate comenzile de astăzi</div></div></div><div class='vm-promo-sub'>Comandă acum și primești în 2-5 zile lucrătoare</div><a href='/collections/all' class='vm-promo-btn'>Cumpără Acum</a></div></div>"
+      }
     }
   },
   "order": [
@@ -206,6 +212,7 @@
     "featured_collection",
     "image_with_text",
     "collection_list",
-    "customer_reviews"
+    "customer_reviews",
+    "promo_banner"
   ]
 }
