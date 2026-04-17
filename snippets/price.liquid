@@ -68,28 +68,33 @@
         </span>
       </div>
       <div class="price__sale">
-        <span class="vm-price-sale">
-          {{ money_price }}
-        </span>
-        {%- unless product.price_varies == false and product.compare_at_price_varies %}
-          <span class="vm-price-old">
-            {% if settings.currency_code_enabled %}
-              {{ compare_at_price | money_with_currency }}
-            {% else %}
-              {{ compare_at_price | money }}
-            {% endif %}
-          </span>
-        {%- endunless -%}
+        <div class="vm-price-top-row">
+          {%- unless product.price_varies == false and product.compare_at_price_varies %}
+            <span class="vm-price-old">
+              {% if settings.currency_code_enabled %}
+                {{ compare_at_price | money_with_currency }}
+              {% else %}
+                {{ compare_at_price | money }}
+              {% endif %}
+            </span>
+          {%- endunless -%}
 
-        {%- if show_badges -%}
-          <span class="vm-price-pill">
-            {%- if compare_at_price > price -%}
-              -{{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%
-            {%- else -%}
-              {{ 'products.product.on_sale' | t }}
-            {%- endif -%}
+          {%- if show_badges -%}
+            <span class="vm-price-pill">
+              {%- if compare_at_price > price -%}
+                -{{ compare_at_price | minus: price | times: 100.0 | divided_by: compare_at_price | round }}%
+              {%- else -%}
+                {{ 'products.product.on_sale' | t }}
+              {%- endif -%}
+            </span>
+          {%- endif -%}
+        </div>
+
+        <div class="vm-price-bottom-row">
+          <span class="vm-price-sale">
+            {{ money_price }}
           </span>
-        {%- endif -%}
+        </div>
       </div>
       {%- if product.selected_or_first_available_variant.unit_price_measurement -%}
         {% render 'unit-price',

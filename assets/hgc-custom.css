@@ -2303,19 +2303,37 @@ shopify-section[id="footer"] {
   text-overflow: ellipsis;
 }
 
-.vm-price-row, .price__sale {
+.vm-price-row {
   display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 12px !important;
-  flex-wrap: wrap !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
   margin-bottom: 8px !important;
+}
+
+.price__sale {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 6px !important;
+}
+
+.vm-price-top-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.vm-price-bottom-row {
+  display: flex !important;
+  align-items: center !important;
 }
 
 .price__sale * {
   display: inline-flex !important;
   align-items: center !important;
 }
+
 
 .slider-buttons {
   margin-bottom: 25px !important;
