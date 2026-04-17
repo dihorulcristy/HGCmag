@@ -37,7 +37,7 @@
 
   /* ── Spacing ── */
   --vm-max-width:      1200px;
-  --vm-section-pad-v:  72px;
+  --vm-section-pad-v:  0px;
   --vm-section-pad-h:  48px;
   --vm-gap:            16px;
   --vm-gap-lg:         24px;
