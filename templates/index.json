@@ -166,7 +166,7 @@
           "type": "button",
           "settings": {
             "button_label": "Despre Noi",
-            "button_link": "shopify:\/\/pages\/despre-noi",
+            "button_link": "shopify://pages/despre-noi",
             "button_style_secondary": true
           }
         }
@@ -242,15 +242,15 @@
         "heading_size": "h2",
         "description": "",
         "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
+        "description_style": "uppercase",
+        "columns_desktop": 6,
+        "enable_desktop_slider": true,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "button",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "image_ratio": "portrait",
-        "image_shape": "default",
+        "image_shape": "blob",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,

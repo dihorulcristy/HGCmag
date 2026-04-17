@@ -14,13 +14,6 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-1": {
-          "type": "link_list",
-          "settings": {
-            "heading": "Info",
-            "menu": "footer"
-          }
-        },
         "footer-2": {
           "type": "text",
           "settings": {
@@ -30,11 +23,10 @@
         }
       },
       "block_order": [
-        "footer-1",
         "footer-2"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
