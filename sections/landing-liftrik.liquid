@@ -174,15 +174,16 @@
   .lt-bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; text-align: center; }
   .lt-bundle-card { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); border-radius: 10px; cursor: pointer; position: relative; transition: all 0.2s; display: flex; flex-direction: column; overflow: hidden; align-items: center; }
   .lt-bundle-card.active { border-color: var(--lt-rose); border-width: 2px; background: var(--lt-bg); }
-  .lt-bundle-banner { width: 100%; background: var(--lt-navy); color: #fff; text-align: center; padding: 6px; font-size: 11px; font-weight: 700; font-family: 'Inter', sans-serif; text-transform: uppercase; }
+  .lt-bundle-banner { width: 100%; background: var(--lt-navy); color: #fff; text-align: center; padding: 6px; font-size: 11px; font-weight: 700; font-family: 'Inter', sans-serif; text-transform: uppercase; min-height: 27px; display: flex; align-items: center; justify-content: center; }
   .lt-bundle-banner.rose { background: var(--lt-rose); }
-  .lt-bundle-content { padding: 24px 20px; position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; }
-  .lt-radio-circle { position: absolute; top: 20px; right: 20px; width: 18px; height: 18px; border: 2px solid var(--lt-border); border-radius: 50%; opacity: 0.5; }
+  .lt-bundle-banner.empty { background: transparent; visibility: hidden; }
+  .lt-bundle-content { padding: 24px 20px; position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
+  .lt-radio-circle { position: absolute; top: 20px; right: 20px; width: 18px; height: 18px; border: 2px solid var(--lt-border); border-radius: 50%; opacity: 0.5; z-index: 2; }
   .lt-bundle-card.active .lt-radio-circle { border-color: var(--lt-rose); background: radial-gradient(circle, var(--lt-rose) 40%, transparent 40%); opacity: 1; }
   
-  .lt-bundle-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 4px; line-height: 1.2; }
-  .lt-bundle-sub { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--lt-rose); }
-  .lt-bundle-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--lt-text-muted); line-height: 1.5; margin-bottom: 20px; min-height: 48px; }
+  .lt-bundle-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; line-height: 1.2; min-height: 42px; display: flex; align-items: center; justify-content: center; }
+  .lt-bundle-sub { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--lt-rose); min-height: 20px; }
+  .lt-bundle-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--lt-text-muted); line-height: 1.5; margin-bottom: 20px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
   
   .lt-bundle-price-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 12px 0 8px; width: 100%; }
   .lt-bundle-price { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; color: var(--lt-navy); }
@@ -488,6 +489,7 @@
     <div class="lt-bundle-grid" id="ltBundleGrid">
       <!-- Option 1 -->
       <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON">
+        <div class="lt-bundle-banner empty">&nbsp;</div>
         <div class="lt-bundle-content">
           <div class="lt-radio-circle"></div>
           <div class="lt-bundle-title">Pachetul de Test</div>
