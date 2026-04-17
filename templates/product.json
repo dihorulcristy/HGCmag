@@ -65,8 +65,10 @@
           }
         },
         "description": {
-          "type": "description",
-          "settings": {}
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'vibemag-product-tabs' %}"
+          }
         }
       },
       "block_order": [
