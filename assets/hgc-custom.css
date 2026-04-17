@@ -83,6 +83,7 @@ h1, h2, h3, h4, h5, h6,
   color: var(--vm-text-dark) !important;
   letter-spacing: -0.01em !important;
   line-height: 1.2 !important;
+  border: none !important;
 }
 
 /* ── Global Paragraphs ── */
@@ -246,7 +247,7 @@ p, li, span, label {
 .announcement-bar-section .utility-bar {
   background: linear-gradient(90deg, var(--vm-navy) 0%, var(--vm-navy-mid) 50%, var(--vm-navy) 100%) !important;
   padding: 0.85rem 0 !important;
-  border-bottom: 1px solid rgba(0, 197, 179, 0.25) !important;
+  border: none !important;
   position: relative;
   overflow: hidden;
 }
@@ -304,7 +305,7 @@ sticky-header,
 
 .header-wrapper {
   background-color: var(--vm-navy) !important;
-  border-bottom: 1px solid rgba(0, 197, 179, 0.15) !important;
+  border: none !important;
   transition:
     box-shadow 0.3s ease,
     background-color 0.3s ease !important;
