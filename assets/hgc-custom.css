@@ -1420,8 +1420,15 @@ textarea:focus {
    FOOTER — Hide native Dawn footer (replaced by custom-liquid section)
    =================================================================== */
 
-/* Hide the empty native footer rendered by Dawn */
-#shopify-section-footer { display: none !important; }
+#shopify-section-footer,
+.footer-group #shopify-section-footer,
+shopify-section[id="footer"] {
+  display: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
 
 
 .footer {
