@@ -2516,3 +2516,89 @@ shopify-section[id="footer"] {
     padding-left: 22px !important;
   }
 }
+
+/* ── Product Page: Horizontal Trust Bar ── */
+
+.vm-trust-container {
+  background-color: #f4f9f9 !important;
+  border: 1px solid #e0eeec !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  margin-top: 15px !important;
+  margin-bottom: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.vm-trust-row {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.vm-trust-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex: 1 !important;
+}
+
+.vm-trust-icon {
+  width: 18px !important;
+  height: 18px !important;
+  color: var(--vm-teal) !important;
+  flex-shrink: 0 !important;
+}
+
+.vm-trust-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1px !important;
+}
+
+.vm-trust-title {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #1a2b32 !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+.vm-trust-subtitle {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 11px !important;
+  color: #6b7b80 !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+.vm-trust-divider {
+  width: 1px !important;
+  height: 28px !important;
+  background-color: #e0eeec !important;
+  margin: 0 10px !important;
+}
+
+@media (max-width: 749px) {
+  .vm-trust-container {
+    padding: 12px 8px !important;
+  }
+  .vm-trust-item {
+    gap: 6px !important;
+  }
+  .vm-trust-icon {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .vm-trust-title {
+    font-size: 9px !important;
+  }
+  .vm-trust-subtitle {
+    font-size: 9px !important;
+  }
+  .vm-trust-divider {
+    margin: 0 6px !important;
+  }
+}
+
