@@ -1730,11 +1730,22 @@ textarea:focus {
     text-align: left !important;
   }
 
-  /* PRODUCT GRID — 2 columns on mobile (Dawn flexbox: .grid__item width) */
-  .grid--2-col-tablet-down .grid__item,
-  .grid--1-col-tablet-down .grid__item {
+  /* PRODUCT GRID — 2 columns on mobile (Only for collection/product grids) */
+  .featured-collection .grid--2-col-tablet-down .grid__item,
+  .featured-collection .grid--1-col-tablet-down .grid__item,
+  .collection .grid--2-col-tablet-down .grid__item,
+  .collection .grid--1-col-tablet-down .grid__item,
+  .product-grid .grid--2-col-tablet-down .grid__item,
+  .product-grid .grid--1-col-tablet-down .grid__item {
     width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
     max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+  }
+
+  /* Specific fix for multicolumn trust pillars to be full-width on mobile */
+  .multicolumn-list__item.grid__item {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 1.6rem;
   }
 
   /* Tighter card content on 2-col mobile */
