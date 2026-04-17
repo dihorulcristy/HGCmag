@@ -1417,19 +1417,28 @@ textarea:focus {
 }
 
 /* ===================================================================
-   FOOTER REFINEMENTS — Contrast fixes
+   FOOTER REFINEMENTS — Contrast & Layout
    =================================================================== */
+
+.footer {
+  border-top: none !important;
+}
 
 .footer__copyright,
 .copyright__content,
 .copyright__content a,
-.policies .copyright__content a {
+.policies .copyright__content a,
+.footer-block__heading,
+.footer-block__details-content.rte,
+.footer-block__details-content p,
+.footer-block__details-content a {
   color: var(--vm-navy) !important;
   opacity: 1 !important;
   text-decoration: none !important;
 }
 
-.copyright__content a:hover {
+.copyright__content a:hover,
+.footer-block__details-content a:hover {
   text-decoration: underline !important;
   opacity: 0.8 !important;
 }
