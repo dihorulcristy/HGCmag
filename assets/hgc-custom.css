@@ -1430,6 +1430,17 @@ shopify-section[id="footer"] {
   margin: 0 !important;
 }
 
+/* ===================================================================
+   SECTION GAP FIX — Remove Shopify's automatic spacing between sections
+   =================================================================== */
+[id$="__social_proof_bar"],
+[id$="__multicolumn"],
+[id$="__customer_reviews"],
+[id$="__promo_banner"],
+[id$="__custom_footer"] {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
 
 .footer {
   border-top: none !important;
