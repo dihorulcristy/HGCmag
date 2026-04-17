@@ -1085,6 +1085,8 @@ sticky-header,
 .footer {
   border-top: 1px solid rgba(0, 197, 179, 0.18) !important;
   background-color: var(--vm-navy) !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .footer-block__heading {
@@ -1360,7 +1362,7 @@ sticky-header,
    =================================================================== */
 
 .color-scheme-1 {
-  background-color: var(--vm-off-white) !important;
+  background-color: var(--vm-white) !important;
 }
 .color-scheme-2 {
   background-color: var(--vm-grey-light) !important;
@@ -1385,15 +1387,9 @@ sticky-header,
 .section-full-width > hr,
 .shopify-section > hr,
 hr {
+  display: none !important;
   border: none !important;
-  height: 1px !important;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(0, 197, 179, 0.28) 25%,
-    rgba(0, 197, 179, 0.28) 75%,
-    transparent 100%
-  ) !important;
+  height: 0 !important;
   margin: 0 !important;
 }
 
