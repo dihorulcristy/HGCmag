@@ -98,8 +98,8 @@
         "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "image_with_text": {
@@ -154,8 +154,8 @@
         "mobile_content_alignment": "left",
         "section_color_scheme": "scheme-1",
         "color_scheme": "scheme-1",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "collection_list": {
@@ -194,8 +194,8 @@
         "show_view_all": true,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "customer_reviews": {
