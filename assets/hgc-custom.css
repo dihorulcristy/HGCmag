@@ -2569,14 +2569,16 @@ shopify-section[id="footer"] {
 .vm-trust-row {
   display: flex !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
 }
 
 .vm-trust-item {
   display: flex !important;
   align-items: center !important;
+  justify-content: center !important;
   gap: 12px !important;
-  flex: 0 1 auto !important;
+  flex: 1 !important;
 }
 
 .vm-trust-icon {
@@ -2613,7 +2615,7 @@ shopify-section[id="footer"] {
   width: 1px !important;
   height: 28px !important;
   background-color: #e0eeec !important;
-  margin: 0 25px !important;
+  flex-shrink: 0 !important;
 }
 
 @media (max-width: 749px) {
