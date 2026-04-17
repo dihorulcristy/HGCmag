@@ -1426,48 +1426,98 @@ textarea:focus {
   max-width: 56ch;
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.8rem !important;
+}
+
+/* ===================================================================
+   IMAGE WITH TEXT — Badge / Cinematic section
+   =================================================================== */
+
+.image-with-text {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.image-with-text__content {
+  padding: 6rem !important;
+}
+
+.image-with-text__heading {
+  font-size: 3.2rem !important;
+  letter-spacing: -0.02em !important;
+}
+
+@media screen and (max-width: 749px) {
+  .image-with-text__content {
+    padding: 3.2rem 2rem !important;
+  }
 }
 
 /* ===================================================================
    TRUST PILLARS (Multicolumn — De Ce VibeMag)
    =================================================================== */
 
-/* The multicolumn section used as trust bar */
+/* Use Dawn's flexbox system, but enhance the card appearance */
 .multicolumn .multicolumn-list {
-  display: grid !important;
-  grid-template-columns: repeat(3, 1fr) !important;
-  gap: 2.4rem !important;
+  justify-content: center !important;
 }
 
-/* Icon area — teal circle behind each column icon */
+.grid--3-col-desktop .grid__item {
+  width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3) !important;
+  max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3) !important;
+}
+
+/* The card itself */
+.multicolumn-card {
+  height: 100% !important;
+  background: var(--vm-white) !important;
+  border-radius: 12px !important;
+  padding: 4rem 3.2rem !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.multicolumn-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+}
+
+/* Icon / Image wrapper — Teal Circle */
 .multicolumn-card__image-wrapper {
-  width: 5.6rem !important;
-  height: 5.6rem !important;
+  width: 6.4rem !important;
+  height: 6.4rem !important;
+  min-height: 6.4rem !important;
   border-radius: 50% !important;
   background: var(--vm-teal-light) !important;
+  margin: 0 auto 2.4rem !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: 0 auto 1.6rem !important;
-  font-size: 2.4rem !important;
-  line-height: 1 !important;
+  border: 1px solid rgba(0, 153, 153, 0.1) !important;
 }
 
-/* Desktop trust pillar cards — vertical / centered */
-.multicolumn-card {
-  padding: 3.6rem 2.8rem !important;
-  text-align: center !important;
-  display: block !important;
+.multicolumn-card__image-wrapper .media {
+  background: transparent !important;
 }
 
+/* Typography in cards */
 .multicolumn-card__title {
-  font-size: 1.6rem !important;
-  margin-bottom: 1.2rem !important;
+  font-size: 1.8rem !important;
+  font-weight: 600 !important;
+  margin-bottom: 1.4rem !important;
+  color: var(--vm-navy) !important;
+  letter-spacing: -0.01em !important;
 }
 
 .multicolumn-card .rte {
-  font-size: 1.5rem !important;
-  line-height: 1.7 !important;
+  font-size: 1.6rem !important;
+  line-height: 1.6 !important;
+  color: var(--vm-grey-dark) !important;
+  max-width: 28ch !important;
+  margin: 0 auto !important;
 }
 
 
@@ -1478,11 +1528,16 @@ textarea:focus {
      .grid--2-col-tablet-down .grid__item { width: 50% } (at max-width: 749px)
    =================================================================== */
 
-/* Desktop ≥90px: enforce 4 columns */
+/* Desktop ≥990px: enforce 4 columns for product grids and 3 for others if needed */
 @media screen and (min-width: 990px) {
   .grid--4-col-desktop .grid__item {
     width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
     max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
+  }
+
+  .grid--3-col-desktop .grid__item {
+    width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3) !important;
+    max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3) !important;
   }
 
   .card__content {
