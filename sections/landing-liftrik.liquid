@@ -189,7 +189,9 @@
   .lt-bundle-price { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; color: var(--lt-navy); }
   .lt-bundle-price.small { font-size: 24px; }
   .lt-bundle-old { font-size: 16px; text-decoration: line-through; opacity: 0.4; color: var(--lt-navy); }
-  .lt-bundle-save { background: var(--lt-rose); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; margin-bottom: 4px; display: inline-block; }
+  .lt-bundle-save-wrap { min-height: 24px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; width: 100%; }
+  .lt-bundle-save { background: var(--lt-rose); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; display: inline-block; }
+  .lt-bundle-save.hidden { visibility: hidden; }
   .lt-bundle-shipping { display: block; font-size: 12px; color: #9aa5a8; margin-top: 4px; }
   .lt-bundle-free { color: var(--lt-teal); font-weight: 700; font-size: 13px; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
 
@@ -495,6 +497,9 @@
           <div class="lt-bundle-title">Pachetul de Test</div>
           <div class="lt-bundle-sub">1 Cutie · 40 Plasturi</div>
           <p class="lt-bundle-desc">Ideal pentru a testa efectul de lifting invizibil.</p>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save hidden">Empty</span>
+          </div>
           <div class="lt-bundle-price-row">
             <span class="lt-bundle-price small">110 RON</span>
           </div>
@@ -510,7 +515,9 @@
           <div class="lt-bundle-title">Tratamentul Complet</div>
           <div class="lt-bundle-sub">3 Cutii · 120 Plasturi</div>
           <p class="lt-bundle-desc">Rutina perfectă pentru un efect susținut în fiecare zi.</p>
-          <span class="lt-bundle-save">Economisești 181 RON</span>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save">Economisești 181 RON</span>
+          </div>
           <div class="lt-bundle-price-row">
             <span class="lt-bundle-price">149 RON</span>
             <span class="lt-bundle-old">330 RON</span>
@@ -530,7 +537,9 @@
           <div class="lt-bundle-title">Stocul de Beauty</div>
           <div class="lt-bundle-sub">5 Cutii · 200 Plasturi</div>
           <p class="lt-bundle-desc">Pentru clientele care folosesc plasturii zilnic. Cel mai mic preț per cutie!</p>
-          <span class="lt-bundle-save">Economisești 351 RON</span>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save">Economisești 351 RON</span>
+          </div>
           <div class="lt-bundle-price-row">
             <span class="lt-bundle-price">199 RON</span>
             <span class="lt-bundle-old">550 RON</span>
