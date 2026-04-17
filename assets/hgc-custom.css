@@ -1472,22 +1472,17 @@ textarea:focus {
 
 
 /* ===================================================================
-   PRODUCT CARDS — Grid column overrides using Dawn's class system
+   PRODUCT CARDS — Flexbox grid overrides (Dawn uses flex, NOT CSS grid)
+   Dawn class reference:
+     .grid--4-col-desktop .grid__item { width: 25% }  (at min-width: 990px)
+     .grid--2-col-tablet-down .grid__item { width: 50% } (at max-width: 749px)
    =================================================================== */
 
-/* Dawn generates: grid--4-col-desktop, grid--2-col-tablet-down etc.
-   We target these to enforce our column counts correctly */
-
-/* Desktop: 4 columns */
+/* Desktop ≥90px: enforce 4 columns */
 @media screen and (min-width: 990px) {
-  .grid--4-col-desktop {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 2.4rem !important;
-  }
-
-  .grid--3-col-desktop {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 2.4rem !important;
+  .grid--4-col-desktop .grid__item {
+    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
+    max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4) !important;
   }
 
   .card__content {
@@ -1504,14 +1499,14 @@ textarea:focus {
   }
 }
 
-/* Tablet 750-989px: 2 columns for product grids */
+/* Tablet 750-989px: enforce 2 columns for product grids */
 @media screen and (min-width: 750px) and (max-width: 989px) {
-  .grid--4-col-desktop,
-  .grid--3-col-desktop {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 2rem !important;
+  .grid--4-col-desktop .grid__item {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2) !important;
   }
 }
+
 
 /* Card images always maintain aspect ratio */
 .card__media {
@@ -1640,11 +1635,11 @@ textarea:focus {
     text-align: left !important;
   }
 
-  /* PRODUCT GRID — 2 columns on mobile (Dawn class: grid--2-col-tablet-down) */
-  .grid--2-col-tablet-down,
-  .grid--1-col-tablet-down {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 1.2rem !important;
+  /* PRODUCT GRID — 2 columns on mobile (Dawn flexbox: .grid__item width) */
+  .grid--2-col-tablet-down .grid__item,
+  .grid--1-col-tablet-down .grid__item {
+    width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
+    max-width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2) !important;
   }
 
   /* Tighter card content on 2-col mobile */
@@ -1744,16 +1739,6 @@ textarea:focus {
     font-size: clamp(3rem, 7vw, 5.5rem) !important;
   }
 
-  .grid.product-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 2rem !important;
-  }
-
-  .multicolumn .multicolumn-list {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.6rem !important;
-  }
-
   .multicolumn-card {
     padding: 2.4rem 1.6rem !important;
   }
@@ -1764,10 +1749,6 @@ textarea:focus {
    =================================================================== */
 
 @media screen and (min-width: 1200px) {
-  .grid.product-grid {
-    gap: 2.4rem !important;
-  }
-
   .card__content {
     padding: 2rem 1.8rem !important;
   }
