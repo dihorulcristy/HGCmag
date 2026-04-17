@@ -145,12 +145,12 @@
         "pick_up_available_at_html": "Ridicare disponibilă la <span class=\"color-foreground\">{{ location_name }}</span>",
         "pick_up_unavailable_at_html": "Ridicare indisponibilă momentan la <span class=\"color-foreground\">{{ location_name }}</span>",
         "unavailable": "Nu am putut încărca disponibilitatea pentru ridicare",
-        "refresh": "Reîmprospătați",
-        "only_one_left": "Ultimul produs în stoc!",
-        "only_x_left": "Doar {{ quantity }} bucăți în stoc!",
-        "people_viewing": "persoane văd acest produs acum",
-        "sale_ends_soon": "Ofertă limitată — preț redus activ"
+        "refresh": "Reîmprospătați"
       },
+      "only_one_left": "Ultimul produs în stoc!",
+      "only_x_left": "Doar {{ quantity }} bucăți în stoc!",
+      "people_viewing": "persoane văd acest produs acum",
+      "sale_ends_soon": "Ofertă limitată — preț redus activ",
       "media": {
         "open_media": "Deschide conținutul media {{ index }} într-o fereastră modală",
         "play_model": "Redați în vizualizatorul 3D",

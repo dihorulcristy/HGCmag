@@ -2264,7 +2264,7 @@ shopify-section[id="footer"] {
 .vm-product-badges {
   display: flex;
   gap: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
