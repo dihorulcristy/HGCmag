@@ -193,56 +193,9 @@
       }
     },
     "customer_reviews": {
-      "type": "multicolumn",
-      "blocks": {
-        "review-1": {
-          "type": "column",
-          "settings": {
-            "title": "★★★★★",
-            "text": "<p>\"Produsul a ajuns în 3 zile, ambalaj impecabil. Calitatea e superioară față de ce găsești pe alte site-uri.\"</p><p><strong>— Maria D., București</strong></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "review-2": {
-          "type": "column",
-          "settings": {
-            "title": "★★★★★",
-            "text": "<p>\"Am comandat de 3 ori deja. De fiecare dată rapid și exact cum e descris. Recomand cu încredere!\"</p><p><strong>— Alexandru P., Cluj</strong></p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "review-3": {
-          "type": "column",
-          "settings": {
-            "title": "★★★★★",
-            "text": "<p>\"Suportul a fost excelent când am avut o întrebare. Au răspuns în mai puțin de o oră. Produs de calitate.\"</p><p><strong>— Ioana M., Timișoara</strong></p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "review-1",
-        "review-2",
-        "review-3"
-      ],
+      "type": "custom-liquid",
       "settings": {
-        "title": "Ce spun clienții noștri",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "none",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 72,
-        "padding_bottom": 72
+        "custom_liquid": "<style>.vm-rev{background:#f4f9f9;padding:72px 0}.vm-rev-inner{max-width:1200px;margin:0 auto;padding:0 48px}.vm-rev h2{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:700;color:#1a2b32;margin-bottom:8px;text-align:center}.vm-rev-sub{text-align:center;font-size:1.4rem;color:#6b7b80;margin-bottom:48px}.vm-rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.vm-rev-card{background:#fff;border:1px solid #e0eeec;border-radius:10px;padding:28px 24px;display:flex;flex-direction:column;gap:16px;position:relative}.vm-rev-quote{font-family:'Georgia',serif;font-size:5rem;color:#2abfb0;line-height:1;position:absolute;top:12px;left:20px;opacity:0.25}.vm-rev-stars{color:#f5a623;font-size:1.6rem;letter-spacing:2px}.vm-rev-text{font-size:1.4rem;color:#6b7b80;line-height:1.75;font-style:italic;padding-top:12px}.vm-rev-author{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:700;color:#1a2b32;border-top:1px solid #f0f4f4;padding-top:16px;margin-top:auto}@media(max-width:749px){.vm-rev-inner{padding:0 20px}.vm-rev{padding:48px 0}.vm-rev-grid{grid-template-columns:1fr;gap:16px}}</style><div class='vm-rev'><div class='vm-rev-inner'><h2>Ce Spun Clienții Noștri</h2><p class='vm-rev-sub'>Peste 200 de recenzii verificate · Rating mediu 4.8/5</p><div class='vm-rev-grid'><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Produsul a ajuns în 3 zile, ambalaj impecabil. Calitatea e superioară față de ce găsești pe alte site-uri din România.</p><div class='vm-rev-author'>Maria D. — București</div></div><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Am comandat de 3 ori deja. De fiecare dată rapid și exact cum e descris. Recomand cu încredere!</p><div class='vm-rev-author'>Alexandru P. — Cluj-Napoca</div></div><div class='vm-rev-card'><div class='vm-rev-quote'>\"</div><div class='vm-rev-stars'>★★★★★</div><p class='vm-rev-text'>Suportul a fost excelent când am avut o întrebare. Au răspuns în mai puțin de o oră. Produs de calitate.</p><div class='vm-rev-author'>Ioana M. — Timișoara</div></div></div></div></div>"
       }
     }
   },
