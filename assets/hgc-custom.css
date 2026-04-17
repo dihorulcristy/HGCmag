@@ -2988,3 +2988,27 @@ shopify-section[id="footer"] {
     margin-bottom: 20px !important;
   }
 }
+
+/* ── Price and Rating Spacing Fixes ── */
+.price--on-sale .price__sale {
+  gap: 0 !important;
+}
+
+.vm-price-subtext {
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
+  font-size: 11px !important;
+  color: #9aa5a8 !important;
+  font-family: var(--vm-font-body);
+}
+
+/* Reduce gap between price block and the next block (rating/stock) */
+.product__info-container > #price-{{ section.id }} + *,
+.product__info-container > [id^="price-"] + * {
+  margin-top: 4px !important;
+}
+
+.product__info-container > * + [id^="Inventory-"],
+.product__info-container > * + .vm-reviews-inline {
+  margin-top: 4px !important;
+}
