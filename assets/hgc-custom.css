@@ -6,37 +6,50 @@
 /* === GOOGLE FONTS IMPORT === */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
-/* === VIBEMAG BRAND TOKENS === */
+/* === VIBEMAG DESIGN SYSTEM TOKENS === */
 :root {
-  /* Core Brand Palette */
-  --vm-teal: #00c5b3;
-  --vm-teal-dark: #009e90;
-  --vm-teal-deeper: #007a6e;
-  --vm-teal-light: rgba(0, 197, 179, 0.12);
-  --vm-teal-glow: 0 6px 30px rgba(0, 197, 179, 0.38);
-  --vm-teal-gradient: linear-gradient(135deg, #00e5cc 0%, #00c5b3 50%, #009e90 100%);
+  /* ── Brand Colors ── */
+  --vm-teal:           #2abfb0;
+  --vm-teal-dark:      #1fa89a;
+  --vm-teal-light:     #f4f9f9;
+  --vm-teal-mid:       #e0eeec;
+  --vm-navy:           #1a2b32;
+  --vm-white:          #ffffff;
+  --vm-bg-light:       #f7f9f9;
+  --vm-text-dark:      #1a2b32;
+  --vm-text-muted:     #6b7b80;
+  --vm-text-body:      #4a5568;
+  --vm-border:         #e0eeec;
 
-  /* Neutrals */
-  --vm-navy: #0d1b2a;
-  --vm-navy-mid: #162236;
-  --vm-navy-soft: #1e2f42;
-  --vm-white: #ffffff;
-  --vm-off-white: #fafffe;
-  --vm-grey-light: #f0fffe;
-  --vm-grey-mid: #e8f6f5;
-  --vm-text-dark: #0d1b2a;
-  --vm-text-muted: rgba(13, 27, 42, 0.55);
-  --vm-text-light: rgba(255, 255, 255, 0.85);
+  /* ── Legacy aliases (keep for backward compat) ── */
+  --vm-teal-deeper:    #1a8f84;
+  --vm-teal-glow:      0 6px 20px rgba(42, 191, 176, 0.25);
+  --vm-navy-mid:       #1e3340;
+  --vm-navy-soft:      #243d4a;
+  --vm-off-white:      #f7f9f9;
+  --vm-grey-light:     #f4f9f9;
+  --vm-grey-mid:       #e0eeec;
+  --vm-text-light:     rgba(255,255,255,0.85);
 
-  /* Typography */
-  --vm-font-heading: 'Inter', -apple-system, sans-serif;
-  --vm-font-body: 'DM Sans', -apple-system, sans-serif;
+  /* ── Typography ── */
+  --vm-font-heading:   'Inter', -apple-system, sans-serif;
+  --vm-font-body:      'DM Sans', -apple-system, sans-serif;
 
-  /* Animation */
-  --vm-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --vm-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --vm-transition: 0.32s var(--vm-ease);
+  /* ── Spacing ── */
+  --vm-max-width:      1200px;
+  --vm-section-pad-v:  72px;
+  --vm-section-pad-h:  48px;
+  --vm-gap:            16px;
+  --vm-gap-lg:         24px;
+  --vm-gap-xl:         64px;
+
+  /* ── Animation ── */
+  --vm-ease:           cubic-bezier(0.22, 1, 0.36, 1);
+  --vm-transition:     0.2s ease;
   --vm-transition-fast: 0.18s ease;
+
+  /* ── Teal gradient (legacy) ── */
+  --vm-teal-gradient:  linear-gradient(135deg, #2abfb0 0%, #1fa89a 100%);
 }
 
 /* ===================================================================
@@ -49,36 +62,180 @@
 
 body {
   font-family: var(--vm-font-body) !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: var(--vm-text-body) !important;
+  background-color: var(--vm-white);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--vm-off-white);
-  color: var(--vm-text-dark);
 }
 
-/* Force Inter on ALL headings */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h0,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6,
-.hxl,
-.hxxl,
+/* ── Global Headings ── */
+h1, h2, h3, h4, h5, h6,
+.h0, .h1, .h2, .h3, .h4, .h5, .h6,
+.hxl, .hxxl,
 .section-header__title,
 .card__heading,
 .banner__heading,
 .image-with-text__heading {
   font-family: var(--vm-font-heading) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.02em !important;
-  line-height: 1.1 !important;
+  font-weight: 700 !important;
+  color: var(--vm-text-dark) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+}
+
+/* ── Global Paragraphs ── */
+p, li, span, label {
+  font-family: var(--vm-font-body);
+  color: var(--vm-text-muted);
+  line-height: 1.75;
+}
+
+/* ===================================================================
+   GLOBAL DESIGN SYSTEM — Buttons, Cards, Layout, Icons
+   =================================================================== */
+
+/* ── Primary Button ── */
+.button, .btn,
+.shopify-payment-button__button,
+[class*="button--primary"],
+.product-form__submit {
+  background: var(--vm-teal) !important;
+  color: var(--vm-white) !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+  padding: 13px 32px !important;
+  border: none !important;
+  transition: background var(--vm-transition) !important;
+  cursor: pointer;
+}
+
+.button:hover, .btn:hover,
+.product-form__submit:hover,
+[class*="button--primary"]:hover {
+  background: var(--vm-teal-dark) !important;
+}
+
+/* ── Secondary Button ── */
+[class*="button--secondary"],
+.button.button--secondary {
+  background: transparent !important;
+  border: 1.5px solid var(--vm-teal) !important;
+  color: var(--vm-teal) !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  border-radius: 4px !important;
+  padding: 13px 32px !important;
+  transition: background var(--vm-transition) !important;
+}
+
+[class*="button--secondary"]:hover,
+.button.button--secondary:hover {
+  background: var(--vm-teal-light) !important;
+}
+
+/* ── Section Layout Container ── */
+.vm-container {
+  max-width: var(--vm-max-width);
+  margin: 0 auto;
+  padding: 0 var(--vm-section-pad-h);
+}
+
+/* ── Section padding normalization for Dawn native sections ── */
+.section {
+  padding-top: var(--vm-section-pad-v);
+  padding-bottom: var(--vm-section-pad-v);
+}
+
+/* ── Section title (centered) ── */
+.section__title,
+.multicolumn .title,
+.featured-collection .title,
+.collection-list .title,
+.rich-text .title {
+  font-family: var(--vm-font-heading) !important;
+  font-size: 3rem !important;
+  font-weight: 700 !important;
+  color: var(--vm-text-dark) !important;
+  text-align: center !important;
+  margin-bottom: 4rem !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ── Card base ── */
+.card__inner,
+.card-wrapper .card {
+  background: var(--vm-white) !important;
+  border: 1px solid var(--vm-border) !important;
+  border-radius: 10px !important;
+}
+
+/* ── Product image: 1:1 ratio, cover, rounded ── */
+.card__media img,
+.card__media .media {
+  border-radius: 8px !important;
+  object-fit: cover !important;
+  aspect-ratio: 1 / 1 !important;
+}
+
+/* ── Icon container ── */
+.vm-icon-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--vm-teal-light);
+  border: 1px solid var(--vm-teal-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vm-icon-circle svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--vm-teal);
+  stroke-width: 1.75;
+  fill: none;
+}
+
+/* ── Eyebrow label ── */
+.vm-eyebrow {
+  font-family: var(--vm-font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--vm-teal);
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  body { font-size: 14px !important; }
+
+  h1 { font-size: 2.8rem !important; }
+  h2 { font-size: 2.2rem !important; }
+  h3 { font-size: 1.8rem !important; }
+
+  .section { padding-top: 48px; padding-bottom: 48px; }
+
+  .button, .btn,
+  .product-form__submit,
+  [class*="button--primary"],
+  [class*="button--secondary"] {
+    width: 100% !important;
+    text-align: center !important;
+  }
 }
 
 /* ===================================================================
