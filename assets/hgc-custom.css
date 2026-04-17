@@ -2444,13 +2444,15 @@ shopify-section[id="footer"] {
 }
 
 .vm-atc-microcopy {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 12px;
-  color: #6b7b80;
-  margin-bottom: 20px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 12px !important;
+  color: #6b7b80 !important;
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
 }
 
 .vm-atc-microcopy svg {
@@ -2565,14 +2567,14 @@ shopify-section[id="footer"] {
 .vm-trust-row {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
 }
 
 .vm-trust-item {
   display: flex !important;
   align-items: center !important;
   gap: 12px !important;
-  flex: 1 !important;
+  flex: 0 1 auto !important;
 }
 
 .vm-trust-icon {
