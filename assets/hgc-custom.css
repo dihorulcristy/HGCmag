@@ -1420,8 +1420,13 @@ textarea:focus {
    FOOTER REFINEMENTS — Contrast & Layout
    =================================================================== */
 
-.footer {
+.footer,
+.footer__content-bottom,
+.footer__content-top {
   border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  margin-top: 0 !important;
 }
 
 .footer__copyright,
