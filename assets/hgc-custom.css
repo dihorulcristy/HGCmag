@@ -1417,29 +1417,77 @@ textarea:focus {
 }
 
 /* ===================================================================
-   FOOTER REFINEMENTS — Contrast & Layout
+   FOOTER REFINEMENTS — Premium Dark Redesign
    =================================================================== */
 
-.footer,
-.footer__content-bottom,
-.footer__content-top {
+.footer {
   border-top: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
   margin-top: 0 !important;
+}
+
+.footer-block__heading {
+  color: #bf913b !important; /* Brand Gold */
+  font-family: var(--vm-font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 2rem !important;
+}
+
+/* First heading "VibeMag" styling */
+.footer-block:first-child .footer-block__heading {
+  color: var(--vm-white) !important;
+  font-size: 2.4rem !important;
+  text-transform: none !important;
+  letter-spacing: -0.02em !important;
+  margin-bottom: 1.2rem !important;
+}
+
+.footer-block__details-content.rte p {
+  color: rgba(255, 255, 255, 0.7) !important;
+  line-height: 1.6 !important;
+  font-size: 1.4rem !important;
 }
 
 .footer__copyright,
 .copyright__content,
-.copyright__content a,
-.policies .copyright__content a,
-.footer-block__heading,
-.footer-block__details-content.rte,
-.footer-block__details-content p,
-.footer-block__details-content a {
-  color: var(--vm-navy) !important;
-  opacity: 1 !important;
+.copyright__content a {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 1.2rem !important;
   text-decoration: none !important;
+}
+
+/* Bottom Bar Alignment — Copyright Left, Payment Right */
+.footer__content-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding-top: 2rem !important;
+  margin-top: 4rem !important;
+}
+
+.footer__content-bottom-wrapper {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-direction: row !important;
+}
+
+.footer__copyright {
+  text-align: left !important;
+  margin: 0 !important;
+}
+
+.footer__payment {
+  margin: 0 !important;
+}
+
+@media screen and (max-width: 749px) {
+  .footer__content-bottom-wrapper {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .footer__copyright {
+    text-align: center !important;
+  }
 }
 
 .copyright__content a:hover,

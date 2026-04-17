@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -14,30 +5,45 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "footer-2": {
+        "brand_info": {
           "type": "text",
           "settings": {
-            "heading": "Informații Legale",
-            "subtext": "<p><strong>HGC CAPITAL S.R.L.</strong></p><p>Strada Lungă 149, P3, 500051 Brașov, România.</p><p> Email: clienti@vibemag.ro<br/><br/><a href=\"https://anpc.ro\" target=\"_blank\">LINK ANPC</a> | <a href=\"/pages/politica-de-retur\">Retur 14 zile (UE 2011/83)</a></p>"
+            "heading": "VibeMag",
+            "subtext": "<p>Soluții inteligente pentru stilul tău de viață. Produse premium europene, livrate rapid în România.</p>"
+          }
+        },
+        "navigare": {
+          "type": "link_list",
+          "settings": {
+            "heading": "NAVIGARE",
+            "menu": "main-menu"
+          }
+        },
+        "informatii": {
+          "type": "link_list",
+          "settings": {
+            "heading": "INFORMAȚII",
+            "menu": "footer"
           }
         }
       },
       "block_order": [
-        "footer-2"
+        "brand_info",
+        "navigare",
+        "informatii"
       ],
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-4",
         "newsletter_enable": false,
-        "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": false,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "show_policy": true,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 64,
+        "padding_bottom": 48
       }
     }
   },
