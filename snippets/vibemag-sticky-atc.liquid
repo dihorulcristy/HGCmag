@@ -1,0 +1,47 @@
+{% comment %}
+  VibeMag Sticky Add to Cart (Mobile)
+{% endcomment %}
+
+<div id="vm-sticky-atc" class="vm-sticky-atc">
+  <div class="vm-sticky-atc__container">
+    <div class="vm-sticky-atc__info">
+      <div class="vm-sticky-atc__image">
+        <img src="{{ product.featured_image | img_url: '100x100', crop: 'center' }}" alt="{{ product.title }}" width="50" height="50" loading="lazy">
+      </div>
+      <div class="vm-sticky-atc__details">
+        <div class="vm-sticky-atc__price">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </div>
+      </div>
+    </div>
+    <div class="vm-sticky-atc__action">
+      <button type="button" class="vm-sticky-atc__button" onclick="document.querySelector('.product-form__submit').click()">
+        Adaugă în Coș
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const stickyAtc = document.getElementById('vm-sticky-atc');
+    const mainAtcButton = document.querySelector('.product-form__submit');
+
+    if (!stickyAtc || !mainAtcButton) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Show sticky when main button is NOT visible and we've scrolled past it
+        if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+          stickyAtc.classList.add('is-visible');
+        } else {
+          stickyAtc.classList.remove('is-visible');
+        }
+      });
+    }, {
+      threshold: 0
+    });
+
+    observer.observe(mainAtcButton);
+  });
+</script>

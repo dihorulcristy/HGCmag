@@ -727,6 +727,9 @@
       {{ product | structured_data }}
     </script>
   </div>
+{%- if request.path contains '/products/' -%}
+  {%- render 'vibemag-sticky-atc' -%}
+{%- endif -%}
 </product-info>
 
 {% schema %}
