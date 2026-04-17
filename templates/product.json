@@ -30,6 +30,12 @@
             "text_style": "subtitle"
           }
         },
+        "stock_bar": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'vibemag-stock-bar' %}"
+          }
+        },
         "price": {
           "type": "price",
           "settings": {}
@@ -67,6 +73,7 @@
         "title",
         "caption",
         "price",
+        "stock_bar",
         "urgency",
         "variant_picker",
         "quantity_selector",

@@ -2459,3 +2459,60 @@ shopify-section[id="footer"] {
 
 
 
+
+/* ── Product Page: Stock Urgency Bar ── */
+
+.vm-stock-urgency {
+  background-color: #fff8e6 !important;
+  border: 1px solid #f0c040 !important;
+  border-radius: 6px !important;
+  padding: 8px 14px !important;
+  width: 100% !important;
+  margin-top: 15px !important;
+  margin-bottom: 10px !important;
+  box-sizing: border-box !important;
+}
+
+.vm-stock-urgency__inner {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.vm-stock-urgency__left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #9a6c00 !important;
+}
+
+.vm-stock-urgency__icon {
+  width: 14px !important;
+  height: 14px !important;
+  color: #e6a817 !important;
+  flex-shrink: 0 !important;
+}
+
+.vm-stock-urgency__right {
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 11px !important;
+  color: #b8860b !important;
+  text-align: right !important;
+  white-space: nowrap !important;
+}
+
+@media (max-width: 480px) {
+  .vm-stock-urgency__inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+  .vm-stock-urgency__right {
+    text-align: left !important;
+    padding-left: 22px !important;
+  }
+}
