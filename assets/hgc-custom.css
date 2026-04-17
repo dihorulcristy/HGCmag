@@ -2396,13 +2396,23 @@ shopify-section[id="footer"] {
   .vm-price-subtext {
     text-align: center !important;
   }
-  .vm-stock-urgency__inner, .vm-stock-urgency__left {
+  .vm-stock-urgency__inner {
+    flex-direction: column !important;
+    gap: 6px !important;
+    justify-content: center !important;
+  }
+  .vm-stock-urgency__left {
     justify-content: center !important;
     text-align: center !important;
+    width: 100% !important;
+  }
+  .vm-stock-urgency__text {
+    font-size: 11px !important;
   }
   .vm-stock-urgency__right {
     text-align: center !important;
     padding-left: 0 !important;
+    width: 100% !important;
   }
   .vm-urgency-inner {
     justify-content: center !important;
