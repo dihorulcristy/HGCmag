@@ -63,7 +63,7 @@
           "type": "column",
           "settings": {
             "title": "Calitate Europeană",
-            "text": "<p>Spre deosebire de produsele importate din Asia, colecția noastră este fabricată în Spania — materiale superioare, standarde europene reale.</p>",
+            "text": "<p><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#2abfb0\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"display:block;margin:0 auto 16px\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg>Spre deosebire de produsele importate din Asia, colecția noastră este fabricată în Spania — materiale superioare, standarde europene reale.</p>",
             "link_label": "",
             "link": ""
           }
@@ -72,7 +72,7 @@
           "type": "column",
           "settings": {
             "title": "Calitate Garantată",
-            "text": "<p>Fiecare produs este verificat strict înainte de expediere. Dacă nu ești mulțumit, returnezi în 14 zile și primești banii înapoi integral.</p>",
+            "text": "<p><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#2abfb0\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"display:block;margin:0 auto 16px\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"9 12 11 14 15 10\"/></svg>Fiecare produs este verificat strict înainte de expediere. Dacă nu ești mulțumit, returnezi în 14 zile și primești banii înapoi integral.</p>",
             "link_label": "",
             "link": ""
           }
@@ -81,7 +81,7 @@
           "type": "column",
           "settings": {
             "title": "Suport Premium",
-            "text": "<p>Echipa noastră îți răspunde în maxim 2 ore, 7 zile din 7. Nu roboți, nu răspunsuri automate — oameni reali care te ajută.</p>",
+            "text": "<p><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#2abfb0\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"display:block;margin:0 auto 16px\"><path d=\"M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z\"/></svg>Echipa noastră îți răspunde în maxim 2 ore, 7 zile din 7. Nu roboți, nu răspunsuri automate — oameni reali care te ajută.</p>",
             "link_label": "",
             "link": ""
           }
