@@ -1425,6 +1425,11 @@ textarea:focus {
   margin-top: 0 !important;
 }
 
+.footer .grid {
+  column-gap: 4rem !important;
+  row-gap: 4rem !important;
+}
+
 .footer-block__heading {
   color: var(--vm-teal) !important; /* Brand Teal */
   font-family: var(--vm-font-heading) !important;
@@ -1434,23 +1439,27 @@ textarea:focus {
   margin-bottom: 2rem !important;
 }
 
-/* First heading "VibeMag" override (now using logo image, but keeping fallback style) */
-.footer-block:first-child .footer-block__heading {
-  color: var(--vm-white) !important;
-  font-size: 2.4rem !important;
-  text-transform: none !important;
-  letter-spacing: -0.02em !important;
-  margin-bottom: 1.2rem !important;
+/* Grouping Logo and Brand Text better */
+.footer-block:nth-child(1) {
+  width: auto !important;
+  flex: 0 0 150px !important;
+}
+
+.footer-block:nth-child(2) {
+  flex: 1 1 300px !important;
+  max-width: 400px !important;
 }
 
 .footer-block__image-wrapper {
-  margin-bottom: 2rem !important;
+  margin-bottom: 0 !important;
+  margin-top: 0.5rem;
 }
 
 .footer-block__details-content.rte p {
-  color: rgba(255, 255, 255, 0.7) !important;
-  line-height: 1.6 !important;
-  font-size: 1.4rem !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+  line-height: 1.5 !important;
+  font-size: 1.45rem !important;
+  margin-top: 0 !important;
 }
 
 .footer__copyright,
