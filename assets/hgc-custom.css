@@ -2258,3 +2258,104 @@ shopify-section[id="footer"] {
     font-size: 1.4rem !important;
   }
 }
+
+/* ── Product Page: Title & Price ── */
+
+.vm-product-badges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.vm-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: 1px solid var(--vm-teal);
+  color: var(--vm-teal);
+}
+
+.vm-badge--origin {
+  background-color: var(--vm-teal-light);
+}
+
+.vm-badge--brand {
+  background-color: var(--vm-white);
+}
+
+.vm-product-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  color: var(--vm-navy) !important;
+  line-height: 1.3 !important;
+  margin-bottom: 20px !important;
+  margin-top: 0 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vm-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.vm-price-sale {
+  font-family: 'Inter', sans-serif;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  color: var(--vm-navy) !important;
+}
+
+.vm-price-old {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px !important;
+  color: #9aa5a8 !important;
+  text-decoration: line-through !important;
+}
+
+.vm-price-pill {
+  background-color: var(--vm-teal) !important;
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 3px 12px !important;
+  border-radius: 20px !important;
+  text-transform: uppercase;
+}
+
+.vm-price-subtext {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px !important;
+  color: #9aa5a8 !important;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Hide default Dawn badges in the price snippet */
+.price--show-badge .price__badge-sale,
+.price--show-badge .price__badge-sold-out {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .vm-product-title {
+    font-size: 24px !important;
+  }
+  .vm-price-sale {
+    font-size: 22px !important;
+  }
+}
+
