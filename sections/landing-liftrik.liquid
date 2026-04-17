@@ -422,23 +422,24 @@
         <thead>
           <style>
             @media (max-width: 768px) {
-              .lt-comparison-table { table-layout: fixed !important; min-width: 450px !important; width: 100% !important; }
+              .lt-comparison-table { table-layout: fixed !important; min-width: auto !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
               .lt-comparison-table th, .lt-comparison-table td { 
                 word-break: break-all !important; 
                 white-space: normal !important;
-                padding: 10px 2px !important; 
-                font-size: 10px !important;
+                padding: 10px 1px !important; 
+                font-size: 9px !important;
                 text-align: center !important;
                 vertical-align: middle !important;
+                line-height: 1.1 !important;
               }
             }
           </style>
           <tr>
-            <th>Criteriu</th>
-            <th class="lt-table-highlight" style="color: var(--lt-rose)">LIFTRIK</th>
-            <th>Botox</th>
-            <th>Chirurgie</th>
-            <th>Creme</th>
+            <th style="width: 22% !important;">Criteriu</th>
+            <th class="lt-table-highlight" style="color: var(--lt-rose); width: 22% !important;">LIFTRIK</th>
+            <th style="width: 18% !important;">Botox</th>
+            <th style="width: 20% !important;">Chirurgie</th>
+            <th style="width: 18% !important;">Creme</th>
           </tr>
         </thead>
         <tbody>
