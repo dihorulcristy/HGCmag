@@ -354,6 +354,30 @@ sticky-header,
 }
 
 /* ===================================================================
+   SECTION SPACING — Seamless transitions
+   =================================================================== */
+
+.shopify-section {
+  margin: 0 !important;
+  display: block;
+}
+
+/* Header & Announcement Bar Full-Width */
+.header-wrapper,
+.shopify-section-group-header-group,
+.announcement-bar-section {
+  width: 100% !important;
+  max-width: 100% !important;
+  background-color: var(--vm-navy) !important;
+}
+
+.header-wrapper.color-scheme-3,
+.announcement-bar {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ===================================================================
    CTA BUTTONS — Teal Premium
    =================================================================== */
 
