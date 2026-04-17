@@ -2613,7 +2613,7 @@ shopify-section[id="footer"] {
   width: 1px !important;
   height: 28px !important;
   background-color: #e0eeec !important;
-  margin: 0 10px !important;
+  margin: 0 25px !important;
 }
 
 @media (max-width: 749px) {
