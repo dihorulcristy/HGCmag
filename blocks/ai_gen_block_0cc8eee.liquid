@@ -197,16 +197,33 @@
 }
 
 @media (max-width: 640px) {
+  .vm-reviews-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    text-align: center;
+  }
   .vm-reviews-summary {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 20px;
     padding: 20px;
   }
   .vm-divider { display: none; }
   .vm-reviews-right { width: 100%; }
-  .vm-rating-big { flex-direction: row; align-items: baseline; gap: 12px; }
-  .vm-rating-num { font-size: 36px; }
+  .vm-rating-big { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 8px; 
+  }
+  .vm-rating-num { font-size: 40px; }
+  .vm-reviews-cta {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
 }
 </style>
 
