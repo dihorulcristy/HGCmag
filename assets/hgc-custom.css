@@ -2452,4 +2452,10 @@ shopify-section[id="footer"] {
   color: #9aa5a8 !important;
 }
 
+/* Hide skip to product info link */
+.skip-to-content-link {
+  display: none !important;
+}
+
+
 
