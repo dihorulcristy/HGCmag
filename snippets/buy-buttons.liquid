@@ -88,15 +88,47 @@
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
+                Adaugă în Coș
               {%- endif -%}
             </span>
             {%- render 'loading-spinner' -%}
           </button>
+          
+          <div class="vm-atc-microcopy">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0a2 2 0 012 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a2 2 0 012-2m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
+            </svg>
+            <span>Livrare în 2-5 zile lucrătoare · Retur gratuit 14 zile</span>
+          </div>
+
+          <div class="vm-product-trust-badges" style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px; padding: 20px; border: 1px solid #e0eeec; border-radius: 8px; background: #fdfdfd;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg aria-hidden="true" focusable="false" style="width:18px;height:18px;color:#2abfb0;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z"/>
+              </svg>
+              <span style="font-weight: 600; font-size: 13px; color: #1a2b32;">14 Zile Simplu Pentru Retur</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg aria-hidden="true" focusable="false" style="width:18px;height:18px;color:#2abfb0;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+              </svg>
+              <span style="font-weight: 600; font-size: 13px; color: #1a2b32;">Satisfacție 100% Garantată</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <svg aria-hidden="true" focusable="false" style="width:18px;height:18px;color:#2abfb0;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              <span style="font-weight: 600; font-size: 13px; color: #1a2b32;">Plată Securizată & Livrare Rapidă</span>
+            </div>
+          </div>
+
           {%- if show_dynamic_checkout -%}
-            {{ form | payment_button }}
+            <div class="vm-payment-button-wrapper">
+              {{ form | payment_button }}
+            </div>
           {%- endif -%}
         </div>
+
       {%- endform -%}
     </product-form>
   {%- else -%}
