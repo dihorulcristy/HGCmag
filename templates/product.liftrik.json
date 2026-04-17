@@ -1,0 +1,12 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "main": {
+      "type": "landing-liftrik",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

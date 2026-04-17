@@ -1,0 +1,496 @@
+{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+
+<style>
+  :root {
+    --lt-bg: #fdf4f5;
+    --lt-rose: #c97b84;
+    --lt-navy: #2c1a1d;
+    --lt-teal: #2abfb0;
+    --lt-border: #eedfe1;
+    --lt-text-dark: #2c1a1d;
+    --lt-text-body: #4a5568;
+    --lt-serif: 'Playfair Display', serif;
+  }
+
+  .lt-section {
+    padding: 72px 0;
+    background: var(--lt-bg);
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .lt-section { padding: 48px 0; }
+  }
+
+  .lt-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .lt-serif-italic {
+    font-family: var(--lt-serif);
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  .lt-dm-sans {
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* 1. Announcement Bar */
+  .lt-announcement {
+    background: var(--lt-navy);
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .lt-announcement span { color: var(--lt-rose); font-weight: 700; }
+
+  /* 2. Hero */
+  .lt-hero {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .lt-badge-pill {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--lt-rose);
+    color: var(--lt-rose);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .lt-hero-h1 {
+    font-size: clamp(32px, 5vw, 54px);
+    line-height: 1.1;
+    color: var(--lt-navy);
+    margin-bottom: 24px;
+  }
+
+  .lt-hero-subtext {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--lt-text-body);
+    margin-bottom: 32px;
+  }
+
+  .lt-rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+  }
+  .lt-stars { color: var(--lt-teal); display: flex; gap: 4px; }
+  .lt-stars svg { width: 18px; height: 18px; fill: currentColor; }
+
+  .lt-btn {
+    display: inline-block;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform 0.2s, background 0.2s;
+    cursor: pointer;
+    text-align: center;
+  }
+  .lt-btn-rose { background: var(--lt-rose); color: #fff; }
+  .lt-btn-rose:hover { background: #b16a72; transform: translateY(-2px); }
+
+  .lt-trust-small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--lt-text-body);
+  }
+
+  .lt-hero-image-wrap { position: relative; }
+  .lt-floating-badge {
+    position: absolute;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    z-index: 2;
+  }
+  .badge-white { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); bottom: 20px; left: -20px; }
+  .badge-navy { background: var(--lt-navy); color: #fff; top: 20px; right: -20px; }
+
+  /* 3. Problem */
+  .lt-problem { background: #fff; border-top: 1px solid var(--lt-border); }
+  .lt-section-tag { color: var(--lt-rose); font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 12px; display: block; text-align: center; }
+  .lt-title-centered { text-align: center; margin-bottom: 48px; color: var(--lt-navy); }
+  .lt-problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .lt-problem-card { background: var(--lt-bg); padding: 32px; border-radius: 10px; text-align: center; }
+  .lt-problem-card svg { margin-bottom: 20px; color: var(--lt-rose); }
+  .lt-problem-card h3 { font-size: 16px; margin-bottom: 12px; font-weight: 800; }
+
+  /* 4. Solution */
+  .lt-solution { background: var(--lt-navy); color: #fff; }
+  .lt-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .lt-feature-row { display: flex; gap: 15px; margin-bottom: 20px; }
+  .lt-checkmark { flex-shrink: 0; width: 24px; height: 24px; background: var(--lt-rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; }
+  .lt-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .lt-stat-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center; }
+
+  /* 5. How It Works */
+  .lt-steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; margin-top: 40px; }
+  .lt-steps-grid::after { content: ''; position: absolute; top: 20px; left: 10%; right: 10%; height: 2px; background: var(--lt-border); z-index: 0; }
+  .lt-step { text-align: center; position: relative; z-index: 1; }
+  .lt-step-num { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; background: #fff; border: 2px solid var(--lt-rose); color: var(--lt-rose); font-weight: 700; }
+  .lt-step.active .lt-step-num { background: var(--lt-rose); color: #fff; }
+  .lt-step h4 { margin-bottom: 8px; font-size: 15px; color: var(--lt-navy); }
+  .lt-step p { font-size: 13px; color: var(--lt-text-body); }
+
+  /* 6. Comparison Table */
+  .lt-table-wrap { background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid var(--lt-border); margin-top: 40px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 16px; text-align: center; border-bottom: 1px solid var(--lt-border); font-size: 13px; }
+  th { background: #f9f9f9; font-weight: 700; }
+  th.lt-table-highlight { background: var(--lt-rose); color: #fff; }
+  td.lt-table-highlight { background: var(--lt-bg); font-weight: 700; border-left: 1px solid var(--lt-rose); border-right: 1px solid var(--lt-rose); }
+  .text-teal { color: var(--lt-teal); font-weight: 700; }
+  .text-gray { color: #9aa5a8; }
+
+  /* 7. Testimonials */
+  .lt-testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .lt-testi-card { background: #fff; padding: 40px 32px; border-radius: 10px; border: 1px solid var(--lt-border); position: relative; }
+  .lt-quote { position: absolute; top: 10px; left: 20px; font-size: 60px; color: var(--lt-rose); opacity: 0.2; font-family: serif; }
+
+  /* 8. Final CTA */
+  .lt-cta-section { background: var(--lt-rose); color: #fff; text-align: center; }
+  .lt-price-row { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 24px 0; }
+  .lt-price-main { font-size: 32px; font-weight: 800; }
+  .lt-price-old { text-decoration: line-through; opacity: 0.7; }
+  .lt-price-badge { background: var(--lt-navy); padding: 4px 10px; border-radius: 4px; font-size: 12px; }
+  .lt-btn-dark { background: var(--lt-navy); color: #fff; width: 100%; max-width: 400px; margin-top: 20px; }
+
+  .lt-trust-inline { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 13px; }
+
+  /* 9. footer trust */
+  .lt-footer-bar { background: var(--lt-navy); color: rgba(255,255,255,0.6); padding: 20px 0; text-align: center; font-size: 12px; }
+  .lt-footer-bar span { color: var(--lt-rose); padding: 0 8px; }
+
+  /* Mobile Overrides */
+  @media (max-width: 800px) {
+    .lt-hero, .lt-solution-grid, .lt-problem-grid, .lt-steps-grid, .lt-testimonial-grid { grid-template-columns: 1fr; }
+    .lt-steps-grid::after { display: none; }
+    .badge-white, .badge-navy { position: static; margin-top: 10px; }
+    .lt-table-wrap { overflow-x: auto; }
+    .lt-hero-h1 { font-size: 36px; }
+  }
+
+  /* Fade up animation */
+  .animate-fade-up {
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<div class="lt-announcement">
+  LIVRARE ÎN <span>2-5 ZILE</span> · TRANSPORT GRATUIT PESTE <span>199 RON</span> · FABRICAT ÎN SPANIA
+</div>
+
+<section class="lt-section">
+  <div class="lt-container">
+    <div class="lt-hero">
+      <div class="animate-fade-up">
+        <span class="lt-badge-pill">Nou în România</span>
+        <h1 class="lt-hero-h1 lt-serif-italic">Lifting facial fără bisturiu, fără botox, fără durere</h1>
+        <p class="lt-hero-subtext lt-dm-sans">Plasturii Liftrik sunt secretul pe care femeile din Spania îl folosesc de ani de zile pentru un ten ridicat și un aspect tânăr — în câteva secunde pe zi.</p>
+        
+        <div class="lt-rating-row">
+          <div class="lt-stars">
+            {% for i in (1..5) %}
+              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            {% endfor %}
+          </div>
+          <span class="lt-dm-sans" style="font-size: 14px; color: #6b7b80;">4.5/5 · 25 recenzii</span>
+        </div>
+
+        <a href="#buy" class="lt-btn lt-btn-rose">Vreau să încerc Liftrik →</a>
+        
+        <div class="lt-trust-small lt-dm-sans">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Retur gratuit în 14 zile · Satisfacție garantată
+        </div>
+      </div>
+
+      <div class="lt-hero-image-wrap animate-fade-up" style="animation-delay: 0.2s">
+        {% if product.featured_image %}
+          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" style="width: 100%; border-radius: 10px;">
+        {% else %}
+          <div style="width: 100%; aspect-ratio: 1; background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center;">Imagine Produs</div>
+        {% endif %}
+        <div class="lt-floating-badge badge-white lt-dm-sans">Fabricat în Spania<br><b>Standard european</b></div>
+        <div class="lt-floating-badge badge-navy lt-dm-sans"><b>40 bucăți/set</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lt-section lt-problem">
+  <div class="lt-container" style="max-width: 800px;">
+    <span class="lt-section-tag">Recunoști situația?</span>
+    <h2 class="lt-title-centered lt-serif-italic h1">Oglinda nu mai minte</h2>
+    <p class="lt-dm-sans" style="text-align: center; margin-bottom: 40px; color: #4a5568;">După 35 de ani, pielea își pierde elasticitatea. Poate ai observat conturul feței mai puțin definit sau acele linii fine care nu se mai duc cu nicio cremă scumpă. Te simți mai tânără în interior decât arată reflexia ta?</p>
+    
+    <div class="lt-problem-grid">
+      <div class="lt-problem-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h3>Botox — 800-1500 RON</h3>
+        <p class="lt-dm-sans" style="font-size: 13px;">Efect temporar, ace dureroase și riscul unui aspect "înghețat".</p>
+      </div>
+      <div class="lt-problem-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
+        <h3>Lifting Chirurgical</h3>
+        <p class="lt-dm-sans" style="font-size: 13px;">Costuri de mii de euro, riscuri de anestezie și recuperare grea.</p>
+      </div>
+      <div class="lt-problem-card">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2M9 9h.01M15 9h.01"/></svg>
+        <h3>Creme "Minune"</h3>
+        <p class="lt-dm-sans" style="font-size: 13px;">Promit mult, dar rezultatele sunt minime. Bani irosiți lunar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lt-section lt-solution">
+  <div class="lt-container">
+    <div class="lt-solution-grid">
+      <div>
+        <span class="lt-section-tag" style="color: var(--lt-rose);">Soluția</span>
+        <h2 class="lt-serif-italic h1" style="color: #fff; margin-bottom: 24px;">Liftrik — lifting instant, la tine acasă</h2>
+        <p class="lt-dm-sans" style="margin-bottom: 32px; opacity: 0.9;">Uită de proceduri invazive. Liftrik folosește o metodă mecanică simplă: benzi adezive invizibile care ridică delicat pielea, redefinind conturul feței și reducând aspectul ridurilor în câteva secunde.</p>
+        
+        <div class="lt-feature-list">
+          <div class="lt-feature-row">
+            <div class="lt-checkmark">✓</div>
+            <p class="lt-dm-sans"><b>Invizibili sub machiaj</b> — nimeni nu știe că îi porți</p>
+          </div>
+          <div class="lt-feature-row">
+            <div class="lt-checkmark">✓</div>
+            <p class="lt-dm-sans"><b>Rezultat în 30 de secunde</b> — aplici și gata</p>
+          </div>
+          <div class="lt-feature-row">
+            <div class="lt-checkmark">✓</div>
+            <p class="lt-dm-sans"><b>40 bucăți per set</b> — pentru 20 de utilizări</p>
+          </div>
+          <div class="lt-feature-row">
+            <div class="lt-checkmark">✓</div>
+            <p class="lt-dm-sans"><b>Fabricat în Spania</b> — materiale hipoalergenice</p>
+          </div>
+          <div class="lt-feature-row">
+            <div class="lt-checkmark">✓</div>
+            <p class="lt-dm-sans"><b>Confortabil toată ziua</b> — uiți că îi ai pe față</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lt-stats-grid">
+        <div class="lt-stat-box">
+          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">30s</div>
+          <div style="font-size: 12px; text-transform: uppercase;">Aplicare Rapidă</div>
+        </div>
+        <div class="lt-stat-box">
+          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">40</div>
+          <div style="font-size: 12px; text-transform: uppercase;">Bucăți / Set</div>
+        </div>
+        <div class="lt-stat-box">
+          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">0%</div>
+          <div style="font-size: 12px; text-transform: uppercase;">Riscuri</div>
+        </div>
+        <div class="lt-stat-box">
+          <div class="lt-serif-italic" style="font-size: 24px; color: var(--lt-rose);">EU</div>
+          <div style="font-size: 12px; text-transform: uppercase;">Made in Spain</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lt-section">
+  <div class="lt-container">
+    <h2 class="lt-title-centered lt-serif-italic h1">Cum funcționează Liftrik</h2>
+    <div class="lt-steps-grid">
+      <div class="lt-step active">
+        <div class="lt-step-num">1</div>
+        <h4 class="lt-serif-italic">Curăță pielea</h4>
+        <p class="lt-dm-sans">Față curată, uscată, fără reziduuri de cremă pentru aderență maximă.</p>
+      </div>
+      <div class="lt-step">
+        <div class="lt-step-num">2</div>
+        <h4 class="lt-serif-italic">Aplică plasturele</h4>
+        <p class="lt-dm-sans">Lipește discret în zona tâmplelor sau în spatele urechii.</p>
+      </div>
+      <div class="lt-step">
+        <div class="lt-step-num">3</div>
+        <h4 class="lt-serif-italic">Prinde banda</h4>
+        <p class="lt-dm-sans">Banda elastică reglabilă susține și ridică instantaneu conturul.</p>
+      </div>
+      <div class="lt-step">
+        <div class="lt-step-num">4</div>
+        <h4 class="lt-serif-italic">Machiează normal</h4>
+        <p class="lt-dm-sans">Devine invizibil sub păr și machiaj pentru restul zilei.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lt-section lt-problem">
+  <div class="lt-container">
+    <h2 class="lt-title-centered lt-serif-italic h1">De ce Liftrik? Față de alte soluții</h2>
+    <div class="lt-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Criteriu</th>
+            <th class="lt-table-highlight" style="color: var(--lt-rose)">LIFTRIK</th>
+            <th>Botox</th>
+            <th>Chirurgie</th>
+            <th>Creme</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cost</td>
+            <td class="text-teal">Redus</td>
+            <td>Mare</td>
+            <td>Foarte Mare</td>
+            <td>Recurent</td>
+          </tr>
+          <tr>
+            <td>Rezultat vizibil</td>
+            <td class="text-teal">Instant (30s)</td>
+            <td>Zile/Săptămâni</td>
+            <td>Luni</td>
+            <td>Minim</td>
+          </tr>
+          <tr>
+            <td>Riscuri Medicale</td>
+            <td class="text-teal">Zero</td>
+            <td>Medii</td>
+            <td>Mari</td>
+            <td>Zero</td>
+          </tr>
+          <tr>
+            <td>Timp recuperare</td>
+            <td class="text-teal">Niciunul</td>
+            <td>1-2 zile</td>
+            <td>Săptămâni</td>
+            <td>Niciunul</td>
+          </tr>
+          <tr>
+            <td>Poate fi oprit oricând</td>
+            <td class="text-teal">DA</td>
+            <td>NU (efect fix)</td>
+            <td>Permanent</td>
+            <td>DA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="lt-section">
+  <div class="lt-container">
+    <h2 class="lt-title-centered lt-serif-italic h1">Femei reale, rezultate reale</h2>
+    <div class="lt-testimonial-grid">
+      <div class="lt-testi-card">
+        <span class="lt-quote">“</span>
+        <div class="lt-stars" style="margin-bottom: 15px;">★★★★★</div>
+        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Sinceră să fiu, nu credeam că o să funcționeze. L-am comandat mai mult din curiozitate. Dar când l-am aplicat prima dată și m-am uitat în oglindă... efectul e real! Față mai ridicată, mai tânără."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">MD</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Maria D., 47 ani</div>
+            <div style="font-size: 12px; color: #9aa5a8;">București</div>
+          </div>
+        </div>
+      </div>
+      <div class="lt-testi-card">
+         <span class="lt-quote">“</span>
+        <div class="lt-stars" style="margin-bottom: 15px;">★★★★★</div>
+        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Îl folosesc de 3 luni. La început pentru evenimente speciale, acum aproape zilnic. E invizibil sub păr și sub fond de ten. Nimeni nu a ghicit că port ceva."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">EV</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Elena V., 52 ani</div>
+            <div style="font-size: 12px; color: #9aa5a8;">Cluj-Napoca</div>
+          </div>
+        </div>
+      </div>
+      <div class="lt-testi-card">
+         <span class="lt-quote">“</span>
+        <div class="lt-stars" style="margin-bottom: 15px;">★★★★☆</div>
+        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Mă gândeam la botox de ceva vreme dar îmi era frică. Liftrik face același efect vizual, fără riscuri și la un preț mult mai bun. Recomand cu drag."</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">AP</div>
+          <div>
+            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Andreea P., 39 ani</div>
+            <div style="font-size: 12px; color: #9aa5a8;">Timișoara</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="buy" class="lt-section lt-cta-section">
+  <div class="lt-container" style="max-width: 700px;">
+    <span class="lt-section-tag" style="color: #fff; opacity: 0.8;">Ofertă limitată</span>
+    <h2 class="lt-serif-italic h1" style="color: #fff;">Încearcă Liftrik fără niciun risc</h2>
+    <p class="lt-dm-sans" style="margin-bottom: 30px; opacity: 0.9;">Setul tău conține 40 de plasturi hipoalergenici și benzile elastice necesare pentru un lifting profesional acasă.</p>
+    
+    <div class="lt-price-row">
+      <span class="lt-price-old">241,94 RON</span>
+      <span class="lt-price-main">160,63 RON</span>
+      <span class="lt-price-badge">-34% OFF</span>
+    </div>
+
+    {%- form 'product', product -%}
+      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+      <button type="submit" class="lt-btn lt-btn-dark" style="width: 100%; border: none;">ADAUGĂ ÎN COȘ — 160,63 RON</button>
+    {%- endform -%}
+
+    <div class="lt-trust-inline lt-dm-sans">
+      <span>✓ Livrare 2-5 zile</span>
+      <span>✓ Retur 14 zile</span>
+      <span>✓ Plată securizată</span>
+      <span>✓ Fabricat în Spania</span>
+    </div>
+  </div>
+</section>
+
+<div class="lt-footer-bar lt-dm-sans">
+  HGC Capital S.R.L. — România <span>·</span> Furnizor InnovaGoods — Spania <span>·</span> ANPC conform <span>·</span> Plăți securizate <span>·</span> Retur 14 zile
+</div>
+
+{% schema %}
+{
+  "name": "Liftrik Landing Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Liftrik Landing Page"
+    }
+  ]
+}
+{% endschema %}
