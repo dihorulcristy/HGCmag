@@ -1472,13 +1472,21 @@ textarea:focus {
 
 
 /* ===================================================================
-   PRODUCT CARDS — Desktop 4-col explicit + image fix
+   PRODUCT CARDS — Grid column overrides using Dawn's class system
    =================================================================== */
 
-/* Desktop: Dawn controls columns via CSS vars, but we reinforce */
+/* Dawn generates: grid--4-col-desktop, grid--2-col-tablet-down etc.
+   We target these to enforce our column counts correctly */
+
+/* Desktop: 4 columns */
 @media screen and (min-width: 990px) {
-  .grid.product-grid {
-    grid-template-columns: repeat(4, 1fr) !important;
+  .grid--4-col-desktop {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 2.4rem !important;
+  }
+
+  .grid--3-col-desktop {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
     gap: 2.4rem !important;
   }
 
@@ -1493,6 +1501,15 @@ textarea:focus {
 
   .price-item--sale {
     font-size: 2rem !important;
+  }
+}
+
+/* Tablet 750-989px: 2 columns for product grids */
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .grid--4-col-desktop,
+  .grid--3-col-desktop {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 2rem !important;
   }
 }
 
@@ -1623,9 +1640,10 @@ textarea:focus {
     text-align: left !important;
   }
 
-  /* PRODUCT GRID — 2 columns on mobile */
-  .grid.product-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+  /* PRODUCT GRID — 2 columns on mobile (Dawn class: grid--2-col-tablet-down) */
+  .grid--2-col-tablet-down,
+  .grid--1-col-tablet-down {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 1.2rem !important;
   }
 
