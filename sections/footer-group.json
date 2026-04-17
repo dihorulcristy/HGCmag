@@ -2,61 +2,33 @@
   "name": "t:sections.footer.name",
   "type": "footer",
   "sections": {
+    "custom_footer": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.vm-footer{background:#1a2b32;padding:64px 0 0}.vm-footer-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:64px}.vm-footer-brand .vm-footer-logo{font-family:'Montserrat',sans-serif;font-size:2.4rem;font-weight:700;color:#fff;letter-spacing:-0.02em;margin-bottom:14px}.vm-footer-brand .vm-footer-tagline{font-size:1.4rem;color:rgba(255,255,255,0.5);line-height:1.6;margin-bottom:16px}.vm-footer-brand .vm-footer-legal{font-size:1.1rem;color:rgba(255,255,255,0.3)}.vm-footer-col-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;color:#2abfb0;letter-spacing:0.15em;text-transform:uppercase;margin-bottom:20px}.vm-footer-links{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px}.vm-footer-links li a{font-size:1.35rem;color:rgba(255,255,255,0.6);text-decoration:none;transition:color 0.2s}.vm-footer-links li a:hover{color:#2abfb0}.vm-footer-bottom{background:#111;margin-top:48px;padding:18px 48px}.vm-footer-bottom-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}.vm-footer-copy{font-family:'Montserrat',sans-serif;font-size:1.15rem;color:rgba(255,255,255,0.4)}.vm-footer-payments{display:flex;gap:8px;align-items:center}.vm-pay-badge{background:#2a2a2a;color:rgba(255,255,255,0.6);font-family:'Montserrat',sans-serif;font-size:1.05rem;font-weight:600;padding:4px 10px;border-radius:4px;letter-spacing:0.3px}@media(max-width:749px){.vm-footer-inner{grid-template-columns:1fr;gap:36px;padding:0 20px}.vm-footer-bottom{padding:16px 20px}.vm-footer-bottom-inner{flex-direction:column;text-align:center;gap:12px}}</style><div class='vm-footer'><div class='vm-footer-inner'><div class='vm-footer-brand'><div class='vm-footer-logo'>VibeMag</div><div class='vm-footer-tagline'>Soluții inteligente pentru stilul tău de viață.</div><div class='vm-footer-legal'>HGC Capital S.R.L. — România</div></div><div><div class='vm-footer-col-title'>Navigare</div><ul class='vm-footer-links'><li><a href='/'>Acasă</a></li><li><a href='/collections/all'>Catalog</a></li><li><a href='/pages/despre-noi'>Despre Noi</a></li><li><a href='/pages/contact'>Contact</a></li></ul></div><div><div class='vm-footer-col-title'>Informații</div><ul class='vm-footer-links'><li><a href='/policies/refund-policy'>Politica de Retur</a></li><li><a href='/policies/shipping-policy'>Livrare și Transport</a></li><li><a href='/policies/privacy-policy'>GDPR</a></li><li><a href='/policies/terms-of-service'>Termeni și Condiții</a></li><li><a href='https://anpc.ro' target='_blank'>ANPC</a></li></ul></div></div><div class='vm-footer-bottom'><div class='vm-footer-bottom-inner'><div class='vm-footer-copy'>© 2025 VibeMag · Toate drepturile rezervate</div><div class='vm-footer-payments'><span class='vm-pay-badge'>Visa</span><span class='vm-pay-badge'>Mastercard</span><span class='vm-pay-badge'>PayU</span><span class='vm-pay-badge'>Ramburs</span></div></div></div></div>"
+      }
+    },
     "footer": {
       "type": "footer",
-      "blocks": {
-        "footer_logo": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Design_fara_titlu_9.png",
-            "image_width": 150,
-            "alignment": ""
-          }
-        },
-        "brand_info_text": {
-          "type": "text",
-          "settings": {
-            "heading": "",
-            "subtext": "<p>Soluții inteligente pentru stilul tău de viață. Produse premium europene, livrate rapid în România.</p>"
-          }
-        },
-        "navigare": {
-          "type": "link_list",
-          "settings": {
-            "heading": "NAVIGARE",
-            "menu": "main-menu"
-          }
-        },
-        "informatii": {
-          "type": "link_list",
-          "settings": {
-            "heading": "INFORMAȚII",
-            "menu": "footer"
-          }
-        }
-      },
-      "block_order": [
-        "footer_logo",
-        "brand_info_text",
-        "navigare",
-        "informatii"
-      ],
+      "blocks": {},
+      "block_order": [],
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": false,
         "enable_follow_on_shop": false,
-        "show_social": true,
+        "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false,
-        "payment_enable": true,
-        "show_policy": true,
+        "payment_enable": false,
+        "show_policy": false,
         "margin_top": 0,
-        "padding_top": 64,
-        "padding_bottom": 48
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
   "order": [
+    "custom_footer",
     "footer"
   ]
 }

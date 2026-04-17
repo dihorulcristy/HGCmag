@@ -1417,8 +1417,12 @@ textarea:focus {
 }
 
 /* ===================================================================
-   FOOTER REFINEMENTS — Premium Dark Redesign
+   FOOTER — Hide native Dawn footer (replaced by custom-liquid section)
    =================================================================== */
+
+/* Hide the empty native footer rendered by Dawn */
+#shopify-section-footer { display: none !important; }
+
 
 .footer {
   border-top: none !important;
