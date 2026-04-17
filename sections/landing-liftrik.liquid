@@ -264,6 +264,35 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
+
+  .lt-sticky-cta {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 99999 !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateY(20px);
+  }
+
+  .lt-sticky-cta.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .lt-sticky-cta .lt-btn { 
+      width: 100%; 
+      box-shadow: 0 10px 30px rgba(201, 123, 132, 0.6); 
+      font-size: 15px; 
+      padding: 16px; 
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
 </style>
 
 
@@ -626,6 +655,10 @@
   HGC Capital S.R.L. — România <span>·</span> Furnizor InnovaGoods — Spania <span>·</span> ANPC conform <span>·</span> Plăți securizate <span>·</span> Retur 14 zile
 </div>
 
+<div class="lt-sticky-cta" id="ltStickyCta">
+  <a href="#buy" class="lt-btn lt-btn-rose">COMANDĂ ACUM — REDUCERE -50%</a>
+</div>
+
 {% schema %}
 {
   "name": "Liftrik Landing Page",
@@ -664,6 +697,30 @@
         this.closest('section').querySelector('form').submit();
       });
     });
+
+    // Sticky CTA Logic
+    const stickyCta = document.getElementById('ltStickyCta');
+    const buySection = document.getElementById('buy');
+    
+    if (stickyCta && buySection) {
+      window.addEventListener('scroll', function() {
+        if (window.innerWidth > 768) {
+          stickyCta.classList.remove('visible');
+          return;
+        }
+        
+        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        const buyPos = buySection.getBoundingClientRect().top + window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        
+        // Show after 300px, hidden when buy section is significantly visible
+        if (scrollPos > 300 && scrollPos < (buyPos - windowHeight + 300)) {
+          stickyCta.classList.add('visible');
+        } else {
+          stickyCta.classList.remove('visible');
+        }
+      });
+    }
   });
 </script>
 
