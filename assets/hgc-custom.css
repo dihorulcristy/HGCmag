@@ -2379,11 +2379,39 @@ shopify-section[id="footer"] {
 }
 
 @media (max-width: 768px) {
+  .vm-product-badges {
+    justify-content: center !important;
+  }
   .vm-product-title {
     font-size: 24px !important;
+    text-align: center !important;
   }
-  .vm-price-sale {
-    font-size: 22px !important;
+  .vm-price-row, .price__sale, .vm-price-top-row, .vm-price-bottom-row {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .vm-price-subtext {
+    text-align: center !important;
+  }
+  .vm-stock-urgency__inner, .vm-stock-urgency__left {
+    justify-content: center !important;
+    text-align: center !important;
+  }
+  .vm-stock-urgency__right {
+    text-align: center !important;
+    padding-left: 0 !important;
+  }
+  .vm-urgency-inner {
+    justify-content: center !important;
+  }
+  .product-form__input--quantity {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .quantity {
+    margin: 0 auto !important;
   }
   .product__info-container {
     padding-left: 20px !important;
