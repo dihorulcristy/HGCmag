@@ -100,13 +100,13 @@
         "button_label": "",
         "button_link": "",
         "columns_desktop": 3,
-        "column_alignment": "left",
+        "column_alignment": "center",
         "background_style": "none",
         "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "featured_collection": {
@@ -126,15 +126,15 @@
         "view_all_style": "solid",
         "color_scheme": "scheme-1",
         "image_ratio": "square",
-        "image_shape": "blob",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "1",
+        "quick_add": "standard",
+        "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "image_with_text": {
@@ -226,11 +226,11 @@
         "image_ratio": "square",
         "columns_desktop": 3,
         "color_scheme": "scheme-2",
-        "show_view_all": false,
+        "show_view_all": true,
         "columns_mobile": "1",
         "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     },
     "featured_collection_2": {
@@ -243,22 +243,22 @@
         "description": "",
         "show_description": false,
         "description_style": "uppercase",
-        "columns_desktop": 6,
-        "enable_desktop_slider": true,
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "button",
         "color_scheme": "scheme-2",
         "image_ratio": "portrait",
-        "image_shape": "blob",
+        "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
-        "quick_add": "none",
+        "quick_add": "standard",
         "columns_mobile": "2",
         "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 72,
+        "padding_bottom": 72
       }
     }
   },

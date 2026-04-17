@@ -1346,57 +1346,7 @@ textarea:focus {
   transition-timing-function: var(--vm-ease) !important;
 }
 
-/* ===================================================================
-   MOBILE REFINEMENTS
-   =================================================================== */
-
-@media screen and (max-width: 749px) {
-  .banner__heading {
-    font-size: clamp(2.6rem, 10vw, 4.5rem) !important;
-    letter-spacing: -0.02em !important;
-  }
-
-  .section-header__title {
-    font-size: 2.2rem !important;
-    letter-spacing: -0.01em !important;
-  }
-
-  .button,
-  .button--primary {
-    padding: 1.6rem 2.4rem !important;
-    font-size: 1.2rem !important;
-    width: 100% !important;
-  }
-
-  .image-with-text__content {
-    padding: 3rem 2rem !important;
-  }
-
-  .multicolumn-card {
-    padding: 3rem 2rem !important;
-  }
-
-  .vm-trust-bar__inner {
-    gap: 2rem;
-    justify-content: flex-start;
-  }
-
-  /* Sticky mobile checkout bar on product pages */
-  .vm-sticky-mobile-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
-    background: var(--vm-white);
-    border-top: 1px solid var(--vm-grey-mid);
-    padding: 1.2rem 1.6rem;
-    box-shadow: 0 -4px 20px rgba(13, 27, 42, 0.1);
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-}
+/* (mobile styles consolidated below in the new comprehensive section) */
 
 /* ===================================================================
    ANIMATIONS — Keyframes
@@ -1443,10 +1393,333 @@ textarea:focus {
 }
 
 /* ===================================================================
-   SECTION SPACING
+   SECTION SPACING — Breathing room between sections
    =================================================================== */
 
-.shopify-section:not(.shopify-section-header) {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+/* Remove Dawn's default zero—let each section's own padding_top/bottom
+   handle the rhythm (set in templates/index.json to 72px) */
+.shopify-section:not(.shopify-section-header):not(.shopify-section-group-header-group) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Ensure alternating bg sections don't collapse into each other */
+.shopify-section + .shopify-section {
+  border-top: 1px solid transparent;
+}
+
+/* ===================================================================
+   HERO BANNER — Mobile minimum height
+   =================================================================== */
+
+/* Ensure hero is always impactful on all screens */
+.banner--large {
+  min-height: 520px;
+}
+
+.banner--medium {
+  min-height: 420px;
+}
+
+/* Hero subtext — smaller but readable on all devices */
+.banner__text p {
+  max-width: 56ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===================================================================
+   TRUST PILLARS (Multicolumn — De Ce VibeMag)
+   =================================================================== */
+
+/* The multicolumn section used as trust bar */
+.multicolumn .multicolumn-list {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 2.4rem !important;
+}
+
+/* Icon area — add a teal circle behind each column icon slot */
+.multicolumn-card__image-wrapper {
+  width: 5.6rem !important;
+  height: 5.6rem !important;
+  border-radius: 50% !important;
+  background: var(--vm-teal-light) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 1.6rem !important;
+  font-size: 2.4rem !important;
+  line-height: 1 !important;
+}
+
+/* Tighter card padding for trust pillars at smaller sizes */
+.multicolumn-card {
+  padding: 3.2rem 2.4rem !important;
+}
+
+/* ===================================================================
+   PRODUCT CARDS — Mobile 2-col grid
+   =================================================================== */
+
+/* Ensure card images always maintain aspect ratio and don't overflow */
+.card__media {
+  border-radius: 8px 8px 0 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Quick-add button — more visible, full-width */
+.quick-add {
+  padding: 0 1.2rem 1.2rem !important;
+}
+
+.quick-add__submit {
+  width: 100% !important;
+  padding: 1.2rem 1.6rem !important;
+  font-size: 1.1rem !important;
+  border-radius: 6px !important;
+}
+
+/* Card relative for absolute badge */
+.card-wrapper {
+  position: relative !important;
+}
+
+/* ===================================================================
+   SECTION HEADERS — Consistent sizing
+   =================================================================== */
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 2rem;
+}
+
+/* ===================================================================
+   COLLECTION LIST — Category cards
+   =================================================================== */
+
+.collection-list__grid {
+  display: grid !important;
+  gap: 2rem !important;
+}
+
+/* View all link always visible */
+.collection-list .button {
+  margin-top: 3rem;
+  display: inline-flex;
+}
+
+/* ===================================================================
+   MOBILE REFINEMENTS — Comprehensive
+   =================================================================== */
+
+@media screen and (max-width: 749px) {
+  /* HERO */
+  .banner--large,
+  .banner--medium {
+    min-height: 88vw;
+  }
+
+  .banner__heading {
+    font-size: clamp(2.8rem, 11vw, 4.8rem) !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.1 !important;
+  }
+
+  .banner__text {
+    font-size: 1.5rem !important;
+    margin-bottom: 2.4rem !important;
+  }
+
+  /* CTA buttons — full width, proper touch target */
+  .banner__buttons .button {
+    width: 100% !important;
+    max-width: 32rem !important;
+    padding: 1.8rem 2rem !important;
+    font-size: 1.35rem !important;
+    min-height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* SECTION HEADERS */
+  .section-header__title {
+    font-size: 2.4rem !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .section-header {
+    margin-bottom: 2.8rem;
+    padding: 0 1.6rem;
+  }
+
+  /* TRUST PILLARS */
+  .multicolumn .multicolumn-list {
+    grid-template-columns: 1fr !important;
+    gap: 1.6rem !important;
+  }
+
+  .multicolumn-card {
+    padding: 2.4rem 2rem !important;
+    text-align: left !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 1.6rem !important;
+  }
+
+  .multicolumn-card__image-wrapper {
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    width: 4.8rem !important;
+    height: 4.8rem !important;
+  }
+
+  .multicolumn-card__info {
+    text-align: left !important;
+  }
+
+  /* PRODUCT GRID — 2 columns on mobile */
+  .grid.product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.2rem !important;
+  }
+
+  /* Tighter card content on 2-col mobile */
+  .card__content {
+    padding: 1.2rem 1rem !important;
+  }
+
+  .card__heading {
+    font-size: 1.15rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .price-item--sale {
+    font-size: 1.7rem !important;
+  }
+
+  .price-item--regular {
+    font-size: 1.2rem !important;
+  }
+
+  /* Quick add touch target */
+  .quick-add__submit {
+    padding: 1rem 0.8rem !important;
+    font-size: 1rem !important;
+    min-height: 44px !important;
+  }
+
+  /* IMAGE WITH TEXT — stack nicely */
+  .image-with-text__content {
+    padding: 3.2rem 2rem !important;
+  }
+
+  .image-with-text__text.rte {
+    font-size: 1.5rem !important;
+  }
+
+  /* TRUST BAR (vm-trust-bar snippet) */
+  .vm-trust-bar__inner {
+    gap: 1.6rem !important;
+    justify-content: flex-start !important;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .vm-trust-bar__inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .vm-trust-item {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 1.05rem !important;
+  }
+
+  /* COLLECTION LIST — full width single col */
+  .collection-list__grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* FOOTER — tighter */
+  .footer {
+    padding: 4rem 0 2rem !important;
+  }
+
+  /* Announcement bar text — smaller on mobile */
+  .announcement-bar__message {
+    font-size: 0.95rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  /* Sticky mobile CTA bar on product pages */
+  .vm-sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    background: var(--vm-white);
+    border-top: 1px solid var(--vm-grey-mid);
+    padding: 1.2rem 1.6rem;
+    box-shadow: 0 -4px 20px rgba(13, 27, 42, 0.1);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+/* ===================================================================
+   TABLET REFINEMENTS (750px - 989px)
+   =================================================================== */
+
+@media screen and (min-width: 750px) and (max-width: 989px) {
+  .banner__heading {
+    font-size: clamp(3rem, 7vw, 5.5rem) !important;
+  }
+
+  .grid.product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2rem !important;
+  }
+
+  .multicolumn .multicolumn-list {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 1.6rem !important;
+  }
+
+  .multicolumn-card {
+    padding: 2.4rem 1.6rem !important;
+  }
+}
+
+/* ===================================================================
+   LARGE DESKTOP (1200px+)
+   =================================================================== */
+
+@media screen and (min-width: 1200px) {
+  .grid.product-grid {
+    gap: 2.4rem !important;
+  }
+
+  .card__content {
+    padding: 2rem 1.8rem !important;
+  }
+
+  .card__heading {
+    font-size: 1.4rem !important;
+  }
 }
