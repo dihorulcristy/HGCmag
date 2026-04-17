@@ -1393,20 +1393,8 @@ textarea:focus {
 }
 
 /* ===================================================================
-   SECTION SPACING — Breathing room between sections
+   SECTION SPACING — Cleaned up
    =================================================================== */
-
-/* Remove Dawn's default zero—let each section's own padding_top/bottom
-   handle the rhythm (set in templates/index.json to 72px) */
-.shopify-section:not(.shopify-section-header):not(.shopify-section-group-header-group) {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/* Ensure alternating bg sections don't collapse into each other */
-.shopify-section + .shopify-section {
-  border-top: 1px solid transparent;
-}
 
 /* ===================================================================
    HERO BANNER — Mobile minimum height
