@@ -62,8 +62,8 @@
         "column1": {
           "type": "column",
           "settings": {
-            "title": "Calitate Europeana",
-            "text": "<p>Spre deosebire de produsele de masă, colecția noastră este fabricată în Spania<br/></p>",
+            "title": "Calitate Europeană",
+            "text": "<p>Spre deosebire de produsele importate din Asia, colecția noastră este fabricată în Spania — materiale superioare, standarde europene reale.</p>",
             "link_label": "",
             "link": ""
           }
@@ -71,8 +71,8 @@
         "column2": {
           "type": "column",
           "settings": {
-            "title": "Calitate Garantata",
-            "text": "<p>Fiecare produs este verificat strict inainte de expediere. Satisfactie garantata sau returnati produsul.</p>",
+            "title": "Calitate Garantată",
+            "text": "<p>Fiecare produs este verificat strict înainte de expediere. Dacă nu ești mulțumit, returnezi în 14 zile și primești banii înapoi integral.</p>",
             "link_label": "",
             "link": ""
           }
@@ -81,7 +81,7 @@
           "type": "column",
           "settings": {
             "title": "Suport Premium",
-            "text": "<p>Echipa noastra este disponibila 7 zile din 7 pentru a-ti raspunde intrebarilor.</p>",
+            "text": "<p>Echipa noastră îți răspunde în maxim 2 ore, 7 zile din 7. Nu roboți, nu răspunsuri automate — oameni reali care te ajută.</p>",
             "link_label": "",
             "link": ""
           }
