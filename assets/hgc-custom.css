@@ -2407,7 +2407,8 @@ shopify-section[id="footer"] {
     width: 100% !important;
   }
   .vm-stock-urgency__text {
-    font-size: 11px !important;
+    font-size: clamp(9px, 3.2vw, 11px) !important;
+    white-space: nowrap !important;
   }
   .vm-stock-urgency__right {
     text-align: center !important;
