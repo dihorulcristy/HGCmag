@@ -2766,3 +2766,99 @@ shopify-section[id="footer"] {
 .vm-sticky-atc__button:active {
   background-color: var(--vm-teal-hover) !important;
 }
+
+/* ── Product Page: FAQ Accordion ── */
+
+.vm-faq-section {
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.vm-faq-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #1a2b32 !important;
+  margin-bottom: 20px !important;
+  text-align: left !important;
+}
+
+.vm-faq-container {
+  border: 1px solid #e0eeec;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.vm-faq-item {
+  border-bottom: 1px solid #e0eeec;
+}
+
+.vm-faq-item:last-child {
+  border-bottom: none;
+}
+
+.vm-faq-question {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 20px !important;
+  cursor: pointer;
+  list-style: none; /* Hide default arrow */
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1a2b32;
+  transition: background-color 0.3s ease;
+}
+
+.vm-faq-question::-webkit-details-marker {
+  display: none; /* Hide default arrow Safari */
+}
+
+.vm-faq-item[open] .vm-faq-question {
+  background-color: #f4f9f9;
+}
+
+.vm-faq-icon {
+  color: #2abfb0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.vm-icon-minus {
+  display: none;
+}
+
+.vm-faq-item[open] .vm-icon-plus {
+  display: none;
+}
+
+.vm-faq-item[open] .vm-icon-minus {
+  display: block;
+}
+
+.vm-faq-answer {
+  padding: 0 20px 16px 20px !important;
+  background-color: #f4f9f9;
+}
+
+.vm-faq-answer p {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #6b7b80;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .vm-faq-question {
+    padding: 14px 16px !important;
+    font-size: 13px;
+  }
+  .vm-faq-answer {
+    padding: 0 16px 14px 16px !important;
+  }
+}

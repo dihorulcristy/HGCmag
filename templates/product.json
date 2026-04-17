@@ -67,6 +67,12 @@
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "faq": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'vibemag-faq' %}"
+          }
         }
       },
       "block_order": [
@@ -78,7 +84,8 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description"
+        "description",
+        "faq"
       ],
       "settings": {
         "enable_sticky_info": true,
