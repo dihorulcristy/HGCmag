@@ -1448,6 +1448,34 @@ textarea:focus {
   opacity: 0.8 !important;
 }
 
+.multicolumn-card__heading {
+  color: #bf913b !important; /* Gold stars */
+  font-size: 1.5rem !important;
+  margin-bottom: 1rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+.multicolumn-card__info .rte p:last-child strong {
+  color: var(--vm-text-muted) !important;
+  font-size: 1.3rem !important;
+  font-weight: 500 !important;
+  display: block;
+  margin-top: 1.6rem;
+}
+
+/* Review Section Caption */
+.multicolumn.customer-reviews-section .title:before {
+  content: "RECENZII CLIENȚI";
+  display: block;
+  font-family: var(--vm-font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #bf913b;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 /* ===================================================================
    HERO BANNER — Mobile minimum height
    =================================================================== */

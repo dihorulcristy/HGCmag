@@ -233,29 +233,54 @@
         "padding_bottom": 72
       }
     },
-    "featured_collection_2": {
-      "type": "featured-collection",
+    "customer_reviews": {
+      "type": "multicolumn",
+      "blocks": {
+        "review-1": {
+          "type": "column",
+          "settings": {
+            "title": "★★★★★",
+            "text": "<p>\"Produsul a ajuns în 3 zile, ambalaj impecabil. Calitatea e superioară față de ce găsești pe alte site-uri.\"</p><p><strong>— Maria D., București</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "review-2": {
+          "type": "column",
+          "settings": {
+            "title": "★★★★★",
+            "text": "<p>\"Am comandat de 3 ori deja. De fiecare dată rapid și exact cum e descris. Recomand cu încredere!\"</p><p><strong>— Alexandru P., Cluj</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "review-3": {
+          "type": "column",
+          "settings": {
+            "title": "★★★★★",
+            "text": "<p>\"Suportul a fost excelent când am avut o întrebare. Au răspuns în mai puțin de o oră. Produs de calitate.\"</p><p><strong>— Ioana M., Timișoara</strong></p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3"
+      ],
       "settings": {
-        "collection": "all",
-        "products_to_show": 4,
-        "title": "Noutati",
+        "title": "Ce spun clienții noștri",
         "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "uppercase",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "button",
-        "color_scheme": "scheme-2",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "standard",
-        "columns_mobile": "2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "none",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
         "swipe_on_mobile": true,
         "padding_top": 72,
         "padding_bottom": 72
@@ -268,6 +293,6 @@
     "featured_collection",
     "image_with_text",
     "collection_list",
-    "featured_collection_2"
+    "customer_reviews"
   ]
 }
