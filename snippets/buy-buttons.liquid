@@ -142,11 +142,13 @@
           </div>
 
 
+          {%- comment -%}
           {%- if show_dynamic_checkout -%}
             <div class="vm-payment-button-wrapper">
               {{ form | payment_button }}
             </div>
           {%- endif -%}
+          {%- endcomment -%}
         </div>
 
       {%- endform -%}
