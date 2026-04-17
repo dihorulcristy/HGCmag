@@ -1,1061 +1,289 @@
-{% doc %}
-  @prompt
-    o sectiune unde clientii pot lasa review, vreau sa apara recenzii, gen unde clientii au lasat deja reviewuri, si sa fie un buton de lasa o recenzie, unde se va deschide detaliile pentru lasarea recenziei
-{% enddoc %}
-{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% comment %} VibeMag — Reviews Summary Block {% endcomment %}
 
-{% style %}
-  .ai-reviews-section-{{ ai_gen_id }} {
-    display: block;
-    width: {{ block.settings.desktop_width_percent }}%;
-    max-width: 100%;
-    padding: 20px 0;
-    margin: 0 auto;
-    background-color: transparent;
-  }
+<style>
+.vm-reviews-wrap {
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+  padding: 48px 0 32px;
+  border-top: 1px solid #e0eeec;
+}
 
-  .ai-reviews-header-{{ ai_gen_id }} {
-    margin-bottom: 24px;
-    text-align: left;
-  }
+.vm-reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
 
-  .ai-reviews-title-{{ ai_gen_id }} {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 20px !important;
-    font-weight: 700 !important;
-    color: #1a2b32 !important;
-    margin: 0;
-  }
+.vm-reviews-title {
+  font-family: var(--font-heading-family, 'Inter', sans-serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a2b32;
+}
 
-  /* Summary Bar Re-layout */
-  .ai-reviews-summary-{{ ai_gen_id }} {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px;
-    padding: 30px 0;
-    border-bottom: 1px solid #e0eeec;
-    margin-bottom: 40px;
-  }
+.vm-reviews-summary {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  background: #f4f9f9;
+  border: 1px solid #e0eeec;
+  border-radius: 10px;
+  padding: 24px 28px;
+}
 
-  .ai-reviews-average-left-{{ ai_gen_id }} {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex: 0 0 auto;
-  }
+.vm-rating-big {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
 
-  .ai-reviews-average-number-{{ ai_gen_id }} {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 48px !important;
-    font-weight: 700 !important;
-    color: #1a2b32 !important;
-    line-height: 1;
-  }
+.vm-rating-num {
+  font-family: var(--font-heading-family, 'Inter', sans-serif);
+  font-size: 48px;
+  font-weight: 700;
+  color: #1a2b32;
+  line-height: 1;
+}
 
-  .ai-reviews-average-meta-{{ ai_gen_id }} {
-    display: flex;
+.vm-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.vm-star {
+  width: 18px;
+  height: 18px;
+  fill: #2abfb0;
+}
+
+.vm-star.half {
+  fill: url(#half-grad);
+}
+
+.vm-star.empty {
+  fill: #e0eeec;
+}
+
+.vm-rating-count {
+  font-size: 12px;
+  color: #6b7b80;
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+  white-space: nowrap;
+}
+
+.vm-divider {
+  width: 1px;
+  height: 60px;
+  background: #e0eeec;
+  flex-shrink: 0;
+}
+
+.vm-reviews-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vm-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vm-bar-label {
+  font-size: 12px;
+  color: #6b7b80;
+  width: 20px;
+  text-align: right;
+  flex-shrink: 0;
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+}
+
+.vm-bar-track {
+  flex: 1;
+  height: 6px;
+  background: #e0eeec;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.vm-bar-fill {
+  height: 100%;
+  background: #2abfb0;
+  border-radius: 3px;
+}
+
+.vm-bar-pct {
+  font-size: 11px;
+  color: #9aa5a8;
+  width: 28px;
+  text-align: right;
+  flex-shrink: 0;
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+}
+
+.vm-reviews-cta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.vm-cta-text {
+  font-size: 13px;
+  color: #6b7b80;
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+}
+
+.vm-btn-review {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2abfb0;
+  color: #fff;
+  font-family: var(--font-heading-family, 'Inter', sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.vm-btn-review:hover {
+  background: #1fa89a;
+  color: #fff;
+}
+
+.vm-btn-review svg {
+  width: 14px;
+  height: 14px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vm-verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1px solid #e0eeec;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 11px;
+  color: #6b7b80;
+  font-family: var(--font-body-family, 'DM Sans', sans-serif);
+}
+
+.vm-verified-badge svg {
+  width: 12px;
+  height: 12px;
+  stroke: #2abfb0;
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 640px) {
+  .vm-reviews-summary {
     flex-direction: column;
-    gap: 4px;
-  }
-
-  .ai-reviews-average-stars-{{ ai_gen_id }} {
-    display: flex;
-    gap: 2px;
-    font-size: 16px;
-    color: #2abfb0 !important; /* Teal stars */
-  }
-
-  .ai-reviews-average-count-{{ ai_gen_id }} {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 13px !important;
-    color: #6b7b80 !important;
-  }
-
-  /* Rating Breakdown Bars */
-  .ai-reviews-breakdown-{{ ai_gen_id }} {
-    flex: 1;
-    min-width: 250px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .ai-reviews-breakdown-row-{{ ai_gen_id }} {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .ai-reviews-breakdown-label-{{ ai_gen_id }} {
-    font-size: 12px;
-    color: #6b7b80;
-    width: 25px;
-    white-space: nowrap;
-  }
-
-  .ai-reviews-breakdown-bar-container-{{ ai_gen_id }} {
-    flex: 1;
-    height: 6px;
-    background-color: #e0eeec;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-
-  .ai-reviews-breakdown-bar-fill-{{ ai_gen_id }} {
-    height: 100%;
-    background-color: #2abfb0;
-    border-radius: 3px;
-  }
-
-  .ai-reviews-breakdown-percent-{{ ai_gen_id }} {
-    font-size: 12px;
-    color: #6b7b80;
-    width: 30px;
-    text-align: right;
-  }
-
-  /* Add Review Button Below Summary */
-  .ai-reviews-actions-{{ ai_gen_id }} {
-    width: 100%;
-    margin-top: 10px;
-  }
-
-  .ai-reviews-add-button-{{ ai_gen_id }} {
-    padding: 12px 24px;
-    background-color: #2abfb0;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .ai-reviews-add-button-{{ ai_gen_id }}:hover {
-    background-color: #23a89b;
-    transform: translateY(-2px);
-  }
-
-  /* Review Cards */
-  .ai-reviews-list-{{ ai_gen_id }} {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .ai-review-card-{{ ai_gen_id }} {
-    padding: 24px;
-    background-color: #ffffff;
-    border: 1px solid #e0eeec;
-    border-radius: 10px;
-    position: relative;
-  }
-
-  .ai-review-header-{{ ai_gen_id }} {
-    display: flex;
-    justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 16px;
-  }
-
-  .ai-review-stars-{{ ai_gen_id }} {
-    display: flex;
-    gap: 2px;
-    font-size: 14px;
-    color: #2abfb0;
-    margin-bottom: 8px;
-  }
-
-  .ai-review-author-wrap-{{ ai_gen_id }} {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .ai-review-name-{{ ai_gen_id }} {
-    font-family: 'Inter', sans-serif !important;
-    font-size: 13px !important;
-    font-weight: 700 !important;
-    color: #1a2b32 !important;
-  }
-
-  .ai-review-verified-pill-{{ ai_gen_id }} {
-    background-color: #f4f9f9;
-    border: 1px solid #2abfb0;
-    color: #2abfb0;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 20px;
-    letter-spacing: 0.3px;
-  }
-
-  .ai-review-date-{{ ai_gen_id }} {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 11px !important;
-    color: #9aa5a8 !important;
-    text-align: right;
-  }
-
-  .ai-review-text-{{ ai_gen_id }} {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 14px !important;
-    color: #4a5568 !important;
-    line-height: 1.7 !important;
-    margin: 0;
-  }
-
-  .ai-review-form-modal-{{ ai_gen_id }} {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(4px);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
+    gap: 20px;
     padding: 20px;
   }
+  .vm-divider { display: none; }
+  .vm-reviews-right { width: 100%; }
+  .vm-rating-big { flex-direction: row; align-items: baseline; gap: 12px; }
+  .vm-rating-num { font-size: 36px; }
+}
+</style>
 
-  .ai-review-form-modal-{{ ai_gen_id }}.active {
-    display: flex;
-  }
+<div class="vm-reviews-wrap">
 
-  .ai-review-form-content-{{ ai_gen_id }} {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 32px;
-    max-width: 550px;
-    width: 100%;
-    max-height: 90vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-  }
-
-  @media screen and (max-width: 749px) {
-    .ai-reviews-summary-{{ ai_gen_id }} {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 24px;
-    }
-    .ai-reviews-average-left-{{ ai_gen_id }} {
-      width: 100%;
-      justify-content: center;
-    }
-    .ai-reviews-breakdown-{{ ai_gen_id }} {
-      width: 100%;
-      min-width: 100%;
-    }
-    .ai-review-date-{{ ai_gen_id }} {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-    }
-  }
-{% endstyle %}
-
-<product-reviews-{{ ai_gen_id }}
-  class="ai-reviews-section-{{ ai_gen_id }}"
-  {{ block.shopify_attributes }}
->
-  <div class="ai-reviews-header-{{ ai_gen_id }}">
-    <h2 class="ai-reviews-title-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
-  </div>
-
-  {% if block.settings.show_summary %}
-    <div class="ai-reviews-summary-{{ ai_gen_id }}">
-      <div class="ai-reviews-average-left-{{ ai_gen_id }}">
-        <div class="ai-reviews-average-number-{{ ai_gen_id }}">{{ block.settings.average_rating }}</div>
-        <div class="ai-reviews-average-meta-{{ ai_gen_id }}">
-          <div class="ai-reviews-average-stars-{{ ai_gen_id }}">
-            {% assign rating = block.settings.average_rating | round %}
-            {% for i in (1..5) %}
-              {% if i <= rating %}
-                <span>★</span>
-              {% else %}
-                <span style="color: #e0eeec;">★</span>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <div class="ai-reviews-average-count-{{ ai_gen_id }}">
-            {{ block.settings.total_reviews }} {% if block.settings.total_reviews == 1 %}recenzie{% else %}recenzii{% endif %}
-          </div>
-        </div>
-      </div>
-
-      <div class="ai-reviews-breakdown-{{ ai_gen_id }}">
-        {% for star in (5..1) reversed %}
-          {% assign percent_key = 'star_' | append: star | append: '_percent' %}
-          {% assign percent = block.settings[percent_key] | default: 0 %}
-          <div class="ai-reviews-breakdown-row-{{ ai_gen_id }}">
-            <div class="ai-reviews-breakdown-label-{{ ai_gen_id }}">{{ star }}★</div>
-            <div class="ai-reviews-breakdown-bar-container-{{ ai_gen_id }}">
-              <div class="ai-reviews-breakdown-bar-fill-{{ ai_gen_id }}" style="width: {{ percent }}%;"></div>
-            </div>
-            <div class="ai-reviews-breakdown-percent-{{ ai_gen_id }}">{{ percent }}%</div>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="ai-reviews-actions-{{ ai_gen_id }}">
-        <button class="ai-reviews-add-button-{{ ai_gen_id }}" data-open-form>
-          {{ block.settings.add_review_button_text }}
-        </button>
-      </div>
-    </div>
-  {% endif %}
-
-  <div class="ai-reviews-list-{{ ai_gen_id }}">
-    {% if block.settings.show_sample_reviews %}
-      {% for i in (1..3) %}
-        {% assign review_name_key = 'review_' | append: i | append: '_name' %}
-        {% assign review_rating_key = 'review_' | append: i | append: '_rating' %}
-        {% assign review_title_key = 'review_' | append: i | append: '_title' %}
-        {% assign review_text_key = 'review_' | append: i | append: '_text' %}
-        {% assign review_date_key = 'review_' | append: i | append: '_date' %}
-        {% assign review_verified_key = 'review_' | append: i | append: '_verified' %}
-
-        {% assign review_name = block.settings[review_name_key] %}
-        {% assign review_rating = block.settings[review_rating_key] %}
-        {% assign review_title = block.settings[review_title_key] %}
-        {% assign review_text = block.settings[review_text_key] %}
-        {% assign review_date = block.settings[review_date_key] %}
-        {% assign review_verified = block.settings[review_verified_key] %}
-
-        {% if review_name != blank and review_text != blank %}
-          <div class="ai-review-card-{{ ai_gen_id }}">
-            <div class="ai-review-header-{{ ai_gen_id }}">
-              <div class="ai-review-info-left-{{ ai_gen_id }}">
-                <div class="ai-review-stars-{{ ai_gen_id }}">
-                  {% for j in (1..5) %}
-                    {% if j <= review_rating %}
-                      <span>★</span>
-                    {% else %}
-                      <span style="color: #e0eeec;">★</span>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-                <div class="ai-review-author-wrap-{{ ai_gen_id }}">
-                  <div class="ai-review-name-{{ ai_gen_id }}">{{ review_name }}</div>
-                  {% if review_verified %}
-                    <span class="ai-review-verified-pill-{{ ai_gen_id }}">Cumpărător verificat</span>
-                  {% endif %}
-                </div>
-              </div>
-              {% if review_date != blank %}
-                <div class="ai-review-date-{{ ai_gen_id }}">{{ review_date }}</div>
-              {% endif %}
-            </div>
-            {% if review_title != blank %}
-              <h3 class="ai-review-title-{{ ai_gen_id }}">{{ review_title }}</h3>
-            {% endif %}
-            <p class="ai-review-text-{{ ai_gen_id }}">{{ review_text }}</p>
-          </div>
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      <div class="ai-reviews-empty-{{ ai_gen_id }}">
-        <div class="ai-reviews-empty-icon-{{ ai_gen_id }}">⭐</div>
-        <div class="ai-reviews-empty-text-{{ ai_gen_id }}">{{ block.settings.no_reviews_text }}</div>
-        <button class="ai-reviews-add-button-{{ ai_gen_id }}" data-open-form>
-          {{ block.settings.be_first_button_text }}
-        </button>
-      </div>
-    {% endif %}
-  </div>
-
-  <div class="ai-review-form-modal-{{ ai_gen_id }}" data-modal>
-    <div class="ai-review-form-content-{{ ai_gen_id }}">
-      <button class="ai-review-form-close-{{ ai_gen_id }}" data-close-form aria-label="Închide">×</button>
-      <h3 class="ai-review-form-title-{{ ai_gen_id }}">{{ block.settings.form_title }}</h3>
-
-      {%- form 'contact' -%}
-        <input type="hidden" name="contact[review_product_id]" value="{{ product.id }}">
-        <input type="hidden" name="contact[review_product_title]" value="{{ product.title }}">
-        <input type="hidden" name="contact[form_type]" value="product_review">
-
-        <div class="ai-review-form-{{ ai_gen_id }}">
-          <div class="ai-review-form-field-{{ ai_gen_id }}">
-            <label for="ai-review-name-{{ ai_gen_id }}" class="ai-review-form-label-{{ ai_gen_id }}">
-              {{ block.settings.name_label }}
-              <span class="ai-review-form-required-{{ ai_gen_id }}">*</span>
-            </label>
-            <input
-              type="text"
-              id="ai-review-name-{{ ai_gen_id }}"
-              name="contact[name]"
-              class="ai-review-form-input-{{ ai_gen_id }}"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <div class="ai-review-form-field-{{ ai_gen_id }}">
-            <label for="ai-review-email-{{ ai_gen_id }}" class="ai-review-form-label-{{ ai_gen_id }}">
-              {{ block.settings.email_label }}
-              <span class="ai-review-form-required-{{ ai_gen_id }}">*</span>
-            </label>
-            <input
-              type="email"
-              id="ai-review-email-{{ ai_gen_id }}"
-              name="contact[email]"
-              class="ai-review-form-input-{{ ai_gen_id }}"
-              required
-              aria-required="true"
-              autocomplete="email"
-            >
-          </div>
-
-          <div class="ai-review-form-field-{{ ai_gen_id }}">
-            <label class="ai-review-form-label-{{ ai_gen_id }}">
-              {{ block.settings.rating_label }}
-              <span class="ai-review-form-required-{{ ai_gen_id }}">*</span>
-            </label>
-            <div class="ai-review-form-rating-{{ ai_gen_id }}">
-              {% for i in (1..5) %}
-                <button
-                  type="button"
-                  class="ai-review-form-star-{{ ai_gen_id }}"
-                  data-rating="{{ i }}"
-                  aria-label="Evaluare {{ i }} din 5 stele"
-                >
-                  ★
-                </button>
-              {% endfor %}
-            </div>
-            <input type="hidden" id="ai-review-rating-{{ ai_gen_id }}" name="contact[rating]" required>
-          </div>
-
-          <div class="ai-review-form-field-{{ ai_gen_id }}">
-            <label for="ai-review-title-{{ ai_gen_id }}" class="ai-review-form-label-{{ ai_gen_id }}">
-              {{ block.settings.review_title_label }}
-              <span class="ai-review-form-required-{{ ai_gen_id }}">*</span>
-            </label>
-            <input
-              type="text"
-              id="ai-review-title-{{ ai_gen_id }}"
-              name="contact[review_title]"
-              class="ai-review-form-input-{{ ai_gen_id }}"
-              required
-              aria-required="true"
-            >
-          </div>
-
-          <div class="ai-review-form-field-{{ ai_gen_id }}">
-            <label for="ai-review-body-{{ ai_gen_id }}" class="ai-review-form-label-{{ ai_gen_id }}">
-              {{ block.settings.review_body_label }}
-              <span class="ai-review-form-required-{{ ai_gen_id }}">*</span>
-            </label>
-            <textarea
-              id="ai-review-body-{{ ai_gen_id }}"
-              name="contact[body]"
-              class="ai-review-form-textarea-{{ ai_gen_id }}"
-              required
-              aria-required="true"
-            ></textarea>
-          </div>
-
-          <button type="submit" class="ai-review-form-submit-{{ ai_gen_id }}">
-            {{ block.settings.submit_button_text }}
-          </button>
-
-          {%- if form.posted_successfully? -%}
-            <div class="ai-review-form-success-{{ ai_gen_id }}">
-              {{ block.settings.success_message }}
-            </div>
-          {%- endif -%}
-
-          {%- if form.errors -%}
-            <div class="ai-review-form-error-{{ ai_gen_id }}">
-              {{ block.settings.error_message }}
-            </div>
-          {%- endif -%}
-        </div>
-      {%- endform -%}
+  <div class="vm-reviews-header">
+    <h2 class="vm-reviews-title">Recenzii clienți</h2>
+    <div class="vm-verified-badge">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      Recenzii verificate
     </div>
   </div>
-</product-reviews-{{ ai_gen_id }}>
 
-<script>
-  (function() {
-    class ProductReviews{{ ai_gen_id }} extends HTMLElement {
-      constructor() {
-        super();
-      }
+  <div class="vm-reviews-summary">
 
-      connectedCallback() {
-        this.modal = this.querySelector('[data-modal]');
-        this.openButtons = this.querySelectorAll('[data-open-form]');
-        this.closeButton = this.querySelector('[data-close-form]');
-        this.stars = this.querySelectorAll('.ai-review-form-star-{{ ai_gen_id }}');
-        this.ratingInput = this.querySelector('#ai-review-rating-{{ ai_gen_id }}');
-        this.currentRating = 0;
+    <div class="vm-rating-big">
+      <div class="vm-rating-num">4.5</div>
+      <div class="vm-stars">
+        <svg viewBox="0 0 24 24" class="vm-star"><defs><linearGradient id="half-grad"><stop offset="50%" stop-color="#2abfb0"/><stop offset="50%" stop-color="#e0eeec"/></linearGradient></defs><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" class="vm-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" class="vm-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" class="vm-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg viewBox="0 0 24 24" class="vm-star half"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="vm-rating-count">25 recenzii</div>
+    </div>
 
-        this.setupEventListeners();
-        this.setupStarRating();
-      }
+    <div class="vm-divider"></div>
 
-      setupEventListeners() {
-        this.openButtons.forEach(button => {
-          button.addEventListener('click', () => this.openModal());
-        });
+    <div class="vm-reviews-right">
+      <div class="vm-bar-row">
+        <span class="vm-bar-label">5★</span>
+        <div class="vm-bar-track"><div class="vm-bar-fill" style="width:68%"></div></div>
+        <span class="vm-bar-pct">68%</span>
+      </div>
+      <div class="vm-bar-row">
+        <span class="vm-bar-label">4★</span>
+        <div class="vm-bar-track"><div class="vm-bar-fill" style="width:20%"></div></div>
+        <span class="vm-bar-pct">20%</span>
+      </div>
+      <div class="vm-bar-row">
+        <span class="vm-bar-label">3★</span>
+        <div class="vm-bar-track"><div class="vm-bar-fill" style="width:8%"></div></div>
+        <span class="vm-bar-pct">8%</span>
+      </div>
+      <div class="vm-bar-row">
+        <span class="vm-bar-label">2★</span>
+        <div class="vm-bar-track"><div class="vm-bar-fill" style="width:3%"></div></div>
+        <span class="vm-bar-pct">3%</span>
+      </div>
+      <div class="vm-bar-row">
+        <span class="vm-bar-label">1★</span>
+        <div class="vm-bar-track"><div class="vm-bar-fill" style="width:1%"></div></div>
+        <span class="vm-bar-pct">1%</span>
+      </div>
+    </div>
 
-        this.closeButton.addEventListener('click', () => this.closeModal());
+  </div>
 
-        this.modal.addEventListener('click', (e) => {
-          if (e.target === this.modal) {
-            this.closeModal();
-          }
-        });
+  <div class="vm-reviews-cta">
+    <span class="vm-cta-text">Ai cumpărat acest produs? Spune-ne părerea ta.</span>
+    <a href="mailto:client@vibemag.ro?subject=Recenzie produs" class="vm-btn-review">
+      <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Lasă o recenzie
+    </a>
+  </div>
 
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && this.modal.classList.contains('active')) {
-            this.closeModal();
-          }
-        });
-      }
-
-      setupStarRating() {
-        this.stars.forEach((star, index) => {
-          star.addEventListener('click', () => {
-            this.currentRating = index + 1;
-            this.ratingInput.value = this.currentRating;
-            this.updateStars();
-          });
-
-          star.addEventListener('mouseenter', () => {
-            this.highlightStars(index + 1);
-          });
-        });
-
-        const ratingContainer = this.querySelector('.ai-review-form-rating-{{ ai_gen_id }}');
-        ratingContainer.addEventListener('mouseleave', () => {
-          this.updateStars();
-        });
-      }
-
-      highlightStars(rating) {
-        this.stars.forEach((star, index) => {
-          if (index < rating) {
-            star.classList.add('active');
-          } else {
-            star.classList.remove('active');
-          }
-        });
-      }
-
-      updateStars() {
-        this.highlightStars(this.currentRating);
-      }
-
-      openModal() {
-        this.modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      closeModal() {
-        this.modal.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-
-    customElements.define('product-reviews-{{ ai_gen_id }}', ProductReviews{{ ai_gen_id }});
-  })();
-</script>
+</div>
 
 {% schema %}
 {
-  "name": "Recenzii produse",
+  "name": "Recenzii VibeMag",
   "tag": null,
-  "settings": [
-    {
-      "type": "header",
-      "content": "Conținut general"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "heading",
-      "label": "Titlu secțiune",
-      "default": "Recenzii clienți"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "add_review_button_text",
-      "label": "Text buton adaugă recenzie",
-      "default": "Lasă o recenzie"
-    },
-    {
-      "type": "header",
-      "content": "Sumar recenzii"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_summary",
-      "label": "Afișează sumar",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "average_rating",
-      "label": "Rating mediu",
-      "min": 0,
-      "max": 5,
-      "step": 0.1,
-      "default": 4.5
-    },
-    {
-      "type": "range",
-      "id": "total_reviews",
-      "label": "Număr total recenzii",
-      "min": 0,
-      "max": 500,
-      "step": 5,
-      "default": 25
-    },
-    {
-      "type": "header",
-      "content": "Procente rating (Breakdown)"
-    },
-    {
-      "type": "range",
-      "id": "star_5_percent",
-      "label": "5 stele (%)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 80
-    },
-    {
-      "type": "range",
-      "id": "star_4_percent",
-      "label": "4 stele (%)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "star_3_percent",
-      "label": "3 stele (%)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 5
-    },
-    {
-      "type": "range",
-      "id": "star_2_percent",
-      "label": "2 stele (%)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "star_1_percent",
-      "label": "1 stele (%)",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "Recenzii afișate"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_sample_reviews",
-      "label": "Afișează recenzii exemplu",
-      "default": true
-    },
-    {
-      "type": "inline_richtext",
-      "id": "no_reviews_text",
-      "label": "Text fără recenzii",
-      "default": "Încă nu există recenzii pentru acest produs"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "be_first_button_text",
-      "label": "Text buton fii primul",
-      "default": "Fii primul care lasă o recenzie"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "verified_purchase_text",
-      "label": "Text achiziție verificată",
-      "default": "Achiziție verificată"
-    },
-    {
-      "type": "header",
-      "content": "Recenzie 1"
-    },
-    {
-      "type": "text",
-      "id": "review_1_name",
-      "label": "Nume client"
-    },
-    {
-      "type": "range",
-      "id": "review_1_rating",
-      "label": "Rating",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 5
-    },
-    {
-      "type": "text",
-      "id": "review_1_title",
-      "label": "Titlu recenzie"
-    },
-    {
-      "type": "textarea",
-      "id": "review_1_text",
-      "label": "Text recenzie"
-    },
-    {
-      "type": "text",
-      "id": "review_1_date",
-      "label": "Dată"
-    },
-    {
-      "type": "checkbox",
-      "id": "review_1_verified",
-      "label": "Achiziție verificată",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Recenzie 2"
-    },
-    {
-      "type": "text",
-      "id": "review_2_name",
-      "label": "Nume client"
-    },
-    {
-      "type": "range",
-      "id": "review_2_rating",
-      "label": "Rating",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "text",
-      "id": "review_2_title",
-      "label": "Titlu recenzie"
-    },
-    {
-      "type": "textarea",
-      "id": "review_2_text",
-      "label": "Text recenzie"
-    },
-    {
-      "type": "text",
-      "id": "review_2_date",
-      "label": "Dată"
-    },
-    {
-      "type": "checkbox",
-      "id": "review_2_verified",
-      "label": "Achiziție verificată",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Recenzie 3"
-    },
-    {
-      "type": "text",
-      "id": "review_3_name",
-      "label": "Nume client"
-    },
-    {
-      "type": "range",
-      "id": "review_3_rating",
-      "label": "Rating",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "default": 5
-    },
-    {
-      "type": "text",
-      "id": "review_3_title",
-      "label": "Titlu recenzie"
-    },
-    {
-      "type": "textarea",
-      "id": "review_3_text",
-      "label": "Text recenzie"
-    },
-    {
-      "type": "text",
-      "id": "review_3_date",
-      "label": "Dată"
-    },
-    {
-      "type": "checkbox",
-      "id": "review_3_verified",
-      "label": "Achiziție verificată",
-      "default": false
-    },
-    {
-      "type": "header",
-      "content": "Formular recenzie"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "form_title",
-      "label": "Titlu formular",
-      "default": "Lasă o recenzie"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "name_label",
-      "label": "Etichetă nume",
-      "default": "Numele tău"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "email_label",
-      "label": "Etichetă email",
-      "default": "Adresa de email"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "rating_label",
-      "label": "Etichetă rating",
-      "default": "Evaluarea ta"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "review_title_label",
-      "label": "Etichetă titlu",
-      "default": "Titlul recenziei"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "review_body_label",
-      "label": "Etichetă text",
-      "default": "Recenzia ta"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "submit_button_text",
-      "label": "Text buton trimitere",
-      "default": "Trimite recenzia"
-    },
-    {
-      "type": "inline_richtext",
-      "id": "success_message",
-      "label": "Mesaj succes",
-      "default": "Mulțumim pentru recenzia ta! O vom publica în curând."
-    },
-    {
-      "type": "inline_richtext",
-      "id": "error_message",
-      "label": "Mesaj eroare",
-      "default": "A apărut o eroare. Te rugăm să verifici câmpurile și să încerci din nou."
-    },
-    {
-      "type": "header",
-      "content": "Aspect"
-    },
-    {
-      "type": "range",
-      "id": "desktop_width_percent",
-      "label": "Lățime desktop",
-      "min": 50,
-      "max": 100,
-      "step": 5,
-      "unit": "%",
-      "default": 100
-    },
-    {
-      "type": "range",
-      "id": "heading_size",
-      "label": "Dimensiune titlu",
-      "min": 20,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "default": 32
-    },
-    {
-      "type": "header",
-      "content": "Culori"
-    },
-    {
-      "type": "color",
-      "id": "background_color",
-      "label": "Fundal secțiune",
-      "default": "#FAFFFE"
-    },
-    {
-      "type": "color",
-      "id": "text_color",
-      "label": "Text",
-      "default": "#0D1B2A"
-    },
-    {
-      "type": "color",
-      "id": "summary_background",
-      "label": "Fundal sumar",
-      "default": "#F0FFFE"
-    },
-    {
-      "type": "color",
-      "id": "card_background",
-      "label": "Fundal card recenzie",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "card_border_color",
-      "label": "Bordură card",
-      "default": "#E0E0E0"
-    },
-    {
-      "type": "color",
-      "id": "button_color",
-      "label": "Buton",
-      "default": "#00C5B3"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Text buton",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_color",
-      "label": "Buton hover",
-      "default": "#00A89A"
-    },
-    {
-      "type": "color",
-      "id": "star_color",
-      "label": "Stele completate",
-      "default": "#FFD700"
-    },
-    {
-      "type": "color",
-      "id": "star_empty_color",
-      "label": "Stele goale",
-      "default": "#CCCCCC"
-    },
-    {
-      "type": "color",
-      "id": "verified_color",
-      "label": "Achiziție verificată",
-      "default": "#00C5B3"
-    },
-    {
-      "type": "color",
-      "id": "modal_background",
-      "label": "Fundal modal",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "input_background",
-      "label": "Fundal câmpuri",
-      "default": "#FFFFFF"
-    },
-    {
-      "type": "color",
-      "id": "input_border_color",
-      "label": "Bordură câmpuri",
-      "default": "#CCCCCC"
-    },
-    {
-      "type": "color",
-      "id": "success_color",
-      "label": "Text succes",
-      "default": "#008060"
-    },
-    {
-      "type": "color",
-      "id": "success_background",
-      "label": "Fundal succes",
-      "default": "#E8F5E9"
-    },
-    {
-      "type": "color",
-      "id": "error_color",
-      "label": "Text eroare",
-      "default": "#D82C0D"
-    },
-    {
-      "type": "color",
-      "id": "error_background",
-      "label": "Fundal eroare",
-      "default": "#FFEBEE"
-    },
-    {
-      "type": "header",
-      "content": "Stilizare"
-    },
-    {
-      "type": "range",
-      "id": "border_radius",
-      "label": "Rotunjire colțuri secțiune",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "card_border_radius",
-      "label": "Rotunjire colțuri card",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "button_border_radius",
-      "label": "Rotunjire colțuri buton",
-      "min": 0,
-      "max": 40,
-      "step": 2,
-      "unit": "px",
-      "default": 6
-    },
-    {
-      "type": "range",
-      "id": "input_border_radius",
-      "label": "Rotunjire colțuri câmpuri",
-      "min": 0,
-      "max": 20,
-      "step": 2,
-      "unit": "px",
-      "default": 4
-    }
-  ],
+  "settings": [],
   "presets": [
     {
-      "name": "Recenzii produse"
+      "name": "Recenzii VibeMag"
     }
   ]
 }
