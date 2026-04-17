@@ -205,7 +205,19 @@
   .lt-trust-inline { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 13px; }
 
   @media (max-width: 768px) {
-    .lt-bundle-grid { grid-template-columns: 1fr; }
+    .lt-bundle-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; margin: 20px 0 !important; }
+    .lt-bundle-content { padding: 12px 6px !important; }
+    .lt-bundle-title { font-size: 11px !important; min-height: 32px !important; margin-bottom: 2px !important; }
+    .lt-bundle-sub { font-size: 9px !important; min-height: 12px !important; margin-bottom: 6px !important; }
+    .lt-bundle-desc { display: none !important; } /* Hidden on mobile to save space */
+    .lt-bundle-price { font-size: 16px !important; }
+    .lt-bundle-price.small { font-size: 14px !important; }
+    .lt-bundle-old { font-size: 10px !important; }
+    .lt-bundle-save-wrap { min-height: 18px !important; margin-bottom: 4px !important; }
+    .lt-bundle-save { font-size: 8px !important; padding: 2px 4px !important; }
+    .lt-bundle-shipping, .lt-bundle-free { font-size: 8px !important; }
+    .lt-bundle-banner { font-size: 7px !important; min-height: 20px !important; padding: 4px 2px !important; }
+    .lt-radio-circle { width: 12px !important; height: 12px !important; top: 10px !important; right: 10px !important; }
   }
 
   /* 9. footer trust */
@@ -608,11 +620,14 @@
         // Update button text
         const title = this.getAttribute('data-title').toUpperCase();
         const price = this.getAttribute('data-price');
-        submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
         
-        // In a real implementation, you would update the variant ID here
-        // const variantId = this.getAttribute('data-variant-id');
-        // document.getElementById('ltSelectedId').value = variantId;
+        if(submitBtn) {
+          submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
+        }
+        
+        // Update hidden variant ID and Submit Form immediately
+        // document.getElementById('ltSelectedId').value = this.getAttribute('data-variant-id');
+        this.closest('section').querySelector('form').submit();
       });
     });
   });
