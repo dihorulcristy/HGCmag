@@ -195,8 +195,11 @@
   .lt-bundle-shipping { display: block; font-size: 12px; color: #9aa5a8; margin-top: 4px; }
   .lt-bundle-free { color: var(--lt-teal); font-weight: 700; font-size: 13px; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
 
-  .lt-btn-dark { background: var(--lt-navy); color: #fff; width: 100%; max-width: 450px; margin-top: 24px; border: none; font-family: 'Inter', sans-serif; }
-  .lt-btn-dark:hover { background: #1e1214; transform: translateY(-2px); }
+  .lt-inner-btn { background: var(--lt-navy); color: #fff; width: 100%; padding: 10px; border-radius: 4px; font-weight: 700; font-size: 13px; border: none; margin-top: auto; cursor: pointer; transition: background 0.2s; }
+  .lt-bundle-card.active .lt-inner-btn { background: var(--lt-rose); }
+  .lt-inner-btn:hover { opacity: 0.9; }
+
+  .lt-btn-dark { display: none !important; } /* Hard hide legacy button */
 
   .lt-reassurance-row { display: flex; justify-content: center; gap: 15px; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.8); }
   .lt-reassurance-item { display: flex; align-items: center; gap: 6px; }
@@ -518,6 +521,7 @@
             <span class="lt-bundle-price small">110 RON</span>
           </div>
           <span class="lt-bundle-shipping">+ 19,90 RON livrare</span>
+          <button type="button" class="lt-inner-btn">COMANDĂ</button>
         </div>
       </div>
 
@@ -540,6 +544,7 @@
              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
              TRANSPORT GRATUIT
           </div>
+          <button type="button" class="lt-inner-btn">COMANDĂ</button>
         </div>
       </div>
 
@@ -562,13 +567,13 @@
              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
              TRANSPORT GRATUIT
           </div>
+          <button type="button" class="lt-inner-btn">COMANDĂ</button>
         </div>
       </div>
     </div>
 
     {%- form 'product', product -%}
       <input type="hidden" name="id" id="ltSelectedId" value="{{ product.selected_or_first_available_variant.id }}">
-      <button type="submit" id="ltSubmitBtn" class="lt-btn lt-btn-dark">COMANDĂ TRATAMENTUL COMPLET — 149 RON</button>
     {%- endform -%}
 
     <div class="lt-reassurance-row">
