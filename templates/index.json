@@ -56,6 +56,12 @@
         "show_text_below": false
       }
     },
+    "social_proof_bar": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>.vm-spb{background:#fff;border-top:1px solid #e0eeec;border-bottom:1px solid #e0eeec;padding:14px 24px}.vm-spb-inner{display:flex;align-items:center;justify-content:center;gap:0;max-width:900px;margin:0 auto}.vm-spb-item{display:flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;color:#1a2b32;padding:0 32px}.vm-spb-item svg{width:16px;height:16px;stroke:#2abfb0;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}.vm-spb-divider{width:1px;height:28px;background:#e0eeec;flex-shrink:0}@media(max-width:749px){.vm-spb-item{padding:0 16px;font-size:11px}.vm-spb-item span{display:none}}</style><div class='vm-spb'><div class='vm-spb-inner'><div class='vm-spb-item'><svg viewBox='0 0 24 24'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>4.8/5 din 200+ recenzii</div><div class='vm-spb-divider'></div><div class='vm-spb-item'><svg viewBox='0 0 24 24'><polyline points='20 6 9 17 4 12'/></svg>1.200+ comenzi livrate</div><div class='vm-spb-divider'></div><div class='vm-spb-item'><svg viewBox='0 0 24 24'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>Verificat Trusted.ro</div></div></div>"
+      }
+    },
     "multicolumn": {
       "type": "custom-liquid",
       "settings": {
@@ -242,6 +248,7 @@
   },
   "order": [
     "image_banner",
+    "social_proof_bar",
     "multicolumn",
     "featured_collection",
     "image_with_text",
