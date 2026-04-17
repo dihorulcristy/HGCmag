@@ -2303,19 +2303,22 @@ shopify-section[id="footer"] {
   text-overflow: ellipsis;
 }
 
-.vm-price-row {
+.vm-price-row, .price__sale {
   display: flex !important;
+  flex-direction: row !important;
   align-items: center !important;
   gap: 12px !important;
   flex-wrap: wrap !important;
   margin-bottom: 8px !important;
 }
 
-.price__sale {
-  display: flex !important;
+.price__sale * {
+  display: inline-flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
+}
+
+.slider-buttons {
+  margin-bottom: 25px !important;
 }
 
 .vm-price-sale {
