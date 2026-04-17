@@ -2995,20 +2995,25 @@ shopify-section[id="footer"] {
 }
 
 .vm-price-subtext {
-  margin-top: 2px !important;
-  margin-bottom: 0 !important;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
   font-size: 11px !important;
   color: #9aa5a8 !important;
-  font-family: var(--vm-font-body);
+  font-family: var(--vm-font-body) !important;
+  line-height: 1.2 !important;
 }
 
-/* Reduce gap between price block and the next block (rating/stock) */
-.product__info-container > #price-{{ section.id }} + *,
-.product__info-container > [id^="price-"] + * {
-  margin-top: 4px !important;
+/* Reduce gap between price elements and rating snippet */
+.product__info-container > .price + .vm-price-subtext,
+.product__info-container > .vm-price-subtext + *,
+.product__info-container > * + .vm-price-subtext,
+.product__info-container > [id^="price-"] + *,
+.product__info-container > * + [id^="rating_inline-"] {
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
 }
 
-.product__info-container > * + [id^="Inventory-"],
-.product__info-container > * + .vm-reviews-inline {
-  margin-top: 4px !important;
+/* Ensure the rating snippet container itself has no extra margin */
+.vm-reviews-inline-wrap {
+  margin-top: 0 !important;
 }
