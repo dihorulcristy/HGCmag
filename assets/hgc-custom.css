@@ -3207,6 +3207,15 @@ shopify-section[id="footer"] {
   opacity: 0.5;
 }
 
+/* Force horizontal layout for sale prices on cards */
+.card-information .price--on-sale .price__sale {
+  flex-direction: row !important;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+
 /* Discrete button for cards (Desktop override) */
 .card .button, 
 .card .product-form__submit {
