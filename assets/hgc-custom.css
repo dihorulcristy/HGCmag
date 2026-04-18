@@ -3150,6 +3150,13 @@ shopify-section[id="footer"] {
   gap: 1.2rem !important;
 }
 
+@media screen and (max-width: 749px) {
+  .price {
+    gap: 0.6rem !important;
+  }
+}
+
+
 /* Product Page Price (Prominent but Balanced) */
 .price--large .price-item--sale {
   font-size: 2.4rem !important;
@@ -3199,6 +3206,24 @@ shopify-section[id="footer"] {
   font-weight: 400 !important;
   opacity: 0.5;
 }
+
+@media screen and (max-width: 749px) {
+  .card-information .price-item--sale {
+    font-size: 1.3rem !important; /* Scaled down for 2-column mobile grid */
+  }
+  .card-information .price-item--regular {
+    font-size: 1rem !important;
+  }
+  
+  /* Proportional buttons for mobile cards */
+  .card .button, 
+  .card .product-form__submit {
+    padding: 1.2rem 1.5rem !important;
+    font-size: 1.1rem !important;
+    min-height: auto !important;
+  }
+}
+
 
 /* Clean UI fixes */
 .card-information .vm-price-pill,
