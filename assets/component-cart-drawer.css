@@ -243,6 +243,27 @@ cart-drawer-items {
   font-weight: 500;
 }
 
+.cart-item__savings {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.cart-item__old-total {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.3rem;
+  color: #9aa5a8;
+  text-decoration: line-through;
+}
+
+.cart-item__save-amount {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2abfb0;
+}
+
 .cart-drawer .cart-item__media {
   grid-row: 1 / 3;
 }
