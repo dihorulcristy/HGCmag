@@ -352,6 +352,11 @@ cart-drawer-items {
   margin-top: 1.2rem;
 }
 
+.quantity__button svg,
+.quantity__button span {
+  pointer-events: none;
+}
+
 .cart-drawer .cart-item__totals .price {
   font-family: 'Inter', sans-serif;
   font-weight: 700;

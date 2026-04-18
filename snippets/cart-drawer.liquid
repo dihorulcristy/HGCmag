@@ -205,7 +205,11 @@
                                 name="updates[]"
                                 value="{{ item.quantity }}"
                                 data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                                min="0"
+                                min="{{ item.variant.quantity_rule.min }}"
+                                {%- if item.variant.quantity_rule.max != null -%}
+                                  max="{{ item.variant.quantity_rule.max }}"
+                                {%- endif -%}
+                                step="{{ item.variant.quantity_rule.increment }}"
                                 data-index="{{ item.index | plus: 1 }}"
                                 id="Drawer-quantity-{{ item.index | plus: 1 }}"
                               >
