@@ -4,21 +4,7 @@
 
 .js menu-drawer > details > summary::before,
 .js menu-drawer > details[open]:not(.menu-opening) > summary::before {
-  content: '';
-  position: absolute;
-  cursor: default;
-  width: 100%;
-  height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
-  top: 100%;
-  left: 0;
-  background: rgba(var(--color-foreground), 0.5);
-  opacity: 0;
-  visibility: hidden;
-  z-index: 2;
-  transition:
-    opacity 0s,
-    visibility 0s;
+  display: none;
 }
 
 menu-drawer > details[open] > summary::before {
@@ -47,8 +33,8 @@ menu-drawer > details[open] > summary::before {
 }
 
 .js .menu-drawer {
-  height: calc(100vh - 100%);
-  height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
+  height: auto;
+  max-height: 80vh;
 }
 
 .js details[open] > .menu-drawer,
@@ -79,7 +65,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer__inner-container {
   position: relative;
-  height: 100%;
+  height: auto;
 }
 
 .menu-drawer__navigation-container {
@@ -87,7 +73,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   grid-template-rows: 1fr auto;
   align-content: space-between;
   overflow-y: auto;
-  height: 100%;
+  height: auto;
 }
 
 .menu-drawer__navigation {
@@ -95,7 +81,8 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__inner-submenu {
-  height: 100%;
+  height: auto;
+  max-height: 60vh;
   overflow-x: hidden;
   overflow-y: auto;
 }
