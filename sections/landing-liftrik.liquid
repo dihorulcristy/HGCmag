@@ -809,51 +809,59 @@
           submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
         }
         
-        // Update quantity and Submit Form via AJAX
+        // Final Robust AJAX Add to Cart (using direct variant ID and JSON)
         const qty = parseInt(this.getAttribute('data-qty') || 1);
-        const variantId = document.getElementById('ltSelectedId').value;
+        const variantId = "56636795519356"; // ID-ul furnizat pentru Plasturi Liftrik
         const sections = ['cart-drawer', 'cart-icon-bubble'];
 
-        let formData = new FormData();
-        formData.append('id', variantId);
-        formData.append('quantity', qty);
-        formData.append('sections', sections.join(','));
-        formData.append('sections_url', window.location.pathname);
+        const formData = {
+          'id': variantId,
+          'quantity': qty,
+          'sections': sections.join(','),
+          'sections_url': window.location.pathname
+        };
 
         fetch(window.Shopify.routes.root + 'cart/add.js', {
           method: 'POST',
           headers: {
+            'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
           },
-          body: formData
+          body: JSON.stringify(formData)
         })
         .then(response => response.json())
         .then(response => {
            if (response.status && response.status !== 200) {
              console.error('Add to cart error:', response.description);
-             const form = this.closest('section').querySelector('form');
-             if(form) form.submit();
+             window.location.href = `/cart/add?id=${variantId}&quantity=${qty}`;
              return;
            }
 
-           // Use the theme's pubsub system to update the cart if available
+           // Signal update to the theme
            if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
              publish(PUB_SUB_EVENTS.cartUpdate, response);
            }
 
-           // Fallback / Direct update of cart drawer UI
+           // Force refresh and OPEN the cart drawer
            const cartDrawer = document.querySelector('cart-drawer');
-           if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
-             cartDrawer.renderContents(response);
+           if (cartDrawer) {
+             if (typeof cartDrawer.renderContents === 'function') {
+               cartDrawer.renderContents(response);
+             }
+             // Ensure it opens even if renderContents doesn't trigger it
+             if (typeof cartDrawer.open === 'function') {
+               cartDrawer.open();
+             } else {
+               cartDrawer.classList.add('animate', 'active');
+               document.body.classList.add('overflow-hidden');
+             }
            } else {
-             // If no drawer, redirect to cart
-             if (!cartDrawer) window.location.href = window.routes?.cart_url || '/cart';
+             window.location.href = window.routes?.cart_url || '/cart';
            }
         })
         .catch((error) => {
           console.error('Fetch error:', error);
-          const form = this.closest('section').querySelector('form');
-          if(form) form.submit();
+          window.location.href = `/cart/add?id=${variantId}&quantity=${qty}`;
         });
       });
     });
