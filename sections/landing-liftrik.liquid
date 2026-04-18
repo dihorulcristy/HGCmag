@@ -791,39 +791,45 @@
 
 <script>
 function vmAddToCart(quantity) {
+  const sections = ['cart-drawer', 'cart-icon-bubble'];
+  
   fetch('/cart/clear.js', { method: 'POST' })
     .then(() => fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: 56636795519356,
-        quantity: quantity
+        quantity: quantity,
+        sections: sections.join(','),
+        sections_url: window.location.pathname
       })
     }))
-    .then(() => {
+    .then(r => r.json())
+    .then(response => {
+      // Update cart count bubble via standard publish or direct fetch
+      if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+        publish(PUB_SUB_EVENTS.cartUpdate, response);
+      }
       
-      // Update cart count bubble
-      fetch('/cart.js')
-        .then(r => r.json())
-        .then(cart => {
-          const bubbles = document.querySelectorAll('.cart-count-bubble');
-          bubbles.forEach(bubble => {
-            bubble.classList.remove('hidden');
-            const span = bubble.querySelector('span');
-            if(span) span.textContent = cart.item_count;
-          });
-          
-          // Trigger theme refresh if possible
-          if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
-            publish(PUB_SUB_EVENTS.cartUpdate, { cart: cart });
-          }
-        });
-        
-      alert('Produsul a fost adăugat în coș!');
+      // Force refresh and OPEN the cart drawer
+      const cartDrawer = document.querySelector('cart-drawer');
+      if (cartDrawer) {
+        if (typeof cartDrawer.renderContents === 'function') {
+          cartDrawer.renderContents(response);
+        }
+        if (typeof cartDrawer.open === 'function') {
+          cartDrawer.open();
+        } else {
+          cartDrawer.classList.add('animate', 'active');
+          document.body.classList.add('overflow-hidden');
+        }
+      } else {
+        window.location.href = '/cart';
+      }
     })
     .catch(err => {
        console.error(err);
-       alert('A apărut o eroare. Vă rugăm reîncercați.');
+       window.location.href = '/cart';
     });
 }
 
