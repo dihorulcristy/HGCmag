@@ -21,30 +21,24 @@ class CustomMegaMenu {
   }
 
   injectToHeader() {
-    const headerWrapper = document.querySelector('.header-wrapper');
-    if (!headerWrapper) return;
+    const mainNav = document.querySelector('.header__inline-menu ul');
+    if (!mainNav) return;
 
-    // Create Secondary Navigation Bar
-    const secondaryNav = document.createElement('div');
-    secondaryNav.className = 'cm-secondary-nav';
-    secondaryNav.innerHTML = `
-      <div class="page-width">
-        <div class="cm-secondary-nav-item">
-          <button class="cm-all-products-trigger">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm8 0v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg>
-            Toate Produsele
-          </button>
-          ${this.buildVerticalSidebarHTML()}
-        </div>
-        <div class="cm-secondary-links">
-          <a href="#" class="cm-secondary-link-item">Calculator Dimensiune Cablu Dc</a>
-          <a href="#" class="cm-secondary-link-item">Calculator Productie Panouri</a>
-        </div>
+    // Create the 'Toate Produsele' item for the main nav
+    const li = document.createElement('li');
+    li.className = 'custom-mega-menu-list-item';
+    li.innerHTML = `
+      <div class="custom-mega-menu-trigger" aria-expanded="false" aria-haspopup="true">
+        <span>Toate Produsele</span>
+        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
+        </svg>
+        ${this.buildVerticalSidebarHTML()}
       </div>
     `;
 
-    // Append to header wrapper
-    headerWrapper.appendChild(secondaryNav);
+    // Insert as the FIRST item in the main nav
+    mainNav.prepend(li);
 
     // Mobile integration
     const mobileNav = document.querySelector('.menu-drawer__menu');
@@ -52,7 +46,7 @@ class CustomMegaMenu {
       const mobileLi = document.createElement('li');
       mobileLi.innerHTML = `
         <details class="menu-drawer__menu-item list-menu__item link link--text focus-inset" id="Details-Mobile-Categorii">
-          <summary>Categorii de produse <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
+          <summary>Toate Produsele <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></svg></summary>
           <div class="menu-drawer__inner-submenu">
              ${this.buildMobileMenuHTML()}
@@ -62,17 +56,14 @@ class CustomMegaMenu {
       mobileNav.prepend(mobileLi);
     }
 
-    // Remove duplicates from main nav
-    const mainNav = document.querySelector('.header__inline-menu ul');
-    if (mainNav) {
-      const existingItems = mainNav.querySelectorAll('li');
-      existingItems.forEach(item => {
-        const text = item.textContent.trim().toLowerCase();
-        if (text.includes('catalog') || text.includes('categorii de produse')) {
-          item.style.display = 'none';
-        }
-      });
-    }
+    // Hide existing Catalog/Categorii links if they exist
+    const existingItems = mainNav.querySelectorAll('li');
+    existingItems.forEach(item => {
+      const text = item.textContent.trim().toLowerCase();
+      if (text.includes('catalog') || text.includes('categorii de produse')) {
+        item.style.display = 'none';
+      }
+    });
   }
 
   buildVerticalSidebarHTML() {
