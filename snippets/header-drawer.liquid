@@ -18,11 +18,6 @@
     </summary>
     <div id="menu-drawer" class="gradient menu-drawer motion-reduce color-{{ section.settings.menu_color_scheme }}">
       <div class="menu-drawer__header">
-        <button class="menu-drawer__close" type="button" onclick="this.closest('details').removeAttribute('open')">
-          <span class="svg-wrapper">
-            {{- 'icon-close.svg' | inline_asset_content -}}
-          </span>
-        </button>
         <div class="menu-drawer__account-wrapper">
           {%- if shop.customer_accounts_enabled -%}
             <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account-link link focus-inset">
@@ -34,6 +29,7 @@
             </a>
           {%- endif -%}
         </div>
+
 
       </div>
       <div class="menu-drawer__inner-container">

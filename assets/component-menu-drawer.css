@@ -55,28 +55,27 @@ details[open].menu-opening > summary::before {
   z-index: 1001;
 }
 
-.menu-drawer__close {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
+/* Mobile drawer header centering */
+.menu-drawer__header {
   display: flex;
   align-items: center;
+  justify-content: center;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-bottom: 0.5px solid #f0f0f0;
+  position: sticky;
+  top: 0;
+  z-index: 1001;
 }
 
-.menu-drawer__close svg {
-  width: 20px;
-  height: 20px;
-  stroke: #1a2b32;
-  stroke-width: 1.5px;
-}
 
 .menu-drawer__account-wrapper {
   flex-grow: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
 }
+
 
 .menu-drawer__account-link {
   font-family: 'Inter', sans-serif;
