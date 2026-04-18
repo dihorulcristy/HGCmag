@@ -681,7 +681,7 @@
     
     <div class="lt-bundle-grid" id="ltBundleGrid">
       <!-- Option 1 -->
-      <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON">
+      <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON" data-qty="1">
         <div class="lt-bundle-banner empty">&nbsp;</div>
         <div class="lt-bundle-content">
           <div class="lt-radio-circle"></div>
@@ -700,7 +700,7 @@
       </div>
 
       <!-- Option 2 (Best Seller) -->
-      <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON">
+      <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON" data-qty="3">
         <div class="lt-bundle-banner">🔥 CEL MAI VÂNDUT</div>
         <div class="lt-bundle-content">
           <div class="lt-radio-circle"></div>
@@ -723,7 +723,7 @@
       </div>
 
       <!-- Option 3 -->
-      <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON">
+      <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON" data-qty="5">
         <div class="lt-bundle-banner rose">💎 CEA MAI BUNĂ VALOARE</div>
         <div class="lt-bundle-content">
           <div class="lt-radio-circle"></div>
@@ -748,6 +748,7 @@
 
     {%- form 'product', product -%}
       <input type="hidden" name="id" id="ltSelectedId" value="{{ product.selected_or_first_available_variant.id }}">
+      <input type="hidden" name="quantity" id="ltSelectedQty" value="1">
     {%- endform -%}
 
     <div class="lt-reassurance-row">
@@ -808,9 +809,49 @@
           submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
         }
         
-        // Update hidden variant ID and Submit Form immediately
-        // document.getElementById('ltSelectedId').value = this.getAttribute('data-variant-id');
-        this.closest('section').querySelector('form').submit();
+        // Update quantity and Submit Form via AJAX
+        const qty = parseInt(this.getAttribute('data-qty') || 1);
+        const variantId = document.getElementById('ltSelectedId').value;
+        const sections = ['cart-drawer', 'cart-icon-bubble'];
+
+        const formData = {
+          'id': variantId,
+          'quantity': qty,
+          'sections': sections.join(','),
+          'sections_url': window.location.pathname
+        };
+
+        fetch(window.Shopify.routes.root + 'cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(response => {
+           if (response.status && response.status !== 200) {
+             console.error('Add to cart error:', response.description);
+             // Fallback to standard form submit if AJAX fails
+             const form = this.closest('section').querySelector('form');
+             if(form) form.submit();
+             return;
+           }
+
+           // Update cart drawer UI
+           const cartDrawer = document.querySelector('cart-drawer');
+           if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
+             cartDrawer.renderContents(response);
+           } else {
+             window.location.href = window.routes?.cart_url || '/cart';
+           }
+        })
+        .catch((error) => {
+          console.error('Fetch error:', error);
+          const form = this.closest('section').querySelector('form');
+          if(form) form.submit();
+        });
       });
     });
 
