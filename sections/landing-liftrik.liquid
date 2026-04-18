@@ -293,7 +293,83 @@
       letter-spacing: 0.5px;
     }
   }
+  /* 10. Video Demonstration */
+  .lt-video-section {
+    background: #fff;
+    padding: 72px 0;
+  }
+  .lt-video-container-wide {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .lt-video-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .lt-video-tag {
+    color: #c97b84;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .lt-video-title {
+    font-family: var(--lt-serif);
+    font-weight: 700;
+    font-size: 32px;
+    color: #2c1a1d;
+    margin-bottom: 8px;
+  }
+  .lt-video-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: #8a6e72;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .lt-video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .lt-video-item {
+    text-align: center;
+    opacity: 0; /* Prepared for reveal */
+  }
+  .lt-video-wrap {
+    aspect-ratio: 9/16;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eedfe1;
+    background: #fdf4f5;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .lt-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .lt-video-caption {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: #8a6e72;
+  }
+
+  @media (max-width: 767px) {
+    .lt-video-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .lt-video-title {
+      font-size: 28px;
+    }
+  }
 </style>
+
 
 
 
@@ -442,6 +518,46 @@
     </div>
   </div>
 </section>
+
+<section class="lt-video-section">
+  <div class="lt-video-container-wide">
+    <div class="lt-video-header lt-reveal">
+      <span class="lt-video-tag">Vezi cum funcționează</span>
+      <h2 class="lt-video-title">Rezultate reale, filmate în direct</h2>
+      <p class="lt-video-subtitle">Urmărește cum se aplică Liftrik și ce efect produce imediat.</p>
+    </div>
+
+    <div class="lt-video-grid">
+      <!-- Video 1 -->
+      <div class="lt-video-item lt-reveal" style="transition-delay: 0.1s;">
+        <div class="lt-video-wrap">
+          <video src="https://cdn.shopify.com/videos/c/o/v/b0673199b7524231ae09a6b2e3e529ff.mp4" 
+                 autoplay muted loop playsinline controls></video>
+        </div>
+        <p class="lt-video-caption">Aplicare în 30 de secunde</p>
+      </div>
+
+      <!-- Video 2 -->
+      <div class="lt-video-item lt-reveal" style="transition-delay: 0.2s;">
+        <div class="lt-video-wrap">
+          <video src="https://cdn.shopify.com/videos/c/o/v/0b2ab520a26b4e28beea66d7c0092dad.mp4" 
+                 autoplay muted loop playsinline controls></video>
+        </div>
+        <p class="lt-video-caption">Efect vizibil imediat</p>
+      </div>
+
+      <!-- Video 3 -->
+      <div class="lt-video-item lt-reveal" style="transition-delay: 0.3s;">
+        <div class="lt-video-wrap">
+          <video src="https://cdn.shopify.com/videos/c/o/v/60c3cd8846884f2ea724f2e2ba874527.mp4" 
+                 autoplay muted loop playsinline controls></video>
+        </div>
+        <p class="lt-video-caption">Invizibil sub machiaj</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="lt-section lt-problem">
   <div class="lt-container">
@@ -721,6 +837,26 @@
         }
       });
     }
+
+    // Intersection Observer for scroll reveal animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-up');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.lt-reveal').forEach(el => {
+      revealObserver.observe(el);
+    });
   });
 </script>
+
 
