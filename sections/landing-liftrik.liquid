@@ -807,10 +807,43 @@ function vmAddToCart(quantity) {
         quantity: quantity
       })
     }))
-    .then(() => { window.location.href = '/checkout'; })
+    .then(() => {
+      if(btn) btn.innerText = "ADĂUGAT!";
+      
+      // Update cart count bubble
+      fetch('/cart.js')
+        .then(r => r.json())
+        .then(cart => {
+          const bubbles = document.querySelectorAll('.cart-count-bubble');
+          bubbles.forEach(bubble => {
+            bubble.classList.remove('hidden');
+            const span = bubble.querySelector('span');
+            if(span) span.textContent = cart.item_count;
+          });
+          
+          // Trigger theme refresh if possible
+          if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+            publish(PUB_SUB_EVENTS.cartUpdate, { cart: cart });
+          }
+        });
+        
+      alert('Produsul a fost adăugat în coș!');
+      
+      // Reset button text after 2 seconds
+      setTimeout(() => {
+        if(btn) {
+          const activeCard = document.querySelector('.lt-bundle-card.active');
+          if(activeCard) {
+            const title = activeCard.getAttribute('data-title').toUpperCase();
+            const price = activeCard.getAttribute('data-price');
+            btn.innerText = `COMANDĂ ${title} — ${price}`;
+          }
+        }
+      }, 2000);
+    })
     .catch(err => {
-      console.error(err);
-      window.location.href = '/checkout'; // Fallback redirect
+       console.error(err);
+       alert('A apărut o eroare. Vă rugăm reîncercați.');
     });
 }
 
