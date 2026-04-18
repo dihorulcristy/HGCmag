@@ -1,7 +1,7 @@
 /* Custom Vertical Mega Menu - Minimalist Theme */
 
 :root {
-  --cm-gold: #D4AF37;
+  --cm-cyan: #00c5b3;
   --cm-charcoal: #2B2B2B;
   --cm-off-white: #FDFDFD;
   --cm-border: #e8ebed;
@@ -95,7 +95,7 @@
 
 .cm-sidebar-link:hover {
   background: #f9f9f9;
-  color: var(--cm-gold);
+  color: var(--cm-cyan);
 }
 
 .cm-sidebar-link .icon-chevron {
@@ -130,7 +130,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 15px;
-  color: var(--cm-gold);
+  color: var(--cm-cyan);
   border-bottom: 1px solid var(--cm-border);
   padding-bottom: 10px;
   display: block;
@@ -154,7 +154,7 @@
 }
 
 .cm-flyout-link:hover {
-  color: var(--cm-gold);
+  color: var(--cm-cyan);
   padding-left: 5px;
 }
 
