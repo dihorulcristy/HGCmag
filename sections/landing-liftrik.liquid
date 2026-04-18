@@ -791,41 +791,17 @@
 
 <script>
 function vmAddToCart(quantity) {
-  const sections = ['cart-drawer', 'cart-icon-bubble'];
-  
   fetch('/cart/clear.js', { method: 'POST' })
     .then(() => fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: 56636795519356,
-        quantity: quantity,
-        sections: sections.join(','),
-        sections_url: window.location.pathname
+        quantity: quantity
       })
     }))
-    .then(r => r.json())
-    .then(response => {
-      // Update cart count bubble via standard publish or direct fetch
-      if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
-        publish(PUB_SUB_EVENTS.cartUpdate, response);
-      }
-      
-      // Force refresh and OPEN the cart drawer
-      const cartDrawer = document.querySelector('cart-drawer');
-      if (cartDrawer) {
-        if (typeof cartDrawer.renderContents === 'function') {
-          cartDrawer.renderContents(response);
-        }
-        if (typeof cartDrawer.open === 'function') {
-          cartDrawer.open();
-        } else {
-          cartDrawer.classList.add('animate', 'active');
-          document.body.classList.add('overflow-hidden');
-        }
-      } else {
-        window.location.href = '/cart';
-      }
+    .then(() => {
+      window.location.href = '/cart';
     })
     .catch(err => {
        console.error(err);
