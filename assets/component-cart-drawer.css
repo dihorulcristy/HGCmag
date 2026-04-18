@@ -202,13 +202,16 @@ cart-drawer-items {
 
 .cart-drawer .cart-item {
   display: grid;
-  grid-template: repeat(2, auto) / repeat(4, 1fr);
-  gap: 1rem;
-  margin-bottom: 0;
+  grid-template-columns: 80px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 0.5px solid #f0f0f0;
 }
 
 .cart-drawer .cart-item:last-child {
-  margin-bottom: 1rem;
+  border-bottom: none;
 }
 
 .cart-item__name {
@@ -323,8 +326,30 @@ cart-drawer-items {
 }
 
 .cart-drawer .cart-item__details {
-  width: auto;
-  grid-column: 2 / 4;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  grid-column: 2 / 3;
+}
+
+.cart-item__price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.cart-item__quantity-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
 }
 
 .cart-drawer .cart-item__totals .price {

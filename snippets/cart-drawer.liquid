@@ -152,9 +152,17 @@
                             {{- item.product.title | escape -}}
                           </a>
 
+                          <div class="cart-item__price-row">
+                            <span class="price price--end">
+                              {{ item.final_line_price | money }}
+                            </span>
+                            {%- if item.original_price > item.final_price -%}
+                              <span class="cart-item__old-total">{{ item.original_price | times: item.quantity | money }}</span>
+                            {%- endif -%}
+                          </div>
+
                           {%- if item.original_price > item.final_price -%}
                             <div class="cart-item__savings">
-                              <span class="cart-item__old-total">{{ item.original_price | times: item.quantity | money }}</span>
                               <span class="cart-item__save-amount">Tu economisești {{ item.original_price | minus: item.final_price | times: item.quantity | money }}</span>
                             </div>
                           {%- endif -%}
@@ -183,95 +191,51 @@
                             </div>
                           {%- endif -%}
 
-                          <ul
-                            class="discounts list-unstyled"
-                            role="list"
-                            aria-label="{{ 'customer.order.discount' | t }}"
-                          >
-                            {%- for discount in item.line_level_discount_allocations -%}
-                              <li class="discounts__discount">
-                                {{- 'icon-discount.svg' | inline_asset_content -}}
-                                {{ discount.discount_application.title }}
-                              </li>
-                            {%- endfor -%}
-                          </ul>
-                        </td>
-
-                        <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal">
-                          {%- render 'loading-spinner' -%}
-                          <div class="cart-item__price-wrapper">
-                            <span class="price price--end">
-                              {{ item.final_line_price | money }}
-                            </span>
-                          </div>
-                        </td>
-
-                            {%- if item.variant.available and item.unit_price_measurement -%}
-                              {% render 'unit-price',
-                                price: item.unit_price,
-                                measurement: item.unit_price_measurement
-                              %}
-                            {%- endif -%}
-                          </div>
-                        </td>
-                        {%- liquid
-                          assign has_qty_rules = false
-                          if item.variant.quantity_rule.increment > 1 or item.variant.quantity_rule.min > 1 or item.variant.quantity_rule.max != null
-                            assign has_qty_rules = true
-                          endif
-
-                          assign has_vol_pricing = false
-                          if item.variant.quantity_price_breaks.size > 0
-                            assign has_vol_pricing = true
-                          endif
-                        -%}
-                        <td
-                          class="cart-item__quantity {% if has_qty_rules or has_vol_pricing %} cart-item__quantity--info{% endif %}"
-                          role="cell"
-                          headers="CartDrawer-ColumnQuantity"
-                        >
-                          <quantity-popover>
-                            <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
-                              <div class="quantity-popover-container">
-                                <quantity-input class="quantity cart-quantity">
-                                  <button class="quantity__button" name="minus" type="button">
-                                    <span class="svg-wrapper">
-                                      {{- 'icon-minus.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
-                                  <input
-                                    class="quantity__input"
-                                    type="number"
-                                    data-quantity-variant-id="{{ item.variant.id }}"
-                                    name="updates[]"
-                                    value="{{ item.quantity }}"
-                                    data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
-                                    min="0"
-                                    data-index="{{ item.index | plus: 1 }}"
-                                    id="Drawer-quantity-{{ item.index | plus: 1 }}"
-                                  >
-                                  <button class="quantity__button" name="plus" type="button">
-                                    <span class="svg-wrapper">
-                                      {{- 'icon-plus.svg' | inline_asset_content -}}
-                                    </span>
-                                  </button>
-                                </quantity-input>
-                              </div>
-                              <cart-remove-button
-                                id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                          <div class="cart-item__quantity-area">
+                            <quantity-input class="quantity cart-quantity">
+                              <button class="quantity__button" name="minus" type="button">
+                                <span class="svg-wrapper">
+                                  {{- 'icon-minus.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                              <input
+                                class="quantity__input"
+                                type="number"
+                                data-quantity-variant-id="{{ item.variant.id }}"
+                                name="updates[]"
+                                value="{{ item.quantity }}"
+                                data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                                min="0"
                                 data-index="{{ item.index | plus: 1 }}"
+                                id="Drawer-quantity-{{ item.index | plus: 1 }}"
                               >
-                                <button
-                                  type="button"
-                                  class="cart-remove-button-minimal"
-                                  aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
-                                >
-                                  <span class="svg-wrapper">
-                                    {{- 'icon-remove.svg' | inline_asset_content -}}
-                                  </span>
-                                </button>
-                              </cart-remove-button>
-                            </div>
+                              <button class="quantity__button" name="plus" type="button">
+                                <span class="svg-wrapper">
+                                  {{- 'icon-plus.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                            </quantity-input>
+                            <cart-remove-button
+                              id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
+                              data-index="{{ item.index | plus: 1 }}"
+                            >
+                              <button
+                                type="button"
+                                class="cart-remove-button-minimal"
+                                aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
+                              >
+                                <span class="svg-wrapper">
+                                  {{- 'icon-remove.svg' | inline_asset_content -}}
+                                </span>
+                              </button>
+                            </cart-remove-button>
+                          </div>
+                        </td>
+
+                        <td class="cart-item__totals right" role="cell" headers="CartDrawer-ColumnTotal" style="display:none">
+                          {%- render 'loading-spinner' -%}
+                        </td>
+                        <td class="cart-item__quantity" role="cell" headers="CartDrawer-ColumnQuantity" style="display:none"></td>
                             {%- if has_qty_rules or has_vol_pricing -%}
                               <button
                                 type="button"
