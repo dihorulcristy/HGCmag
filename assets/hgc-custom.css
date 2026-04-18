@@ -76,6 +76,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0 !important;
   padding: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.shopify-section-group-header-group {
+  margin-top: 0 !important;
 }
 
 /* Ensure the absolute bottom of the page matches the footer color to hide any "stripes" */
