@@ -1,4 +1,36 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
+<style>
+  .predictive-search {
+    background-color: #1a2b32 !important; /* var(--vm-navy) */
+    --color-foreground: 255, 255, 255 !important;
+    --color-background: 26, 43, 50 !important;
+  }
+  .predictive-search__heading {
+    color: #2abfb0 !important; /* var(--vm-teal) */
+    opacity: 1 !important;
+  }
+  .predictive-search__item-heading,
+  .predictive-search .h5,
+  .predictive-search .h4,
+  .predictive-search__item-vendor,
+  .predictive-search__item--term {
+    color: #ffffff !important;
+  }
+  .predictive-search .price-item--sale {
+    color: #ffffff !important;
+  }
+  .predictive-search .price-item--regular {
+    color: #2abfb0 !important;
+    opacity: 0.8;
+  }
+  .predictive-search__item:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+  }
+  .predictive-search__item-query-result mark {
+    color: #2abfb0 !important;
+    background-color: transparent !important;
+  }
+</style>
 {%- if predictive_search.performed -%}
   {% assign first_column_results_size = predictive_search.resources.queries.size
     | plus: predictive_search.resources.collections.size

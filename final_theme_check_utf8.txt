@@ -1,0 +1,108 @@
+﻿node.exe : Γò¡ΓöÇ info ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ
+ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò
+«
+At C:\Users\hergh\AppData\Roaming\npm\shopify.ps1:24 char:5
++     & "node$exe"  "$basedir/node_modules/@shopify/cli/bin/run.js" $ar ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Γò¡ΓöÇ info ΓöÇ...ΓöÇΓöÇΓöÇΓöÇΓò«:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Γöé                                                                              Γöé
+Γöé  :\Users\hergh\Desktop\HGCMag\layout\password.liquid                         Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: UndefinedObject                                                  Γöé
+Γöé  Unknown object 'scheme_classes' used.                                       Γöé
+Γöé                                                                              Γöé
+Γöé  40  {% assign scheme_classes = scheme_classes | append: ', .color-' |       Γöé
+Γöé  append: scheme.id %}                                                        Γöé
+Γöé                                                                              Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+ò»
+
+Γò¡ΓöÇ info ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+Γöé                                                                              Γöé
+Γöé  :\Users\hergh\Desktop\HGCMag\layout\theme.liquid                            Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: RemoteAsset                                                      Γöé
+Γöé  Asset should be served by the Shopify CDN for better performance.           Γöé
+Γöé                                                                              Γöé
+Γöé  19  <link rel="preconnect" href="https://fonts.googleapis.com">             Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: AssetPreload                                                     Γöé
+Γöé  For better performance, prefer using the preload argument of the            Γöé
+Γöé  stylesheet_tag filter                                                       Γöé
+Γöé                                                                              Γöé
+Γöé  21      <link                                                               Γöé
+Γöé  22        rel="preload"                                                     Γöé
+Γöé  23        as="style"                                                        Γöé
+Γöé  24        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;40  Γöé
+Γöé  0;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,7  Γöé
+Γöé  00;1,400&display=swap"                                                      Γöé
+Γöé  25      >
+                                                                  Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: RemoteAsset                                                      Γöé
+Γöé  Asset should be served by the Shopify CDN for better performance.           Γöé
+Γöé                                                                              Γöé
+Γöé  20  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>    Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: RemoteAsset                                                      Γöé
+Γöé  Asset should be served by the Shopify CDN for better performance.           Γöé
+Γöé                                                                              Γöé
+Γöé  24  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;  Γöé
+Γöé  600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,4  Γöé
+Γöé  00&display=swap"                                                            Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: RemoteAsset                                                      Γöé
+Γöé  Asset should be served by the Shopify CDN for better performance.           Γöé
+Γöé                                                                              Γöé
+Γöé  28  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;  Γöé
+Γöé  600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,4  Γöé
+Γöé  00&family=Playfair+Display:ital,wght@1,400;1,700&display=swap"              Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: UndefinedObject                                                  Γöé
+Γöé  Unknown object 'scheme_classes' used.                                       Γöé
+Γöé                                                                              Γöé
+Γöé  73  {% assign scheme_classes = scheme_classes | append: ', .color-' |       Γöé
+Γöé  append: scheme.id %}                                                        Γöé
+Γöé                                                                              Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+ò»
+
+Γò¡ΓöÇ info ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+Γöé                                                                              Γöé
+Γöé  :\Users\hergh\Desktop\HGCMag\sections\main-product.liquid                   Γöé
+Γöé                                                                              Γöé
+Γöé                                                                              Γöé
+Γöé  [warning]: UndefinedObject                                                  Γöé
+Γöé  Unknown object 'continue' used.                                             Γöé
+Γöé                                                                              Γöé
+Γöé  578  offset: continue                                                       Γöé
+Γöé                                                                              Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+ò»
+
+Γò¡ΓöÇ info ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+Γöé                                                                              Γöé
+Γöé  Theme Check Summary.                                                        Γöé
+Γöé                                                                              Γöé
+Γöé  176 files inspected with 8 total offenses found across 3 files.             Γöé
+Γöé  8 warnings.                                                                 Γöé
+Γöé                                                                              Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö
+ÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓ
+ò»
+

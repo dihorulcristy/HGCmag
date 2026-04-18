@@ -86,7 +86,7 @@
 }
 
 .price--on-sale .price-item--sale {
-  color: #0d1b2a !important; /* VibeMag Navy for final price */
+  color: #0d1b2a; /* VibeMag Navy for final price */
   font-weight: 800 !important;
   font-size: 2.2rem !important;
   margin: 0 !important;

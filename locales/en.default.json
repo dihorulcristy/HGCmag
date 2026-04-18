@@ -179,7 +179,10 @@
       "taxes_included": "Taxes included.",
       "duties_included": "Duties included.",
       "duties_and_taxes_included": "Duties and taxes included.",
-      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout."
+      "shipping_policy_html": "<a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
+      "only_one_left": "Only 1 left!",
+      "only_x_left": "Only {{ quantity }} left!",
+      "people_viewing": "people are viewing this product right now"
     },
     "modal": {
       "label": "Media gallery"

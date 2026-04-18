@@ -271,33 +271,6 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'hgc-custom.css' | asset_url | stylesheet_tag }}
-    <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
-
-    {%- if settings.cart_type == 'drawer' -%}
-      {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-      {{ 'component-cart.css' | asset_url | stylesheet_tag }}
-      {{ 'component-totals.css' | asset_url | stylesheet_tag }}
-      {{ 'component-price.css' | asset_url | stylesheet_tag }}
-      {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
-    {%- endif -%}
-
-    {%- unless settings.type_body_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-    {%- unless settings.type_header_font.system? -%}
-      {% comment %}theme-check-disable AssetPreload{% endcomment %}
-      <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
-      {% comment %}theme-check-enable AssetPreload{% endcomment %}
-    {%- endunless -%}
-
-    {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
-      {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
-      <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-
     {%- if settings.predictive_search_enabled -%}
       <link
         rel="stylesheet"
@@ -307,11 +280,46 @@
       >
     {%- endif -%}
 
+    {{ 'hgc-custom.css' | asset_url | stylesheet_tag }}
+
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
+    <style>
+      /* EMERGENCY SEARCH CONTRAST FIX */
+      .predictive-search,
+      .predictive-search-results,
+      [data-predictive-search] {
+        background-color: #1a2b32 !important;
+      }
+      .predictive-search__heading {
+        color: #2abfb0 !important;
+        opacity: 1 !important;
+      }
+      .predictive-search__item-heading,
+      .predictive-search .h1, .predictive-search .h2, .predictive-search .h3, .predictive-search .h4, .predictive-search .h5,
+      .predictive-search__item-content *,
+      .predictive-search__item--term * {
+        color: #ffffff !important;
+      }
+      .predictive-search .price-item--sale {
+        color: #ffffff !important;
+      }
+      .predictive-search .price-item--regular {
+        color: #2abfb0 !important;
+        opacity: 0.8;
+      }
+      .search-modal__form .field__label,
+      .search-modal__form .search__input {
+        color: #ffffff !important;
+      }
+      .predictive-search__item-query-result mark {
+        color: #2abfb0 !important;
+        background-color: transparent !important;
+      }
+    </style>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

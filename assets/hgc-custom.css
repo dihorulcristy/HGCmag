@@ -3017,3 +3017,96 @@ shopify-section[id="footer"] {
 .vm-reviews-inline-wrap {
   margin-top: 0 !important;
 }
+
+/* ===================================================================
+   SEARCH & PREDICTIVE SEARCH FIXES — Premium Contrast
+   =================================================================== */
+.predictive-search,
+.search-modal {
+  background-color: var(--vm-navy) !important;
+  --color-foreground: 255, 255, 255 !important;
+  --color-background: 26, 43, 50 !important;
+  --color-link: 42, 191, 176 !important; /* --vm-teal */
+}
+
+.predictive-search {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+}
+
+.predictive-search__heading {
+  color: var(--vm-teal) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  font-family: var(--vm-font-heading) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1rem !important;
+  opacity: 1 !important;
+}
+
+.predictive-search__item-heading,
+.predictive-search .h5,
+.predictive-search .h4 {
+  color: var(--vm-white) !important;
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.4rem !important;
+  opacity: 1 !important;
+}
+
+.predictive-search__item .price,
+.predictive-search__item .price-item {
+  color: var(--vm-teal) !important;
+  font-weight: 700 !important;
+}
+
+/* Force sale price to be white/gold for maximum visibility on navy background */
+.predictive-search .price--on-sale .price-item--sale {
+  color: var(--vm-white) !important;
+  font-size: 1.6rem !important;
+}
+
+.predictive-search .price--on-sale .price-item--regular {
+  color: var(--vm-teal) !important;
+  opacity: 0.7;
+}
+
+.predictive-search__item--term {
+  color: var(--vm-white) !important;
+  font-family: var(--vm-font-heading) !important;
+}
+
+.predictive-search__item:hover,
+.predictive-search__item[aria-selected='true'] {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.predictive-search__item:hover .predictive-search__item-heading {
+  color: var(--vm-teal) !important;
+}
+
+/* Modal Search Content */
+.search-modal__content {
+  background-color: var(--vm-navy) !important;
+}
+
+.search__input.field__input {
+  color: var(--vm-white) !important;
+}
+
+.search__input.field__input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.search__button .icon,
+.modal__close-button .icon {
+  color: var(--vm-white) !important;
+}
+
+.predictive-search__item-query-result mark {
+  color: var(--vm-teal) !important;
+  background-color: transparent !important;
+}
+
+.search-modal__form .field__label {
+  color: rgba(255, 255, 255, 0.6) !important;
+}

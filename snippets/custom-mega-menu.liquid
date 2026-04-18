@@ -1,0 +1,11 @@
+{% comment %}
+  Custom Mega Menu Component
+  Integrates the JSON-driven mega menu under "Categorii de produse".
+{% endcomment %}
+
+{{ 'custom-mega-menu.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom-mega-menu.js' | asset_url }}" defer="defer"></script>
+
+{% render 'tmenu-data' %}
+
+<div id="custom-mega-menu-root"></div>
