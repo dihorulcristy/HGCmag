@@ -695,7 +695,7 @@
             <span class="lt-bundle-price small">110 RON</span>
           </div>
           <span class="lt-bundle-shipping">+ 19,90 RON livrare</span>
-          <button type="button" class="lt-inner-btn">COMANDĂ</button>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(1)">COMANDĂ</button>
         </div>
       </div>
 
@@ -718,7 +718,7 @@
              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
              TRANSPORT GRATUIT
           </div>
-          <button type="button" class="lt-inner-btn">COMANDĂ</button>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(3)">COMANDĂ</button>
         </div>
       </div>
 
@@ -741,7 +741,7 @@
              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
              TRANSPORT GRATUIT
           </div>
-          <button type="button" class="lt-inner-btn">COMANDĂ</button>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(5)">COMANDĂ</button>
         </div>
       </div>
     </div>
@@ -750,6 +750,10 @@
       <input type="hidden" name="id" id="ltSelectedId" value="{{ product.selected_or_first_available_variant.id }}">
       <input type="hidden" name="quantity" id="ltSelectedQty" value="1">
     {%- endform -%}
+
+    <button class="lt-main-buy-btn" id="ltSubmitBtn" onclick="vmAddToCart(parseInt(document.querySelector('.lt-bundle-card.active').getAttribute('data-qty')))">
+      COMANDĂ TRATAMENTUL COMPLET — 149 RON
+    </button>
 
     <div class="lt-reassurance-row">
       <div class="lt-reassurance-item">
@@ -789,6 +793,27 @@
 {% endschema %}
 
 <script>
+function vmAddToCart(quantity) {
+  // Show loading state if button exists
+  const btn = document.getElementById('ltSubmitBtn');
+  if(btn) btn.innerText = "SE PROCESEAZĂ...";
+
+  fetch('/cart/clear.js', { method: 'POST' })
+    .then(() => fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: 56636795519356,
+        quantity: quantity
+      })
+    }))
+    .then(() => { window.location.href = '/checkout'; })
+    .catch(err => {
+      console.error(err);
+      window.location.href = '/checkout'; // Fallback redirect
+    });
+}
+
   document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.lt-bundle-card');
     const submitBtn = document.getElementById('ltSubmitBtn');
@@ -809,60 +834,9 @@
           submitBtn.innerText = `COMANDĂ ${title} — ${price}`;
         }
         
-        // Final Robust AJAX Add to Cart (using direct variant ID and JSON)
-        const qty = parseInt(this.getAttribute('data-qty') || 1);
-        const variantId = "56636795519356"; // ID-ul furnizat pentru Plasturi Liftrik
-        const sections = ['cart-drawer', 'cart-icon-bubble'];
-
-        const formData = {
-          'id': variantId,
-          'quantity': qty,
-          'sections': sections.join(','),
-          'sections_url': window.location.pathname
-        };
-
-        fetch(window.Shopify.routes.root + 'cart/add.js', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(response => {
-           if (response.status && response.status !== 200) {
-             console.error('Add to cart error:', response.description);
-             window.location.href = `/cart/add?id=${variantId}&quantity=${qty}`;
-             return;
-           }
-
-           // Signal update to the theme
-           if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
-             publish(PUB_SUB_EVENTS.cartUpdate, response);
-           }
-
-           // Force refresh and OPEN the cart drawer
-           const cartDrawer = document.querySelector('cart-drawer');
-           if (cartDrawer) {
-             if (typeof cartDrawer.renderContents === 'function') {
-               cartDrawer.renderContents(response);
-             }
-             // Ensure it opens even if renderContents doesn't trigger it
-             if (typeof cartDrawer.open === 'function') {
-               cartDrawer.open();
-             } else {
-               cartDrawer.classList.add('animate', 'active');
-               document.body.classList.add('overflow-hidden');
-             }
-           } else {
-             window.location.href = window.routes?.cart_url || '/cart';
-           }
-        })
-        .catch((error) => {
-          console.error('Fetch error:', error);
-          window.location.href = `/cart/add?id=${variantId}&quantity=${qty}`;
-        });
+        // logic moved to vmAddToCart global function
+        // const qty = parseInt(this.getAttribute('data-qty') || 1);
+        // ...
       });
     });
 
