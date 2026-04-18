@@ -3123,3 +3123,66 @@ shopify-section[id="footer"] {
 .search-modal__form .field__label {
   color: rgba(255, 255, 255, 0.6) !important;
 }
+
+/* ===================================================================
+   PRODUCT CARD REFINEMENTS (Centering & Pricing)
+   =================================================================== */
+
+.card__information, .card-information {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding-bottom: 5px !important;
+}
+
+.card-information .price {
+  justify-content: center !important;
+  width: 100% !important;
+  margin-top: 5px !important;
+}
+
+.card-information .price__container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 2px !important;
+}
+
+/* Base pricing size - Reduced for premium look */
+.card-information .price-item {
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  color: var(--vm-navy) !important;
+  line-height: 1.2 !important;
+  margin-bottom: 3px !important;
+}
+
+.card-information .price--on-sale .price-item--regular {
+  font-size: 1.1rem !important;
+  color: #999 !important;
+  text-decoration: line-through !important;
+}
+
+.card-information .price--on-sale .price-item--sale {
+  font-size: 1.6rem !important;
+  color: var(--vm-navy) !important;
+}
+
+/* Ensure RON stays inline and prevent stacking */
+.card-information .price-item, .card-information .price-item span {
+  white-space: nowrap !important;
+}
+
+/* Hide redundant badges from price logic and stack fixes */
+.card-information .vm-price-pill,
+.card-information .price__badge-sale,
+.card-information .price__badge-sold-out {
+  display: none !important;
+}
+
+/* Ensure only one badge shows on image */
+.card__inner .card__badge:nth-child(n+2) {
+  display: none !important;
+}
+
