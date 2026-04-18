@@ -3187,48 +3187,58 @@ shopify-section[id="footer"] {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  padding-bottom: 5px !important;
+  padding-bottom: 2px !important; /* Reduced padding */
 }
 
 .card-information .price {
   justify-content: center !important;
   width: 100% !important;
-  margin-top: 5px !important;
+  margin-top: 2px !important; /* Reduced margin */
 }
 
 .card-information .price-item--sale {
-  font-size: 1.5rem !important;
+  font-size: 1.4rem !important; /* Refined desktop size */
   font-weight: 700 !important;
 }
 
 .card-information .price-item--regular {
-  font-size: 1.1rem !important;
+  font-size: 1rem !important; /* More discrete value */
   font-weight: 400 !important;
   opacity: 0.5;
 }
 
+/* Discrete button for cards (Desktop override) */
+.card .button, 
+.card .product-form__submit {
+  padding: 1rem 2.4rem !important;
+  font-size: 1.2rem !important;
+  min-height: auto !important;
+  margin-top: 5px !important; /* Space between price and button */
+}
+
 @media screen and (max-width: 749px) {
   .card-information .price-item--sale {
-    font-size: 1.2rem !important; /* Slightly smaller to ensure 1-line fit */
+    font-size: 1.1rem !important; /* Even more compact for mobile */
     white-space: nowrap !important;
   }
   .card-information .price-item--regular {
-    font-size: 0.95rem !important;
+    font-size: 0.85rem !important;
     white-space: nowrap !important;
   }
   
   .price {
-    gap: 0.4rem !important; /* Reduced gap to save horizontal space */
+    gap: 0.3rem !important; /* Reduced gap */
   }
   
-  /* Proportional buttons for mobile cards */
+  /* Compact buttons for mobile cards */
   .card .button, 
   .card .product-form__submit {
-    padding: 1.2rem 1.5rem !important;
-    font-size: 1.1rem !important;
-    min-height: auto !important;
+    padding: 0.8rem 1.2rem !important;
+    font-size: 1rem !important;
+    margin-top: 5px !important;
   }
 }
+
 
 
 
