@@ -1,6 +1,6 @@
 /**
- * Custom Mega Menu Logic
- * Parses JSON and builds the 'Categorii de produse' mega menu.
+ * Custom Vertical Mega Menu Logic
+ * Built for Hgcmag - Sonitech style
  */
 class CustomMegaMenu {
   constructor() {
@@ -21,89 +21,106 @@ class CustomMegaMenu {
   }
 
   injectToHeader() {
-    // We aim to find the main nav and append our 'Categorii de produse' item
-    const mainNav = document.querySelector('.header__inline-menu ul');
-    const mobileNav = document.querySelector('.menu-drawer__menu');
+    const headerWrapper = document.querySelector('.header-wrapper');
+    if (!headerWrapper) return;
 
-    if (!mainNav) return;
-
-    // Hide existing Catalog link if it exists and find its index
-    const listItems = mainNav.querySelectorAll('li');
-    let insertIndex = -1;
-    listItems.forEach((li, index) => {
-       const link = li.querySelector('a, span');
-       if (!link) return;
-       const text = link.textContent.trim().toLowerCase();
-       if (text === 'catalog' || text === 'catalog produse' || text === 'categorii de produse') {
-         li.style.display = 'none';
-         if (insertIndex === -1) insertIndex = index;
-       }
-    });
-
-    const megaMenuHTML = this.buildMegaMenuHTML();
-    
-    // Create the trigger li
-    const li = document.createElement('li');
-    li.className = 'custom-mega-menu-list-item';
-    li.innerHTML = `
-      <div class="custom-mega-menu-trigger" aria-expanded="false" aria-haspopup="true">
-        <span>Categorii de produse</span>
-        <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
-          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor">
-        </svg>
-        ${megaMenuHTML}
+    // Create Secondary Navigation Bar
+    const secondaryNav = document.createElement('div');
+    secondaryNav.className = 'cm-secondary-nav';
+    secondaryNav.innerHTML = `
+      <div class="page-width">
+        <div class="cm-secondary-nav-item">
+          <button class="cm-all-products-trigger">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm8 0v8h8v-8h-8zm6 6h-4v-4h4v4z"/></svg>
+            Toate Produsele
+          </button>
+          ${this.buildVerticalSidebarHTML()}
+        </div>
+        <div class="cm-secondary-links">
+          <a href="#" class="cm-secondary-link-item">Calculator Dimensiune Cablu Dc</a>
+          <a href="#" class="cm-secondary-link-item">Calculator Productie Panouri</a>
+        </div>
       </div>
     `;
 
-    // Append or insert at the found index
-    if (insertIndex !== -1 && listItems[insertIndex]) {
-       mainNav.insertBefore(li, listItems[insertIndex]);
-    } else {
-       mainNav.appendChild(li);
-    }
+    // Append to header wrapper
+    headerWrapper.appendChild(secondaryNav);
 
     // Mobile integration
+    const mobileNav = document.querySelector('.menu-drawer__menu');
     if (mobileNav) {
-      // Hide existing Catalog on mobile
-      const mobileLinks = mobileNav.querySelectorAll('.menu-drawer__menu-item');
-      mobileLinks.forEach(link => {
-         const text = link.textContent.trim().toLowerCase();
-         if (text === 'catalog' || text === 'catalog produse' || text === 'categorii de produse') {
-           link.closest('li').style.display = 'none';
-         }
-      });
-
       const mobileLi = document.createElement('li');
       mobileLi.innerHTML = `
         <details class="menu-drawer__menu-item list-menu__item link link--text focus-inset" id="Details-Mobile-Categorii">
           <summary>Categorii de produse <svg aria-hidden="true" focusable="false" class="icon icon-caret" viewBox="0 0 10 6">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z" fill="currentColor"></svg></summary>
           <div class="menu-drawer__inner-submenu">
-             ${this.buildMegaMenuHTML(true)}
+             ${this.buildMobileMenuHTML()}
           </div>
         </details>
       `;
-      mobileNav.appendChild(mobileLi);
+      mobileNav.prepend(mobileLi);
+    }
+
+    // Remove duplicates from main nav
+    const mainNav = document.querySelector('.header__inline-menu ul');
+    if (mainNav) {
+      const existingItems = mainNav.querySelectorAll('li');
+      existingItems.forEach(item => {
+        const text = item.textContent.trim().toLowerCase();
+        if (text.includes('catalog') || text.includes('categorii de produse')) {
+          item.style.display = 'none';
+        }
+      });
     }
   }
 
-  buildMegaMenuHTML(isMobile = false) {
+  buildVerticalSidebarHTML() {
     const categories = this.menuData.megamenu || [];
-    let html = isMobile ? '<ul class="menu-drawer__menu list-menu" role="list">' : `
-      <div class="cm-mega-menu-wrapper">
-        <div class="cm-mega-menu-container">
+    let html = `
+      <div class="cm-vertical-sidebar">
+        <ul class="cm-sidebar-list">
     `;
 
     categories.forEach(category => {
       const setting = category.setting || {};
       const submenus = category.menus || [];
       const url = this.getURL(setting.url);
+      const hasSub = submenus.length > 0;
 
-      if (isMobile) {
+      html += `
+        <li class="cm-sidebar-item">
+          <a href="${url}" class="cm-sidebar-link">
+            <span>${setting.title || ''}</span>
+            ${hasSub ? '<svg class="icon-chevron" viewBox="0 0 10 6" style="transform: rotate(-90deg)"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="2"/></svg>' : ''}
+          </a>
+          ${hasSub ? this.buildFlyoutHTML(category) : ''}
+        </li>
+      `;
+    });
+
+    html += `
+        </ul>
+      </div>
+    `;
+    return html;
+  }
+
+  buildMobileMenuHTML() {
+    const categories = this.menuData.megamenu || [];
+    let html = '<ul class="menu-drawer__menu list-menu" role="list">';
+
+    categories.forEach(category => {
+      const setting = category.setting || {};
+      const submenus = category.menus || [];
+      const url = this.getURL(setting.url);
+      const hasSub = submenus.length > 0;
+
+      if (hasSub) {
         html += `
           <li>
             <details class="menu-drawer__menu-item list-menu__item link link--text focus-inset">
-              <summary>${setting.title || ''}</summary>
+              <summary>${setting.title}</summary>
               <ul class="menu-drawer__menu list-menu" role="list">
         `;
         submenus.forEach(sub => {
@@ -111,7 +128,7 @@ class CustomMegaMenu {
           const subUrl = this.getURL(subSetting.url);
           html += `
             <li>
-              <a href="${subUrl}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">${subSetting.title || ''}</a>
+              <a href="${subUrl}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">${subSetting.title}</a>
             </li>
           `;
         });
@@ -122,28 +139,40 @@ class CustomMegaMenu {
         `;
       } else {
         html += `
-          <div class="cm-category-group">
-            <a href="${url}" class="cm-category-title">${setting.title || ''}</a>
-            <ul class="cm-subcategory-list">
-        `;
-        submenus.forEach(sub => {
-          const subSetting = sub.setting || {};
-          const subUrl = this.getURL(subSetting.url);
-          html += `
-            <li class="cm-subcategory-item">
-              <a href="${subUrl}" class="cm-subcategory-link">${subSetting.title || ''}</a>
-            </li>
-          `;
-        });
-        html += `
-            </ul>
-          </div>
+          <li>
+            <a href="${url}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset">${setting.title}</a>
+          </li>
         `;
       }
     });
 
-    html += isMobile ? '</ul>' : `
-        </div>
+    html += '</ul>';
+    return html;
+  }
+
+  buildFlyoutHTML(category) {
+    const submenus = category.menus || [];
+    const setting = category.setting || {};
+    const url = this.getURL(setting.url);
+
+    let html = `
+      <div class="cm-sidebar-flyout">
+        <a href="${url}" class="cm-flyout-title">${setting.title}</a>
+        <ul class="cm-flyout-list">
+    `;
+
+    submenus.forEach(sub => {
+      const subSetting = sub.setting || {};
+      const subUrl = this.getURL(subSetting.url);
+      html += `
+        <li class="cm-flyout-item">
+          <a href="${subUrl}" class="cm-flyout-link">${subSetting.title}</a>
+        </li>
+      `;
+    });
+
+    html += `
+        </ul>
       </div>
     `;
     return html;
@@ -161,21 +190,10 @@ class CustomMegaMenu {
   }
 
   setupEventListeners() {
-    const trigger = document.querySelector('.custom-mega-menu-trigger');
-    if (!trigger) return;
-
-    // Desktop hover is handled by CSS, but we can add JS click for mobile
-    trigger.addEventListener('click', (e) => {
-      if (window.innerWidth < 990) {
-        const wrapper = trigger.querySelector('.cm-mega-menu-wrapper');
-        wrapper.classList.toggle('is-open');
-        trigger.setAttribute('aria-expanded', wrapper.classList.contains('is-open'));
-      }
-    });
+    // We can add some JS for hover delay or click-to-toggle on mobile here
   }
 }
 
-// Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   new CustomMegaMenu();
 });
