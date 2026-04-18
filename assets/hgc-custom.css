@@ -3128,13 +3128,15 @@ shopify-section[id="footer"] {
    PRODUCT CARD REFINEMENTS (Centering & Pricing)
    =================================================================== */
 
-.card__information, .card-information {
+.card > .card__content .card__information, 
+.card > .card__content .card-information {
   text-align: center !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   padding-bottom: 5px !important;
 }
+
 
 .card-information .price {
   justify-content: center !important;
