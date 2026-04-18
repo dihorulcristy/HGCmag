@@ -814,37 +814,40 @@
         const variantId = document.getElementById('ltSelectedId').value;
         const sections = ['cart-drawer', 'cart-icon-bubble'];
 
-        const formData = {
-          'id': variantId,
-          'quantity': qty,
-          'sections': sections.join(','),
-          'sections_url': window.location.pathname
-        };
+        let formData = new FormData();
+        formData.append('id', variantId);
+        formData.append('quantity', qty);
+        formData.append('sections', sections.join(','));
+        formData.append('sections_url', window.location.pathname);
 
         fetch(window.Shopify.routes.root + 'cart/add.js', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
             'X-Requested-With': 'XMLHttpRequest'
           },
-          body: JSON.stringify(formData)
+          body: formData
         })
         .then(response => response.json())
         .then(response => {
            if (response.status && response.status !== 200) {
              console.error('Add to cart error:', response.description);
-             // Fallback to standard form submit if AJAX fails
              const form = this.closest('section').querySelector('form');
              if(form) form.submit();
              return;
            }
 
-           // Update cart drawer UI
+           // Use the theme's pubsub system to update the cart if available
+           if (typeof publish === 'function' && typeof PUB_SUB_EVENTS !== 'undefined') {
+             publish(PUB_SUB_EVENTS.cartUpdate, response);
+           }
+
+           // Fallback / Direct update of cart drawer UI
            const cartDrawer = document.querySelector('cart-drawer');
            if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
              cartDrawer.renderContents(response);
            } else {
-             window.location.href = window.routes?.cart_url || '/cart';
+             // If no drawer, redirect to cart
+             if (!cartDrawer) window.location.href = window.routes?.cart_url || '/cart';
            }
         })
         .catch((error) => {
