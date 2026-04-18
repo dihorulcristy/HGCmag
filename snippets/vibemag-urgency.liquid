@@ -27,16 +27,13 @@
         <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
       </svg>
       <span>
+        {%- assign stock_msg = 'products.product.only_x_left' | t: quantity: inventory_qty -%}
         {%- if inventory_qty == 1 -%}
           {{ 'products.product.only_one_left' | t | default: 'Ultimul produs in stoc!' }}
+        {%- elsif stock_msg contains 'translation missing' -%}
+          Doar {{ inventory_qty }} bucati in stoc!
         {%- else -%}
-          {{
-            'products.product.only_x_left'
-            | t: quantity: inventory_qty
-            | default: 'Doar '
-            | append: inventory_qty
-            | append: ' bucati in stoc!'
-          }}
+          {{ stock_msg }}
         {%- endif -%}
       </span>
     </div>
