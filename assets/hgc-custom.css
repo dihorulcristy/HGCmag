@@ -569,15 +569,15 @@ sticky-header,
 [type='submit'].button,
 .shopify-payment-button__button--unbranded {
   font-family: var(--vm-font-heading) !important;
-  font-size: 1.2rem !important;
+  font-size: 1.4rem !important; /* Slightly larger for premium readability */
   font-weight: 700 !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.08em !important; /* Elegant tracking */
   text-transform: uppercase !important;
   background: var(--vm-teal-gradient) !important;
   color: var(--vm-white) !important;
   border: none !important;
   border-radius: 6px !important;
-  padding: 1.6rem 3.6rem !important;
+  padding: 1.8rem 4.5rem !important; /* More substantial premium padding */
   cursor: pointer !important;
   position: relative !important;
   overflow: hidden !important;
@@ -585,6 +585,7 @@ sticky-header,
     transform var(--vm-transition),
     box-shadow var(--vm-transition) !important;
 }
+
 
 /* Shimmer sweep on hover */
 .button::before,
@@ -3125,9 +3126,54 @@ shopify-section[id="footer"] {
 }
 
 /* ===================================================================
-   PRODUCT CARD REFINEMENTS (Centering & Pricing)
+   GLOBAL SIZING & PROPORTIONS (Premium Refinement)
    =================================================================== */
 
+/* 1. Global Buttons (Premium Proportions) */
+.button,
+.button--primary,
+[type='submit'].button,
+.product-form__submit,
+.shopify-payment-button__button--unbranded {
+  font-family: var(--vm-font-heading) !important;
+  font-size: 1.4rem !important; /* Slightly larger for clarity */
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important; /* Elegant tracking */
+  padding: 1.8rem 4.5rem !important; /* Substantial, stable proportions */
+  border-radius: 6px !important;
+}
+
+/* 2. Global Price Hierarchy */
+.price {
+  display: flex !important;
+  align-items: center;
+  gap: 1.2rem !important;
+}
+
+/* Product Page Price (Prominent but Balanced) */
+.price--large .price-item--sale {
+  font-size: 2.4rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.price--large .price-item--regular {
+  font-size: 1.4rem !important;
+  font-weight: 500 !important;
+  opacity: 0.55;
+  text-decoration: line-through !important;
+}
+
+@media screen and (min-width: 750px) {
+  .price--large .price-item--sale {
+    font-size: 3.2rem !important;
+  }
+  .price--large .price-item--regular {
+    font-size: 1.6rem !important;
+  }
+}
+
+/* 3. Product Card Refinements (Centered & Discrete) */
 .card > .card__content .card__information, 
 .card > .card__content .card-information {
   text-align: center !important;
@@ -3137,54 +3183,32 @@ shopify-section[id="footer"] {
   padding-bottom: 5px !important;
 }
 
-
 .card-information .price {
   justify-content: center !important;
   width: 100% !important;
   margin-top: 5px !important;
 }
 
-.card-information .price__container {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 2px !important;
+.card-information .price-item--sale {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
 }
 
-/* Base pricing size - Reduced for premium look */
-.card-information .price-item {
-  font-size: 1.4rem !important;
-  font-weight: 800 !important;
-  color: var(--vm-navy) !important;
-  line-height: 1.2 !important;
-  margin-bottom: 3px !important;
-}
-
-.card-information .price--on-sale .price-item--regular {
+.card-information .price-item--regular {
   font-size: 1.1rem !important;
-  color: #999 !important;
-  text-decoration: line-through !important;
+  font-weight: 400 !important;
+  opacity: 0.5;
 }
 
-.card-information .price--on-sale .price-item--sale {
-  font-size: 1.6rem !important;
-  color: var(--vm-navy) !important;
-}
-
-/* Ensure RON stays inline and prevent stacking */
-.card-information .price-item, .card-information .price-item span {
-  white-space: nowrap !important;
-}
-
-/* Hide redundant badges from price logic and stack fixes */
+/* Clean UI fixes */
 .card-information .vm-price-pill,
 .card-information .price__badge-sale,
 .card-information .price__badge-sold-out {
   display: none !important;
 }
 
-/* Ensure only one badge shows on image */
 .card__inner .card__badge:nth-child(n+2) {
   display: none !important;
 }
+
 
