@@ -23,24 +23,18 @@
             {{- 'icon-close.svg' | inline_asset_content -}}
           </span>
         </button>
-        <span class="menu-drawer__logo">VibeMag</span>
-        <div class="menu-drawer__icons">
-          <a href="{{ routes.search_url }}" class="menu-drawer__icon">
-            <span class="svg-wrapper">
-              {{- 'icon-search.svg' | inline_asset_content -}}
-            </span>
-          </a>
-          <a href="{{ routes.account_url }}" class="menu-drawer__icon">
-            <span class="svg-wrapper">
-              {{- 'icon-account.svg' | inline_asset_content -}}
-            </span>
-          </a>
-          <a href="{{ routes.cart_url }}" class="menu-drawer__icon">
-            <span class="svg-wrapper">
-              {{- 'icon-cart.svg' | inline_asset_content -}}
-            </span>
-          </a>
+        <div class="menu-drawer__account-wrapper">
+          {%- if shop.customer_accounts_enabled -%}
+            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account-link link focus-inset">
+              {%- if customer -%}
+                Contul meu
+              {%- else -%}
+                Intră în cont
+              {%- endif -%}
+            </a>
+          {%- endif -%}
         </div>
+
       </div>
       <div class="menu-drawer__inner-container">
         <div class="menu-drawer__navigation-container">
