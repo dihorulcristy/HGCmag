@@ -3209,10 +3209,16 @@ shopify-section[id="footer"] {
 
 @media screen and (max-width: 749px) {
   .card-information .price-item--sale {
-    font-size: 1.3rem !important; /* Scaled down for 2-column mobile grid */
+    font-size: 1.2rem !important; /* Slightly smaller to ensure 1-line fit */
+    white-space: nowrap !important;
   }
   .card-information .price-item--regular {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
+  }
+  
+  .price {
+    gap: 0.4rem !important; /* Reduced gap to save horizontal space */
   }
   
   /* Proportional buttons for mobile cards */
@@ -3223,6 +3229,7 @@ shopify-section[id="footer"] {
     min-height: auto !important;
   }
 }
+
 
 
 /* Clean UI fixes */
