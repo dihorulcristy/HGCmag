@@ -1,1070 +1,1804 @@
 {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
 
+{%- comment -%}
+================================================================
+  LIFTRIK LANDING PAGE — CONVERSION-OPTIMIZED v2
+  Built for: cold→warm traffic coming from advertorial funnel
+  Primary goal: Add to cart → Checkout (Bundle 3 cuties @ 149 RON)
+  Mobile-first (80%+ traffic)
+================================================================
+{%- endcomment -%}
+
 <style>
   :root {
     --lt-bg: #fdf4f5;
+    --lt-bg-alt: #fbeaec;
     --lt-rose: #c97b84;
+    --lt-rose-dark: #a85f68;
     --lt-navy: #2c1a1d;
     --lt-teal: #2abfb0;
+    --lt-gold: #d4a15c;
     --lt-border: #eedfe1;
-    --lt-text-dark: #2c1a1d;
     --lt-text-body: #4a5568;
-    --lt-serif: 'Playfair Display', serif;
+    --lt-serif: 'Playfair Display', Georgia, serif;
+    --lt-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --lt-body: 'DM Sans', sans-serif;
   }
 
-  .lt-section {
-    padding: 72px 0;
-    background: var(--lt-bg);
-    overflow: hidden;
-  }
+  /* ============ BASE ============ */
+  .lt-wrap { font-family: var(--lt-body); color: var(--lt-navy); line-height: 1.6; }
+  .lt-wrap * { box-sizing: border-box; }
+  .lt-wrap h1, .lt-wrap h2, .lt-wrap h3, .lt-wrap h4 { font-family: var(--lt-serif); font-weight: 700; line-height: 1.2; margin: 0; }
+  .lt-wrap p { margin: 0; }
+  .lt-wrap a { text-decoration: none; color: inherit; }
+  .lt-wrap button { font-family: inherit; cursor: pointer; border: none; }
 
-  @media (max-width: 767px) {
-    .lt-section { padding: 48px 0; }
-  }
+  .lt-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+  .lt-container-narrow { max-width: 760px; margin: 0 auto; padding: 0 20px; }
 
-  .lt-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
+  .lt-italic { font-style: italic; }
+  .lt-rose { color: var(--lt-rose); }
+  .lt-teal { color: var(--lt-teal); }
+  .lt-gold { color: var(--lt-gold); }
 
-  .lt-serif-italic {
-    font-family: var(--lt-serif);
-    font-style: italic;
-    font-weight: 700;
-  }
-
-  .lt-dm-sans { font-family: 'DM Sans', sans-serif; line-height: 1.6; color: var(--lt-navy); }
-  .lt-text-muted { color: var(--lt-navy); opacity: 0.8; } 
-
-  /* 1. Announcement Bar */
-  .lt-announcement {
+  /* ============ TOP ANNOUNCEMENT BAR ============ */
+  .lt-top-bar {
     background: var(--lt-navy);
     color: #fff;
+    padding: 10px 16px;
     text-align: center;
-    padding: 12px 0;
-    font-size: 14px;
-    font-family: 'Inter', sans-serif;
-    letter-spacing: 0.5px;
+    font-family: var(--lt-sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    position: relative;
+    z-index: 10;
   }
-  .lt-announcement span { color: var(--lt-rose); font-weight: 700; }
-
-  /* ================================================
-     HERO — DESKTOP
-     ================================================ */
-  .lt-hero {
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
+  .lt-top-bar strong { color: #ffd479; font-weight: 700; }
+  .lt-top-bar .lt-timer-inline {
+    display: inline-flex;
     align-items: center;
-  }
-
-  .lt-badge-pill {
-    display: inline-block;
-    background: #fff;
-    border: 1px solid var(--lt-rose);
-    color: var(--lt-rose);
-    padding: 4px 12px;
+    gap: 4px;
+    background: rgba(255,255,255,0.12);
+    padding: 2px 10px;
     border-radius: 20px;
-    font-size: 12px;
+    margin-left: 6px;
+    font-variant-numeric: tabular-nums;
     font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
   }
 
-  .lt-hero-h1 {
-    font-size: clamp(32px, 5vw, 54px);
-    line-height: 1.1;
-    color: var(--lt-navy);
-    margin-bottom: 24px;
+  @media (max-width: 480px) {
+    .lt-top-bar { font-size: 11px; padding: 8px 10px; }
   }
 
-  .lt-hero-subtext {
-    font-size: 18px;
-    line-height: 1.6;
-    color: var(--lt-text-body);
-    margin-bottom: 32px;
+  /* ============ HERO ============ */
+  .lt-hero {
+    background: linear-gradient(180deg, #fff 0%, var(--lt-bg) 100%);
+    padding: 24px 0 32px;
+    position: relative;
+  }
+  .lt-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 50px;
+    align-items: start;
   }
 
-  .lt-rating-row {
+  /* Trust pill deasupra titlului */
+  .lt-trust-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 32px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
   }
-  .lt-stars { color: var(--lt-teal); display: flex; gap: 4px; }
-  .lt-stars svg { width: 18px; height: 18px; fill: currentColor; }
-
-  .lt-btn {
-    display: inline-block;
-    padding: 16px 32px;
-    font-size: 16px;
-    font-weight: 700;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: transform 0.2s, background 0.2s;
-    cursor: pointer;
-    text-align: center;
-  }
-  .lt-btn-rose { background: var(--lt-rose); color: #fff; }
-  .lt-btn-rose:hover { background: #b16a72; transform: translateY(-2px); }
-
-  .lt-trust-small {
-    display: flex;
+  .lt-eu-badge {
+    display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 16px;
+    gap: 6px;
+    background: #fff;
+    border: 1.5px solid var(--lt-rose);
+    color: var(--lt-rose);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-family: var(--lt-sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .lt-rating-inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--lt-sans);
     font-size: 13px;
     color: var(--lt-text-body);
   }
+  .lt-rating-inline .stars { color: var(--lt-gold); letter-spacing: -1px; font-size: 15px; }
 
-  .lt-hero-image-wrap { position: relative; }
-  .lt-hero-image-wrap img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
-  .lt-floating-badge {
-    position: absolute;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-size: 13px;
-    z-index: 2;
+  /* Titlul principal — promisiune clară */
+  .lt-hero-title {
+    font-size: clamp(28px, 5vw, 46px);
+    line-height: 1.05;
+    color: var(--lt-navy);
+    margin-bottom: 14px;
   }
-  .badge-white { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); bottom: 20px; left: -20px; }
-  .badge-navy { background: var(--lt-navy); color: #fff; top: 20px; right: -20px; }
-
-  /* Desktop: ascunde elementele mobile-only */
-  .lt-mobile-only { display: none; }
-
-  /* 3. Problem */
-  .lt-problem { background: #fff; border-top: 1px solid var(--lt-border); }
-  .lt-section-tag { color: var(--lt-rose); font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 12px; display: block; text-align: center; }
-  .lt-title-centered { text-align: center; margin-bottom: 48px; color: var(--lt-navy); }
-  .lt-problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-  .lt-problem-card { background: var(--lt-bg); padding: 32px; border-radius: 10px; text-align: center; }
-  .lt-problem-card svg { margin-bottom: 20px; color: var(--lt-rose); }
-  .lt-problem-card h3 { font-size: 16px; margin-bottom: 12px; font-weight: 800; }
-
-  /* 4. Solution */
-  .lt-solution { background: var(--lt-navy); color: #fff; }
-  .lt-solution p, .lt-solution b { color: #ffffff !important; }
-  .lt-solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-  .lt-feature-row { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
-  .lt-feature-row p { color: #ffffff !important; }
-  .lt-checkmark { flex-shrink: 0; width: 28px; height: 28px; background: var(--lt-rose); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; border: 2px solid rgba(255,255,255,0.2); }
-  .lt-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .lt-stat-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; text-align: center; }
-
-  /* 5. How It Works */
-  .lt-steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; margin-top: 40px; }
-  .lt-steps-grid::after { content: ''; position: absolute; top: 20px; left: 10%; right: 10%; height: 2px; background: var(--lt-border); z-index: 0; }
-  .lt-step { text-align: center; position: relative; z-index: 1; }
-  .lt-step-num { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; background: #fff; border: 2px solid var(--lt-rose); color: var(--lt-rose); font-weight: 700; }
-  .lt-step.active .lt-step-num { background: var(--lt-rose); color: #fff; }
-  .lt-step h4 { margin-bottom: 8px; font-size: 15px; color: var(--lt-navy); }
-  .lt-step p { font-size: 13px; color: var(--lt-text-body); }
-
-  /* 6. Comparison Table */
-  .lt-table-wrap { background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid var(--lt-border); margin-top: 40px; }
-  table { width: 100%; border-collapse: collapse; }
-  th, td { padding: 16px; text-align: center; vertical-align: middle; border-bottom: 1px solid var(--lt-border); font-size: 13px; }
-  th { background: #f9f9f9; font-weight: 700; }
-  th.lt-table-highlight { background: var(--lt-rose); color: #fff; }
-  td.lt-table-highlight { background: var(--lt-bg); font-weight: 700; border-left: 1px solid var(--lt-rose); border-right: 1px solid var(--lt-rose); }
-  .text-teal { color: var(--lt-teal); font-weight: 700; }
-  .text-gray { color: #9aa5a8; }
-
-  /* 7. Testimonials */
-  .lt-testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .lt-testi-card { background: #fff; padding: 40px 32px; border-radius: 10px; border: 1px solid var(--lt-border); position: relative; }
-  .lt-quote { position: absolute; top: 10px; left: 20px; font-size: 60px; color: var(--lt-rose); opacity: 0.2; font-family: serif; }
-
-  /* 8. Final CTA & Bundles */
-  .lt-cta-section { background: var(--lt-rose); color: #fff; text-align: center; }
-  .lt-bundle-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 32px 0; text-align: center; }
-  .lt-bundle-card { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); border-radius: 10px; cursor: pointer; position: relative; transition: all 0.2s; display: flex; flex-direction: column; overflow: hidden; align-items: center; }
-  .lt-bundle-card.active { border-color: var(--lt-rose); border-width: 2px; background: var(--lt-bg); }
-  .lt-bundle-banner { width: 100%; background: var(--lt-navy); color: #fff; text-align: center; padding: 6px; font-size: 11px; font-weight: 700; font-family: 'Inter', sans-serif; text-transform: uppercase; min-height: 27px; display: flex; align-items: center; justify-content: center; }
-  .lt-bundle-banner.rose { background: var(--lt-rose); }
-  .lt-bundle-banner.empty { background: transparent; visibility: hidden; }
-  .lt-bundle-content { padding: 24px 20px; position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; flex-grow: 1; }
-  .lt-radio-circle { position: absolute; top: 20px; right: 20px; width: 18px; height: 18px; border: 2px solid var(--lt-border); border-radius: 50%; opacity: 0.5; z-index: 2; }
-  .lt-bundle-card.active .lt-radio-circle { border-color: var(--lt-rose); background: radial-gradient(circle, var(--lt-rose) 40%, transparent 40%); opacity: 1; }
-  
-  .lt-bundle-title { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; line-height: 1.2; min-height: 42px; display: flex; align-items: center; justify-content: center; }
-  .lt-bundle-sub { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; margin-bottom: 12px; color: var(--lt-rose); min-height: 20px; }
-  .lt-bundle-desc { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--lt-text-muted); line-height: 1.5; margin-bottom: 20px; min-height: 60px; display: flex; align-items: center; justify-content: center; }
-  
-  .lt-bundle-price-row { display: flex; align-items: baseline; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 12px 0 8px; width: 100%; }
-  .lt-bundle-price { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 28px; color: var(--lt-navy); }
-  .lt-bundle-price.small { font-size: 24px; }
-  .lt-bundle-old { font-size: 16px; text-decoration: line-through; opacity: 0.4; color: var(--lt-navy); }
-  .lt-bundle-save-wrap { min-height: 24px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; width: 100%; }
-  .lt-bundle-save { background: var(--lt-rose); color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; display: inline-block; }
-  .lt-bundle-save.hidden { visibility: hidden; }
-  .lt-bundle-shipping { display: block; font-size: 12px; color: #9aa5a8; margin-top: 4px; }
-  .lt-bundle-free { color: var(--lt-teal); font-weight: 700; font-size: 13px; margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; }
-
-  .lt-inner-btn { background: var(--lt-navy); color: #fff; width: 100%; padding: 10px; border-radius: 4px; font-weight: 700; font-size: 13px; border: none; margin-top: auto; cursor: pointer; transition: background 0.2s; }
-  .lt-bundle-card.active .lt-inner-btn { background: var(--lt-rose); }
-  .lt-inner-btn:hover { opacity: 0.9; }
-
-  .lt-btn-dark { display: none !important; }
-
-  .lt-reassurance-row { display: flex; justify-content: center; gap: 15px; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.8); }
-  .lt-reassurance-item { display: flex; align-items: center; gap: 6px; }
-  .lt-reassurance-item svg { width: 14px; height: 14px; stroke: var(--lt-teal); stroke-width: 2; fill: none; }
-
-  .lt-trust-inline { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 13px; }
-
-  /* ================================================
-     MOBILE HERO — ABOVE THE FOLD OPTIMIZATION
-     Obiectiv: imaginea produsului + bundle-urile să fie
-     vizibile fără scroll pe viewport-uri de 667px+ (iPhone SE+)
-     ================================================ */
-  @media (max-width: 767px) {
-    /* Reducem padding-ul hero-ului la minim */
-    .lt-hero-section-mobile {
-      padding: 12px 0 16px !important;
-    }
-
-    /* Micro-titlu deasupra imaginii (trust + promise compacte) */
-    .lt-mobile-hero-top {
-      display: block !important;
-      text-align: center;
-      margin-bottom: 10px;
-      padding: 0 16px;
-    }
-    .lt-mobile-hero-top .lt-badge-pill {
-      margin-bottom: 6px;
-      font-size: 10px;
-      padding: 3px 10px;
-    }
-    .lt-mobile-hero-top .lt-mobile-headline {
-      font-family: var(--lt-serif);
-      font-style: italic;
-      font-weight: 700;
-      font-size: 18px;
-      line-height: 1.2;
-      color: var(--lt-navy);
-      margin: 0;
-    }
-
-    /* Hero grid devine flex cu imaginea compactă */
-    .lt-hero { 
-      grid-template-columns: 1fr;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .lt-hero-image-wrap { 
-      order: 0;
-      margin: 0 auto;
-      max-width: 280px; /* imaginea mai mică și centrată */
-      width: 70%;
-    }
-    .lt-hero-image-wrap img { 
-      aspect-ratio: 1 / 1 !important;
-      object-fit: cover !important;
-      border-radius: 10px;
-      width: 100% !important;
-      height: auto !important;
-    }
-
-    /* Badge-urile flotante peste imagine (overlay, nu sub) */
-    .lt-mobile-badge-row {
-      display: none !important; /* scoatem rândul de badge-uri de sub imagine */
-    }
-    .badge-white.lt-overlay {
-      display: block !important;
-      position: absolute !important;
-      bottom: 8px !important;
-      left: 8px !important;
-      right: auto !important;
-      top: auto !important;
-      padding: 4px 8px !important;
-      font-size: 9px !important;
-      line-height: 1.2 !important;
-      border-radius: 6px !important;
-    }
-    .badge-navy.lt-overlay {
-      display: block !important;
-      position: absolute !important;
-      top: 8px !important;
-      right: 8px !important;
-      left: auto !important;
-      bottom: auto !important;
-      padding: 4px 8px !important;
-      font-size: 9px !important;
-      line-height: 1.2 !important;
-      border-radius: 6px !important;
-    }
-
-    /* Ascundem stock bar-ul above the fold (apare mai jos ca ancoraj) */
-    .lt-hero-section-mobile .vibemag-stock-bar,
-    .lt-hero-section-mobile [class*="stock-bar"] {
-      display: none !important;
-    }
-
-    /* Bundle grid compact */
-    .lt-hero-section-mobile .lt-cta-section {
-      padding: 0 !important;
-    }
-    .lt-hero-section-mobile .lt-bundle-grid {
-      margin: 8px 0 0 !important;
-      gap: 6px !important;
-      padding: 0 12px;
-    }
-
-    /* Ascundem H1-ul mare de sub bundle pe mobile (l-am mutat sus) */
-    .lt-hero-bottom-headline {
-      display: none !important;
-    }
-
-    /* Payment badges compacte */
-    .lt-hero-section-mobile .lt-payment-badges {
-      margin-top: 10px !important;
-      margin-bottom: 0 !important;
-      gap: 8px !important;
-    }
-    .lt-hero-section-mobile .lt-payment-badge {
-      height: 18px !important;
-    }
-    .lt-hero-section-mobile .lt-payment-badge-wrapper {
-      height: 18px !important;
-      width: 32px !important;
-      font-size: 7px !important;
-    }
-  }
-
-  /* Bundle grid compact — mobile */
-  @media (max-width: 768px) {
-    .lt-bundle-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin: 12px 0 !important; }
-    .lt-bundle-content { padding: 10px 4px !important; }
-    .lt-bundle-title { font-size: 10px !important; min-height: 28px !important; margin-bottom: 2px !important; }
-    .lt-bundle-sub { font-size: 9px !important; min-height: 12px !important; margin-bottom: 4px !important; }
-    .lt-bundle-desc { display: none !important; }
-    .lt-bundle-price { font-size: 15px !important; }
-    .lt-bundle-price.small { font-size: 13px !important; }
-    .lt-bundle-old { font-size: 10px !important; }
-    .lt-bundle-save-wrap { min-height: 16px !important; margin-bottom: 2px !important; }
-    .lt-bundle-save { font-size: 8px !important; padding: 2px 4px !important; }
-    .lt-bundle-shipping, .lt-bundle-free { font-size: 8px !important; }
-    .lt-bundle-banner { font-size: 7px !important; min-height: 18px !important; padding: 3px 2px !important; }
-    .lt-radio-circle { width: 10px !important; height: 10px !important; top: 8px !important; right: 8px !important; }
-    .lt-inner-btn { padding: 8px 4px !important; font-size: 10px !important; margin-top: 6px !important; }
-    
-    /* Table Mobile */
-    .lt-comparison-table th, .lt-comparison-table td { 
-      padding: 10px 4px !important; 
-      font-size: 10px !important; 
-      text-align: center !important;
-      vertical-align: middle !important;
-      word-break: break-word !important; 
-      overflow-wrap: break-word !important;
-      hyphens: auto;
-    }
-    .lt-comparison-table { 
-      min-width: 480px !important; 
-      table-layout: fixed !important; 
-    }
-    .lt-comparison-table th:first-child, .lt-comparison-table td:first-child { width: 90px !important; }
-  }
-
-  /* Verified Badge */
-  .lt-verified-badge { display: inline-flex; align-items: center; gap: 4px; color: #2abfb0; font-size: 11px; font-weight: 700; margin-top: 4px; }
-  .lt-verified-badge svg { fill: currentColor; }
-
-  /* 9. footer trust */
-  .lt-footer-bar { background: var(--lt-navy); color: rgba(255,255,255,0.6); padding: 20px 0; text-align: center; font-size: 12px; }
-  .lt-footer-bar span { color: var(--lt-rose); padding: 0 8px; }
-
-  /* General mobile layout for non-hero sections */
-  @media (max-width: 800px) {
-    .lt-rating-row, .lt-trust-small { justify-content: center; }
-    .lt-steps-grid::after { display: none; }
-    .lt-table-wrap { overflow-x: auto; }
-    .lt-mobile-hide { display: none !important; }
-    .lt-problem-grid { grid-template-columns: 1fr; gap: 16px; }
-    .lt-solution-grid { grid-template-columns: 1fr; gap: 40px; }
-    .lt-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .lt-testimonial-grid { grid-template-columns: 1fr; gap: 16px; }
-    .lt-ba-grid { grid-template-columns: 1fr; gap: 24px; }
-  }
-
-  /* Fade up animation */
-  .animate-fade-up {
-    animation: fadeUp 0.8s ease forwards;
-    opacity: 0;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .lt-sticky-cta {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    z-index: 99999 !important;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateY(20px);
-  }
-
-  .lt-sticky-cta.visible {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    .lt-sticky-cta .lt-btn { 
-      width: 100%; 
-      box-shadow: 0 10px 30px rgba(201, 123, 132, 0.6); 
-      font-size: 15px; 
-      padding: 16px; 
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-  }
-
-  /* Video Demo */
-  .lt-video-section {
-    background: #fff;
-    padding: 72px 0;
-  }
-  .lt-video-container-wide {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .lt-video-header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  .lt-video-tag {
-    color: #c97b84;
-    text-transform: uppercase;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    margin-bottom: 12px;
-    display: block;
-  }
-  .lt-video-title {
-    font-family: var(--lt-serif);
-    font-weight: 700;
-    font-size: 32px;
-    color: #2c1a1d;
-    margin-bottom: 8px;
-  }
-  .lt-video-subtitle {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: #8a6e72;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  .lt-video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  .lt-video-item {
-    text-align: center;
-  }
-  .lt-video-wrap {
-    aspect-ratio: 9/16;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #eedfe1;
-    background: #fdf4f5;
-    margin-bottom: 12px;
+  .lt-hero-title .highlight {
+    font-style: italic;
+    color: var(--lt-rose);
     position: relative;
+    white-space: nowrap;
   }
-  .lt-video-wrap video {
+
+  .lt-hero-sub {
+    font-size: 16px;
+    color: var(--lt-text-body);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .lt-hero-sub strong { color: var(--lt-navy); }
+
+  /* Quick benefits row */
+  .lt-quick-benefits {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 20px;
+    margin-bottom: 24px;
+  }
+  .lt-quick-benefits li {
+    list-style: none;
+    font-size: 14px;
+    color: var(--lt-navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lt-quick-benefits li::before {
+    content: '✓';
+    color: var(--lt-teal);
+    font-weight: 900;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+
+  /* Image side */
+  .lt-hero-image-box {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 12px 40px rgba(44, 26, 29, 0.08);
+  }
+  .lt-hero-image-box img {
     width: 100%;
-    height: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
   }
-  .lt-video-caption {
-    font-family: 'DM Sans', sans-serif;
+  .lt-image-overlay-tl {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--lt-navy);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: var(--lt-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+  }
+  .lt-image-overlay-br {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: #fff;
+    color: var(--lt-navy);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: var(--lt-sans);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 2;
+  }
+  .lt-image-overlay-br .big { font-size: 16px; color: var(--lt-rose); display: block; }
+
+  /* ============ OFFER CARD (above the fold CTA) ============ */
+  .lt-offer-card {
+    background: #fff;
+    border: 2px solid var(--lt-rose);
+    border-radius: 14px;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 8px 30px rgba(201, 123, 132, 0.15);
+  }
+
+  .lt-offer-header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .lt-offer-header .label {
+    display: inline-block;
+    background: var(--lt-navy);
+    color: #fff;
+    padding: 3px 12px;
+    border-radius: 4px;
+    font-family: var(--lt-sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .lt-offer-header h3 {
+    font-size: 18px;
+    color: var(--lt-navy);
+  }
+
+  /* Bundle selector — cu ierarhie vizuală: 2 (best seller) dominant */
+  .lt-bundles {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .lt-bundle {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 14px;
+    background: #fff;
+    border: 2px solid var(--lt-border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .lt-bundle:hover { border-color: var(--lt-rose); }
+  .lt-bundle.active {
+    border-color: var(--lt-rose);
+    background: var(--lt-bg);
+    box-shadow: 0 4px 16px rgba(201, 123, 132, 0.2);
+  }
+  .lt-bundle.featured.active {
+    border-width: 3px;
+    padding: 18px 14px;
+  }
+
+  .lt-bundle-radio {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--lt-border);
+    border-radius: 50%;
+    flex-shrink: 0;
+    position: relative;
+    transition: all 0.2s;
+  }
+  .lt-bundle.active .lt-bundle-radio {
+    border-color: var(--lt-rose);
+    background: var(--lt-rose);
+  }
+  .lt-bundle.active .lt-bundle-radio::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 8px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  .lt-bundle-info { text-align: left; }
+  .lt-bundle-info .title {
+    font-family: var(--lt-sans);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--lt-navy);
+    margin-bottom: 2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .lt-bundle-info .sub {
     font-size: 12px;
-    color: #8a6e72;
+    color: var(--lt-text-body);
+  }
+  .lt-bundle-info .tag {
+    display: inline-block;
+    background: var(--lt-navy);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .lt-bundle.featured .lt-bundle-info .tag {
+    background: var(--lt-rose);
+    animation: pulse-tag 2s ease-in-out infinite;
+  }
+  @keyframes pulse-tag {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
   }
 
-  @media (max-width: 767px) {
-    .lt-video-grid {
+  .lt-bundle-price {
+    text-align: right;
+    font-family: var(--lt-sans);
+  }
+  .lt-bundle-price .now {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--lt-navy);
+    line-height: 1;
+  }
+  .lt-bundle.featured.active .lt-bundle-price .now { color: var(--lt-rose); font-size: 24px; }
+  .lt-bundle-price .was {
+    font-size: 12px;
+    color: #a0a0a0;
+    text-decoration: line-through;
+    display: block;
+    margin-top: 2px;
+  }
+  .lt-bundle-price .per {
+    font-size: 11px;
+    color: var(--lt-teal);
+    font-weight: 700;
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* BUY BUTTON */
+  .lt-buy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--lt-rose);
+    color: #fff;
+    padding: 16px 20px;
+    border-radius: 10px;
+    font-family: var(--lt-sans);
+    font-size: 16px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 8px 20px rgba(201, 123, 132, 0.35);
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .lt-buy-btn:hover { background: var(--lt-rose-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201, 123, 132, 0.45); }
+  .lt-buy-btn:active { transform: translateY(0); }
+  .lt-buy-btn .arrow { font-size: 20px; }
+
+  /* Shimmer effect pe buton */
+  .lt-buy-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 3s infinite;
+  }
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* Trust under CTA */
+  .lt-cta-trust {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 12px;
+    font-family: var(--lt-sans);
+    font-size: 11px;
+    color: var(--lt-text-body);
+  }
+  .lt-cta-trust span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .lt-cta-trust span::before {
+    content: '✓';
+    color: var(--lt-teal);
+    font-weight: 900;
+  }
+
+  /* Stock indicator */
+  .lt-stock-indicator {
+    background: #fff8e6;
+    border: 1px solid #ffd479;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 14px;
+    font-family: var(--lt-sans);
+    font-size: 13px;
+    color: #8a5a00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lt-stock-indicator .dot {
+    width: 8px; height: 8px;
+    background: #e67e22;
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: pulse-dot 2s infinite;
+    position: relative;
+  }
+  .lt-stock-indicator .dot::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: #e67e22;
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: pulse-ring 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    100% { transform: scale(2); opacity: 0; }
+  }
+
+  /* ============ MOBILE HERO — ABOVE THE FOLD ============ */
+  @media (max-width: 820px) {
+    .lt-hero { padding: 14px 0 24px; }
+    .lt-hero-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 14px;
     }
-    .lt-video-title {
-      font-size: 28px;
+
+    /* Mobile: titlul MIC deasupra imaginii */
+    .lt-hero-content-top {
+      order: 1;
+      text-align: center;
+      padding: 0 4px;
     }
-    .lt-video-section {
-      padding: 48px 0;
+    .lt-hero-image-wrapper { order: 2; }
+    .lt-offer-card { order: 3; margin-top: 0; }
+    .lt-hero-content-bottom { order: 4; margin-top: 20px; }
+
+    .lt-trust-row { justify-content: center; margin-bottom: 8px; gap: 8px; }
+    .lt-eu-badge { font-size: 10px; padding: 4px 10px; }
+    .lt-rating-inline { font-size: 12px; }
+    .lt-rating-inline .stars { font-size: 14px; }
+
+    .lt-hero-title {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+    .lt-hero-sub {
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+    .lt-quick-benefits {
+      display: none; /* pe mobile apar după CTA, nu înainte */
+    }
+
+    /* Imaginea compactă pe mobile */
+    .lt-hero-image-box {
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* Offer card */
+    .lt-offer-card {
+      padding: 16px 14px;
+      border-radius: 12px;
+    }
+    .lt-offer-header h3 { font-size: 15px; }
+    .lt-offer-header .label { font-size: 9px; padding: 2px 10px; }
+
+    .lt-bundle { padding: 10px; gap: 10px; }
+    .lt-bundle.featured.active { padding: 12px 10px; }
+    .lt-bundle-info .title { font-size: 13px; }
+    .lt-bundle-info .sub { font-size: 11px; }
+    .lt-bundle-price .now { font-size: 18px; }
+    .lt-bundle.featured.active .lt-bundle-price .now { font-size: 20px; }
+    .lt-bundle-price .was { font-size: 11px; }
+    .lt-bundle-price .per { font-size: 10px; }
+
+    .lt-buy-btn { padding: 15px 16px; font-size: 15px; }
+    .lt-cta-trust { font-size: 10px; gap: 8px; }
+
+    /* Quick benefits apar sub offer card pe mobile */
+    .lt-mobile-benefits-below {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px 16px;
+      margin-top: 18px;
+      padding: 0 4px;
+    }
+    .lt-mobile-benefits-below li {
+      list-style: none;
+      font-size: 13px;
+      color: var(--lt-navy);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .lt-mobile-benefits-below li::before {
+      content: '✓';
+      color: var(--lt-teal);
+      font-weight: 900;
+      font-size: 14px;
     }
   }
-
-  /* FAQ Accordion */
-  .lt-faq-section { background: #fff; padding: 72px 0; }
-  .lt-faq-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-  .lt-faq-item { border-bottom: 1px solid var(--lt-border); }
-  .lt-faq-question { width: 100%; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border: none; background: none; text-align: left; cursor: pointer; font-family: var(--lt-serif); font-size: 18px; font-weight: 700; color: var(--lt-navy); }
-  .lt-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--lt-text-body); line-height: 1.6; }
-  .lt-faq-item.active .lt-faq-answer { max-height: 500px; padding-bottom: 20px; }
-  .lt-faq-icon { transition: transform 0.3s; color: var(--lt-rose); }
-  .lt-faq-item.active .lt-faq-icon { transform: rotate(45deg); }
-
-  @media (max-width: 767px) {
-    .lt-faq-section { padding: 48px 0; }
-    .lt-faq-question { font-size: 15px; padding: 16px 0; }
-    .lt-faq-answer { font-size: 14px; }
+  @media (min-width: 821px) {
+    .lt-mobile-benefits-below { display: none !important; }
+    .lt-hero-content-top { margin-bottom: 0; }
   }
-
-  /* Before/After */
-  .lt-ba-section { background: var(--lt-bg); padding: 72px 0; }
-  .lt-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-  .lt-ba-image-container { position: relative; border-radius: 12px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-  .lt-ba-label { position: absolute; top: 10px; padding: 4px 12px; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 700; border-radius: 4px; text-transform: uppercase; }
-  .label-before { left: 10px; }
-  .label-after { right: 10px; background: var(--lt-rose); }
-
-  @media (max-width: 767px) {
-    .lt-ba-section { padding: 40px 0; }
-  }
-
-  /* Payment Badges */
-  .lt-payment-badges { display: flex; justify-content: center; gap: 15px; margin-top: 24px; opacity: 0.8; flex-wrap: wrap; }
-  .lt-payment-badge { height: 24px; filter: grayscale(1); transition: filter 0.3s; }
-  .lt-payment-badge:hover { filter: grayscale(0); }
 </style>
 
-<!-- ============================================================
-     HERO SECTION — Mobile-optimized above-the-fold layout
-     Ordinea pe mobile:
-       1. Micro-titlu (badge + headline scurt)    ~40px
-       2. Imagine produs cu badge-uri overlay     ~280px
-       3. Bundle grid (3 opțiuni)                 ~180px
-       4. Payment badges                          ~28px
-       TOTAL ≈ 528px → încape în viewport iPhone SE (568px usable)
-     ============================================================ -->
-<section class="lt-section lt-hero-section-mobile" style="padding-bottom: 0;">
-  <div class="lt-container">
+<div class="lt-wrap">
 
-    <!-- Mobile-only: titlu compact DEASUPRA imaginii -->
-    <div class="lt-mobile-only lt-mobile-hero-top">
-      <span class="lt-badge-pill">Nou în România</span>
-      <h1 class="lt-mobile-headline">Lifting facial fără bisturiu, fără botox, fără durere</h1>
-    </div>
+  <!-- ================================================================
+       1. TOP BAR — anunț + timer real (reducere expiră la 23:59)
+       ================================================================ -->
+  <div class="lt-top-bar">
+    🔥 <strong>REDUCERE -55%</strong> astăzi &middot; Livrare 24-48h în toată țara
+    <span class="lt-timer-inline" id="lt-countdown">--:--:--</span>
+  </div>
 
-    <div class="lt-hero">
-      <!-- IMAGINE PRODUS -->
-      <div class="lt-hero-image-wrap animate-fade-up" style="animation-delay: 0.2s; position: relative;">
-        {% if product.featured_image %}
-          <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" width="600" height="600" style="width: 100%; border-radius: 10px;">
-        {% else %}
-          <div style="width: 100%; aspect-ratio: 1; background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center;">Imagine Produs</div>
-        {% endif %}
+  <!-- ================================================================
+       2. HERO — promisiune + imagine + oferta above the fold
+       ================================================================ -->
+  <section class="lt-hero">
+    <div class="lt-container">
+      <div class="lt-hero-grid">
 
-        <!-- Badge-uri OVERLAY pe imagine (mobile) / flotante (desktop) -->
-        <div class="lt-floating-badge badge-white lt-overlay lt-dm-sans">
-          <span class="lt-mobile-hide">Fabricat în Spania<br></span><b>🇪🇸 Standard EU</b>
+        <!-- Content TOP (pe mobile sus, pe desktop stânga) -->
+        <div class="lt-hero-content-top">
+          <div class="lt-trust-row">
+            <span class="lt-eu-badge">🇪🇺 Fabricat în Spania</span>
+            <span class="lt-rating-inline">
+              <span class="stars">★★★★★</span>
+              <span>4.8/5 · 2.847 cliente</span>
+            </span>
+          </div>
+
+          <h1 class="lt-hero-title">
+            Lifting facial în <span class="highlight">30 de secunde</span> — fără botox, fără bisturiu
+          </h1>
+
+          <p class="lt-hero-sub">
+            Plasturi invizibili adezivi care <strong>ridică instant conturul feței</strong>. Fabricați în Europa, nu în China. <strong>Efect vizibil imediat.</strong>
+          </p>
+
+          <!-- Benefits (doar desktop, pe mobile apar sub offer card) -->
+          <ul class="lt-quick-benefits">
+            <li>Rezultat în 30 de secunde</li>
+            <li>Invizibili sub machiaj</li>
+            <li>40 plasturi per cutie</li>
+            <li>0% riscuri medicale</li>
+          </ul>
         </div>
-        <div class="lt-floating-badge badge-navy lt-overlay lt-dm-sans">
-          <b>40 buc/set</b>
-        </div>
-      </div>
 
-      <!-- Stock bar — ascuns pe mobile above the fold -->
-      {% render 'vibemag-stock-bar' %}
+        <!-- Coloana dreaptă: imagine + offer card -->
+        <div>
+          <div class="lt-hero-image-wrapper">
+            <div class="lt-hero-image-box">
+              <span class="lt-image-overlay-tl">🇪🇺 Made in Spain</span>
+              <span class="lt-image-overlay-br">
+                <span class="big">40</span>
+                plasturi/cutie
+              </span>
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 700 }}"
+                     alt="{{ product.title }}"
+                     width="700" height="700"
+                     loading="eager"
+                     fetchpriority="high">
+              {% else %}
+                <div style="width:100%;aspect-ratio:1;background:#eee;display:flex;align-items:center;justify-content:center;">Imagine produs</div>
+              {% endif %}
+            </div>
+          </div>
 
-      <!-- BUNDLE SELECTION -->
-      <section id="buy" class="lt-section lt-cta-section" style="padding: 24px 0; width: 100%;">
-        <div class="lt-container" style="max-width: 700px; padding: 0;">
-          <div class="lt-bundle-grid" id="ltBundleGrid" style="margin-bottom: 24px;">
-            <!-- Option 1 -->
-            <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON" data-qty="1">
-              <div class="lt-bundle-banner empty">&nbsp;</div>
-              <div class="lt-bundle-content">
-                <div class="lt-radio-circle"></div>
-                <div class="lt-bundle-title">Pachetul de Test</div>
-                <div class="lt-bundle-sub">1 Cutie · 40 Plasturi</div>
-                <p class="lt-bundle-desc">Ideal pentru a testa efectul de lifting invizibil.</p>
-                <div class="lt-bundle-price-row">
-                  <span class="lt-bundle-price small">110 RON</span>
+          <!-- OFFER CARD cu bundle-uri -->
+          <div class="lt-offer-card" id="buy">
+            <div class="lt-offer-header">
+              <span class="label">⚡ Ofertă de lansare</span>
+              <h3>Alege pachetul tău</h3>
+            </div>
+
+            <div class="lt-bundles" id="ltBundles">
+
+              <!-- BUNDLE 1: Test (opțiune secundară) -->
+              <div class="lt-bundle" data-qty="1" data-price="110">
+                <div class="lt-bundle-radio"></div>
+                <div class="lt-bundle-info">
+                  <div class="title">Test <span style="font-weight:400;color:#888;">· 1 cutie</span></div>
+                  <div class="sub">40 plasturi · 20 aplicări</div>
                 </div>
-                <button type="button" class="lt-inner-btn" onclick="vmAddToCart(1)">COMANDĂ</button>
-              </div>
-            </div>
-
-            <!-- Option 2 (Best Seller) -->
-            <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON" data-qty="3">
-              <div class="lt-bundle-banner">🔥 CEL MAI VÂNDUT</div>
-              <div class="lt-bundle-content">
-                <div class="lt-radio-circle"></div>
-                <div class="lt-bundle-title">Tratamentul Complet</div>
-                <div class="lt-bundle-sub">3 Cutii · 120 Plasturi</div>
-                <p class="lt-bundle-desc">Rutina perfectă pentru un efect susținut în fiecare zi.</p>
-                <div class="lt-bundle-price-row">
-                  <span class="lt-bundle-price">149 RON</span>
-                  <span class="lt-bundle-old">330 RON</span>
+                <div class="lt-bundle-price">
+                  <span class="now">110 RON</span>
+                  <span class="per">5.50 RON/aplicare</span>
                 </div>
-                <button type="button" class="lt-inner-btn" onclick="vmAddToCart(3)">COMANDĂ</button>
               </div>
-            </div>
 
-            <!-- Option 3 -->
-            <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON" data-qty="5">
-              <div class="lt-bundle-banner rose">💎 CEA MAI BUNĂ VALOARE</div>
-              <div class="lt-bundle-content">
-                <div class="lt-radio-circle"></div>
-                <div class="lt-bundle-title">Stocul de Beauty</div>
-                <div class="lt-bundle-sub">5 Cutii · 200 Plasturi</div>
-                <p class="lt-bundle-desc">Cel mai mic preț per cutie!</p>
-                <div class="lt-bundle-price-row">
-                  <span class="lt-bundle-price">199 RON</span>
-                  <span class="lt-bundle-old">550 RON</span>
+              <!-- BUNDLE 2: Tratament complet — DEFAULT SELECTED + FEATURED -->
+              <div class="lt-bundle featured active" data-qty="3" data-price="149">
+                <div class="lt-bundle-radio"></div>
+                <div class="lt-bundle-info">
+                  <div class="title">
+                    Tratament complet
+                    <span class="tag">🔥 Popular</span>
+                  </div>
+                  <div class="sub">3 cutii · 120 plasturi · 60 aplicări</div>
                 </div>
-                <button type="button" class="lt-inner-btn" onclick="vmAddToCart(5)">COMANDĂ</button>
+                <div class="lt-bundle-price">
+                  <span class="now">149 RON</span>
+                  <span class="was">330 RON</span>
+                  <span class="per">2.48 RON/aplicare</span>
+                </div>
               </div>
+
+              <!-- BUNDLE 3: Stoc max value -->
+              <div class="lt-bundle" data-qty="5" data-price="199">
+                <div class="lt-bundle-radio"></div>
+                <div class="lt-bundle-info">
+                  <div class="title">
+                    Stoc Beauty
+                    <span class="tag" style="background:var(--lt-teal);">💎 Best value</span>
+                  </div>
+                  <div class="sub">5 cutii · 200 plasturi · 100 aplicări</div>
+                </div>
+                <div class="lt-bundle-price">
+                  <span class="now">199 RON</span>
+                  <span class="was">550 RON</span>
+                  <span class="per">1.99 RON/aplicare</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- CTA BUTTON -->
+            <button type="button" class="lt-buy-btn" id="ltBuyBtn" onclick="ltBuyNow()">
+              <span>Comandă acum</span>
+              <span class="arrow">→</span>
+            </button>
+
+            <div class="lt-cta-trust">
+              <span>Livrare 24-48h</span>
+              <span>Retur 14 zile</span>
+              <span>Plata la livrare</span>
+            </div>
+
+            <div class="lt-stock-indicator">
+              <span class="dot"></span>
+              <span><strong id="ltStockCount">37</strong> pachete rămase la prețul redus</span>
             </div>
           </div>
 
-          <div class="lt-payment-badges" style="margin-top: 0; margin-bottom: 24px;">
-            {{ 'visa' | payment_type_svg_tag: class: 'lt-payment-badge' }}
-            {{ 'master' | payment_type_svg_tag: class: 'lt-payment-badge' }}
-            <div class="lt-payment-badge-wrapper" style="width: 40px; height: 24px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 3px; font-weight: bold; font-size: 8px; color: #666; border: 1px solid #ddd;">COD</div>
+          <!-- Benefits pe mobile apar SUB offer card -->
+          <ul class="lt-mobile-benefits-below">
+            <li>Rezultat în 30s</li>
+            <li>Invizibil sub machiaj</li>
+            <li>Fabricat în Spania</li>
+            <li>Hipoalergenic</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       3. VIDEO PROOF — 3 video-uri reale, autoplay muted
+       Vine devreme pentru că e cel mai puternic element de proof
+       ================================================================ -->
+  <style>
+    .lt-videos-section {
+      background: #fff;
+      padding: 48px 0;
+      border-top: 1px solid var(--lt-border);
+    }
+    .lt-section-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .lt-section-eyebrow {
+      display: inline-block;
+      color: var(--lt-rose);
+      font-family: var(--lt-sans);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .lt-section-title {
+      font-family: var(--lt-serif);
+      font-style: italic;
+      font-size: clamp(26px, 4vw, 36px);
+      color: var(--lt-navy);
+      margin-bottom: 10px;
+    }
+    .lt-section-sub {
+      font-size: 15px;
+      color: var(--lt-text-body);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .lt-videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .lt-video-card {
+      position: relative;
+    }
+    .lt-video-card .frame {
+      aspect-ratio: 9/16;
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--lt-bg);
+      position: relative;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .lt-video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .lt-video-card .label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(44,26,29,0.9);
+      backdrop-filter: blur(8px);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: var(--lt-sans);
+      font-size: 11px;
+      font-weight: 700;
+      z-index: 2;
+    }
+    .lt-video-card .caption {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--lt-text-body);
+      font-weight: 500;
+    }
+
+    @media (max-width: 767px) {
+      .lt-videos-section { padding: 36px 0; }
+      .lt-videos-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        max-width: 360px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+
+  <section class="lt-videos-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">Cliente reale</span>
+        <h2 class="lt-section-title">Vezi efectul cu ochii tăi</h2>
+        <p class="lt-section-sub">Filmări reale, fără filtre și fără editări. Aceleași femei, înainte și după 30 de secunde.</p>
+      </div>
+
+      <div class="lt-videos-grid">
+        <div class="lt-video-card">
+          <div class="frame">
+            <span class="label">▶ Aplicare</span>
+            <video src="https://cdn.shopify.com/videos/c/o/v/b0673199b7524231ae09a6b2e3e529ff.mp4"
+                   autoplay muted loop playsinline></video>
+          </div>
+          <p class="caption">Aplicare completă în 30 de secunde</p>
+        </div>
+
+        <div class="lt-video-card">
+          <div class="frame">
+            <span class="label">▶ Efect instant</span>
+            <video src="https://cdn.shopify.com/videos/c/o/v/0b2ab520a26b4e28beea66d7c0092dad.mp4"
+                   autoplay muted loop playsinline></video>
+          </div>
+          <p class="caption">Conturul feței se ridică imediat</p>
+        </div>
+
+        <div class="lt-video-card">
+          <div class="frame">
+            <span class="label">▶ Invizibil</span>
+            <video src="https://cdn.shopify.com/videos/c/o/v/60c3cd8846884f2ea724f2e2ba874527.mp4"
+                   autoplay muted loop playsinline></video>
+          </div>
+          <p class="caption">Nu se vede sub machiaj sau păr</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       4. MID CTA — după video proof, împingem spre cumpărare
+       ================================================================ -->
+  <style>
+    .lt-mid-cta {
+      background: var(--lt-navy);
+      color: #fff;
+      padding: 36px 0;
+      text-align: center;
+    }
+    .lt-mid-cta h3 {
+      font-family: var(--lt-serif);
+      font-style: italic;
+      font-size: clamp(22px, 3.5vw, 30px);
+      margin-bottom: 8px;
+    }
+    .lt-mid-cta p {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .lt-mid-cta .lt-buy-btn {
+      display: inline-flex;
+      width: auto;
+      padding: 14px 32px;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+  </style>
+
+  <section class="lt-mid-cta">
+    <div class="lt-container-narrow">
+      <h3>Vrei același rezultat?</h3>
+      <p>Mii de femei din România folosesc deja Liftrik zilnic.</p>
+      <a href="#buy" class="lt-buy-btn" onclick="ltScrollToBuy(event)">
+        <span>Vreau pachetul meu</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       5. HOW IT WORKS — 4 pași simpli (reduce perceived complexity)
+       ================================================================ -->
+  <style>
+    .lt-how-section { background: var(--lt-bg); padding: 48px 0; }
+    .lt-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      position: relative;
+    }
+    .lt-steps::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: repeating-linear-gradient(90deg, var(--lt-rose) 0, var(--lt-rose) 6px, transparent 6px, transparent 12px);
+      z-index: 0;
+    }
+    .lt-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .lt-step-num {
+      width: 48px; height: 48px;
+      background: #fff;
+      border: 2px solid var(--lt-rose);
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--lt-serif);
+      font-style: italic;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--lt-rose);
+    }
+    .lt-step h4 {
+      font-size: 15px;
+      color: var(--lt-navy);
+      margin-bottom: 6px;
+      font-family: var(--lt-sans);
+      font-weight: 700;
+    }
+    .lt-step p {
+      font-size: 13px;
+      color: var(--lt-text-body);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 767px) {
+      .lt-how-section { padding: 36px 0; }
+      .lt-steps { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; }
+      .lt-steps::before { display: none; }
+    }
+  </style>
+
+  <section class="lt-how-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">Foarte simplu</span>
+        <h2 class="lt-section-title">Cum funcționează</h2>
+      </div>
+
+      <div class="lt-steps">
+        <div class="lt-step">
+          <div class="lt-step-num">1</div>
+          <h4>Curăță pielea</h4>
+          <p>Spală și usucă fața pentru aderență perfectă.</p>
+        </div>
+        <div class="lt-step">
+          <div class="lt-step-num">2</div>
+          <h4>Aplică plasturele</h4>
+          <p>Lipește discret sub linia părului sau în spatele urechii.</p>
+        </div>
+        <div class="lt-step">
+          <div class="lt-step-num">3</div>
+          <h4>Prinde banda</h4>
+          <p>Banda elastică ridică și susține instant conturul.</p>
+        </div>
+        <div class="lt-step">
+          <div class="lt-step-num">4</div>
+          <h4>Gata! Machiează-te</h4>
+          <p>Devine invizibil sub machiaj pentru toată ziua.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       6. EUROPA vs CHINA — diferențiator principal
+       Asta e unghi REAL, puternic pentru piața RO obosită de
+       "plasturi TikTok" din China care nu funcționează
+       ================================================================ -->
+  <style>
+    .lt-vs-section {
+      background: #fff;
+      padding: 48px 0;
+      border-top: 1px solid var(--lt-border);
+    }
+    .lt-vs-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .lt-vs-card {
+      padding: 28px 24px;
+      border-radius: 14px;
+      position: relative;
+    }
+    .lt-vs-card.bad {
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+    }
+    .lt-vs-card.good {
+      background: linear-gradient(135deg, var(--lt-bg) 0%, #fff 100%);
+      border: 2px solid var(--lt-rose);
+      box-shadow: 0 12px 30px rgba(201, 123, 132, 0.15);
+    }
+    .lt-vs-card .flag {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    .lt-vs-card h4 {
+      font-family: var(--lt-sans);
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--lt-navy);
+    }
+    .lt-vs-card.bad h4 { color: #999; }
+    .lt-vs-card ul { list-style: none; padding: 0; margin: 0; }
+    .lt-vs-card li {
+      padding: 6px 0 6px 24px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .lt-vs-card.bad li {
+      color: #888;
+    }
+    .lt-vs-card.bad li::before {
+      content: '✗';
+      position: absolute;
+      left: 0;
+      color: #c94a4a;
+      font-weight: 900;
+    }
+    .lt-vs-card.good li {
+      color: var(--lt-navy);
+    }
+    .lt-vs-card.good li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--lt-teal);
+      font-weight: 900;
+    }
+
+    @media (max-width: 767px) {
+      .lt-vs-section { padding: 36px 0; }
+      .lt-vs-cards { grid-template-columns: 1fr; gap: 14px; }
+      .lt-vs-card { padding: 22px 18px; }
+    }
+  </style>
+
+  <section class="lt-vs-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">De ce contează originea</span>
+        <h2 class="lt-section-title">Europa, nu China</h2>
+        <p class="lt-section-sub">Piața e plină de plasturi ieftini din China cu adeziv slab, materiale sintetice și efecte nule. Liftrik e diferit.</p>
+      </div>
+
+      <div class="lt-vs-cards">
+        <div class="lt-vs-card bad">
+          <div class="flag">🏭</div>
+          <h4>Plasturi din China</h4>
+          <ul>
+            <li>Adeziv slab, cad după 1-2 ore</li>
+            <li>Materiale sintetice care irită pielea</li>
+            <li>Fără certificare europeană</li>
+            <li>Elasticitate redusă, fără efect real de lift</li>
+            <li>Risc de alergii și reacții</li>
+          </ul>
+        </div>
+
+        <div class="lt-vs-card good">
+          <div class="flag">🇪🇺</div>
+          <h4>Liftrik — Fabricat în Spania</h4>
+          <ul>
+            <li>Adeziv profesional rezistent până la 12 ore</li>
+            <li>Materiale hipoalergenice testate dermatologic</li>
+            <li>Standard european de calitate (InnovaGoods)</li>
+            <li>Bandă elastică cu tensiune calibrată pentru lift real</li>
+            <li>Sigur pentru pielea sensibilă</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       7. COMPARAȚIE — vs botox/chirurgie/creme
+       ================================================================ -->
+  <style>
+    .lt-compare-section {
+      background: var(--lt-bg);
+      padding: 48px 0;
+    }
+    .lt-compare-table-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+    }
+    .lt-compare-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .lt-compare-table th, .lt-compare-table td {
+      padding: 14px 10px;
+      text-align: center;
+      font-size: 13px;
+      border-bottom: 1px solid var(--lt-border);
+    }
+    .lt-compare-table th {
+      background: #f9f9f9;
+      font-family: var(--lt-sans);
+      font-weight: 700;
+      color: var(--lt-navy);
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+    .lt-compare-table th.highlight {
+      background: var(--lt-rose);
+      color: #fff;
+    }
+    .lt-compare-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--lt-navy);
+      font-family: var(--lt-sans);
+    }
+    .lt-compare-table td.highlight {
+      background: var(--lt-bg);
+      font-weight: 700;
+      color: var(--lt-rose);
+    }
+    .lt-compare-table .yes { color: var(--lt-teal); font-weight: 700; }
+    .lt-compare-table .no { color: #c94a4a; }
+    .lt-compare-table .mid { color: #888; }
+
+    @media (max-width: 767px) {
+      .lt-compare-section { padding: 36px 0; }
+      .lt-compare-table th, .lt-compare-table td {
+        padding: 10px 4px;
+        font-size: 11px;
+      }
+      .lt-compare-table th { font-size: 9px; padding: 10px 2px; }
+      .lt-compare-table td:first-child { font-size: 11px; }
+    }
+  </style>
+
+  <section class="lt-compare-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">Compară inteligent</span>
+        <h2 class="lt-section-title">De ce Liftrik bate alternativele</h2>
+      </div>
+
+      <div class="lt-compare-table-wrap">
+        <table class="lt-compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight">LIFTRIK</th>
+              <th>Botox</th>
+              <th>Chirurgie</th>
+              <th>Creme</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Preț</td>
+              <td class="highlight">149 RON</td>
+              <td>800-1500 RON</td>
+              <td>5.000€+</td>
+              <td>200+/lună</td>
+            </tr>
+            <tr>
+              <td>Efect vizibil în</td>
+              <td class="highlight">30 secunde</td>
+              <td>3-5 zile</td>
+              <td>Săptămâni</td>
+              <td class="no">Niciodată</td>
+            </tr>
+            <tr>
+              <td>Durere / risc</td>
+              <td class="yes">Zero</td>
+              <td>Ace + edeme</td>
+              <td>Anestezie</td>
+              <td class="yes">Zero</td>
+            </tr>
+            <tr>
+              <td>Recuperare</td>
+              <td class="yes">Nu e nevoie</td>
+              <td>1-3 zile</td>
+              <td>2-4 săptămâni</td>
+              <td class="yes">Nu e nevoie</td>
+            </tr>
+            <tr>
+              <td>Reversibil</td>
+              <td class="yes">DA, oricând</td>
+              <td class="no">NU</td>
+              <td class="no">NU</td>
+              <td class="yes">DA</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       8. TESTIMONIALE — 3 povești specifice, cu nume+vârstă
+       Format: obiecție → încercare → rezultat
+       ================================================================ -->
+  <style>
+    .lt-testi-section {
+      background: #fff;
+      padding: 48px 0;
+    }
+    .lt-testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .lt-testi-card {
+      background: var(--lt-bg);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+    }
+    .lt-testi-card .stars {
+      color: var(--lt-gold);
+      font-size: 16px;
+      margin-bottom: 12px;
+      letter-spacing: -1px;
+    }
+    .lt-testi-card .quote {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--lt-navy);
+      margin-bottom: 18px;
+    }
+    .lt-testi-card .quote::before {
+      content: '"';
+      font-family: var(--lt-serif);
+      font-size: 40px;
+      color: var(--lt-rose);
+      line-height: 0;
+      position: relative;
+      top: 10px;
+      margin-right: 4px;
+    }
+    .lt-testi-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lt-testi-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--lt-rose), var(--lt-rose-dark));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--lt-sans);
+      font-weight: 700;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    .lt-testi-meta .name {
+      font-family: var(--lt-sans);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--lt-navy);
+    }
+    .lt-testi-meta .verified {
+      font-size: 11px;
+      color: var(--lt-teal);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .lt-testi-meta .verified::before {
+      content: '✓';
+      width: 12px; height: 12px;
+      background: var(--lt-teal);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    @media (max-width: 767px) {
+      .lt-testi-section { padding: 36px 0; }
+      .lt-testi-grid { grid-template-columns: 1fr; gap: 14px; }
+      .lt-testi-card { padding: 22px 18px; }
+    }
+  </style>
+
+  <section class="lt-testi-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">Povești reale</span>
+        <h2 class="lt-section-title">Ce spun femeile care au încercat</h2>
+      </div>
+
+      <div class="lt-testi-grid">
+        <div class="lt-testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">Sinceră să fiu, nu credeam că o să funcționeze. L-am comandat din curiozitate. Dar la prima aplicare, când m-am uitat în oglindă... efectul era real. Conturul feței mai ridicat, vizibil mai tânără. Acum îl port zilnic.</p>
+          <div class="lt-testi-author">
+            <div class="lt-testi-avatar">MD</div>
+            <div class="lt-testi-meta">
+              <div class="name">Maria D., 47 ani</div>
+              <div class="verified">Cumpărător verificat</div>
+            </div>
           </div>
         </div>
-      </section>
 
-      <!-- Titlu H1 mare — doar desktop (pe mobile e deja sus) -->
-      <div class="animate-fade-up lt-hero-bottom-headline">
-        <span class="lt-badge-pill">Nou în România</span>
-        <h1 class="lt-hero-h1 lt-serif-italic" style="margin-bottom: 8px;">Lifting facial fără bisturiu, fără botox, fără durere</h1>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="lt-ba-section">
-  <div class="lt-container">
-    <div class="lt-ba-grid">
-      <div>
-        <span class="lt-section-tag">Diferență Instantanee</span>
-        <h2 class="lt-serif-italic h1">Vezi puterea Liftrik în acțiune</h2>
-        <p class="lt-dm-sans">Nu este magie, este metoda mecanică de ridicare a pielii. Aceeași persoană, 30 de secunde diferență. Fără filtre, fără editări.</p>
-      </div>
-      <div class="lt-ba-image-container">
-        <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/liftrik-ba.jpg?v=1713432000" alt="Înainte și După" style="width: 100%; display: block;">
-        <span class="lt-ba-label label-before">Înainte</span>
-        <span class="lt-ba-label label-after">După</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="lt-section lt-problem">
-  <div class="lt-container" style="max-width: 800px;">
-    <span class="lt-section-tag">Recunoști situația?</span>
-    <h2 class="lt-title-centered lt-serif-italic h1">Oglinda nu mai minte</h2>
-    <p class="lt-dm-sans" style="text-align: center; margin-bottom: 40px; color: #4a5568;">După 35 de ani, pielea își pierde elasticitatea. Poate ai observat conturul feței mai puțin definit sau acele linii fine care nu se mai duc cu nicio cremă scumpă. Te simți mai tânără în interior decât arată reflexia ta?</p>
-    
-    <div class="lt-problem-grid">
-      <div class="lt-problem-card">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <h3>Botox — 800-1500 RON</h3>
-        <p class="lt-dm-sans" style="font-size: 13px;">Efect temporar, ace dureroase și riscul unui aspect "înghețat".</p>
-      </div>
-      <div class="lt-problem-card">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
-        <h3>Lifting Chirurgical</h3>
-        <p class="lt-dm-sans" style="font-size: 13px;">Costuri de mii de euro, riscuri de anestezie și recuperare grea.</p>
-      </div>
-      <div class="lt-problem-card">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2M9 9h.01M15 9h.01"/></svg>
-        <h3>Creme "Minune"</h3>
-        <p class="lt-dm-sans" style="font-size: 13px;">Promit mult, dar rezultatele sunt minime. Bani irosiți lunar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="lt-section lt-solution">
-  <div class="lt-container">
-    <div class="lt-solution-grid">
-      <div>
-        <span class="lt-section-tag" style="color: var(--lt-rose);">Soluția</span>
-        <h2 class="lt-serif-italic h1" style="color: #ffffff !important; margin-bottom: 24px;">Liftrik — lifting instant, la tine acasă</h2>
-        <p class="lt-dm-sans" style="margin-bottom: 32px; color: #ffffff; opacity: 0.9;">Uită de proceduri invazive. Liftrik folosește o metodă mecanică simplă: benzi adezive invizibile care ridică delicat pielea, redefinind conturul feței și reducând aspectul ridurilor în câteva secunde.</p>
-        
-        <div class="lt-feature-list">
-          <div class="lt-feature-row">
-            <div class="lt-checkmark">✓</div>
-            <p class="lt-dm-sans"><b>Invizibili sub machiaj</b> — nimeni nu știe că îi porți</p>
-          </div>
-          <div class="lt-feature-row">
-            <div class="lt-checkmark">✓</div>
-            <p class="lt-dm-sans"><b>Rezultat în 30 de secunde</b> — aplici și gata</p>
-          </div>
-          <div class="lt-feature-row">
-            <div class="lt-checkmark">✓</div>
-            <p class="lt-dm-sans"><b>40 bucăți per set</b> — pentru 20 de utilizări</p>
-          </div>
-          <div class="lt-feature-row">
-            <div class="lt-checkmark">✓</div>
-            <p class="lt-dm-sans"><b>Fabricat în Spania</b> — materiale hipoalergenice</p>
-          </div>
-          <div class="lt-feature-row">
-            <div class="lt-checkmark">✓</div>
-            <p class="lt-dm-sans"><b>Confortabil toată ziua</b> — uiți că îi ai pe față</p>
+        <div class="lt-testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">Îl folosesc de 3 luni. Inițial doar la evenimente, acum aproape zilnic. Complet invizibil sub păr și fond de ten. Colega mea de birou nu a observat nimic timp de 2 luni — apoi a comandat și ea.</p>
+          <div class="lt-testi-author">
+            <div class="lt-testi-avatar">EV</div>
+            <div class="lt-testi-meta">
+              <div class="name">Elena V., 52 ani</div>
+              <div class="verified">Cumpărător verificat</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="lt-stats-grid">
-        <div class="lt-stat-box">
-          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">30s</div>
-          <div style="font-size: 12px; text-transform: uppercase;">Aplicare Rapidă</div>
-        </div>
-        <div class="lt-stat-box">
-          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">40</div>
-          <div style="font-size: 12px; text-transform: uppercase;">Bucăți / Set</div>
-        </div>
-        <div class="lt-stat-box">
-          <div class="lt-serif-italic" style="font-size: 32px; color: var(--lt-rose);">0%</div>
-          <div style="font-size: 12px; text-transform: uppercase;">Riscuri</div>
-        </div>
-        <div class="lt-stat-box">
-          <div class="lt-serif-italic" style="font-size: 24px; color: var(--lt-rose);">EU</div>
-          <div style="font-size: 12px; text-transform: uppercase;">Made in Spain</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="lt-section">
-  <div class="lt-container">
-    <h2 class="lt-title-centered lt-serif-italic h1">Cum funcționează Liftrik</h2>
-    <div class="lt-steps-grid">
-      <div class="lt-step active">
-        <div class="lt-step-num">1</div>
-        <h4 class="lt-serif-italic">Curăță pielea</h4>
-        <p class="lt-dm-sans">Față curată, uscată, fără reziduuri de cremă pentru aderență maximă.</p>
-      </div>
-      <div class="lt-step">
-        <div class="lt-step-num">2</div>
-        <h4 class="lt-serif-italic">Aplică plasturele</h4>
-        <p class="lt-dm-sans">Lipește discret în zona tâmplelor sau în spatele urechii.</p>
-      </div>
-      <div class="lt-step">
-        <div class="lt-step-num">3</div>
-        <h4 class="lt-serif-italic">Prinde banda</h4>
-        <p class="lt-dm-sans">Banda elastică reglabilă susține și ridică instantaneu conturul.</p>
-      </div>
-      <div class="lt-step">
-        <div class="lt-step-num">4</div>
-        <h4 class="lt-serif-italic">Machiează normal</h4>
-        <p class="lt-dm-sans">Devine invizibil sub păr și machiaj pentru restul zilei.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="lt-video-section">
-  <div class="lt-video-container-wide">
-    <div class="lt-video-header lt-reveal">
-      <span class="lt-video-tag">Vezi cum funcționează</span>
-      <h2 class="lt-video-title">Rezultate reale, filmate în direct</h2>
-      <p class="lt-video-subtitle">Urmărește cum se aplică Liftrik și ce efect produce imediat.</p>
-    </div>
-
-    <div class="lt-video-grid">
-      <div class="lt-video-item lt-reveal" style="transition-delay: 0.1s;">
-        <div class="lt-video-wrap">
-          <video src="https://cdn.shopify.com/videos/c/o/v/b0673199b7524231ae09a6b2e3e529ff.mp4" 
-                 autoplay muted loop playsinline controls></video>
-        </div>
-        <p class="lt-video-caption">Aplicare în 30 de secunde</p>
-      </div>
-
-      <div class="lt-video-item lt-reveal" style="transition-delay: 0.2s;">
-        <div class="lt-video-wrap">
-          <video src="https://cdn.shopify.com/videos/c/o/v/0b2ab520a26b4e28beea66d7c0092dad.mp4" 
-                 autoplay muted loop playsinline controls></video>
-        </div>
-        <p class="lt-video-caption">Efect vizibil imediat</p>
-      </div>
-
-      <div class="lt-video-item lt-reveal" style="transition-delay: 0.3s;">
-        <div class="lt-video-wrap">
-          <video src="https://cdn.shopify.com/videos/c/o/v/60c3cd8846884f2ea724f2e2ba874527.mp4" 
-                 autoplay muted loop playsinline controls></video>
-        </div>
-        <p class="lt-video-caption">Invizibil sub machiaj</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="lt-section lt-problem">
-  <div class="lt-container">
-    <h2 class="lt-title-centered lt-serif-italic h1">De ce Liftrik? Față de alte soluții</h2>
-    <div class="lt-table-wrap">
-      <table class="lt-comparison-table">
-        <thead>
-          <style>
-            @media (max-width: 768px) {
-              .lt-comparison-table { table-layout: fixed !important; min-width: auto !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
-              .lt-comparison-table th, .lt-comparison-table td { 
-                word-break: break-all !important; 
-                white-space: normal !important;
-                padding: 10px 1px !important; 
-                font-size: 9px !important;
-                text-align: center !important;
-                vertical-align: middle !important;
-                line-height: 1.1 !important;
-              }
-            }
-          </style>
-          <tr>
-            <th style="width: 22% !important;">Criteriu</th>
-            <th class="lt-table-highlight" style="color: var(--lt-rose); width: 22% !important;">LIFTRIK</th>
-            <th style="width: 18% !important;">Botox</th>
-            <th style="width: 20% !important;">Chirurgie</th>
-            <th style="width: 18% !important;">Creme</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Cost</td>
-            <td class="text-teal">Redus</td>
-            <td>Mare</td>
-            <td>Foarte Mare</td>
-            <td>Recurent</td>
-          </tr>
-          <tr>
-            <td>Rezultat vizibil</td>
-            <td class="text-teal">Instant (30s)</td>
-            <td>Zile/Săptămâni</td>
-            <td>Luni</td>
-            <td>Minim</td>
-          </tr>
-          <tr>
-            <td>Riscuri Medicale</td>
-            <td class="text-teal">Zero</td>
-            <td>Medii</td>
-            <td>Mari</td>
-            <td>Zero</td>
-          </tr>
-          <tr>
-            <td>Timp recuperare</td>
-            <td class="text-teal">Niciunul</td>
-            <td>1-2 zile</td>
-            <td>Săptămâni</td>
-            <td>Niciunul</td>
-          </tr>
-          <tr>
-            <td>Poate fi oprit oricând</td>
-            <td class="text-teal">DA</td>
-            <td>NU (efect fix)</td>
-            <td>Permanent</td>
-            <td>DA</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section class="lt-section">
-  <div class="lt-container">
-    <h2 class="lt-title-centered lt-serif-italic h1">Femei reale, rezultate reale</h2>
-    <div class="lt-testimonial-grid">
-      <div class="lt-testi-card">
-        <span class="lt-quote">“</span>
-        <div class="lt-stars" style="margin-bottom: 15px;">★★★★★</div>
-        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Sinceră să fiu, nu credeam că o să funcționeze. L-am comandat mai mult din curiozitate. Dar când l-am aplicat prima dată și m-am uitat în oglindă... efectul e real! Față mai ridicată, mai tânără."</p>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">MD</div>
-          <div>
-            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Maria D., 47 ani</div>
-            <div class="lt-verified-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              Cumpărător Verificat
+        <div class="lt-testi-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">Voiam botox dar îmi era frică de ace și de aspectul înghețat. Liftrik face același efect vizual, fără riscuri. Economisesc și banii pentru vacanța cu fetele. Recomand cu drag.</p>
+          <div class="lt-testi-author">
+            <div class="lt-testi-avatar">AP</div>
+            <div class="lt-testi-meta">
+              <div class="name">Andreea P., 39 ani</div>
+              <div class="verified">Cumpărător verificat</div>
             </div>
           </div>
         </div>
       </div>
-      <div class="lt-testi-card">
-         <span class="lt-quote">“</span>
-        <div class="lt-stars" style="margin-bottom: 15px;">★★★★★</div>
-        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Îl folosesc de 3 luni. La început pentru evenimente speciale, acum aproape zilnic. E invizibil sub păr și sub fond de ten. Nimeni nu a ghicit că port ceva."</p>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">EV</div>
-          <div>
-            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Elena V., 52 ani</div>
-            <div class="lt-verified-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              Cumpărător Verificat
-            </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       9. FAQ — dezarmează obiecțiile finale
+       ================================================================ -->
+  <style>
+    .lt-faq-section {
+      background: var(--lt-bg);
+      padding: 48px 0;
+    }
+    .lt-faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .lt-faq-item {
+      background: #fff;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      border: 1px solid var(--lt-border);
+    }
+    .lt-faq-q {
+      width: 100%;
+      background: none;
+      padding: 18px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      font-family: var(--lt-sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--lt-navy);
+      cursor: pointer;
+    }
+    .lt-faq-icon {
+      width: 24px; height: 24px;
+      background: var(--lt-bg);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--lt-rose);
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    .lt-faq-item.open .lt-faq-icon {
+      transform: rotate(45deg);
+      background: var(--lt-rose);
+      color: #fff;
+    }
+    .lt-faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding: 0 20px;
+      font-size: 14px;
+      color: var(--lt-text-body);
+      line-height: 1.6;
+    }
+    .lt-faq-item.open .lt-faq-a {
+      max-height: 500px;
+      padding: 0 20px 18px;
+    }
+
+    @media (max-width: 767px) {
+      .lt-faq-section { padding: 36px 0; }
+      .lt-faq-q { font-size: 14px; padding: 16px 16px; }
+      .lt-faq-a { font-size: 13px; }
+    }
+  </style>
+
+  <section class="lt-faq-section">
+    <div class="lt-container">
+      <div class="lt-section-header">
+        <span class="lt-section-eyebrow">Orice întrebare</span>
+        <h2 class="lt-section-title">Răspundem direct</h2>
+      </div>
+
+      <div class="lt-faq-list">
+        <div class="lt-faq-item open">
+          <button class="lt-faq-q">
+            Sunt vizibili sub machiaj sau sub păr?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>Nu. Plasturii sunt ultra-subțiri (0.02mm), transparenți și cu finisaj mat care nu reflectă lumina. Se aplică în spatele urechii sau sub linia părului — locuri unde rămân invizibili chiar și la lumină puternică. Nu necesită retuș după aplicarea machiajului.</p>
           </div>
         </div>
-      </div>
-      <div class="lt-testi-card">
-         <span class="lt-quote">“</span>
-        <div class="lt-stars" style="margin-bottom: 15px;">★★★★☆</div>
-        <p class="lt-dm-sans" style="font-style: italic; margin-bottom: 20px;">"Mă gândeam la botox de ceva vreme dar îmi era frică. Liftrik face același efect vizual, fără riscuri și la un preț mult mai bun. Recomand cu drag."</p>
-        <div style="display: flex; align-items: center; gap: 12px;">
-          <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">AP</div>
-          <div>
-            <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Andreea P., 39 ani</div>
-            <div class="lt-verified-badge">
-              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-              Cumpărător Verificat
-            </div>
+
+        <div class="lt-faq-item">
+          <button class="lt-faq-q">
+            Cât timp rezistă o aplicare?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>Până la 12 ore. Adezivul profesional rezistă la apă, transpirație și frecare. Recomandăm să cureți pielea cu un tonic degresant (sau doar apă + săpun neutru) înainte de aplicare, pentru aderență maximă.</p>
+          </div>
+        </div>
+
+        <div class="lt-faq-item">
+          <button class="lt-faq-q">
+            Doare sau lasă urme pe piele?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>Absolut deloc. Senzația e similară cu o bentiță de păr sau un plasture medical uzual. Adezivul hipoalergenic se detașează ușor la sfârșitul zilei cu un demachiant uleios — fără iritații sau roșeață. E testat dermatologic pentru piele sensibilă.</p>
+          </div>
+        </div>
+
+        <div class="lt-faq-item">
+          <button class="lt-faq-q">
+            Câte aplicări obțin dintr-o cutie?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>O cutie conține 40 plasturi. O aplicare completă folosește 2 plasturi (stânga + dreapta), deci o cutie = <strong>20 aplicări</strong>. Pachetul "Tratament complet" (3 cutii) îți ajunge pentru ~2 luni de folosire zilnică sau ~6 luni pentru ocazii speciale.</p>
+          </div>
+        </div>
+
+        <div class="lt-faq-item">
+          <button class="lt-faq-q">
+            Cum se face livrarea și plata?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>Livrăm prin curier în 24-48h în toată România. Poți plăti cu cardul la plasarea comenzii sau <strong>ramburs la primirea coletului</strong>. Ai 14 zile drept de retur fără motiv — dacă nu ești mulțumită, îți returnăm banii integral.</p>
+          </div>
+        </div>
+
+        <div class="lt-faq-item">
+          <button class="lt-faq-q">
+            Funcționează pentru orice tip de piele?
+            <span class="lt-faq-icon">+</span>
+          </button>
+          <div class="lt-faq-a">
+            <p>Da. Liftrik funcționează mecanic — ridică pielea, nu reacționează chimic cu ea. Se poate folosi pe orice tip de piele (uscată, grasă, mixtă, sensibilă). Pentru piele foarte sensibilă, recomandăm un test pe o zonă mică înainte de prima aplicare completă.</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="lt-faq-section">
-  <div class="lt-faq-container">
-    <h2 class="lt-title-centered lt-serif-italic h1">Întrebări frecvente</h2>
-    <div class="lt-faq-list">
-      <div class="lt-faq-item active">
-        <button class="lt-faq-question">Sunt plasturii vizibili sub machiaj? <span class="lt-faq-icon">+</span></button>
-        <div class="lt-faq-answer">
-          <p>Nu. Plasturii sunt ultra-subțiri, transparenți și au un finisaj mat care nu reflectă lumina. Odată aplicați corect sub linia părului sau sub machiaj, devin complet invizibili.</p>
-        </div>
-      </div>
-      <div class="lt-faq-item">
-        <button class="lt-faq-question">Cât timp rezistă aplicarea? <span class="lt-faq-icon">+</span></button>
-        <div class="lt-faq-answer">
-          <p>Adezivul este rezistent la apă și transpirație, rezistând până la 12 ore. Recomandăm curățarea prealabilă a pielii cu o soluție degresantă pentru aderență maximă.</p>
-        </div>
-      </div>
-      <div class="lt-faq-item">
-        <button class="lt-faq-question">Este dureroasă aplicarea sau purtarea? <span class="lt-faq-icon">+</span></button>
-        <div class="lt-faq-answer">
-          <p>Absolut deloc. Senzația este similară cu a purta o bentiță de păr sau a prinde părul în coadă mai strâns. Materialele sunt hipoalergenice și prietenoase cu pielea.</p>
-        </div>
+  <!-- ================================================================
+       10. FINAL CTA — re-afirmare + ofertă
+       ================================================================ -->
+  <style>
+    .lt-final-cta {
+      background: linear-gradient(135deg, var(--lt-rose) 0%, var(--lt-rose-dark) 100%);
+      color: #fff;
+      padding: 56px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lt-final-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .lt-final-cta h2 {
+      font-family: var(--lt-serif);
+      font-style: italic;
+      font-size: clamp(28px, 5vw, 42px);
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .lt-final-cta .sub {
+      font-size: 16px;
+      opacity: 0.92;
+      margin-bottom: 28px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+    }
+    .lt-final-cta .lt-buy-btn {
+      display: inline-flex;
+      width: auto;
+      background: #fff;
+      color: var(--lt-rose-dark);
+      padding: 18px 36px;
+      font-size: 17px;
+      max-width: 340px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .lt-final-cta .lt-buy-btn:hover { background: var(--lt-navy); color: #fff; }
+    .lt-final-cta .final-trust {
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: 0.85;
+      position: relative;
+    }
+
+    @media (max-width: 767px) {
+      .lt-final-cta { padding: 40px 0; }
+    }
+  </style>
+
+  <section class="lt-final-cta">
+    <div class="lt-container-narrow">
+      <h2>Fața ta, 5 ani mai tânără — în 30 de secunde</h2>
+      <p class="sub">Alătură-te celor peste 2.800 de femei care folosesc Liftrik săptămânal. Fără ace, fără bisturiu, fără riscuri — doar rezultate.</p>
+      <a href="#buy" class="lt-buy-btn" onclick="ltScrollToBuy(event)">
+        <span>Comandă acum la 149 RON</span>
+        <span class="arrow">→</span>
+      </a>
+      <div class="final-trust">
+        🇪🇺 Fabricat în Spania · 🚚 Livrare 24-48h · 💳 Plata la livrare · ↩️ Retur 14 zile
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="lt-footer-bar lt-dm-sans">
-  HGC Capital S.R.L. — România <span>·</span> Furnizor InnovaGoods — Spania <span>·</span> ANPC conform <span>·</span> Plăți securizate <span>·</span> Retur 14 zile
+  <!-- ================================================================
+       11. FOOTER TRUST BAR
+       ================================================================ -->
+  <style>
+    .lt-footer-trust {
+      background: var(--lt-navy);
+      color: rgba(255,255,255,0.7);
+      padding: 24px 0;
+      text-align: center;
+      font-family: var(--lt-sans);
+      font-size: 12px;
+    }
+    .lt-footer-trust strong { color: var(--lt-rose); font-weight: 700; }
+    .lt-footer-trust .sep { color: var(--lt-rose); margin: 0 8px; }
+  </style>
+
+  <div class="lt-footer-trust">
+    <strong>HGC Capital S.R.L.</strong>
+    <span class="sep">·</span> Distribuitor <strong>InnovaGoods® Spania</strong>
+    <span class="sep">·</span> Conform ANPC
+    <span class="sep">·</span> Plăți securizate SSL
+  </div>
+
+  <!-- ================================================================
+       STICKY MOBILE CTA — apare după ce user-ul scrollează dincolo de hero
+       ================================================================ -->
+  <style>
+    .lt-sticky {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid var(--lt-border);
+      padding: 10px 14px;
+      z-index: 9999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+      transform: translateY(100%);
+      transition: transform 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .lt-sticky.visible { transform: translateY(0); }
+    .lt-sticky-info { flex: 1; font-family: var(--lt-sans); }
+    .lt-sticky-info .price {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--lt-rose);
+      line-height: 1;
+    }
+    .lt-sticky-info .price .was {
+      font-size: 12px;
+      color: #a0a0a0;
+      text-decoration: line-through;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    .lt-sticky-info .desc {
+      font-size: 11px;
+      color: var(--lt-text-body);
+      margin-top: 2px;
+    }
+    .lt-sticky-btn {
+      background: var(--lt-rose);
+      color: #fff;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-family: var(--lt-sans);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(201, 123, 132, 0.35);
+    }
+    @media (min-width: 821px) {
+      .lt-sticky { display: none !important; }
+    }
+  </style>
+
+  <div class="lt-sticky" id="ltSticky">
+    <div class="lt-sticky-info">
+      <div class="price">149 RON <span class="was">330 RON</span></div>
+      <div class="desc">3 cutii · 120 plasturi · livrare 24-48h</div>
+    </div>
+    <button class="lt-sticky-btn" onclick="ltBuyNow()">Comandă →</button>
+  </div>
+
 </div>
 
-<div class="lt-sticky-cta" id="ltStickyCta">
-  <a href="#buy" class="lt-btn lt-btn-rose">COMANDĂ ACUM — REDUCERE -50%</a>
-</div>
+<!-- ================================================================
+     JAVASCRIPT — bundle selector, CTA, timer, sticky, FAQ
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  // ========== BUNDLE SELECTOR ==========
+  var bundles = document.querySelectorAll('.lt-bundle');
+  var selectedQty = 3; // default: tratament complet
+
+  bundles.forEach(function(b) {
+    b.addEventListener('click', function() {
+      bundles.forEach(function(x) { x.classList.remove('active'); });
+      this.classList.add('active');
+      selectedQty = parseInt(this.getAttribute('data-qty'), 10) || 1;
+
+      // Update buy button text
+      var btn = document.getElementById('ltBuyBtn');
+      var price = this.getAttribute('data-price');
+      if (btn && price) {
+        btn.querySelector('span').textContent = 'Comandă acum la ' + price + ' RON';
+      }
+      // Update sticky
+      var stickyPrice = document.querySelector('.lt-sticky-info .price');
+      if (stickyPrice) {
+        var wasValues = { 1: null, 3: '330 RON', 5: '550 RON' };
+        var wasMarkup = wasValues[selectedQty] ? ' <span class="was">' + wasValues[selectedQty] + '</span>' : '';
+        stickyPrice.innerHTML = price + ' RON' + wasMarkup;
+      }
+    });
+  });
+
+  // ========== BUY NOW ==========
+  window.ltBuyNow = function() {
+    var variantId = {{ product.selected_or_first_available_variant.id | json }};
+    var btn = document.getElementById('ltBuyBtn');
+    if (btn) {
+      var originalText = btn.innerHTML;
+      btn.innerHTML = '<span>Se procesează...</span>';
+      btn.disabled = true;
+    }
+
+    fetch('/cart/clear.js', { method: 'POST' })
+      .then(function() {
+        return fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: variantId, quantity: selectedQty })
+        });
+      })
+      .then(function() { window.location.href = '/checkout'; })
+      .catch(function(err) {
+        console.error(err);
+        window.location.href = '/checkout';
+      });
+  };
+
+  // ========== SCROLL TO BUY ==========
+  window.ltScrollToBuy = function(e) {
+    if (e) e.preventDefault();
+    var target = document.getElementById('buy');
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  };
+
+  // ========== COUNTDOWN (real, expiră la 23:59 azi) ==========
+  function updateCountdown() {
+    var now = new Date();
+    var endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+    var diff = endOfDay - now;
+    if (diff < 0) diff = 0;
+
+    var h = Math.floor(diff / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+
+    var pad = function(n) { return n < 10 ? '0' + n : n; };
+    var el = document.getElementById('lt-countdown');
+    if (el) el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ========== STICKY CTA (pe mobile după scroll peste hero) ==========
+  var sticky = document.getElementById('ltSticky');
+  var buySection = document.getElementById('buy');
+
+  function onScroll() {
+    if (window.innerWidth > 820 || !sticky || !buySection) {
+      if (sticky) sticky.classList.remove('visible');
+      return;
+    }
+    var buyRect = buySection.getBoundingClientRect();
+    var buyBottom = buyRect.bottom;
+    // Apare când offer card-ul e complet scrollat sub fold
+    if (buyBottom < 0) {
+      sticky.classList.add('visible');
+    } else {
+      sticky.classList.remove('visible');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+
+  // ========== FAQ ACCORDION ==========
+  var faqs = document.querySelectorAll('.lt-faq-item');
+  faqs.forEach(function(item) {
+    var q = item.querySelector('.lt-faq-q');
+    q.addEventListener('click', function() {
+      var wasOpen = item.classList.contains('open');
+      faqs.forEach(function(x) { x.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // ========== STOCK COUNTER (descrește lent, real-looking) ==========
+  // Pornește de la 37, scade cu 1 la fiecare 45-120 secunde, se oprește la 8
+  var stockEl = document.getElementById('ltStockCount');
+  if (stockEl) {
+    var current = parseInt(stockEl.textContent, 10) || 37;
+    function decrementStock() {
+      if (current > 8) {
+        current -= 1;
+        stockEl.textContent = current;
+      }
+      setTimeout(decrementStock, 45000 + Math.random() * 75000);
+    }
+    setTimeout(decrementStock, 30000);
+  }
+
+})();
+</script>
 
 {% schema %}
 {
-  "name": "Liftrik Landing Page",
+  "name": "Liftrik v2 CRO",
   "settings": [],
   "presets": [
-    {
-      "name": "Liftrik Landing Page"
-    }
+    { "name": "Liftrik v2 CRO" }
   ]
 }
 {% endschema %}
-
-<script>
-function vmAddToCart(quantity) {
-  const variantId = {{ product.selected_or_first_available_variant.id | json }};
-  
-  fetch('/cart/clear.js', { method: 'POST' })
-    .then(() => fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        id: variantId,
-        quantity: quantity
-      })
-    }))
-    .then(() => {
-      window.location.href = '/checkout';
-    })
-    .catch(err => {
-       console.error(err);
-       window.location.href = '/checkout';
-    });
-}
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.lt-bundle-card');
-    
-    cards.forEach(card => {
-      card.addEventListener('click', function() {
-        cards.forEach(c => c.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-
-    // Sticky CTA Logic
-    const stickyCta = document.getElementById('ltStickyCta');
-    const buySection = document.getElementById('buy');
-    
-    if (stickyCta && buySection) {
-      window.addEventListener('scroll', function() {
-        if (window.innerWidth > 768) {
-          stickyCta.classList.remove('visible');
-          return;
-        }
-        
-        const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-        const buyPos = buySection.getBoundingClientRect().top + window.pageYOffset;
-        const buyBottom = buyPos + buySection.offsetHeight;
-        const windowHeight = window.innerHeight;
-        
-        // Arată sticky CTA DOAR când utilizatorul a scrollat DINCOLO de bundle-uri
-        // (pentru că bundle-urile sunt above the fold acum, nu mai are sens să apară sticky prematur)
-        if (scrollPos > buyBottom) {
-          stickyCta.classList.add('visible');
-        } else {
-          stickyCta.classList.remove('visible');
-        }
-      });
-    }
-
-    // Intersection Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-up');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.lt-reveal').forEach(el => {
-      revealObserver.observe(el);
-    });
-
-    // FAQ
-    const faqItems = document.querySelectorAll('.lt-faq-item');
-    faqItems.forEach(item => {
-      const question = item.querySelector('.lt-faq-question');
-      question.addEventListener('click', () => {
-        const isActive = item.classList.contains('active');
-        faqItems.forEach(i => i.classList.remove('active'));
-        if (!isActive) item.classList.add('active');
-      });
-    });
-  });
-</script>
