@@ -246,7 +246,14 @@
       aspect-ratio: auto !important; 
       object-fit: contain !important; 
     }
+    
+    /* Better button on mobile */
+    .lt-inner-btn { padding: 12px 4px !important; font-size: 11px !important; }
   }
+
+  /* Verified Badge */
+  .lt-verified-badge { display: inline-flex; align-items: center; gap: 4px; color: #2abfb0; font-size: 11px; font-weight: 700; margin-top: 4px; }
+  .lt-verified-badge svg { fill: currentColor; }
 
   /* 9. footer trust */
   .lt-footer-bar { background: var(--lt-navy); color: rgba(255,255,255,0.6); padding: 20px 0; text-align: center; font-size: 12px; }
@@ -254,7 +261,12 @@
 
   /* Mobile Overrides */
   @media (max-width: 800px) {
-    .lt-hero, .lt-solution-grid, .lt-problem-grid, .lt-steps-grid, .lt-testimonial-grid { grid-template-columns: 1fr; }
+    .lt-hero { 
+      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+    }
+    .lt-hero-image-wrap { order: -1; margin-bottom: 24px; }
     .lt-hero { text-align: center; }
     .lt-rating-row, .lt-trust-small { justify-content: center; }
     .lt-steps-grid::after { display: none; }
@@ -376,6 +388,29 @@
       font-size: 28px;
     }
   }
+
+  /* 11. FAQ Accordion */
+  .lt-faq-section { background: #fff; padding: 72px 0; }
+  .lt-faq-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+  .lt-faq-item { border-bottom: 1px solid var(--lt-border); }
+  .lt-faq-question { width: 100%; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; border: none; background: none; text-align: left; cursor: pointer; font-family: var(--lt-serif); font-size: 18px; font-weight: 700; color: var(--lt-navy); }
+  .lt-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--lt-text-body); line-height: 1.6; }
+  .lt-faq-item.active .lt-faq-answer { max-height: 500px; padding-bottom: 20px; }
+  .lt-faq-icon { transition: transform 0.3s; color: var(--lt-rose); }
+  .lt-faq-item.active .lt-faq-icon { transform: rotate(45deg); }
+
+  /* 12. Before/After */
+  .lt-ba-section { background: var(--lt-bg); padding: 72px 0; }
+  .lt-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .lt-ba-image-container { position: relative; border-radius: 12px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  .lt-ba-label { position: absolute; top: 10px; padding: 4px 12px; background: rgba(0,0,0,0.6); color: #fff; font-size: 12px; font-weight: 700; border-radius: 4px; text-transform: uppercase; }
+  .label-before { left: 10px; }
+  .label-after { right: 10px; background: var(--lt-rose); }
+
+  /* Payment Badges */
+  .lt-payment-badges { display: flex; justify-content: center; gap: 15px; margin-top: 24px; opacity: 0.8; flex-wrap: wrap; }
+  .lt-payment-badge { height: 24px; filter: grayscale(1); transition: filter 0.3s; }
+  .lt-payment-badge:hover { filter: grayscale(0); }
 </style>
 
 
@@ -398,6 +433,8 @@
           <span class="lt-dm-sans" style="font-size: 14px; color: #6b7b80;">4.5/5 · 25 recenzii</span>
         </div>
 
+        {% render 'vibemag-urgency', product: product %}
+
         <a href="#buy" class="lt-btn lt-btn-rose">Vreau să încerc Liftrik →</a>
         
         <div class="lt-trust-small lt-dm-sans">
@@ -414,6 +451,121 @@
         {% endif %}
         <div class="lt-floating-badge badge-white lt-dm-sans">Fabricat în Spania<br><b>Standard european</b></div>
         <div class="lt-floating-badge badge-navy lt-dm-sans"><b>40 bucăți/set</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% render 'vibemag-stock-bar' %}
+
+<section id="buy" class="lt-section lt-cta-section" style="padding-top: 40px;">
+  <div class="lt-container" style="max-width: 700px;">
+    <span class="lt-section-tag" style="color: var(--lt-navy);">Ofertă Limitată</span>
+    <h2 class="lt-serif-italic h1" style="color: var(--lt-navy); margin-bottom: 24px;">Încearcă Liftrik fără niciun risc</h2>
+    <p class="lt-dm-sans" style="margin-bottom: 40px; color: var(--lt-navy); font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto;">Setul tău conține 40 de plasturi hipoalergenici și benzile elastice necesare pentru un lifting profesional acasă.</p>
+    
+    <div class="lt-bundle-grid" id="ltBundleGrid">
+      <!-- Option 1 -->
+      <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON" data-qty="1">
+        <div class="lt-bundle-banner empty">&nbsp;</div>
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Pachetul de Test</div>
+          <div class="lt-bundle-sub">1 Cutie · 40 Plasturi</div>
+          <p class="lt-bundle-desc">Ideal pentru a testa efectul de lifting invizibil.</p>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save hidden">Empty</span>
+          </div>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price small">110 RON</span>
+          </div>
+          <span class="lt-bundle-shipping">+ 19,90 RON livrare</span>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(1)">COMANDĂ</button>
+        </div>
+      </div>
+
+      <!-- Option 2 (Best Seller) -->
+      <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON" data-qty="3">
+        <div class="lt-bundle-banner">🔥 CEL MAI VÂNDUT</div>
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Tratamentul Complet</div>
+          <div class="lt-bundle-sub">3 Cutii · 120 Plasturi</div>
+          <p class="lt-bundle-desc">Rutina perfectă pentru un efect susținut în fiecare zi.</p>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save">Economisești 181 RON</span>
+          </div>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price">149 RON</span>
+            <span class="lt-bundle-old">330 RON</span>
+          </div>
+          <div class="lt-bundle-free">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             TRANSPORT GRATUIT
+          </div>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(3)">COMANDĂ</button>
+        </div>
+      </div>
+
+      <!-- Option 3 -->
+      <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON" data-qty="5">
+        <div class="lt-bundle-banner rose">💎 CEA MAI BUNĂ VALOARE</div>
+        <div class="lt-bundle-content">
+          <div class="lt-radio-circle"></div>
+          <div class="lt-bundle-title">Stocul de Beauty</div>
+          <div class="lt-bundle-sub">5 Cutii · 200 Plasturi</div>
+          <p class="lt-bundle-desc">Pentru clientele care folosesc plasturii zilnic. Cel mai mic preț per cutie!</p>
+          <div class="lt-bundle-save-wrap">
+            <span class="lt-bundle-save">Economisești 351 RON</span>
+          </div>
+          <div class="lt-bundle-price-row">
+            <span class="lt-bundle-price">199 RON</span>
+            <span class="lt-bundle-old">550 RON</span>
+          </div>
+          <div class="lt-bundle-free">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+             TRANSPORT GRATUIT
+          </div>
+          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(5)">COMANDĂ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lt-payment-badges">
+      <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/visa.svg?v=1713432000" class="lt-payment-badge" alt="Visa" width="40" height="24" loading="lazy">
+      <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/mastercard.svg?v=1713432000" class="lt-payment-badge" alt="Mastercard" width="40" height="24" loading="lazy">
+      <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/cod_transparent.png?v=1713432000" class="lt-payment-badge" alt="Plata la livrare" width="40" height="24" loading="lazy">
+    </div>
+
+    <div class="lt-reassurance-row">
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        Plată 100% securizată
+      </div>
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        Livrare 2-5 zile
+      </div>
+      <div class="lt-reassurance-item">
+        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+        Retur 14 zile
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="lt-ba-section">
+  <div class="lt-container">
+    <div class="lt-ba-grid">
+      <div>
+        <span class="lt-section-tag">Diferență Instantanee</span>
+        <h2 class="lt-serif-italic h1">Vezi puterea Liftrik în acțiune</h2>
+        <p class="lt-dm-sans">Nu este magie, este metoda mecanică de ridicare a pielii. Aceeași persoană, 30 de secunde diferență. Fără filtre, fără editări.</p>
+      </div>
+      <div class="lt-ba-image-container">
+        <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/liftrik-ba.jpg?v=1713432000" alt="Înainte și După" style="width: 100%; display: block;">
+        <span class="lt-ba-label label-before">Înainte</span>
+        <span class="lt-ba-label label-after">După</span>
       </div>
     </div>
   </div>
@@ -649,7 +801,10 @@
           <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">MD</div>
           <div>
             <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Maria D., 47 ani</div>
-            <div style="font-size: 12px; color: #9aa5a8;">București</div>
+            <div class="lt-verified-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Cumpărător Verificat
+            </div>
           </div>
         </div>
       </div>
@@ -661,7 +816,10 @@
           <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">EV</div>
           <div>
             <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Elena V., 52 ani</div>
-            <div style="font-size: 12px; color: #9aa5a8;">Cluj-Napoca</div>
+            <div class="lt-verified-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Cumpărător Verificat
+            </div>
           </div>
         </div>
       </div>
@@ -673,7 +831,10 @@
           <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--lt-rose); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700;">AP</div>
           <div>
             <div style="font-size: 14px; font-weight: 700; color: var(--lt-navy);">Andreea P., 39 ani</div>
-            <div style="font-size: 12px; color: #9aa5a8;">Timișoara</div>
+            <div class="lt-verified-badge">
+              <svg width="12" height="12" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Cumpărător Verificat
+            </div>
           </div>
         </div>
       </div>
@@ -681,97 +842,27 @@
   </div>
 </section>
 
-<section id="buy" class="lt-section lt-cta-section">
-  <div class="lt-container" style="max-width: 700px;">
-    <span class="lt-section-tag" style="color: var(--lt-navy);">Ofertă Limitată</span>
-    <h2 class="lt-serif-italic h1" style="color: var(--lt-navy); margin-bottom: 24px;">Încearcă Liftrik fără niciun risc</h2>
-    <p class="lt-dm-sans" style="margin-bottom: 40px; color: var(--lt-navy); font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto;">Setul tău conține 40 de plasturi hipoalergenici și benzile elastice necesare pentru un lifting profesional acasă.</p>
-    
-    <div class="lt-bundle-grid" id="ltBundleGrid">
-      <!-- Option 1 -->
-      <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON" data-qty="1">
-        <div class="lt-bundle-banner empty">&nbsp;</div>
-        <div class="lt-bundle-content">
-          <div class="lt-radio-circle"></div>
-          <div class="lt-bundle-title">Pachetul de Test</div>
-          <div class="lt-bundle-sub">1 Cutie · 40 Plasturi</div>
-          <p class="lt-bundle-desc">Ideal pentru a testa efectul de lifting invizibil.</p>
-          <div class="lt-bundle-save-wrap">
-            <span class="lt-bundle-save hidden">Empty</span>
-          </div>
-          <div class="lt-bundle-price-row">
-            <span class="lt-bundle-price small">110 RON</span>
-          </div>
-          <span class="lt-bundle-shipping">+ 19,90 RON livrare</span>
-          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(1)">COMANDĂ</button>
+<section class="lt-faq-section">
+  <div class="lt-faq-container">
+    <h2 class="lt-title-centered lt-serif-italic h1">Întrebări frecvente</h2>
+    <div class="lt-faq-list">
+      <div class="lt-faq-item active">
+        <button class="lt-faq-question">Sunt plasturii vizibili sub machiaj? <span class="lt-faq-icon">+</span></button>
+        <div class="lt-faq-answer">
+          <p>Nu. Plasturii sunt ultra-subțiri, transparenți și au un finisaj mat care nu reflectă lumina. Odată aplicați corect sub linia părului sau sub machiaj, devin complet invizibili.</p>
         </div>
       </div>
-
-      <!-- Option 2 (Best Seller) -->
-      <div class="lt-bundle-card active" data-title="Tratamentul Complet" data-price="149 RON" data-qty="3">
-        <div class="lt-bundle-banner">🔥 CEL MAI VÂNDUT</div>
-        <div class="lt-bundle-content">
-          <div class="lt-radio-circle"></div>
-          <div class="lt-bundle-title">Tratamentul Complet</div>
-          <div class="lt-bundle-sub">3 Cutii · 120 Plasturi</div>
-          <p class="lt-bundle-desc">Rutina perfectă pentru un efect susținut în fiecare zi.</p>
-          <div class="lt-bundle-save-wrap">
-            <span class="lt-bundle-save">Economisești 181 RON</span>
-          </div>
-          <div class="lt-bundle-price-row">
-            <span class="lt-bundle-price">149 RON</span>
-            <span class="lt-bundle-old">330 RON</span>
-          </div>
-          <div class="lt-bundle-free">
-             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-             TRANSPORT GRATUIT
-          </div>
-          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(3)">COMANDĂ</button>
+      <div class="lt-faq-item">
+        <button class="lt-faq-question">Cât timp rezistă aplicarea? <span class="lt-faq-icon">+</span></button>
+        <div class="lt-faq-answer">
+          <p>Adezivul este rezistent la apă și transpirație, rezistând până la 12 ore. Recomandăm curățarea prealabilă a pielii cu o soluție degresantă pentru aderență maximă.</p>
         </div>
       </div>
-
-      <!-- Option 3 -->
-      <div class="lt-bundle-card" data-title="Stocul de Beauty" data-price="199 RON" data-qty="5">
-        <div class="lt-bundle-banner rose">💎 CEA MAI BUNĂ VALOARE</div>
-        <div class="lt-bundle-content">
-          <div class="lt-radio-circle"></div>
-          <div class="lt-bundle-title">Stocul de Beauty</div>
-          <div class="lt-bundle-sub">5 Cutii · 200 Plasturi</div>
-          <p class="lt-bundle-desc">Pentru clientele care folosesc plasturii zilnic. Cel mai mic preț per cutie!</p>
-          <div class="lt-bundle-save-wrap">
-            <span class="lt-bundle-save">Economisești 351 RON</span>
-          </div>
-          <div class="lt-bundle-price-row">
-            <span class="lt-bundle-price">199 RON</span>
-            <span class="lt-bundle-old">550 RON</span>
-          </div>
-          <div class="lt-bundle-free">
-             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-             TRANSPORT GRATUIT
-          </div>
-          <button type="button" class="lt-inner-btn" onclick="vmAddToCart(5)">COMANDĂ</button>
+      <div class="lt-faq-item">
+        <button class="lt-faq-question">Este dureroasă aplicarea sau purtarea? <span class="lt-faq-icon">+</span></button>
+        <div class="lt-faq-answer">
+          <p>Absolut deloc. Senzația este similară cu a purta o bentiță de păr sau a prinde părul în coadă mai strâns. Materialele sunt hipoalergenice și prietenoase cu pielea.</p>
         </div>
-      </div>
-    </div>
-
-    {%- form 'product', product -%}
-      <input type="hidden" name="id" id="ltSelectedId" value="{{ product.selected_or_first_available_variant.id }}">
-      <input type="hidden" name="quantity" id="ltSelectedQty" value="1">
-    {%- endform -%}
-
-
-    <div class="lt-reassurance-row">
-      <div class="lt-reassurance-item">
-        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-        Plată 100% securizată
-      </div>
-      <div class="lt-reassurance-item">
-        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-        Livrare 2-5 zile
-      </div>
-      <div class="lt-reassurance-item">
-        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-        Retur 14 zile
       </div>
     </div>
   </div>
@@ -799,21 +890,24 @@
 
 <script>
 function vmAddToCart(quantity) {
+  // Using the first available variant ID dynamically
+  const variantId = {{ product.selected_or_first_available_variant.id | json }};
+  
   fetch('/cart/clear.js', { method: 'POST' })
     .then(() => fetch('/cart/add.js', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        id: 56636795519356,
+        id: variantId,
         quantity: quantity
       })
     }))
     .then(() => {
-      window.location.href = '/cart';
+      window.location.href = '/checkout';
     })
     .catch(err => {
        console.error(err);
-       window.location.href = '/cart';
+       window.location.href = '/checkout';
     });
 }
 
@@ -875,6 +969,17 @@ function vmAddToCart(quantity) {
 
     document.querySelectorAll('.lt-reveal').forEach(el => {
       revealObserver.observe(el);
+    });
+
+    // FAQ Logic
+    const faqItems = document.querySelectorAll('.lt-faq-item');
+    faqItems.forEach(item => {
+      const question = item.querySelector('.lt-faq-question');
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqItems.forEach(i => i.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
     });
   });
 </script>

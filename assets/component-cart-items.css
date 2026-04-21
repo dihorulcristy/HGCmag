@@ -117,7 +117,9 @@ cart-items .title-wrapper-with-link {
 }
 
 .cart-item__final-price {
-  font-weight: 400;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  color: #1a2b32;
 }
 
 .product-option {
