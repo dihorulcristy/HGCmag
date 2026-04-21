@@ -266,13 +266,34 @@
       display: flex;
       flex-direction: column;
     }
-    .lt-hero-image-wrap { order: -1; margin-bottom: 24px; }
+    .lt-hero-image-wrap { order: -1; margin-bottom: 12px; }
     .lt-hero { text-align: center; }
+    
+    .lt-mobile-badge-row { 
+      display: flex; 
+      gap: 10px; 
+      margin-top: 12px; 
+      justify-content: center; 
+      width: 100%;
+    }
+    .badge-white, .badge-navy { 
+      position: static !important; 
+      margin-top: 0 !important; 
+      flex: 1; 
+      min-height: 50px; 
+      display: flex !important; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center; 
+      font-size: 11px !important;
+      padding: 8px !important;
+    }
+    
     .lt-rating-row, .lt-trust-small { justify-content: center; }
     .lt-steps-grid::after { display: none; }
-    .badge-white, .badge-navy { position: static; margin-top: 10px; }
     .lt-table-wrap { overflow-x: auto; }
-    .lt-hero-h1 { font-size: 36px; }
+    .lt-hero-h1 { font-size: 32px; margin-bottom: 16px; }
+    .lt-mobile-hide { display: none !important; }
   }
 
   /* Fade up animation */
@@ -410,47 +431,25 @@
   /* Payment Badges */
   .lt-payment-badges { display: flex; justify-content: center; gap: 15px; margin-top: 24px; opacity: 0.8; flex-wrap: wrap; }
   .lt-payment-badge { height: 24px; filter: grayscale(1); transition: filter 0.3s; }
-  .lt-payment-badge:hover { filter: grayscale(0); }
-</style>
-
-
-
-
-<section class="lt-section">
+<section class="lt-section" style="padding-bottom: 0;">
   <div class="lt-container">
     <div class="lt-hero">
-      <div class="animate-fade-up">
-        <span class="lt-badge-pill">Nou în România</span>
-        <h1 class="lt-hero-h1 lt-serif-italic">Lifting facial fără bisturiu, fără botox, fără durere</h1>
-        <p class="lt-hero-subtext lt-dm-sans">Plasturii Liftrik sunt secretul pe care femeile din Spania îl folosesc de ani de zile pentru un ten ridicat și un aspect tânăr — în câteva secunde pe zi.</p>
-        
-        <div class="lt-rating-row">
-          <div class="lt-stars">
-            {% for i in (1..5) %}
-              <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-            {% endfor %}
-          </div>
-          <span class="lt-dm-sans" style="font-size: 14px; color: #6b7b80;">4.5/5 · 25 recenzii</span>
-        </div>
-
-        {% render 'vibemag-urgency', product: product %}
-
-        <a href="#buy" class="lt-btn lt-btn-rose">Vreau să încerc Liftrik →</a>
-        
-        <div class="lt-trust-small lt-dm-sans">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Retur gratuit în 14 zile · Satisfacție garantată
-        </div>
-      </div>
-
       <div class="lt-hero-image-wrap animate-fade-up" style="animation-delay: 0.2s">
         {% if product.featured_image %}
           <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" width="600" height="600" style="width: 100%; border-radius: 10px;">
         {% else %}
           <div style="width: 100%; aspect-ratio: 1; background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center;">Imagine Produs</div>
         {% endif %}
-        <div class="lt-floating-badge badge-white lt-dm-sans">Fabricat în Spania<br><b>Standard european</b></div>
-        <div class="lt-floating-badge badge-navy lt-dm-sans"><b>40 bucăți/set</b></div>
+        
+        <div class="lt-mobile-badge-row">
+          <div class="lt-floating-badge badge-white lt-dm-sans">Fabricat în Spania<br><b>Standard european</b></div>
+          <div class="lt-floating-badge badge-navy lt-dm-sans"><b>40 bucăți/set</b></div>
+        </div>
+      </div>
+
+      <div class="animate-fade-up">
+        <span class="lt-badge-pill">Nou în România</span>
+        <h1 class="lt-hero-h1 lt-serif-italic" style="margin-bottom: 8px;">Lifting facial fără bisturiu, fără botox, fără durere</h1>
       </div>
     </div>
   </div>
@@ -458,12 +457,8 @@
 
 {% render 'vibemag-stock-bar' %}
 
-<section id="buy" class="lt-section lt-cta-section" style="padding-top: 40px;">
+<section id="buy" class="lt-section lt-cta-section" style="padding: 24px 0;">
   <div class="lt-container" style="max-width: 700px;">
-    <span class="lt-section-tag" style="color: var(--lt-navy);">Ofertă Limitată</span>
-    <h2 class="lt-serif-italic h1" style="color: var(--lt-navy); margin-bottom: 24px;">Încearcă Liftrik fără niciun risc</h2>
-    <p class="lt-dm-sans" style="margin-bottom: 40px; color: var(--lt-navy); font-weight: 500; max-width: 600px; margin-left: auto; margin-right: auto;">Setul tău conține 40 de plasturi hipoalergenici și benzile elastice necesare pentru un lifting profesional acasă.</p>
-    
     <div class="lt-bundle-grid" id="ltBundleGrid">
       <!-- Option 1 -->
       <div class="lt-bundle-card" data-title="Pachetul de Test" data-price="110 RON" data-qty="1">
@@ -537,7 +532,7 @@
       <img src="https://cdn.shopify.com/s/files/1/0612/8202/5688/files/cod_transparent.png?v=1713432000" class="lt-payment-badge" alt="Plata la livrare" width="40" height="24" loading="lazy">
     </div>
 
-    <div class="lt-reassurance-row">
+    <div class="lt-reassurance-row" style="margin-top: 32px;">
       <div class="lt-reassurance-item">
         <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
         Plată 100% securizată
@@ -551,6 +546,17 @@
         Retur 14 zile
       </div>
     </div>
+  </div>
+</section>
+
+<section class="lt-section" style="padding: 48px 0; background: #fff;">
+  <div class="lt-container" style="text-align: center;">
+     <p class="lt-dm-sans" style="margin-bottom: 24px; color: #4a5568; max-width: 800px; margin-left: auto; margin-right: auto;">Plasturii Liftrik sunt secretul pe care femeile din Spania îl folosesc de ani de zile pentru un ten ridicat și un aspect tânăr — în câteva secunde pe zi.</p>
+     <div class="lt-rating-row" style="justify-content: center; margin-bottom: 32px;">
+        <div class="lt-stars">{% for i in (1..5) %}<svg width="18" height="18" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>{% endfor %}</div>
+        <span style="font-size: 14px; color: #6b7b80;">4.5/5 · 25 recenzii</span>
+     </div>
+     {% render 'vibemag-urgency', product: product %}
   </div>
 </section>
 
