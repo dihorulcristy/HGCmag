@@ -79,9 +79,19 @@
   }
   .lt-hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 50px;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 48px;
     align-items: start;
+  }
+  /* Pe desktop: coloana stângă = titlu + benefits + offer card. Dreapta = imagine sticky. */
+  .lt-hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .lt-hero-right {
+    position: sticky;
+    top: 20px;
   }
 
   /* Trust pill deasupra titlului */
@@ -119,16 +129,16 @@
 
   /* Titlul principal — promisiune clară */
   .lt-hero-title {
-    font-size: clamp(28px, 5vw, 46px);
-    line-height: 1.05;
+    font-size: clamp(26px, 3.2vw, 38px);
+    line-height: 1.1;
     color: var(--lt-navy);
     margin-bottom: 14px;
+    letter-spacing: -0.5px;
   }
   .lt-hero-title .highlight {
     font-style: italic;
     color: var(--lt-rose);
     position: relative;
-    white-space: nowrap;
   }
 
   .lt-hero-sub {
@@ -169,6 +179,8 @@
     overflow: hidden;
     background: #fff;
     box-shadow: 0 12px 40px rgba(44, 26, 29, 0.08);
+    max-width: 480px;
+    margin: 0 auto;
   }
   .lt-hero-image-box img {
     width: 100%;
@@ -176,6 +188,7 @@
     display: block;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    max-height: 520px;
   }
   .lt-image-overlay-tl {
     position: absolute;
@@ -460,23 +473,45 @@
     100% { transform: scale(2); opacity: 0; }
   }
 
-  /* ============ MOBILE HERO — ABOVE THE FOLD ============ */
+  /* ============ LARGE DESKTOP (1200px+) — content centrat ============ */
+  @media (min-width: 1200px) {
+    .lt-hero-grid {
+      gap: 60px;
+    }
+    .lt-hero-title { font-size: 40px; }
+  }
+
+  /* ============ TABLET (821-1024px) ============ */
+  @media (max-width: 1024px) and (min-width: 821px) {
+    .lt-hero-grid {
+      gap: 32px;
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .lt-hero-title { font-size: 30px; }
+    .lt-hero-image-box { max-width: 400px; }
+    .lt-hero-image-box img { max-height: 420px; }
+    .lt-quick-benefits { font-size: 13px; }
+  }
+
+  /* ============ MOBILE HERO — ABOVE THE FOLD (sub 820px) ============ */
   @media (max-width: 820px) {
     .lt-hero { padding: 14px 0 24px; }
     .lt-hero-grid {
       grid-template-columns: 1fr;
-      gap: 14px;
+      gap: 16px;
+      display: flex;
+      flex-direction: column;
     }
-
-    /* Mobile: titlul MIC deasupra imaginii */
-    .lt-hero-content-top {
-      order: 1;
-      text-align: center;
-      padding: 0 4px;
+    .lt-hero-left {
+      display: contents; /* permite copiilor să se rearanjeze cu order */
     }
-    .lt-hero-image-wrapper { order: 2; }
+    .lt-hero-right {
+      position: static;
+      order: 2;
+    }
+    .lt-hero-content-top { order: 1; text-align: center; padding: 0 4px; }
     .lt-offer-card { order: 3; margin-top: 0; }
-    .lt-hero-content-bottom { order: 4; margin-top: 20px; }
+    .lt-mobile-benefits-below { order: 4; }
 
     .lt-trust-row { justify-content: center; margin-bottom: 8px; gap: 8px; }
     .lt-eu-badge { font-size: 10px; padding: 4px 10px; }
@@ -485,7 +520,8 @@
 
     .lt-hero-title {
       font-size: 24px;
-      margin-bottom: 6px;
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
     .lt-hero-sub {
       font-size: 14px;
@@ -497,9 +533,10 @@
 
     /* Imaginea compactă pe mobile */
     .lt-hero-image-box {
-      max-width: 320px;
+      max-width: 300px;
       margin: 0 auto;
     }
+    .lt-hero-image-box img { max-height: 300px; }
 
     /* Offer card */
     .lt-offer-card {
@@ -544,6 +581,25 @@
       font-size: 14px;
     }
   }
+
+  /* ============ SMALL MOBILE (sub 380px - iPhone SE, etc) ============ */
+  @media (max-width: 380px) {
+    .lt-container { padding: 0 14px; }
+    .lt-hero-title { font-size: 22px; }
+    .lt-hero-sub { font-size: 13px; }
+    .lt-hero-image-box { max-width: 260px; }
+    .lt-hero-image-box img { max-height: 260px; }
+    .lt-image-overlay-tl, .lt-image-overlay-br { font-size: 10px; padding: 5px 8px; }
+    .lt-image-overlay-br .big { font-size: 14px; }
+    .lt-bundle { padding: 8px; gap: 8px; }
+    .lt-bundle-info .title { font-size: 12px; }
+    .lt-bundle-info .sub { font-size: 10px; }
+    .lt-bundle-price .now { font-size: 16px; }
+    .lt-bundle.featured.active .lt-bundle-price .now { font-size: 18px; }
+    .lt-cta-trust { font-size: 9px; gap: 6px; flex-wrap: wrap; }
+    .lt-stock-indicator { font-size: 11px; padding: 8px 10px; }
+  }
+
   @media (min-width: 821px) {
     .lt-mobile-benefits-below { display: none !important; }
     .lt-hero-content-top { margin-bottom: 0; }
@@ -556,66 +612,50 @@
        1. TOP BAR — anunț + timer real (reducere expiră la 23:59)
        ================================================================ -->
   <div class="lt-top-bar">
-    🔥 <strong>REDUCERE -55%</strong> astăzi &middot; Livrare 24-48h în toată țara
+    🔥 <strong>REDUCERE -55%</strong> astăzi &middot; Livrare în toată țara
     <span class="lt-timer-inline" id="lt-countdown">--:--:--</span>
   </div>
 
   <!-- ================================================================
        2. HERO — promisiune + imagine + oferta above the fold
+       DESKTOP: stânga = titlu + benefits + offer card | dreapta = imagine
+       MOBILE:  titlu sus → imagine → offer card → benefits
        ================================================================ -->
   <section class="lt-hero">
     <div class="lt-container">
       <div class="lt-hero-grid">
 
-        <!-- Content TOP (pe mobile sus, pe desktop stânga) -->
-        <div class="lt-hero-content-top">
-          <div class="lt-trust-row">
-            <span class="lt-eu-badge">🇪🇺 Fabricat în Spania</span>
-            <span class="lt-rating-inline">
-              <span class="stars">★★★★★</span>
-              <span>4.8/5 · 2.847 cliente</span>
-            </span>
-          </div>
+        <!-- COLOANA STÂNGĂ (desktop) / Rearranjată pe mobile -->
+        <div class="lt-hero-left">
 
-          <h1 class="lt-hero-title">
-            Lifting facial în <span class="highlight">30 de secunde</span> — fără botox, fără bisturiu
-          </h1>
-
-          <p class="lt-hero-sub">
-            Plasturi invizibili adezivi care <strong>ridică instant conturul feței</strong>. Fabricați în Europa, nu în China. <strong>Efect vizibil imediat.</strong>
-          </p>
-
-          <!-- Benefits (doar desktop, pe mobile apar sub offer card) -->
-          <ul class="lt-quick-benefits">
-            <li>Rezultat în 30 de secunde</li>
-            <li>Invizibili sub machiaj</li>
-            <li>40 plasturi per cutie</li>
-            <li>0% riscuri medicale</li>
-          </ul>
-        </div>
-
-        <!-- Coloana dreaptă: imagine + offer card -->
-        <div>
-          <div class="lt-hero-image-wrapper">
-            <div class="lt-hero-image-box">
-              <span class="lt-image-overlay-tl">🇪🇺 Made in Spain</span>
-              <span class="lt-image-overlay-br">
-                <span class="big">40</span>
-                plasturi/cutie
+          <!-- Content de sus: trust + titlu + subtitlu -->
+          <div class="lt-hero-content-top">
+            <div class="lt-trust-row">
+              <span class="lt-eu-badge">🇪🇺 Fabricat în Spania</span>
+              <span class="lt-rating-inline">
+                <span class="stars">★★★★★</span>
+                <span>4.8/5 · 2.847 cliente</span>
               </span>
-              {% if product.featured_image %}
-                <img src="{{ product.featured_image | image_url: width: 700 }}"
-                     alt="{{ product.title }}"
-                     width="700" height="700"
-                     loading="eager"
-                     fetchpriority="high">
-              {% else %}
-                <div style="width:100%;aspect-ratio:1;background:#eee;display:flex;align-items:center;justify-content:center;">Imagine produs</div>
-              {% endif %}
             </div>
+
+            <h1 class="lt-hero-title">
+              Lifting facial în <span class="highlight">30 de secunde</span> — fără botox, fără bisturiu
+            </h1>
+
+            <p class="lt-hero-sub">
+              Plasturi invizibili adezivi care <strong>ridică instant conturul feței</strong>. Fabricați în Europa, nu în China. <strong>Efect vizibil imediat.</strong>
+            </p>
+
+            <!-- Benefits (doar desktop, pe mobile apar sub offer card) -->
+            <ul class="lt-quick-benefits">
+              <li>Rezultat în 30 de secunde</li>
+              <li>Invizibili sub machiaj</li>
+              <li>40 plasturi per cutie</li>
+              <li>0% riscuri medicale</li>
+            </ul>
           </div>
 
-          <!-- OFFER CARD cu bundle-uri -->
+          <!-- OFFER CARD cu bundle-uri (pe desktop sub titlu, pe mobile sub imagine) -->
           <div class="lt-offer-card" id="buy">
             <div class="lt-offer-header">
               <span class="label">⚡ Ofertă de lansare</span>
@@ -680,9 +720,9 @@
             </button>
 
             <div class="lt-cta-trust">
-              <span>Livrare 24-48h</span>
+              <span>Livrare 3-5 zile</span>
               <span>Retur 14 zile</span>
-              <span>Plata la livrare</span>
+              <span>Plata online securizată</span>
             </div>
 
             <div class="lt-stock-indicator">
@@ -698,6 +738,28 @@
             <li>Fabricat în Spania</li>
             <li>Hipoalergenic</li>
           </ul>
+        </div>
+
+        <!-- COLOANA DREAPTĂ (desktop) / Pe mobile apare între titlu și offer card -->
+        <div class="lt-hero-right">
+          <div class="lt-hero-image-wrapper">
+            <div class="lt-hero-image-box">
+              <span class="lt-image-overlay-tl">🇪🇺 Made in Spain</span>
+              <span class="lt-image-overlay-br">
+                <span class="big">40</span>
+                plasturi/cutie
+              </span>
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 700 }}"
+                     alt="{{ product.title }}"
+                     width="700" height="700"
+                     loading="eager"
+                     fetchpriority="high">
+              {% else %}
+                <div style="width:100%;aspect-ratio:1;background:#eee;display:flex;align-items:center;justify-content:center;">Imagine produs</div>
+              {% endif %}
+            </div>
+          </div>
         </div>
 
       </div>
@@ -1481,7 +1543,7 @@
             <span class="lt-faq-icon">+</span>
           </button>
           <div class="lt-faq-a">
-            <p>Livrăm prin curier în 24-48h în toată România. Poți plăti cu cardul la plasarea comenzii sau <strong>ramburs la primirea coletului</strong>. Ai 14 zile drept de retur fără motiv — dacă nu ești mulțumită, îți returnăm banii integral.</p>
+            <p>Livrăm prin curier în <strong>3-5 zile lucrătoare</strong> în toată România. Plata se face online cu cardul, în condiții de siguranță maximă (SSL). Ai <strong>14 zile drept de retur</strong> fără motiv — dacă nu ești mulțumită, îți returnăm banii integral.</p>
           </div>
         </div>
 
@@ -1566,7 +1628,7 @@
         <span class="arrow">→</span>
       </a>
       <div class="final-trust">
-        🇪🇺 Fabricat în Spania · 🚚 Livrare 24-48h · 💳 Plata la livrare · ↩️ Retur 14 zile
+        🇪🇺 Fabricat în Spania · 🚚 Livrare 3-5 zile · 🔒 Plată online securizată · ↩️ Retur 14 zile
       </div>
     </div>
   </section>
@@ -1651,7 +1713,7 @@
   <div class="lt-sticky" id="ltSticky">
     <div class="lt-sticky-info">
       <div class="price">149 RON <span class="was">330 RON</span></div>
-      <div class="desc">3 cutii · 120 plasturi · livrare 24-48h</div>
+      <div class="desc">3 cutii · 120 plasturi · livrare 3-5 zile</div>
     </div>
     <button class="lt-sticky-btn" onclick="ltBuyNow()">Comandă →</button>
   </div>
