@@ -396,6 +396,7 @@
   .lt-buy-btn:hover { background: var(--lt-rose-dark); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201, 123, 132, 0.45); }
   .lt-buy-btn:active { transform: translateY(0); }
   .lt-buy-btn .arrow { font-size: 20px; }
+  .lt-buy-btn span { color: #000 !important; }
 
   /* Shimmer effect pe buton */
   .lt-buy-btn::before {
@@ -1611,6 +1612,7 @@
       position: relative;
     }
     .lt-final-cta .lt-buy-btn:hover { background: var(--lt-navy); color: #fff; }
+    .lt-final-cta .lt-buy-btn span { color: inherit !important; }
     .lt-final-cta .final-trust {
       margin-top: 20px;
       font-size: 13px;
@@ -1700,7 +1702,7 @@
     }
     .lt-sticky-btn {
       background: var(--lt-rose);
-      color: #000;
+      color: #000 !important;
       padding: 12px 18px;
       border-radius: 8px;
       font-family: var(--lt-sans);
@@ -1709,6 +1711,7 @@
       text-transform: uppercase;
       box-shadow: 0 4px 12px rgba(201, 123, 132, 0.35);
     }
+    .lt-sticky-btn span { color: #000 !important; }
     @media (min-width: 821px) {
       .lt-sticky { display: none !important; }
     }
