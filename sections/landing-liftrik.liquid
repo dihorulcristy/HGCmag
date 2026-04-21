@@ -49,7 +49,9 @@
   }
   .lt-announcement span { color: var(--lt-rose); font-weight: 700; }
 
-  /* 2. Hero */
+  /* ================================================
+     HERO — DESKTOP
+     ================================================ */
   .lt-hero {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
@@ -128,6 +130,9 @@
   .badge-white { background: #fff; color: var(--lt-navy); border: 1px solid var(--lt-border); bottom: 20px; left: -20px; }
   .badge-navy { background: var(--lt-navy); color: #fff; top: 20px; right: -20px; }
 
+  /* Desktop: ascunde elementele mobile-only */
+  .lt-mobile-only { display: none; }
+
   /* 3. Problem */
   .lt-problem { background: #fff; border-top: 1px solid var(--lt-border); }
   .lt-section-tag { color: var(--lt-rose); font-weight: 700; text-transform: uppercase; font-size: 12px; margin-bottom: 12px; display: block; text-align: center; }
@@ -201,7 +206,7 @@
   .lt-bundle-card.active .lt-inner-btn { background: var(--lt-rose); }
   .lt-inner-btn:hover { opacity: 0.9; }
 
-  .lt-btn-dark { display: none !important; } /* Hard hide legacy button */
+  .lt-btn-dark { display: none !important; }
 
   .lt-reassurance-row { display: flex; justify-content: center; gap: 15px; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.8); }
   .lt-reassurance-item { display: flex; align-items: center; gap: 6px; }
@@ -209,22 +214,144 @@
 
   .lt-trust-inline { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 32px; font-size: 13px; }
 
+  /* ================================================
+     MOBILE HERO — ABOVE THE FOLD OPTIMIZATION
+     Obiectiv: imaginea produsului + bundle-urile să fie
+     vizibile fără scroll pe viewport-uri de 667px+ (iPhone SE+)
+     ================================================ */
+  @media (max-width: 767px) {
+    /* Reducem padding-ul hero-ului la minim */
+    .lt-hero-section-mobile {
+      padding: 12px 0 16px !important;
+    }
+
+    /* Micro-titlu deasupra imaginii (trust + promise compacte) */
+    .lt-mobile-hero-top {
+      display: block !important;
+      text-align: center;
+      margin-bottom: 10px;
+      padding: 0 16px;
+    }
+    .lt-mobile-hero-top .lt-badge-pill {
+      margin-bottom: 6px;
+      font-size: 10px;
+      padding: 3px 10px;
+    }
+    .lt-mobile-hero-top .lt-mobile-headline {
+      font-family: var(--lt-serif);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
+      color: var(--lt-navy);
+      margin: 0;
+    }
+
+    /* Hero grid devine flex cu imaginea compactă */
+    .lt-hero { 
+      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .lt-hero-image-wrap { 
+      order: 0;
+      margin: 0 auto;
+      max-width: 280px; /* imaginea mai mică și centrată */
+      width: 70%;
+    }
+    .lt-hero-image-wrap img { 
+      aspect-ratio: 1 / 1 !important;
+      object-fit: cover !important;
+      border-radius: 10px;
+      width: 100% !important;
+      height: auto !important;
+    }
+
+    /* Badge-urile flotante peste imagine (overlay, nu sub) */
+    .lt-mobile-badge-row {
+      display: none !important; /* scoatem rândul de badge-uri de sub imagine */
+    }
+    .badge-white.lt-overlay {
+      display: block !important;
+      position: absolute !important;
+      bottom: 8px !important;
+      left: 8px !important;
+      right: auto !important;
+      top: auto !important;
+      padding: 4px 8px !important;
+      font-size: 9px !important;
+      line-height: 1.2 !important;
+      border-radius: 6px !important;
+    }
+    .badge-navy.lt-overlay {
+      display: block !important;
+      position: absolute !important;
+      top: 8px !important;
+      right: 8px !important;
+      left: auto !important;
+      bottom: auto !important;
+      padding: 4px 8px !important;
+      font-size: 9px !important;
+      line-height: 1.2 !important;
+      border-radius: 6px !important;
+    }
+
+    /* Ascundem stock bar-ul above the fold (apare mai jos ca ancoraj) */
+    .lt-hero-section-mobile .vibemag-stock-bar,
+    .lt-hero-section-mobile [class*="stock-bar"] {
+      display: none !important;
+    }
+
+    /* Bundle grid compact */
+    .lt-hero-section-mobile .lt-cta-section {
+      padding: 0 !important;
+    }
+    .lt-hero-section-mobile .lt-bundle-grid {
+      margin: 8px 0 0 !important;
+      gap: 6px !important;
+      padding: 0 12px;
+    }
+
+    /* Ascundem H1-ul mare de sub bundle pe mobile (l-am mutat sus) */
+    .lt-hero-bottom-headline {
+      display: none !important;
+    }
+
+    /* Payment badges compacte */
+    .lt-hero-section-mobile .lt-payment-badges {
+      margin-top: 10px !important;
+      margin-bottom: 0 !important;
+      gap: 8px !important;
+    }
+    .lt-hero-section-mobile .lt-payment-badge {
+      height: 18px !important;
+    }
+    .lt-hero-section-mobile .lt-payment-badge-wrapper {
+      height: 18px !important;
+      width: 32px !important;
+      font-size: 7px !important;
+    }
+  }
+
+  /* Bundle grid compact — mobile */
   @media (max-width: 768px) {
-    .lt-bundle-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; margin: 20px 0 !important; }
-    .lt-bundle-content { padding: 12px 6px !important; }
-    .lt-bundle-title { font-size: 11px !important; min-height: 32px !important; margin-bottom: 2px !important; }
-    .lt-bundle-sub { font-size: 9px !important; min-height: 12px !important; margin-bottom: 6px !important; }
-    .lt-bundle-desc { display: none !important; } /* Hidden on mobile to save space */
-    .lt-bundle-price { font-size: 16px !important; }
-    .lt-bundle-price.small { font-size: 14px !important; }
+    .lt-bundle-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin: 12px 0 !important; }
+    .lt-bundle-content { padding: 10px 4px !important; }
+    .lt-bundle-title { font-size: 10px !important; min-height: 28px !important; margin-bottom: 2px !important; }
+    .lt-bundle-sub { font-size: 9px !important; min-height: 12px !important; margin-bottom: 4px !important; }
+    .lt-bundle-desc { display: none !important; }
+    .lt-bundle-price { font-size: 15px !important; }
+    .lt-bundle-price.small { font-size: 13px !important; }
     .lt-bundle-old { font-size: 10px !important; }
-    .lt-bundle-save-wrap { min-height: 18px !important; margin-bottom: 4px !important; }
+    .lt-bundle-save-wrap { min-height: 16px !important; margin-bottom: 2px !important; }
     .lt-bundle-save { font-size: 8px !important; padding: 2px 4px !important; }
     .lt-bundle-shipping, .lt-bundle-free { font-size: 8px !important; }
-    .lt-bundle-banner { font-size: 7px !important; min-height: 20px !important; padding: 4px 2px !important; }
-    .lt-radio-circle { width: 12px !important; height: 12px !important; top: 10px !important; right: 10px !important; }
+    .lt-bundle-banner { font-size: 7px !important; min-height: 18px !important; padding: 3px 2px !important; }
+    .lt-radio-circle { width: 10px !important; height: 10px !important; top: 8px !important; right: 8px !important; }
+    .lt-inner-btn { padding: 8px 4px !important; font-size: 10px !important; margin-top: 6px !important; }
     
-    /* Table Mobile Fix */
+    /* Table Mobile */
     .lt-comparison-table th, .lt-comparison-table td { 
       padding: 10px 4px !important; 
       font-size: 10px !important; 
@@ -239,16 +366,6 @@
       table-layout: fixed !important; 
     }
     .lt-comparison-table th:first-child, .lt-comparison-table td:first-child { width: 90px !important; }
-    
-    /* Image fix for mobile */
-    .lt-hero-image-wrap img { 
-      height: auto !important; 
-      aspect-ratio: auto !important; 
-      object-fit: contain !important; 
-    }
-    
-    /* Better button on mobile */
-    .lt-inner-btn { padding: 12px 4px !important; font-size: 11px !important; }
   }
 
   /* Verified Badge */
@@ -259,41 +376,17 @@
   .lt-footer-bar { background: var(--lt-navy); color: rgba(255,255,255,0.6); padding: 20px 0; text-align: center; font-size: 12px; }
   .lt-footer-bar span { color: var(--lt-rose); padding: 0 8px; }
 
-  /* Mobile Overrides */
+  /* General mobile layout for non-hero sections */
   @media (max-width: 800px) {
-    .lt-hero { 
-      grid-template-columns: 1fr;
-      display: flex;
-      flex-direction: column;
-    }
-    .lt-hero-image-wrap { order: -1; margin-bottom: 12px; }
-    .lt-hero { text-align: center; }
-    
-    .lt-mobile-badge-row { 
-      display: flex; 
-      gap: 10px; 
-      margin-top: 12px; 
-      justify-content: center; 
-      width: 100%;
-    }
-    .badge-white, .badge-navy { 
-      position: static !important; 
-      margin-top: 0 !important; 
-      flex: 1; 
-      min-height: 50px; 
-      display: flex !important; 
-      align-items: center; 
-      justify-content: center; 
-      text-align: center; 
-      font-size: 11px !important;
-      padding: 8px !important;
-    }
-    
     .lt-rating-row, .lt-trust-small { justify-content: center; }
     .lt-steps-grid::after { display: none; }
     .lt-table-wrap { overflow-x: auto; }
-    .lt-hero-h1 { font-size: 32px; margin-bottom: 16px; }
     .lt-mobile-hide { display: none !important; }
+    .lt-problem-grid { grid-template-columns: 1fr; gap: 16px; }
+    .lt-solution-grid { grid-template-columns: 1fr; gap: 40px; }
+    .lt-steps-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .lt-testimonial-grid { grid-template-columns: 1fr; gap: 16px; }
+    .lt-ba-grid { grid-template-columns: 1fr; gap: 24px; }
   }
 
   /* Fade up animation */
@@ -334,7 +427,8 @@
       letter-spacing: 0.5px;
     }
   }
-  /* 10. Video Demonstration */
+
+  /* Video Demo */
   .lt-video-section {
     background: #fff;
     padding: 72px 0;
@@ -378,7 +472,6 @@
   }
   .lt-video-item {
     text-align: center;
-    opacity: 0; /* Prepared for reveal */
   }
   .lt-video-wrap {
     aspect-ratio: 9/16;
@@ -408,9 +501,12 @@
     .lt-video-title {
       font-size: 28px;
     }
+    .lt-video-section {
+      padding: 48px 0;
+    }
   }
 
-  /* 11. FAQ Accordion */
+  /* FAQ Accordion */
   .lt-faq-section { background: #fff; padding: 72px 0; }
   .lt-faq-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
   .lt-faq-item { border-bottom: 1px solid var(--lt-border); }
@@ -420,7 +516,13 @@
   .lt-faq-icon { transition: transform 0.3s; color: var(--lt-rose); }
   .lt-faq-item.active .lt-faq-icon { transform: rotate(45deg); }
 
-  /* 12. Before/After */
+  @media (max-width: 767px) {
+    .lt-faq-section { padding: 48px 0; }
+    .lt-faq-question { font-size: 15px; padding: 16px 0; }
+    .lt-faq-answer { font-size: 14px; }
+  }
+
+  /* Before/After */
   .lt-ba-section { background: var(--lt-bg); padding: 72px 0; }
   .lt-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
   .lt-ba-image-container { position: relative; border-radius: 12px; overflow: hidden; border: 4px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -428,30 +530,56 @@
   .label-before { left: 10px; }
   .label-after { right: 10px; background: var(--lt-rose); }
 
+  @media (max-width: 767px) {
+    .lt-ba-section { padding: 40px 0; }
+  }
+
   /* Payment Badges */
   .lt-payment-badges { display: flex; justify-content: center; gap: 15px; margin-top: 24px; opacity: 0.8; flex-wrap: wrap; }
   .lt-payment-badge { height: 24px; filter: grayscale(1); transition: filter 0.3s; }
   .lt-payment-badge:hover { filter: grayscale(0); }
 </style>
 
-<section class="lt-section" style="padding-bottom: 0;">
+<!-- ============================================================
+     HERO SECTION — Mobile-optimized above-the-fold layout
+     Ordinea pe mobile:
+       1. Micro-titlu (badge + headline scurt)    ~40px
+       2. Imagine produs cu badge-uri overlay     ~280px
+       3. Bundle grid (3 opțiuni)                 ~180px
+       4. Payment badges                          ~28px
+       TOTAL ≈ 528px → încape în viewport iPhone SE (568px usable)
+     ============================================================ -->
+<section class="lt-section lt-hero-section-mobile" style="padding-bottom: 0;">
   <div class="lt-container">
+
+    <!-- Mobile-only: titlu compact DEASUPRA imaginii -->
+    <div class="lt-mobile-only lt-mobile-hero-top">
+      <span class="lt-badge-pill">Nou în România</span>
+      <h1 class="lt-mobile-headline">Lifting facial fără bisturiu, fără botox, fără durere</h1>
+    </div>
+
     <div class="lt-hero">
-      <div class="lt-hero-image-wrap animate-fade-up" style="animation-delay: 0.2s">
+      <!-- IMAGINE PRODUS -->
+      <div class="lt-hero-image-wrap animate-fade-up" style="animation-delay: 0.2s; position: relative;">
         {% if product.featured_image %}
           <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" width="600" height="600" style="width: 100%; border-radius: 10px;">
         {% else %}
           <div style="width: 100%; aspect-ratio: 1; background: #eee; border-radius: 10px; display: flex; align-items: center; justify-content: center;">Imagine Produs</div>
         {% endif %}
-        
-        <div class="lt-mobile-badge-row">
-          <div class="lt-floating-badge badge-white lt-dm-sans">Fabricat în Spania<br><b>Standard european</b></div>
-          <div class="lt-floating-badge badge-navy lt-dm-sans"><b>40 bucăți/set</b></div>
+
+        <!-- Badge-uri OVERLAY pe imagine (mobile) / flotante (desktop) -->
+        <div class="lt-floating-badge badge-white lt-overlay lt-dm-sans">
+          <span class="lt-mobile-hide">Fabricat în Spania<br></span><b>🇪🇸 Standard EU</b>
+        </div>
+        <div class="lt-floating-badge badge-navy lt-overlay lt-dm-sans">
+          <b>40 buc/set</b>
         </div>
       </div>
 
+      <!-- Stock bar — ascuns pe mobile above the fold -->
       {% render 'vibemag-stock-bar' %}
 
+      <!-- BUNDLE SELECTION -->
       <section id="buy" class="lt-section lt-cta-section" style="padding: 24px 0; width: 100%;">
         <div class="lt-container" style="max-width: 700px; padding: 0;">
           <div class="lt-bundle-grid" id="ltBundleGrid" style="margin-bottom: 24px;">
@@ -511,7 +639,8 @@
         </div>
       </section>
 
-      <div class="animate-fade-up">
+      <!-- Titlu H1 mare — doar desktop (pe mobile e deja sus) -->
+      <div class="animate-fade-up lt-hero-bottom-headline">
         <span class="lt-badge-pill">Nou în România</span>
         <h1 class="lt-hero-h1 lt-serif-italic" style="margin-bottom: 8px;">Lifting facial fără bisturiu, fără botox, fără durere</h1>
       </div>
@@ -653,7 +782,6 @@
     </div>
 
     <div class="lt-video-grid">
-      <!-- Video 1 -->
       <div class="lt-video-item lt-reveal" style="transition-delay: 0.1s;">
         <div class="lt-video-wrap">
           <video src="https://cdn.shopify.com/videos/c/o/v/b0673199b7524231ae09a6b2e3e529ff.mp4" 
@@ -662,7 +790,6 @@
         <p class="lt-video-caption">Aplicare în 30 de secunde</p>
       </div>
 
-      <!-- Video 2 -->
       <div class="lt-video-item lt-reveal" style="transition-delay: 0.2s;">
         <div class="lt-video-wrap">
           <video src="https://cdn.shopify.com/videos/c/o/v/0b2ab520a26b4e28beea66d7c0092dad.mp4" 
@@ -671,7 +798,6 @@
         <p class="lt-video-caption">Efect vizibil imediat</p>
       </div>
 
-      <!-- Video 3 -->
       <div class="lt-video-item lt-reveal" style="transition-delay: 0.3s;">
         <div class="lt-video-wrap">
           <video src="https://cdn.shopify.com/videos/c/o/v/60c3cd8846884f2ea724f2e2ba874527.mp4" 
@@ -855,7 +981,6 @@
 
 <script>
 function vmAddToCart(quantity) {
-  // Using the first available variant ID dynamically
   const variantId = {{ product.selected_or_first_available_variant.id | json }};
   
   fetch('/cart/clear.js', { method: 'POST' })
@@ -881,15 +1006,8 @@ function vmAddToCart(quantity) {
     
     cards.forEach(card => {
       card.addEventListener('click', function() {
-        // Remove active class from all
         cards.forEach(c => c.classList.remove('active'));
-        
-        // Add active class to clicked
         this.classList.add('active');
-        
-        // logic moved to vmAddToCart global function
-        // const qty = parseInt(this.getAttribute('data-qty') || 1);
-        // ...
       });
     });
 
@@ -906,10 +1024,12 @@ function vmAddToCart(quantity) {
         
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
         const buyPos = buySection.getBoundingClientRect().top + window.pageYOffset;
+        const buyBottom = buyPos + buySection.offsetHeight;
         const windowHeight = window.innerHeight;
         
-        // Show after 300px, hidden when buy section is significantly visible
-        if (scrollPos > 300 && scrollPos < (buyPos - windowHeight + 300)) {
+        // Arată sticky CTA DOAR când utilizatorul a scrollat DINCOLO de bundle-uri
+        // (pentru că bundle-urile sunt above the fold acum, nu mai are sens să apară sticky prematur)
+        if (scrollPos > buyBottom) {
           stickyCta.classList.add('visible');
         } else {
           stickyCta.classList.remove('visible');
@@ -917,7 +1037,7 @@ function vmAddToCart(quantity) {
       });
     }
 
-    // Intersection Observer for scroll reveal animations
+    // Intersection Observer
     const observerOptions = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -936,7 +1056,7 @@ function vmAddToCart(quantity) {
       revealObserver.observe(el);
     });
 
-    // FAQ Logic
+    // FAQ
     const faqItems = document.querySelectorAll('.lt-faq-item');
     faqItems.forEach(item => {
       const question = item.querySelector('.lt-faq-question');
@@ -948,5 +1068,3 @@ function vmAddToCart(quantity) {
     });
   });
 </script>
-
-
