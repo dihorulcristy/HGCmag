@@ -608,6 +608,8 @@ sticky-header,
 /* Explicitly force Add To Cart & Checkout text to black for max contrast */
 button.product-form__submit,
 button.product-form__submit > span,
+.quick-add__submit,
+.quick-add__submit > span,
 .shopify-payment-button__button,
 .shopify-payment-button__button > span,
 .shopify-payment-button__button--unbranded,
