@@ -606,9 +606,12 @@ sticky-header,
 }
 
 /* Explicitly force Add To Cart & Checkout text to black for max contrast */
-.product-form__submit,
+button.product-form__submit,
+button.product-form__submit > span,
 .shopify-payment-button__button,
-.shopify-payment-button__button--unbranded {
+.shopify-payment-button__button > span,
+.shopify-payment-button__button--unbranded,
+.shopify-payment-button__button--unbranded > span {
   color: #000000 !important;
 }
 
@@ -3018,7 +3021,8 @@ shopify-section[id="footer"] {
   margin: 10px 0 0 0 !important;
 }
 
-.related-products .quick-add__submit {
+.related-products .quick-add__submit,
+.related-products .quick-add__submit > span {
   background-color: #2abfb0 !important;
   color: #000000 !important;
   font-family: 'Inter', sans-serif !important;
