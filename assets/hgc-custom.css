@@ -3033,8 +3033,52 @@ shopify-section[id="footer"] {
 
 @media (max-width: 768px) {
   .related-products__heading {
-    font-size: 18px !important;
+    font-size: 20px !important;
     margin-bottom: 20px !important;
+    text-align: left !important;
+    padding-left: 5px !important;
+  }
+
+  /* Premium Convertible App-Style Horizontal Slider */
+  .related-products .slider-buttons {
+    display: none !important; /* Hide old pagination numbers/arrows on mobile */
+  }
+  
+  .related-products .slider.slider--tablet {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-padding-left: 15px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    margin-left: -15px !important;
+    width: calc(100% + 30px) !important;
+    padding-bottom: 20px !important; /* Give drop shadows room */
+  }
+
+  .related-products .slider.slider--tablet::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .related-products .slider.slider--tablet .grid__item {
+    flex: 0 0 55vw !important; /* 55% screen width per card */
+    max-width: 55vw !important;
+    width: 55vw !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* Improve Card Text Legibility inside 55vw cards */
+  .related-products .card__content {
+    padding: 12px !important;
+  }
+  
+  .related-products .card__heading {
+    font-size: 13px !important;
+    height: 38px !important;
+    line-height: 1.4 !important;
   }
 }
 
