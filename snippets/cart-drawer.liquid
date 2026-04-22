@@ -465,9 +465,9 @@
             </svg>
             <span>100% Plată Securizată & Simplă</span>
           </div>
-          <ul class="list list-payment" role="list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0; padding: 0;">
+          <ul class="list list-payment" role="list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0; padding: 0; list-style: none;">
             {%- for type in shop.enabled_payment_types -%}
-              <li class="list-payment__item">
+              <li class="list-payment__item" style="list-style: none;">
                 {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
               </li>
             {%- endfor -%}
