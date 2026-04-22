@@ -1510,3 +1510,20 @@ a.product__text {
     border: none;
   }
 }
+
+/* Custom fix for product media modal image sizes */
+.product-media-modal__content img,
+.product-media-modal__content > * > img {
+  max-height: calc(100vh - 6rem);
+  width: auto !important;
+  max-width: 100%;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 749px) {
+  .product-media-modal__content img,
+  .product-media-modal__content > * > img {
+    max-height: calc(100vh - 10rem);
+  }
+}
