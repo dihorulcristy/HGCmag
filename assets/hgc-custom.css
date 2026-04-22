@@ -3235,7 +3235,7 @@ shopify-section[id="footer"] {
   margin-top: 2px !important;
 }
 
-.card .price__sale {
+.card .price--on-sale .price__sale {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
