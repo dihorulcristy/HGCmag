@@ -1521,32 +1521,35 @@ a.product__text {
   margin: 0 auto;
 }
 
+/* Swiping functionality for modal (Desktop & Mobile) */
+.product-media-modal__content {
+  display: flex !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  align-items: center;
+  padding: 0 !important;
+}
+
+.product-media-modal__content::-webkit-scrollbar {
+  display: none;
+}
+
+.product-media-modal__content > * {
+  display: flex !important;
+  flex: 0 0 100vw;
+  width: 100vw !important;
+  scroll-snap-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0 !important;
+}
+
 @media screen and (max-width: 749px) {
   .product-media-modal__content img,
   .product-media-modal__content > * > img {
     max-height: calc(100vh - 10rem);
-  }
-
-  /* Swiping functionality for modal */
-  .product-media-modal__content {
-    display: flex !important;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    align-items: center;
-  }
-  
-  .product-media-modal__content::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .product-media-modal__content > * {
-    display: flex !important;
-    flex: 0 0 100vw;
-    width: 100vw !important;
-    scroll-snap-align: center;
-    justify-content: center;
-    align-items: center;
   }
 }
