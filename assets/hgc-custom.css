@@ -2319,7 +2319,7 @@ shopify-section[id="footer"] {
   margin-bottom: 8px !important;
 }
 
-.price__sale {
+.price--on-sale .price__sale {
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
@@ -2337,7 +2337,7 @@ shopify-section[id="footer"] {
   align-items: center !important;
 }
 
-.price__sale * {
+.price--on-sale .price__sale * {
   display: inline-flex !important;
   align-items: center !important;
 }
@@ -2378,6 +2378,41 @@ shopify-section[id="footer"] {
   color: #9aa5a8 !important;
   margin-top: 4px;
   display: block;
+}
+
+/* Specific sizing for product grids / cards to prevent huge pricing */
+.card-information .vm-price-sale {
+  font-size: 18px !important;
+}
+
+.card-information .vm-price-old {
+  font-size: 14px !important;
+}
+
+.card-information .vm-price-row,
+.card-information .price__sale,
+.card-information .vm-price-top-row,
+.card-information .vm-price-bottom-row {
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
+}
+
+.card-information .vm-price-subtext {
+  text-align: center !important;
+}
+
+/* Hide default Dawn badges in the price snippet */
+.price--show-badge .price__badge-sale,
+
+.card-information .vm-price-top-row {
+  gap: 6px !important;
+}
+
+.card-information .vm-price-pill {
+  font-size: 10px !important;
+  padding: 2px 8px !important;
 }
 
 /* Hide default Dawn badges in the price snippet */
