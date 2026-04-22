@@ -1526,4 +1526,27 @@ a.product__text {
   .product-media-modal__content > * > img {
     max-height: calc(100vh - 10rem);
   }
+
+  /* Swiping functionality for modal */
+  .product-media-modal__content {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    align-items: center;
+  }
+  
+  .product-media-modal__content::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .product-media-modal__content > * {
+    display: flex !important;
+    flex: 0 0 100vw;
+    width: 100vw !important;
+    scroll-snap-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }
