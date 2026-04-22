@@ -25,10 +25,17 @@ if (!customElements.get('product-modal')) {
         const activeMediaTemplate = activeMedia.querySelector('template');
         const activeMediaContent = activeMediaTemplate ? activeMediaTemplate.content : null;
         activeMedia.classList.add('active');
-        activeMedia.scrollIntoView();
-
+        
         const container = this.querySelector('[role="document"]');
-        container.scrollLeft = (activeMedia.width - container.clientWidth) / 2;
+        
+        // Disable smooth scrolling temporarily to snap to the target image
+        container.style.scrollBehavior = 'auto';
+        activeMedia.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'start' });
+        
+        // Re-enable smooth scrolling after it has snapped
+        setTimeout(() => {
+          container.style.scrollBehavior = '';
+        }, 50);
 
         if (
           activeMedia.nodeName == 'DEFERRED-MEDIA' &&
