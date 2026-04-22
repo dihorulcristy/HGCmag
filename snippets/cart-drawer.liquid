@@ -350,6 +350,26 @@
           </div>
           <div id="CartDrawer-CartErrors" role="alert"></div>
         </form>
+
+        <!-- UPSELL CAUSE AOV -->
+        {%- if settings.cart_drawer_collection != blank and cart != empty -%}
+          <div class="cart-drawer__upsell-container" style="margin-top: 30px; border-top: 1px solid #e0eeec; padding-top: 20px;">
+            <h3 style="font-family: var(--vm-font-heading); font-size: 15px; font-weight: 700; text-align: center; margin-bottom: 16px; color: var(--vm-navy); text-transform: uppercase;">S-ar putea să îți placă și...</h3>
+            <div class="cart-drawer__upsell-grid" style="display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; scrollbar-width: none;">
+              {%- for product in settings.cart_drawer_collection.products limit: 6 -%}
+                <div class="cart-drawer__upsell-card" style="flex: 0 0 65%; scroll-snap-align: start; flex-shrink: 0; border: 1px solid #f0f4f4; border-radius: 8px; padding-bottom: 10px;">
+                  {% render 'card-product', card_product: product, show_vendor: false, show_rating: false, quick_add: 'standard', section_id: 'cart-drawer' %}
+                </div>
+              {%- endfor -%}
+            </div>
+            <style>
+              .cart-drawer__upsell-grid::-webkit-scrollbar { display: none; }
+              .cart-drawer__upsell-card .card__heading { font-size: 12px !important; height: 34px !important; line-height: 1.3 !important; }
+              .cart-drawer__upsell-card .price { font-size: 13px !important; }
+              .cart-drawer__upsell-card .quick-add__submit { min-height: 32px !important; padding: 0 10px !important; font-size: 11px !important; margin-top: 8px !important; }
+            </style>
+          </div>
+        {%- endif -%}
       </cart-drawer-items>
       <div class="drawer__footer">
         {%- if settings.show_cart_note -%}
@@ -437,7 +457,7 @@
         </div>
 
         <!-- TRUST BADGES -->
-        <div class="cart-drawer__trust-badges" style="text-align: center; margin-top: 20px;">
+        <div class="cart-drawer__trust-badges" style="text-align: center; margin-top: 15px;">
           <div style="display: flex; align-items: center; justify-content: center; gap: 6px; margin-bottom: 8px; color: #6b7b80; font-family: var(--vm-font-body); font-size: 12px; font-weight: 600;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
@@ -445,34 +465,18 @@
             </svg>
             <span>100% Plată Securizată & Simplă</span>
           </div>
-          <ul class="list list-payment" role="list" style="justify-content: center; margin: 0; padding: 0;">
+          <ul class="list list-payment" role="list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin: 0; padding: 0;">
             {%- for type in shop.enabled_payment_types -%}
               <li class="list-payment__item">
                 {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
               </li>
             {%- endfor -%}
           </ul>
+          <style>
+            .cart-drawer__trust-badges .list-payment__item { padding: 0 !important; width: 34px !important; }
+            .cart-drawer__trust-badges .list-payment__item svg { width: 100% !important; height: auto !important; }
+          </style>
         </div>
-
-        <!-- UPSELL CAUSE AOV -->
-        {%- if settings.cart_drawer_collection != blank and cart != empty -%}
-          <div class="cart-drawer__upsell-container" style="margin-top: 30px; border-top: 1px solid #e0eeec; padding-top: 20px;">
-            <h3 style="font-family: var(--vm-font-heading); font-size: 15px; font-weight: 700; text-align: center; margin-bottom: 16px; color: var(--vm-navy); text-transform: uppercase;">S-ar putea să îți placă și...</h3>
-            <div class="cart-drawer__upsell-grid" style="display: flex; gap: 14px; overflow-x: auto; padding-bottom: 10px; scroll-snap-type: x mandatory; scrollbar-width: none;">
-              {%- for product in settings.cart_drawer_collection.products limit: 6 -%}
-                <div class="cart-drawer__upsell-card" style="flex: 0 0 65%; scroll-snap-align: start; flex-shrink: 0; border: 1px solid #f0f4f4; border-radius: 8px; padding-bottom: 10px;">
-                  {% render 'card-product', card_product: product, show_vendor: false, show_rating: false, quick_add: 'standard', section_id: 'cart-drawer' %}
-                </div>
-              {%- endfor -%}
-            </div>
-            <style>
-              .cart-drawer__upsell-grid::-webkit-scrollbar { display: none; }
-              .cart-drawer__upsell-card .card__heading { font-size: 12px !important; height: 34px !important; line-height: 1.3 !important; }
-              .cart-drawer__upsell-card .price { font-size: 13px !important; }
-              .cart-drawer__upsell-card .quick-add__submit { min-height: 32px !important; padding: 0 10px !important; font-size: 11px !important; margin-top: 8px !important; }
-            </style>
-          </div>
-        {%- endif -%}
       </div>
     </div>
   </div>
