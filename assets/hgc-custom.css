@@ -2750,7 +2750,7 @@ shopify-section[id="footer"] {
   margin-right: 0 !important;
 }
 
-/* ── Product Page: Sticky Add to Cart (Mobile) ── */
+/* ── Product Page: Sticky Add to Cart (Global) ── */
 
 .vm-sticky-atc {
   position: fixed;
@@ -2763,13 +2763,6 @@ shopify-section[id="footer"] {
   z-index: 1000;
   transform: translateY(100%);
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: none; /* Hidden on desktop */
-}
-
-@media (max-width: 768px) {
-  .vm-sticky-atc {
-    display: block;
-  }
 }
 
 .vm-sticky-atc.is-visible {
@@ -2781,32 +2774,61 @@ shopify-section[id="footer"] {
   align-items: center !important;
   justify-content: space-between !important;
   gap: 15px !important;
-  max-width: 500px !important;
+  max-width: 1200px !important;
   margin: 0 auto !important;
 }
 
 .vm-sticky-atc__info {
   display: flex !important;
   align-items: center !important;
-  gap: 10px !important;
-  flex: 1 !important;
+  gap: 16px !important;
+  flex: 2 !important;
 }
 
 .vm-sticky-atc__image img {
   border-radius: 4px !important;
   object-fit: cover !important;
   border: 1px solid #e0eeec !important;
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.vm-sticky-atc__details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vm-sticky-atc__title {
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--vm-navy) !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .vm-sticky-atc__price {
   font-family: 'Inter', sans-serif !important;
   font-weight: 700 !important;
   font-size: 15px !important;
-  color: var(--vm-navy) !important;
+  color: var(--vm-teal) !important;
 }
 
 .vm-sticky-atc__action {
   flex: 1 !important;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .vm-sticky-atc__title {
+    display: none !important; /* Hide title on mobile to save space */
+  }
+  .vm-sticky-atc__action {
+    max-width: 100%;
+  }
 }
 
 .vm-sticky-atc__button {

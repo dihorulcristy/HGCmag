@@ -9,6 +9,9 @@
         <img src="{{ product.featured_image | image_url: width: 100, height: 100, crop: 'center' }}" alt="{{ product.title }}" width="50" height="50" loading="lazy">
       </div>
       <div class="vm-sticky-atc__details">
+        <div class="vm-sticky-atc__title">
+          {{ product.title | escape }}
+        </div>
         <div class="vm-sticky-atc__price">
           {{ product.selected_or_first_available_variant.price | money }}
         </div>
