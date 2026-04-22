@@ -605,6 +605,13 @@ sticky-header,
   left: 110%;
 }
 
+/* Explicitly force Add To Cart & Checkout text to black for max contrast */
+.product-form__submit,
+.shopify-payment-button__button,
+.shopify-payment-button__button--unbranded {
+  color: #000000 !important;
+}
+
 .button:hover,
 .button--primary:hover {
   transform: translateY(-3px) !important;
@@ -3013,7 +3020,7 @@ shopify-section[id="footer"] {
 
 .related-products .quick-add__submit {
   background-color: #2abfb0 !important;
-  color: #ffffff !important;
+  color: #000000 !important;
   font-family: 'Inter', sans-serif !important;
   font-size: 12px !important;
   font-weight: 700 !important;
