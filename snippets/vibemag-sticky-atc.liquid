@@ -13,6 +13,11 @@
           {{ product.title | escape }}
         </div>
         <div class="vm-sticky-atc__price">
+          {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <span class="vm-sticky-atc__compare-price" style="text-decoration: line-through; font-size: 12px; color: #9aa5a8; margin-right: 6px; font-weight: 400;">
+              {{ product.selected_or_first_available_variant.compare_at_price | money }}
+            </span>
+          {%- endif -%}
           {{ product.selected_or_first_available_variant.price | money }}
         </div>
       </div>
