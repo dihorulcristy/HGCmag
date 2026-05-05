@@ -148,6 +148,11 @@
         "type": "shopify://apps/lucky-orange-heatmaps-replay/blocks/lucky_orange_tracking/019b2899-e426-7dbd-b9e7-ff9f0bb0d0f3",
         "disabled": false,
         "settings": {}
+      },
+      "13669795325273674392": {
+        "type": "shopify://apps/releasit-cod-form/blocks/app-embed/72faf214-4174-4fec-886b-0d0e8d3af9a2",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
