@@ -98,10 +98,6 @@
                 </p>
               {%- when 'title' -%}
                 <div class="product__title" {{ block.shopify_attributes }}>
-                  <div class="vm-product-badges">
-                    <span class="vm-badge vm-badge--origin">Fabricat în Spania</span>
-                    <span class="vm-badge vm-badge--brand">InnovaGoods</span>
-                  </div>
                   <h1 class="vm-product-title">{{ product.title | escape }}</h1>
                 </div>
               {%- when 'price' -%}
