@@ -177,12 +177,7 @@
                     {%- endif -%}
                   {%- endif -%}
                 </p>
-              {%- when 'description' -%}
-                {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
-                  </div>
-                {%- endif -%}
+
               {%- when 'sku' -%}
                 <p
                   class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -471,7 +466,6 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                {%- render 'vibemag-product-optimizations' -%}
 
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
@@ -670,6 +664,18 @@
           </a>
         </section>
       </div>
+    </div>
+
+    <div class="product-description-full-width" style="margin-top: 3rem; margin-bottom: 3rem;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'description' -%}
+          {%- if product.description != blank -%}
+            <div class="product__description rte" {{ block.shopify_attributes }}>
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
     </div>
 
     {% render 'product-media-modal', variant_images: variant_images %}
